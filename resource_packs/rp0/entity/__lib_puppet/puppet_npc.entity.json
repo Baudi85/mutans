@@ -1,0 +1,42 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:puppet_npc",
+            "spawn_egg": {
+                "base_color": "#d5920b",
+                "overlay_color": "#ffdf7e"
+            },
+            "geometry": {
+                "variant_0": "geometry.puppet_marker",
+                "variant_1": "geometry.puppet_marker"
+            },
+            "textures": {
+                "variant_0": "textures/entity/npc_april_oneil/npc_april_oneil_v0",
+                "variant_1": "textures/entity/npc_splinter/npc_splinter_v0"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "render_controllers": [
+                "controller.render.puppet_npc"
+            ],
+            "animations": {
+                "pose": "controller.animation.puppet_npc.pose",
+                "npc_0_pose_0": "animation.puppet_npc.npc_0_pose_0",
+                "npc_0_pose_1": "animation.puppet_npc.npc_0_pose_1",
+                "npc_0_pose_2": "animation.puppet_npc.npc_0_pose_2",
+                "npc_0_pose_3": "animation.puppet_npc.npc_0_pose_3",
+                "npc_1_pose_0": "animation.puppet_npc.npc_1_pose_0",
+                "npc_1_pose_1": "animation.puppet_npc.npc_1_pose_1",
+                "npc_1_pose_2": "animation.puppet_npc.npc_1_pose_2",
+                "npc_1_pose_3": "animation.puppet_npc.npc_1_pose_3"
+            },
+            "scripts": {
+                "animate": [
+                    "pose"
+                ]
+            }
+        }
+    }
+}

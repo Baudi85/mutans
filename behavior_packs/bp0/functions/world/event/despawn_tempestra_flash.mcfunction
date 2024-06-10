@@ -1,0 +1,1 @@
+execute as @e[type=fs:boss_tempestra] run function entity/flash/hide_then_despawn

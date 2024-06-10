@@ -1,0 +1,13 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:item": {
+    "description": {
+      "identifier": "fs:item_sewer_valve",
+      "category": "Items"
+    },
+    "components": {
+      "minecraft:icon": "item_sewer_valve",
+      "minecraft:use_animation": "none"
+    }
+  }
+}

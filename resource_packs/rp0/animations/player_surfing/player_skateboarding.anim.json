@@ -1,0 +1,24 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.player_skateboarding.moving": {
+			"loop": true,
+			"bones": {
+                "wheels_rear": {
+                    "rotation": [
+                        "(((math.sin(query.ground_speed) * 360) * query.modified_distance_moved) * -1)",
+                        0,
+                        0
+                    ]
+                },
+                "wheels_front": {
+                    "rotation": [
+                        "(((math.sin(query.ground_speed) * 360) * query.modified_distance_moved) * -1)",
+                        0,
+                        0
+                    ]
+                }
+			}
+		}
+	}
+}

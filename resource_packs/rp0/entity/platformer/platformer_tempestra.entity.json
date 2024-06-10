@@ -1,0 +1,21 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:platformer_tempestra",
+            "render_controllers": [
+                "controller.render.entity.platformer_tempestra"
+            ],
+            "geometry": {
+                "variant_0": "geometry.platformer_tempestra"
+            },
+            "textures": {
+                "variant_0": "textures/entity/platformer_tempestra/platformer_tempestra_v0",
+                "variant_1": "textures/entity/platformer_tempestra/platformer_tempestra_v1"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            }
+        }
+    }
+}

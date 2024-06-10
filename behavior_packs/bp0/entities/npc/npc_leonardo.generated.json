@@ -1,0 +1,120 @@
+// @(com.57digital.shulker.inherited)
+// Inheritance Chain: [fs:entity] ~> [fs:interact_to_player] ~> [fs:npc] ~> fs:npc_leonardo
+{
+  "format_version": "1.19.60",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "fs:npc_leonardo",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "property:perf_mode": {
+          "type": "bool",
+          "default": true,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "fs:instant_despawn": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": false
+        }
+      },
+      "fs:no_collision": {
+        "minecraft:collision_box": {
+          "height": 0,
+          "width": 0
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "npc",
+          "leonardo"
+        ]
+      },
+      "minecraft:physics": {
+        "has_collision": false,
+        "has_gravity": false
+      },
+      "minecraft:scale": {
+        "value": 1
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": false
+          }
+        ]
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:collision_box": {
+        "height": 2,
+        "width": 1
+      },
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {
+              "filters": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "player"
+                }
+              ],
+              "target": "other",
+              "event": "fs:did_interact_with_leonardo"
+            },
+            "interact_text": "action.interact.entity.select_character"
+          }
+        ]
+      },
+      "minecraft:npc": {
+        "npc_data": {
+          "skin_list": [
+            {
+              "variant": 0
+            }
+          ]
+        }
+      },
+      "minecraft:variant": {
+        "value": 0
+      }
+    },
+    "events": {
+      "fs:instant_despawn": {
+        "add": {
+          "component_groups": [
+            "fs:instant_despawn"
+          ]
+        }
+      },
+      "fs:enable_perf_mode": {
+        "set_property": {
+          "property:perf_mode": true
+        }
+      },
+      "fs:disable_perf_mode": {
+        "set_property": {
+          "property:perf_mode": false
+        }
+      },
+      "fs:no_collision": {
+        "add": {
+          "component_groups": [
+            "fs:no_collision"
+          ]
+        }
+      }
+    }
+  }
+}

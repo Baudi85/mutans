@@ -1,0 +1,20 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:item_pizza_extra_life",
+            "render_controllers": [
+                "controller.render.item.common"
+            ],
+            "geometry": {
+                "variant_0": "geometry.item_pizza"
+            },
+            "textures": {
+                "variant_0": "textures/entity/item_pizza/item_pizza_extra_life"
+            },
+            "materials": {
+                "default": "entity"
+            }
+        }
+    }
+}

@@ -1,0 +1,60 @@
+{
+    "format_version": "1.16.0",
+    "animations": {
+        "animation.movement_appear.enemy_triceraton": {
+            "loop": false,
+            "animation_length": 0.7
+        },
+        "animation.attack_melee.enemy_triceraton": {
+            "loop": false,
+            "animation_length": 1.5,
+            "timeline": {
+                "0.5": [
+                    "/function ai_enemy/action/melee/detect_player"
+                ],
+                "0.75": [
+                    "/function ai_enemy/action/melee/detect_player"
+                ],
+                "1.25": [
+                    "/function ai_enemy/action/melee/detect_player"
+                ]
+            }
+        },
+        "animation.attack_jump.enemy_triceraton": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_ranged.enemy_triceraton": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_dash.enemy_triceraton": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_block.enemy_triceraton": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.damage_hit.enemy_triceraton": {
+            "loop": false,
+            "animation_length": 0.1
+        },
+        "animation.damage_hurt.enemy_triceraton": {
+            "loop": false,
+            "animation_length": 0.535
+        },
+        "animation.damage_knockdown.enemy_triceraton": {
+            "loop": false,
+            "animation_length": 1
+        },
+        "animation.damage_get_up.enemy_triceraton": {
+            "loop": false,
+            "animation_length": 0.9
+        },
+        "animation.damage_killed.enemy_triceraton": {
+            "loop": false,
+            "animation_length": 0.25
+        }
+    }
+}

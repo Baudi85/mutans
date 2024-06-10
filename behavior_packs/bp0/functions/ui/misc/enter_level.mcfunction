@@ -1,0 +1,2 @@
+tellraw @a[scores={level=800..899}] {"rawtext":[{"text":"§l§e"},{"translate":"ui.chat.level_started", "with":{"rawtext":[{"text":"8"}]}}]}
+tellraw @a[scores={level=900..999}] {"rawtext":[{"text":"§l§e"},{"translate":"ui.chat.level_started", "with":{"rawtext":[{"text":"9"}]}}]}

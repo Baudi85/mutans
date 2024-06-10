@@ -1,0 +1,1228 @@
+// /function events/level/did_end -> flags active level as completed
+// when debugging, set `/scoreboard players set @s ui_debug 1` to disable button presses on each level
+{
+  "namespace": "fs_episode_select",
+  "root_panel": {
+    "type": "panel",
+    "layer": 1,
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_name": "#dialogtext"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#dialogtext - '§r§e§1§1§5§0§0§3§r' = #dialogtext))", // signal: e11500e (§r§e§1§1§5§0§0§3§r) for epsiode select
+        "target_property_name": "#visible"
+      }
+    ],
+    "$min_content_size|default": [
+      "100%",
+      "100% + 1px"
+    ],
+    "$panel_size|default": [
+      "100%",
+      "100%c"
+    ],
+    "$dynamic_size": [
+      "40%",
+      "80%"
+    ],
+    "min_size": [
+      "600px",
+      "0px"
+    ],
+    "$ui_theme|default": "default",
+    "$ui_use_disclosure_indicator|default": 0,
+    "$ui_show_button_overlays|default": true,
+    "$button_limit|default": 6,
+    "variables": [
+      {
+        "requires": "$touch",
+        "$dynamic_size": [
+          "40%",
+          "95%"
+        ]
+      },
+      {
+        "requires": "(not $touch)",
+        "$dynamic_size": [
+          "40%",
+          "80%"
+        ]
+      }
+    ],
+    "controls": [
+      {
+        "page": {
+          "type": "label",
+          // "text": "(§z + $current_page_index)",
+          "text": "#current_page_str",
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "layer": 9999,
+          "visible": false,
+          "$current_page_index|default": "#current_page_int",
+          "bindings": [
+            {
+              "binding_name": "#dialogtext"
+            },
+            {
+              "binding_name": "#dialogtext",
+              "binding_type": "view",
+              "source_property_name": "(#dialogtext - 'fsepisodeselect://' - '?_=1&')",
+              "target_property_name": "#text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.4s' * (#text))) - (§z + ('%.3s' * #text))))",
+              "target_property_name": "#current_page_int"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(§z + #current_page_int)",
+              "target_property_name": "#current_page_str"
+            }
+          ]
+        }
+      },
+      {
+        "_dialog_container@dialog_container": {}
+      }
+    ]
+  },
+  "dialog_container": {
+    "type": "image",
+    "texture": "textures/ui/colors/black",
+    "size": [
+      "150%",
+      "150%"
+    ],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "alpha": 0.8,
+    "controls": [
+      {
+        "board": {
+          "type": "image",
+          "texture": "textures/ui/epsel/epsel_board_0", // #current_page_str
+          "size": [
+            282,
+            202
+          ],
+          "controls": [
+            {
+              "_main_stack@main_stack": {}
+            },
+            {
+              "_dialog_left_panel@dialog_left_panel": {}
+            },
+            {
+              "_dialog_right_panel@dialog_right_panel": {}
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#dialogtext"
+            },
+            {
+              "binding_name": "#dialogtext",
+              "binding_type": "view",
+              "source_property_name": "(#dialogtext - 'fsepisodeselect://' - '?_=1&')",
+              "target_property_name": "#text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.4s' * (#text))) - (§z + ('%.3s' * #text))))",
+              "target_property_name": "#current_page_int"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(§z + #current_page_int)",
+              "target_property_name": "#current_page_str"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('textures/ui/epsel/epsel_board_' + #current_page_int)",
+              "target_property_name": "#texture"
+            }
+          ]
+        }
+      },
+      {
+        // prevents flicker when switching pages
+        "preloaders": {
+          "type": "panel",
+          "size": [
+            "1px",
+            "1px"
+          ],
+          "offset": [-5000, -5000],
+          "controls": [
+            {
+              "preload_1": {
+                "type": "image",
+                "texture": "textures/ui/epsel/epsel_board_0",
+                "size": ["1px", "1px"]
+              }
+            },
+            {
+              "preload_2": {
+                "type": "image",
+                "texture": "textures/ui/epsel/epsel_board_1",
+                "size": ["1px", "1px"]
+              }
+            },
+            {
+              "preload_3": {
+                "type": "image",
+                "texture": "textures/ui/epsel/epsel_board_2",
+                "size": ["1px", "1px"]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "main_stack": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "_header_container@header_container": {}
+      },
+      {
+        "_button_stack_top_padding@panel_padding": {
+          "size": ["100%", 33]
+        }
+      },
+      {
+        "_button_stack_container@button_stack_container": {}
+      },
+      {
+        "_button_stack_btm_padding@panel_padding": {
+          "size": ["100%", 27]
+        }
+      },
+      {
+        "_pagination@pagination_container": {}
+      }
+    ]
+  },
+
+  // === buttons ===
+
+  "button_stack_container": {
+    "type": "panel",
+    // "texture": "textures/ui/colors/magenta",
+    "size": ["100%", 100],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "layer": 9999,
+    "controls": [
+      {
+        "debugging": {
+          "type": "label",
+          "size": [10, 10],
+          "layer": 999999,
+          "text": "#dialogtext"
+        }
+      },
+      {
+        "_button_stack@button_stack": {
+        }
+      }
+    ]
+  },
+
+  "panel_padding": {
+    "type": "panel"
+  },
+
+  "button_stack": {
+    "type": "stack_panel",
+    "size": [382, "100%"],
+    "orientation": "horizontal",
+    "collection_name": "student_buttons_collection",
+    "controls": [
+      { "0@nav_button_template": { "$collection_idx": 0, "size": [50, 100], "$nav_direction": "prev" }},
+      { "1@button_template": { "$collection_idx": 1 }},
+      { "2@button_template": { "$collection_idx": 2 }},
+      { "3@button_template": { "$collection_idx": 3 }},
+      { "4@nav_button_template": { "$collection_idx": 4, "size": [52, 100], "$nav_direction": "next" }}
+    ]
+  },
+
+  "board_nav_left_button": {
+    // "collection_index": "$collection_idx",
+    "size": [50, 100],
+    "controls": [
+      {
+        "button_text": {
+          "type": "label",
+          "text": "(§z + $collection_idx)"
+        }
+      }
+    ]
+  },
+
+  "board_nav_right_button": {
+    "type": "image",
+    "texture": "textures/ui/colors/red",
+    // "collection_index": "$collection_idx",
+    "size": [52, 100], // larger than left button to accomodate the main container shadow offset
+    "controls": [
+      {
+        "button_text": {
+          "type": "label",
+          "text": "(§z + $collection_idx)"
+        }
+      }
+    ]
+  },
+  "button_template": {
+    "type": "button",
+    "size": [94, 100],
+    "collection_index": "$collection_idx",
+    "$card_offset|default": [0, 0],
+    "$inner_card_offset|default": [0, 0],
+    "sound_name": "fs.dlg.ep_select",
+    "variables": [
+      {
+        "requires": "($collection_idx = 1)",
+        // "$card_offset": [0, 50],
+        "$inner_card_offset|default": [10, 0],
+        "$card_offset": [0, -2]
+      },
+      {
+        "requires": "($collection_idx = 2)",
+        "$card_offset": [0, 2]
+      },
+      {
+        "requires": "($collection_idx = 3)",
+        // "$card_offset": [0, 50],
+        "$inner_card_offset|default": [-10, 0],
+        "$card_offset": [0, -1]
+      }
+    ],
+    "controls": [
+      {
+        "default@board_button": {
+          "$collection_idx": "$collection_idx",
+          "$state": "default",
+          "$inner_card_offset": "$inner_card_offset",
+          "offset": "$card_offset"
+        }
+      },
+      {
+        "hover@board_button": {
+          "$collection_idx": "$collection_idx",
+          "$state": "hover",
+          "$inner_card_offset": "$inner_card_offset",
+          "offset": [0, -3],
+          "anims": [
+            "@fs_episode_select.anim_card_jiggle_0"
+          ]
+          // "offset": [0, -2]
+        }
+      },
+      {
+        "pressed@board_button": {
+          "$collection_idx": "$collection_idx",
+          "$state": "pressed",
+          "$inner_card_offset": "$inner_card_offset",
+          "offset": "$card_offset"
+          // "offset": [0, 2]
+        }
+      }
+    ],
+    "default_control": "default",
+    "hover_control": "hover",
+    "pressed_control": "pressed",
+    "bindings": [
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "student_buttons_collection",
+        "binding_collection_prefix": "student_buttons"
+      },
+      {
+        "binding_name": "#student_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "student_buttons_collection"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not #student_button_text = '')",
+        "target_property_name": "#visible"
+      }
+    ],
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.student_button",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.student_button",
+        "mapping_type": "focused"
+      }
+    ]
+  },
+  
+  "board_button": {
+    "type": "panel",
+    // "texture": "textures/ui/colors/red",
+    // "collection_index": "$collection_idx",
+    "$inner_card_offset|default": [0, 0],
+    "$offset|default": [0, 0],
+    "size": [94, 100],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": "$offset",
+    "controls": [
+      {
+        "inner_card": {
+          "type": "panel",
+          "offset": "$inner_card_offset",
+          "propagate_alpha": true,
+          "controls": [
+            {
+              "card_image": {
+                "type": "image",
+                "texture": "('textures/ui/epsel/card_' + $state)",
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "layer": 99,
+                "size": ["90%", "90%"],
+                "controls": [
+                  {
+                    "mask_container": {
+                      "type": "panel",
+                      "visible": "($state = 'default' or $state = 'hover')",
+                      "controls": [
+                        {
+                          "mask": {
+                            "type": "image",
+                            "texture": "('textures/ui/epsel/card_' + $state + '_mask')",
+                            "alpha": 0.33,
+                            "layer": 100,
+                            "bindings": [
+                              {
+                                "binding_name": "#student_button_text",
+                                "binding_type": "collection",
+                                "binding_collection_name": "student_buttons_collection"
+                              },
+                              {
+                                "binding_type": "view",
+                                "source_property_name": "(not (#student_button_text - 'L' = #student_button_text))",
+                                "target_property_name": "#visible"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "level_portrait": {
+                      "type": "panel",
+                      // "visible": "($state = 'default' or $state = 'hover')",
+                      "controls": [
+                        {
+                          "mask": {
+                            "type": "panel",
+                            "alpha": 1,
+                            "layer": 101,
+                            "size": [48, 58],
+                            "offset": [20, 8],
+                            "clips_children": true,
+                            "allow_clipping": true,
+                            "anchor_from": "top_left",
+                            "anchor_to": "top_left",
+                            "bindings": [
+                              {
+                                "binding_name": "#student_button_text",
+                                "binding_type": "collection",
+                                "binding_collection_name": "student_buttons_collection"
+                              },
+                              {
+                                "binding_type": "view",
+                                "source_property_name": "(not (#student_button_text - 'C' = #student_button_text))",
+                                "target_property_name": "#visible"
+                              }
+                            ],
+                            "controls": [
+                              {
+                                "portrait_image": {
+                                  "type": "image",
+                                  "texture": "textures/ui/epsel/portrait_100",
+                                  "alpha": 1,
+                                  "layer": 102,
+                                  "size": [53, 63],
+                                  "offset": [0, 0],
+                                  "anchor_from": "center",
+                                  "anchor_to": "center",
+                                  "bindings": [
+                                    {
+                                      "binding_name": "#student_button_text",
+                                      "binding_type": "collection",
+                                      "binding_collection_name": "student_buttons_collection"
+                                    },
+                                    {
+                                      "binding_type": "view",
+                                      "source_property_name": "(not (#student_button_text - 'C' = #student_button_text))",
+                                      "target_property_name": "#visible"
+                                    },
+                                    {
+                                      "binding_type": "view",
+                                      "source_property_name": "('textures/ui/epsel/portrait_' + (#student_button_text - 'C' - 'L' - 'A' - '00')))",
+                                      "target_property_name": "#texture"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "mask_overlay": {
+                      "type": "image",
+                      "texture": "textures/ui/epsel/portrait_overlay",
+                      "alpha": 1,
+                      "layer": 300,
+                      "size": [50, 60],
+                      "offset": [19, 7],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "bindings": [
+                        {
+                          "binding_name": "#student_button_text",
+                          "binding_type": "collection",
+                          "binding_collection_name": "student_buttons_collection"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "(not (#student_button_text - 'C' = #student_button_text))",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "header_clipper": {
+                      "type": "panel",
+                      "offset": [0, -4],
+                      "size": [70, 22],
+                      "clips_children": true,
+                      "allow_clipping": true,
+                      "anchor_from": "bottom_left",
+                      "anchor_to": "bottom_left",
+                      "controls": [
+                        {
+                          "button_header": {
+                            "type": "label",
+                            "text": "ui.episode_select.level_header",
+                            // "text": "ui.episode_select_double_spaced.title",
+                            "localize": true,
+                            "offset": [20, 0],
+                            "size": ["100%", "80%"],
+                            // "offset": [20, -11],
+                            "color": "($text_color)",
+                            "$text_color|default": [0, 0, 0],
+                            "alpha": 0.5,
+                            "variables": [
+                              {"requires": "($state = 'hover' or $state = 'pressed')", "$text_color": [0.7019607843137255, 0.1137254901960784, 0.7725490196078431]}
+                            ],
+                            "anchor_from": "top_left",
+                            "anchor_to": "top_left",
+                            "font_type": "MinecraftTen",
+                            "font_scale_factor": 0.6,
+                            "layer": 100
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "button_text": {
+                      "type": "label",
+                      "text": "#text",
+                      "offset": [20, -8],
+                      // "offset": [20, -11],
+                      "color": "($text_color)",
+                      "$text_color|default": [0, 0, 0],
+                      "variables": [
+                        {"requires": "($state = 'hover' or $state = 'pressed')", "$text_color": [0.7019607843137255, 0.1137254901960784, 0.7725490196078431]}
+                      ],
+                      "anchor_from": "bottom_left",
+                      "anchor_to": "bottom_left",
+                      "font_type": "MinecraftTen",
+                      "font_scale_factor": 1.2,
+                      "layer": 100,
+                      "bindings": [
+                        {
+                          "binding_name": "#student_button_text",
+                          "binding_type": "collection",
+                          "binding_collection_name": "student_buttons_collection"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "('§r' + #student_button_text - 'C' - 'L' - 'A' - '00'))",
+                          "target_property_name": "#text"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "check_icon": {
+                      "type": "image",
+                      "texture": "textures/ui/epsel/check",
+                      "size": [28, 28],
+                      "layer": 1001,
+                      "anchor_from": "bottom_right",
+                      "anchor_to": "bottom_right",
+                      "offset": [-12, -8],
+                      "visible": false,
+                      "bindings": [
+                        {
+                          "binding_name": "#student_button_text",
+                          "binding_type": "collection",
+                          "binding_collection_name": "student_buttons_collection"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "(not (#student_button_text - 'C' = #student_button_text))",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "lock_icon": {
+                      "type": "image",
+                      "texture": "textures/ui/epsel/lock",
+                      "size": [28, 28],
+                      "layer": 1001,
+                      "anchor_from": "bottom_right",
+                      "anchor_to": "bottom_right",
+                      "offset": [-13, -5],
+                      "visible": false,
+                      "bindings": [
+                        {
+                          "binding_name": "#student_button_text",
+                          "binding_type": "collection",
+                          "binding_collection_name": "student_buttons_collection"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "(not (#student_button_text - 'L' = #student_button_text))",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  },
+                  // OOBE icon (first button only)
+                  {
+                    "go_icon_oobe_default": {
+                      "type": "image",
+                      "texture": "textures/ui/epsel/oobe_go",
+                      "size": [25, 32],
+                      "layer": 1001,
+                      "anchor_from": "bottom_middle",
+                      "anchor_to": "bottom_middle",
+                      "offset": [2, 25],
+                      "visible": false,
+                      "anims": [
+                        "@fs_episode_select.anim_button_jiggle_oobe_frame_0"
+                      ],
+                      "bindings": [
+                        {
+                          "binding_name": "#student_button_text",
+                          "binding_type": "collection",
+                          "binding_collection_name": "student_buttons_collection"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((not (#student_button_text - 'A100' = #student_button_text)) and $state = 'default')",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "go_icon_oobe_hover": {
+                      "type": "image",
+                      "texture": "textures/ui/epsel/oobe_go",
+                      "size": [25, 32],
+                      "layer": 1001,
+                      "anchor_from": "bottom_middle",
+                      "anchor_to": "bottom_middle",
+                      "offset": [2, 25],
+                      "visible": false,
+                      "bindings": [
+                        {
+                          "binding_name": "#student_button_text",
+                          "binding_type": "collection",
+                          "binding_collection_name": "student_buttons_collection"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((not (#student_button_text - 'A100' = #student_button_text)) and $state = 'hover')",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "nav_button_template": {
+    "type": "button",
+    "sound_name": "fs.dlg.nav",
+    "size": [94, 100],
+    "collection_index": "$collection_idx",
+    "$card_offset|default": [0, 0],
+    "$inner_card_offset|default": [0, 0],
+    "variables": [
+      {
+        "requires": "($collection_idx = 0)",
+        // "$card_offset": [0, 50],
+        "$card_offset": [7, 0]
+      },
+      {
+        "requires": "($collection_idx = 4)",
+        // "$card_offset": [0, 50],
+        "$card_offset": [-7, 0]
+      }
+    ],
+    "controls": [
+      {
+        "default_nav@nav_button": {
+          "$collection_idx": "$collection_idx",
+          "$state": "default",
+          "$inner_card_offset": "$inner_card_offset",
+          "offset": "$card_offset"
+        }
+      },
+      {
+        "hover_nav@nav_button": {
+          "$collection_idx": "$collection_idx",
+          "$state": "hover",
+          "$inner_card_offset": "$inner_card_offset",
+          "$anim_name": "('fs_episode_select.anim_button_jiggle_nav_' + $nav_direction + '_frame_0')",
+          "anims": [
+            "@$anim_name"
+          ]
+        }
+      },
+      {
+        "pressed_nav@nav_button": {
+          "$collection_idx": "$collection_idx",
+          "$state": "pressed",
+          "$inner_card_offset": "$inner_card_offset",
+          "offset": "$card_offset",
+          "$anim_name": "('fs_episode_select.anim_button_jiggle_nav_' + $nav_direction + '_frame_0')",
+          "anims": [
+            "@$anim_name"
+          ]
+        }
+      }
+    ],
+    "default_control": "default_nav",
+    "hover_control": "hover_nav",
+    "pressed_control": "pressed_nav",
+    "bindings": [
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "student_buttons_collection",
+        "binding_collection_prefix": "student_buttons"
+      },
+      {
+        "binding_name": "#student_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "student_buttons_collection"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not #student_button_text = '')",
+        "target_property_name": "#visible"
+      }
+    ],
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.student_button",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.student_button",
+        "mapping_type": "focused"
+      }
+    ]
+  },
+
+  "nav_button": {
+    "type": "panel",
+    // "texture": "textures/ui/colors/red",
+    // "collection_index": "$collection_idx",
+    "$inner_card_offset|default": [0, 0],
+    "$offset|default": [0, 0],
+    "$nav_direction|default": "prev", // prev or next
+    "size": [94, 100],
+    "variables": [
+      {"requires": "($nav_direction = 'prev' and ($state = 'hover' or $state = 'pressed'))", "$inner_card_offset": [-3, 0]},
+      {"requires": "($nav_direction = 'next' and ($state = 'hover' or $state = 'pressed'))", "$inner_card_offset": [0, 0]}
+    ],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "offset": "$offset",
+    "controls": [
+      {
+        "inner_card": {
+          "type": "panel",
+          "offset": "$inner_card_offset",
+          "propagate_alpha": true,
+          "controls": [
+            {
+              "nav_button_card": {
+                "type": "image",
+                "texture": "('textures/ui/epsel/btn_' + $nav_direction + '_' + $state)",
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "layer": 99,
+                "size": ["33px", "34px"],
+                "controls": [
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // === /buttons ===
+  "header_container": {
+    "type": "panel",
+    "size": ["100%", 26],
+    "alpha": 0.5,
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "clips_children": true,
+    "allow_clipping": true,
+    "controls": [
+      {
+        "_header_text@header_text": {
+          "offset": [0, -2]
+        }
+      }
+    ]
+  },
+  "header_text": {
+    "type": "label",
+    // "text": "ui.episode_select.title",
+    "text": "ui.episode_select_double_spaced.title",
+    "localize": true,
+    "size": [
+      "90%",
+      "default"
+    ],
+    "font_type": "MinecraftTen",
+    "font_scale_factor": 1.2,
+    "text_alignment": "center",
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "shadow": true
+  },
+  "dialog_left_panel": {
+    "type": "panel",
+    "size": [50, "100%"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [-50, 0]
+  },
+  "dialog_right_panel": {
+    "type": "panel",
+    "size": [50, "100%"],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": [52, 0], // extra offset due to left dropshadow on dialog_container
+    "controls": [
+      {
+        "_close_button_container@close_button_container": {}
+      }
+    ]
+  },
+  // === Close Button ===
+  "close_button_container": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "50px"
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 9999,
+    "controls": [
+      {
+        "_close_btn@close_btn": {}
+      }
+    ]
+  },
+  "close_btn": {
+    "type": "button",
+    "size": [
+      26, 25
+    ],
+    "layer": 9999,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "sound_name": "random.click",
+    "default_control": "default_close",
+    "hover_control": "hover_close",
+    "pressed_control": "pressed_close",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.exit_student",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.exit_student",
+        "mapping_type": "focused"
+      },
+      {
+        // Catch ESC here too
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.exit_student",
+        "mapping_type": "global"
+      }
+    ],
+    "controls": [
+      {
+        "default_close@close_btn_template": {
+          "$state": "default"
+        }
+      },
+      {
+        "hover_close@close_btn_template": {
+          "$state": "hover"
+        }
+      },
+      {
+        "pressed_close@close_btn_template": {
+          "$state": "pressed"
+        }
+      }
+    ]
+  },
+  "close_btn_template": {
+    "type": "image",
+    "texture": "('textures/ui/epsel/btn_x_' + $state)",
+    "size": [
+      25, 26
+    ],
+    "offset": [0, 0.5],
+    "layer": 9999,
+    "anchor_from": "center",
+    "anchor_to": "center"
+  },
+  // === /Close Button ===
+  // === pagination stack ===
+
+  "pagination_container": {
+    "type": "panel",
+    "size": ["100%", 14],
+    "controls": [
+      {
+        "_pagination_dummy_button_container@pagination_dummy_button_container": {}
+      },
+      // === 👇 injected pagination (#control_2d32fs3_start) 👇 ===
+      {
+        "pagination_control_p0": {
+          "type": "panel",
+          "size": [100, "100%"],
+          "offset": [2, 1],
+          "controls": [
+            {
+              "pagination_stack_panel": {
+                "type": "stack_panel",
+                "orientation": "horizontal",
+                "controls": [
+                  {"_0_page_item@page_item": { "$selected": true }},
+                  {"_1_page_item@page_item": { "$selected": false }},
+                  {"_2_page_item@page_item": { "$selected": false }}
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#dialogtext"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (#dialogtext - '&currPage=0&totalPages=3' = #dialogtext))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "pagination_control_p1": {
+          "type": "panel",
+          "size": [100, "100%"],
+          "offset": [2, 1],
+          "controls": [
+            {
+              "pagination_stack_panel": {
+                "type": "stack_panel",
+                "orientation": "horizontal",
+                "controls": [
+                  {"_0_page_item@page_item": { "$selected": false }},
+                  {"_1_page_item@page_item": { "$selected": true }},
+                  {"_2_page_item@page_item": { "$selected": false }}
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#dialogtext"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (#dialogtext - '&currPage=1&totalPages=3&' = #dialogtext))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "pagination_control_p2": {
+          "type": "panel",
+          "size": [100, "100%"],
+          "offset": [2, 1],
+          "controls": [
+            {
+              "pagination_stack_panel": {
+                "type": "stack_panel",
+                "orientation": "horizontal",
+                "controls": [
+                  {"_0_page_item@page_item": { "$selected": false }},
+                  {"_1_page_item@page_item": { "$selected": false }},
+                  {"_2_page_item@page_item": { "$selected": true }}
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#dialogtext"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (#dialogtext - '&currPage=2&totalPages=3&' = #dialogtext))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+      // === ☝️ injected pagination (#control_2d32fs3_end) 👆 ===
+    ]
+  },
+
+  "page_item": {
+    "type": "panel",
+    "size": [8, 8],
+    "controls": [
+      {
+        "inner_dot": {
+          "type": "image",
+          "$texture|default": "textures/ui/White",
+          "$size|default": [5, 5],
+          "variables": [
+            {"requires": "$selected", "$texture": "textures/ui/Black", "$size": [7, 7]}
+          ],
+          "texture": "$texture",
+          "size": "$size"
+        }
+      }
+    ]
+  },
+
+  "pagination_dummy_button_container": {
+    "type": "stack_panel",
+    "size": ["100%", "100%"],
+    "orientation": "horizontal",
+    "collection_name": "student_buttons_collection",
+    "controls": [
+      {
+        "_pagination_dummy_button@pagination_dummy_button": {}
+      }
+    ]
+  },
+
+  "pagination_dummy_button": {
+    "type": "button",
+    "size": ["100%", "100%"],
+    "sound_name": "fs.dlg.nav",
+    "controls": [
+      {
+        "default_dummy@pagination_dummy_button_default": {
+          "$state": "default"
+        }
+      },
+      {
+        "hover_dummy@pagination_dummy_button_default": {
+          "$state": "hover"
+        }
+      },
+      {
+        "pressed_dummy@pagination_dummy_button_default": {
+          "$state": "pressed"
+        }
+      }
+    ],
+    "default_control": "default_dummy",
+    "hover_control": "hover_dummy",
+    "pressed_control": "pressed_dummy",
+    "collection_index": 4,
+    "bindings": [
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "student_buttons_collection",
+        "binding_collection_prefix": "student_buttons"
+      },
+      {
+        "binding_name": "#student_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "student_buttons_collection"
+      }
+    ],
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.student_button",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.student_button",
+        "mapping_type": "focused"
+      }
+    ]
+  },
+
+  "pagination_dummy_button_default": {
+    "type": "panel"
+  },
+
+  // === /pagination stack ===
+
+  // === Animations ===
+  "anim_button_appear": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 1,
+    "duration": 1
+  },
+  "anim_button_jiggle_nav_prev_frame_0": {
+    "anim_type": "offset",
+    "from": [7, 0],
+    "to": [3, 0],
+    "duration": 0.5,
+    "next": "@fs_episode_select.anim_button_jiggle_nav_prev_frame_1"
+  },
+  "anim_button_jiggle_nav_prev_frame_1": {
+    "anim_type": "wait",
+    "duration": 0.2,
+    "next": "@fs_episode_select.anim_button_jiggle_nav_prev_frame_2"
+  },
+  "anim_button_jiggle_nav_prev_frame_2": {
+    "anim_type": "offset",
+    "from": [3, 0],
+    "to": [7, 0],
+    "duration": 0.5,
+    "next": "@fs_episode_select.anim_button_jiggle_nav_prev_frame_0"
+  },
+  "anim_button_jiggle_nav_next_frame_0": {
+    "anim_type": "offset",
+    "from": [0, 0],
+    "to": [-7, 0],
+    "duration": 0.5,
+    "next": "@fs_episode_select.anim_button_jiggle_nav_next_frame_1"
+  },
+  "anim_button_jiggle_nav_next_frame_1": {
+    "anim_type": "wait",
+    "duration": 0.2,
+    "next": "@fs_episode_select.anim_button_jiggle_nav_next_frame_2"
+  },
+  "anim_button_jiggle_nav_next_frame_2": {
+    "anim_type": "offset",
+    "from": [-7, 0],
+    "to": [0, 0],
+    "duration": 0.5,
+    "next": "@fs_episode_select.anim_button_jiggle_nav_next_frame_0"
+  },
+  "anim_card_jiggle_0": {
+    "anim_type": "offset",
+    "from": [0, 0],
+    "to": [0, -3],
+    "duration": 0.5,
+    "next": "@fs_episode_select.anim_card_jiggle_1"
+  },
+  "anim_card_jiggle_1": {
+    "anim_type": "offset",
+    "from": [0, -3],
+    "to": [0, 0],
+    "duration": 0.5,
+    "next": "@fs_episode_select.anim_card_jiggle_0"
+  },
+
+  //  "offset": [2, 50],
+  "anim_button_jiggle_oobe_frame_0": {
+    "anim_type": "offset",
+    "from": [2, 25],
+    "to": [2, 22],
+    "duration": 0.5,
+    "next": "@fs_episode_select.anim_button_jiggle_oobe_frame_1"
+  },
+  "anim_button_jiggle_oobe_frame_1": {
+    "anim_type": "wait",
+    "duration": 0.2,
+    "next": "@fs_episode_select.anim_button_jiggle_oobe_frame_2"
+  },
+  "anim_button_jiggle_oobe_frame_2": {
+    "anim_type": "offset",
+    "from": [2, 22],
+    "to": [2, 25],
+    "duration": 0.5,
+    "next": "@fs_episode_select.anim_button_jiggle_oobe_frame_0"
+  }
+}

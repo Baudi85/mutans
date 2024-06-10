@@ -1,0 +1,2 @@
+setworldspawn ~ ~ ~
+spawnpoint @a ~ ~ ~

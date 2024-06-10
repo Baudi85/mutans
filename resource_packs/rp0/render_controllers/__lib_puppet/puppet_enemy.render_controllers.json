@@ -1,0 +1,68 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.puppet_enemy": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.variant_0",
+                        "Texture.variant_1",
+                        "Texture.variant_2",
+                        "Texture.variant_3",
+                        "Texture.variant_4",
+                        "Texture.variant_5",
+                        "Texture.variant_6",
+                        "Texture.variant_7",
+                        "Texture.variant_8",
+                        "Texture.variant_9",
+                        "Texture.variant_10",
+                        "Texture.variant_11",
+                        "Texture.variant_12",
+                        "Texture.variant_13",
+                        "Texture.variant_14",
+                        "Texture.variant_15",
+                        "Texture.variant_16",
+                        "Texture.variant_17",
+                        "Texture.variant_18",
+                        "Texture.variant_19",
+                        "Texture.variant_20"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_0",
+                        "Geometry.variant_1",
+                        "Geometry.variant_2",
+                        "Geometry.variant_3",
+                        "Geometry.variant_4",
+                        "Geometry.variant_5",
+                        "Geometry.variant_6",
+                        "Geometry.variant_7",
+                        "Geometry.variant_8",
+                        "Geometry.variant_9",
+                        "Geometry.variant_10",
+                        "Geometry.variant_11",
+                        "Geometry.variant_12",
+                        "Geometry.variant_13",
+                        "Geometry.variant_14",
+                        "Geometry.variant_15",
+                        "Geometry.variant_16",
+                        "Geometry.variant_17",
+                        "Geometry.variant_18",
+                        "Geometry.variant_19",
+                        "Geometry.variant_20"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ]
+        }
+    }
+}

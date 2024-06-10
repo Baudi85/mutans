@@ -1,0 +1,65 @@
+{
+    "format_version": "1.10.0",
+    "animations": {
+        "animation.enemy_empty.movement_idle": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.enemy_empty.movement_appear": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.enemy_empty.movement_default": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.enemy_empty.movement_slow": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.enemy_empty.movement_fast": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.enemy_empty.movement_jump": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.enemy_empty.attack_dash": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.enemy_empty.attack_melee": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.enemy_empty.attack_block": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.enemy_empty.attack_ranged": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.enemy_empty.attack_jump": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.enemy_empty.damage_hurt": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.enemy_empty.damage_knockdown": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.enemy_empty.damage_get_up": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.enemy_empty.damage_killed": {
+            "loop": false,
+            "animation_length": 0
+        }
+    }
+}

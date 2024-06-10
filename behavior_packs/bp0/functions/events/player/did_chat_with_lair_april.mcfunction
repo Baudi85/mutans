@@ -1,0 +1,1 @@
+scoreboard players set @e[type=fs:game,scores={dlg_post_lvl_3=1}] dlg_post_lvl_3 2

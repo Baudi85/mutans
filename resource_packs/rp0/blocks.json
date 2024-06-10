@@ -1,0 +1,15 @@
+{
+    "format_version": [1,1,0],
+    "fs:boss_floor": {
+        "textures": "boss_floor",
+        "sound": "stone"
+    },
+    "fs:powered_off": {
+        "textures": "powered_off",
+        "sound": "stone"
+    },
+    "fs:powered_on": {
+        "textures": "powered_on",
+        "sound": "stone"
+    }
+}

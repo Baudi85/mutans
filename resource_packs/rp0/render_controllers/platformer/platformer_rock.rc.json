@@ -1,0 +1,31 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.entity.platformer_rock": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.variant_0",
+                        "Texture.variant_1",
+                        "Texture.variant_2",
+                        "Texture.variant_3"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_0"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ]
+        }
+    }
+}

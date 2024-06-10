@@ -1,0 +1,1 @@
+execute as @a at @s run function vehicle/sewer_surfing/start

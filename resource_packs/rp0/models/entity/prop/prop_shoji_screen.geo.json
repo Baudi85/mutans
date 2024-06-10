@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.prop_shoji_screen",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "bb_main",
+					"pivot": [0, 0, 6.5],
+					"cubes": [
+						{"origin": [1, 0, 5.5], "size": [16, 36, 2], "pivot": [0, 0, 6.5], "rotation": [0, 45, 0], "uv": [0, 0]},
+						{"origin": [-17, 0, -12.5], "size": [16, 36, 2], "pivot": [0, 0, 6.5], "rotation": [0, 45, 0], "uv": [0, 0]},
+						{"origin": [-17, 0, 5.5], "size": [16, 36, 2], "pivot": [0, 0, 6.5], "rotation": [0, -45, 0], "uv": [0, 0]},
+						{"origin": [1, 0, -12.5], "size": [16, 36, 2], "pivot": [0, 0, 6.5], "rotation": [0, -45, 0], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}

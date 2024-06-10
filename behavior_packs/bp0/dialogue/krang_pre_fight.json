@@ -1,0 +1,62 @@
+// @(com.57digital.shulker.generated)
+// @generated File (generated via ShulkerScript: <BP> dialogue/config/pre_fight/pre_fight_krang.js)
+{
+	"format_version": "1.17",
+	"minecraft:npc_dialogue": {
+		"scenes": [
+			{
+				"scene_tag": "krang_pre_fight",
+				"npc_name": {
+					"rawtext": [
+						{
+							/* "Krang" (@ipterm)*/
+							"translate": "krang_pre_fightname"
+						}
+					]
+				},
+				"text": {
+					"rawtext": [
+						{
+							/* "Foolish reptiles! You persist in your futile resistance! I have barely arrived, and yet you dare to challenge my presence in this realm?!" (Krang speaks to the player before the fight)*/
+							"translate": "krang_pre_fightmsg"
+						},
+						{
+							"text": "§f§1§3§3§7§f§0§6§f"
+						}
+					]
+				},
+				"buttons": [
+					{
+						"name": "280fbbt01z01",
+						"commands": [
+							"/execute as @initiator run tag @s add dlg.did_segue",
+							"/execute as @initiator run function dlg/krang_pre_fight_1"
+						]
+					}
+				],
+				"on_open_commands": [
+					"/tag @initiator remove did_req_dlg",
+					"/execute as @a run function utils/remove_dlg_tags",
+					"/execute as @initiator[tag=!dlg.did_segue] run playsound fs.boss.b_krang_dlg_1 @s[scores={s_sfx_enabled=1}]",
+					"/tag @initiator add player.in_ui",
+					"/tag @initiator remove dlg.did_segue",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§ekrang_pre_fight§7].§2DidOpen§7\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§ekrang_pre_fight§7].§2OpenFn§7: §e/function music/play/music_dlg_1_loop\"}]}",
+					"/function music/play/music_dlg_1_loop",
+					"/scoreboard players add @a __is_host 0",
+					"/execute as @a[scores={__is_host=0}] run function dlg/krang_pre_fight_m"
+				],
+				"on_close_commands": [
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§eDid run on_close_commands\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] at @s run function sounds/stop/_dialogue",
+					"/tag @s remove particle_emitter",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§ekrang_pre_fight§7].§4CloseFn§7: Aborted due to segue.\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§ekrang_pre_fight§7].§eDidNotSegue...\"}]}",
+					"/tag @initiator remove player.in_ui",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§ekrang_pre_fight§7].§4DidClose§7\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] run function ui/m/close_ui"
+				]
+			}
+		]
+	}
+}

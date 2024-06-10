@@ -1,0 +1,1 @@
+function zone_utils/trigger_next_zone_as_game

@@ -1,0 +1,13 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:item": {
+    "description": {
+      "identifier": "fs:item_skateboard_on",
+      "category": "Items"
+    },
+    "components": {
+      "minecraft:icon": "item_skateboard_on",
+      "minecraft:use_animation": "none"
+    }
+  }
+}

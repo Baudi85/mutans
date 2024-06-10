@@ -1,0 +1,1 @@
+execute as @a run function dlg/rocksteady_train_0

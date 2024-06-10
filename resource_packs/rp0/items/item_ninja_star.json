@@ -1,0 +1,13 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:item": {
+    "description": {
+      "identifier": "fs:item_ninja_star",
+      "category": "Items"
+    },
+    "components": {
+      "minecraft:icon": "item_ninja_star",
+      "minecraft:use_animation": "none"
+    }
+  }
+}

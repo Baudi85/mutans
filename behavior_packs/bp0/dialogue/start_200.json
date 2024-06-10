@@ -1,0 +1,74 @@
+// @(com.57digital.shulker.generated)
+// @generated File (generated via ShulkerScript: <BP> dialogue/config/episode_select.js)
+{
+	"format_version": "1.17",
+	"minecraft:npc_dialogue": {
+		"scenes": [
+			{
+				"scene_tag": "start_200",
+				"npc_name": {
+					"rawtext": [
+						{
+							"text": "entity.fs:npc_april_oneil.name"
+						}
+					]
+				},
+				"text": {
+					"rawtext": [
+						{
+							"text": "§l§a"
+						},
+						{
+							"translate": "tmnt.level_200.name.caps"
+						},
+						{
+							"text": "\n§r§f"
+						},
+						{
+							"translate": "start_200msg"
+						},
+						{
+							"text": "§f§1§3§3§7§f§0§1§f"
+						}
+					]
+				},
+				"buttons": [
+					{
+						"name": "s2001t00z50",
+						"commands": [
+							"/scoreboard players add @initiator ui_debug 0",
+							"/execute as @initiator positioned ~ ~ ~ run execute as @s[scores={ui_debug=0}] at @s run function zone/level_200/start",
+							"/execute as @initiator positioned ~ ~ ~ run execute as @s[scores={ui_debug=1}] at @s run say UI would call: zone/level_200/start"
+						]
+					},
+					{
+						"name": "s2002t07z02",
+						"commands": [
+							"/scoreboard players add @initiator ui_debug 0",
+							"/execute as @initiator run function prototype/open_episode_select_dlg_0"
+						]
+					}
+				],
+				"on_open_commands": [
+					"/tag @initiator remove did_req_dlg",
+					"/execute as @a run function utils/remove_dlg_tags",
+					"/execute as @initiator[tag=!dlg.did_segue] run playsound fs.dlg.open @s[scores={s_sfx_enabled=1}]",
+					"/tag @initiator add player.in_ui",
+					"/tag @initiator remove dlg.did_segue",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§estart_200§7].§2DidOpen§7\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§estart_200§7].§2OpenFn§7: §e/execute as @initiator run execute unless entity @s[scores={turtle_type=1..4}] run function dlg/splinter_deny_play\"}]}",
+					"/execute as @initiator run execute unless entity @s[scores={turtle_type=1..4}] run function dlg/splinter_deny_play"
+				],
+				"on_close_commands": [
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§eDid run on_close_commands\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] at @s run function sounds/stop/_dialogue",
+					"/tag @s remove particle_emitter",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§estart_200§7].§4CloseFn§7: Aborted due to segue.\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§estart_200§7].§eDidNotSegue...\"}]}",
+					"/tag @initiator remove player.in_ui",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§estart_200§7].§4DidClose§7\"}]}"
+				]
+			}
+		]
+	}
+}

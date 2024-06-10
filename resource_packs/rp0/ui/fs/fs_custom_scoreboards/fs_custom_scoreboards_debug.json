@@ -1,0 +1,383 @@
+{
+  "namespace": "fs_scoreboards",
+  "root_panel": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "container": {
+          "type": "panel",
+          // "texture": "textures/ui/Black",
+          "size": [
+            "100%",
+            30
+          ],
+          "offset": [0, 12],
+          // "alpha": 0.5,          
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "controls": [
+            {
+              "player_1@fs_scoreboards.player_score_container": {
+                "$player_index": 0,
+                "$player_offset": ["3px", "2px"],
+                "$scoreboard_grid_offset": [0, 0]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "player_score_container": {
+    "type": "panel",
+    "size": [
+      "24%",
+      "100% - 4px"
+    ],
+    "$player_offset|default": [0, 0],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": "($player_offset)",
+    "controls": [
+      {
+        "bg": {
+          "type": "panel",
+          // "texture": "textures/ui/colors/clear",
+          // "tiled": true,
+          "clips_children": false,
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "controls": [
+            {
+              "xlists@fs_scoreboards.lists": {
+
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  // prototypes
+  "lists": {
+    "type": "panel",
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "size": ["100%", "100%"],
+    "$scoreboard_grid_offset|default": [0, 0],
+    "offset": "($scoreboard_grid_offset)",
+    "controls": [
+      {
+        "players": {
+          "type": "stack_panel",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "size": [ "100%", "100%" ],
+          "orientation": "horizontal",
+          "collection_name": "scoreboard_players",
+          "factory": {
+            "name": "player_list_factory",
+            "control_name": "fs_scoreboards.custom_player"
+          },
+          "bindings": [
+            {
+              "binding_name": "#scoreboard_sidebar_size",
+              "binding_type": "global",
+              "binding_name_override": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "scores": {
+          "type": "stack_panel",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "size": [ "100%", "100%" ],
+          "orientation": "horizontal",
+          "use_child_anchors":  true,
+          "collection_name": "scoreboard_scores",
+          "factory": {
+            "name": "player_score_factory",
+            "control_name": "fs_scoreboards.custom_score"
+          },
+          "bindings": [
+            {
+              "binding_name": "#scoreboard_sidebar_size",
+              "binding_type": "global",
+              "binding_name_override": "#collection_length"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "custom_player": {
+    "type": "panel",
+    // "texture": "textures/ui/colors/clear",
+    // "tiled": true,
+    "size": ["100%", "100%"],
+    // "alpha": 0.25,
+    "layer": 2,
+    // "clips_children": true,
+    "controls": [
+      {
+        "lbl_name": {
+          "type": "label",
+          "layer": 2,
+          "text": "#player_name_sidebar",
+          "size": [ "default", 10 ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [0, "5%"],
+          "locked_alpha": 1.0,
+          "font_type": "MinecraftTen",
+          "color": "$player_name_color",
+          "bindings": [
+            {
+              "binding_name": "#player_name_sidebar",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_players"
+            },
+            {
+              "binding_name": "#player_name_sidebar",
+              "binding_type": "view",
+              "source_property_name": "(#player_name_sidebar)",
+              "target_property_name": "#player_name_sidebar"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "custom_score": {
+    "type": "panel",
+    // "texture": "textures/ui/colors/clear",
+    // "tiled": true,
+    "size": ["100%", "100%"],
+    // "clips_children": true,
+    // "alpha": 0.25,
+    "layer": 3,
+    "controls": [
+      {
+        "lbl_score": {
+          "type": "label",
+          "layer": 2,
+          "size": [ "default", 10 ],
+          "offset": [0, 5],
+          "text": "#player_score_sidebar",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "locked_alpha": 1,
+          "color": "$player_score_color",
+          "controls": [
+            {
+              "green": {
+                  "type": "label",
+                  "text": "#score_val",
+                  
+                  "size": ["default", 10],
+                  "offset": [-30, 4],
+                  "property_bag": {
+                      "#score_val": "",
+                      "#score_val_all": "",
+                      "#score_val_first_4": "",
+                      "#score_val_start": "",
+                      "#score_val_mid": "",
+                      "#score_val_end": ""
+                  },
+                  "visible": false,
+                  "color": [0, 1, 0, 1],       
+
+                  //"$my_score|default": "#score_val",
+                  //"$my_score_2|default": "#score_val_2",
+                  //"$my_score_3|default": "#score_val_3",
+
+                  "bindings": [
+                      {
+                          "binding_name": "#player_score_sidebar",
+                          "binding_type": "collection",
+                          "binding_collection_name": "scoreboard_scores"
+                      },
+                      {
+                        "binding_type": "view",
+                        "source_property_name": "('%.6s' * (#player_score_sidebar))",
+                        "target_property_name": "#score_val_all"
+                      },
+                      {
+                        "binding_type": "view", 
+                        "source_property_name": "('%.2s' * (#player_score_sidebar))",
+                        "target_property_name": "#score_val_start"
+                      },
+                      {
+                        "binding_type": "view",
+                        "source_property_name": "('%.4s' * (#player_score_sidebar))",
+                        "target_property_name": "#score_val_first_4"
+                      },
+                      {
+                        "binding_type": "view",
+                        "source_property_name": "((§z + #score_val_all) - (§z + #score_val_first_4))",
+                        "target_property_name": "#score_val_end"
+                      },
+                      {
+                        "binding_type": "view",
+                        "source_property_name": "((§z + #score_val_first_4) - (§z + #score_val_start))",
+                        "target_property_name": "#score_val_mid"
+                      },
+                      {
+                        "binding_type": "view",
+                        "source_property_name": "((§z + #score_val_start) + '_' + (§z + #score_val_mid) + '_' + (§z + #score_val_end))",
+                        "target_property_name": "#score_val"
+                      }
+                  ]
+              }
+            },
+            {
+              "yellow": {
+                  "type": "label",
+                  "text": "#score_val",                  
+                  "size": ["default", 10],
+                  "offset": [0, 9],
+                  "property_bag": {
+                      "#score_val": "",
+                      "#score_val_0": "",
+                      "#score_val_1": "",
+                      "#score_val_2": "",
+                      "#score_val_3": "",
+                      "#score_val_4": "",
+                      "#score_val_5": "",
+                      "#score_val_6": "",
+                      "#score_val_7": "",
+                      "#score_i_a": 0,
+                      "#score_i_b": 0,
+                      "#score_i_c": 0
+                  },
+                  "visible": true,
+                  "color": [1, 1, 0, 1],
+                  "bindings": [
+                      {
+                          "binding_name": "#player_score_sidebar",
+                          "binding_type": "collection",
+                          "binding_collection_name": "scoreboard_scores"
+                      },
+                      {
+                        "binding_type": "view", 
+                        "source_property_name": "(('§z' + ('%.8s' * (#player_score_sidebar))) - (§z + ('%.7s' * #player_score_sidebar))))",
+                        "target_property_name": "#score_val_7"
+                      },
+                      {
+                        "binding_type": "view", 
+                        "source_property_name": "(('§z' + ('%.7s' * (#player_score_sidebar))) - (§z + ('%.6s' * #player_score_sidebar))))",
+                        "target_property_name": "#score_val_6"
+                      },
+                      {
+                        "binding_type": "view", 
+                        "source_property_name": "(('§z' + ('%.6s' * (#player_score_sidebar))) - (§z + ('%.5s' * #player_score_sidebar))))",
+                        "target_property_name": "#score_val_5"
+                      },
+                      {
+                        "binding_type": "view", 
+                        "source_property_name": "((§z + ('%.5s' * (#player_score_sidebar))) - (§z + ('%.4s' * #player_score_sidebar))))",
+                        "target_property_name": "#score_val_4"
+                      },
+                      {
+                        "binding_type": "view", 
+                        "source_property_name": "((§z + ('%.4s' * (#player_score_sidebar))) - (§z + ('%.3s' * #player_score_sidebar))))",
+                        "target_property_name": "#score_val_3"
+                      },
+                      {
+                        "binding_type": "view", 
+                        "source_property_name": "((§z + ('%.3s' * (#player_score_sidebar))) - (§z + ('%.2s' * #player_score_sidebar))))",
+                        "target_property_name": "#score_val_2"
+                      },
+                      {
+                        "binding_type": "view", 
+                        "source_property_name": "((§z + ('%.2s' * (#player_score_sidebar))) - (§z + ('%.1s' * #player_score_sidebar))))",
+                        "target_property_name": "#score_val_1"
+                      },
+                      {
+                        "binding_type": "view", 
+                        "source_property_name": "((§z + ('%.1s' * (#player_score_sidebar))) - (§z + ('%.0s' * #player_score_sidebar))))",
+                        "target_property_name": "#score_val_0"
+                      },
+                      {
+                        "binding_type": "view", 
+                        "source_property_name": "((#score_val_2 * 10) + #score_val_3)",
+                        "target_property_name": "#score_i_a"
+                      },
+                      {
+                        "binding_type": "view", 
+                        "source_property_name": "((#score_val_4 * 10) + #score_val_5)",
+                        "target_property_name": "#score_i_b"
+                      },
+                      {
+                        "binding_type": "view", 
+                        "source_property_name": "((#score_val_6 * 10) + #score_val_7)",
+                        "target_property_name": "#score_i_c"
+                      },
+                      {
+                        "binding_type": "view",
+                        "source_property_name": "((§z + #score_i_a) + '_' + (§z + #score_i_b) + '_' + (§z + #score_i_c))",
+                        "target_property_name": "#score_val"
+                      },
+                      {
+                          "binding_type": "view",
+                          "source_property_name": "(#score_i_c > 0)",
+                          "target_property_name": "#visible"
+                      }
+                  ]
+              }
+            },
+            {
+              "blue": {
+                  "type": "label",
+                  "text": "#the_score_val",
+                  "size": ["default", 10],
+                  "offset": [0, -5],
+                  "property_bag": {
+                      "#the_score_val": "demo"
+                  },
+                  "color": [0, 0, 1, 1],
+                  "bindings": [
+                      {
+                          "binding_name": "#player_score_sidebar",
+                          "binding_type": "collection",
+                          "binding_collection_name": "scoreboard_scores",
+                          "binding_condition": "once"
+                      },
+                      {
+                          "binding_name": "#player_score_sidebar",
+                          "binding_type": "view",
+                          "source_property_name": "(#player_score_sidebar)",
+                          "target_property_name": "#the_score_val",
+                          "binding_condition": "once"
+                      },
+                      {
+                          "binding_name": "#player_score_sidebar",
+                          "binding_type": "view",
+                          "source_property_name": "(#the_score_val = '3')",
+                          "target_property_name": "#visible",
+                          "binding_condition": "once"
+                      }
+                  ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#player_score_sidebar",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_scores"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

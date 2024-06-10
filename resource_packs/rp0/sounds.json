@@ -1,0 +1,73 @@
+{
+    "entity_sounds": {
+        "entities": {
+            "player": {
+                "events": {
+                    "attack.nodamage": "",
+                    "attack.strong": "",
+                    "death": "game.player.die",
+                    "death.in.water": "game.player.die",
+                    "elderguardian.curse": {
+                        "pitch": 1,
+                        "sound": "mob.elderguardian.curse",
+                        "volume": 1
+                    },
+                    "hurt": "game.player.hurt",
+                    "hurt.in.water": "game.player.hurt",
+                    "throw": {
+                        "pitch": [
+                            0.33,
+                            0.5
+                        ],
+                        "sound": "random.bow",
+                        "volume": 0.5
+                    }
+                },
+                "pitch": [
+                    0.8,
+                    1.2
+                ],
+                "volume": 1
+            },
+            "fs:vehicle_van": {
+                "volume": 0,
+                "pitch": [
+                    1,
+                    1
+                ],
+                "events": {
+                    "ambient": "",
+                    "hurt": "",
+                    "death": "",
+                    "jump": "",
+                    "land": "",
+                    "step": ""
+                }
+            },
+            "fs:vehicle_skateboard": {
+                "volume": 0,
+                "pitch": [
+                    1,
+                    1
+                ],
+                "events": {
+                    "ambient": "",
+                    "hurt": "",
+                    "death": "",
+                    "jump": "",
+                    "land": "",
+                    "step": ""
+                }
+            }
+        }
+    },
+    "individual_event_sounds": {
+        "events": {
+            "levelup": {
+                "pitch": 0,
+                "sound": "random.levelup",
+                "volume": 0
+            }
+        }
+    }
+}

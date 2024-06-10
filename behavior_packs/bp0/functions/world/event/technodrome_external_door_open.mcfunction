@@ -1,0 +1,1 @@
+structure load technodrome_door_open -652 -60 1323

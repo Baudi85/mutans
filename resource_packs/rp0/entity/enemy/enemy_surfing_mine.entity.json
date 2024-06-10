@@ -1,0 +1,28 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:enemy_surfing_mine",
+            "render_controllers": [
+                {
+                    "controller.render.enemy.common": "query.property('property:perf_mode') == false"
+                },
+                {
+                    "controller.render.enemy.common.perf_mode": "query.property('property:perf_mode') == true"
+                }
+            ],
+            "geometry": {
+                "variant_0": "geometry.enemy_surfing_mine"
+            },
+            "textures": {
+                "variant_default": "textures/entity/enemy_surfing_mine/enemy_surfing_mine_v0",
+                "variant_hit": "textures/entity/enemy_surfing_mine/enemy_surfing_mine_v0_hit",
+                "variant_knockdown": "textures/entity/enemy_surfing_mine/enemy_surfing_mine_v0_knockdown"
+            },
+            "materials": {
+                "default": "entity",
+                "alphatest": "entity_alphatest"
+            }
+        }
+    }
+}

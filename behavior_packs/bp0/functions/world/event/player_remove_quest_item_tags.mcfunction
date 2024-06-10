@@ -1,0 +1,1 @@
+function quest_manager/remove_tags

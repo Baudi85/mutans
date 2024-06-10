@@ -1,0 +1,25 @@
+{
+    "ui_defs": [
+        // npc dialogues:
+        "ui/fs/ab_abstract_ui/ab_abstract_ui.json",
+        "ui/fs/fs_episode_select/fs_episode_select.json",
+        "ui/fs/abcommon/ab_common_dlg.json",
+        "ui/fs/fs_turtlecom/fs_turtlecom.json",
+        "ui/fs/fs_m_dummy/fs_m_dummy.json",
+        // hud:
+        "ui/fs/fs_fader/fs_fader.json",
+        "ui/fs/fs_fader/fs_tv_partial.json",
+        "ui/fs/fs_level_complete/fs_level_complete.json",
+        "ui/fs/fs_compass/fs_compass.json",
+        "ui/fs/fs_title/fs_title_arcade.json",
+        "ui/fs/fs_title/fs_title_toast.json",
+        "ui/fs/fs_title/fs_title_letterbox.json",
+        "ui/fs/fs_title/fs_title_boss.json",
+        // dev:
+        "ui/fs/fs_gamemode/fs_gamemode.json",
+        // scoreboards:
+        "ui/fs/fs_custom_scoreboards/fs_custom_scoreboards.json",
+        // prototype:
+        "ui/fs/fs_prototype/fs_prototype.json"
+    ]
+}

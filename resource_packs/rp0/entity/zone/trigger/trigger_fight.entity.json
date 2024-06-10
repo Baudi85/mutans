@@ -1,0 +1,20 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:trigger_fight",
+            "render_controllers": [
+                "controller.render.entity.common"
+            ],
+            "geometry": {
+                "variant_0": "geometry.trigger_fight"
+            },
+            "textures": {
+                "variant_0": "textures/entity/trigger_fight/trigger_fight_v0"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            }
+        }
+    }
+}

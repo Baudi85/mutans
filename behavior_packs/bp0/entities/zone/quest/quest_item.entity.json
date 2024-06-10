@@ -1,0 +1,129 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "fs:quest_item",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "fs:instant_despawn": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": false
+        }
+      },
+      "fs:player_nearby": {
+        "minecraft:type_family": {
+          "family": [
+            "entity",
+            "zone_entity",
+            "quest_item",
+            "attackable",
+            "player_nearby"
+          ]
+        }
+      },
+      "fs:quest_item_handle": {
+        "minecraft:scale": {
+          "value": 1
+        },
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "fs:quest_item_valve": {
+        "minecraft:scale": {
+          "value": 1
+        },
+        "minecraft:variant": {
+          "value": 2
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "entity",
+          "zone_entity",
+          "quest_item",
+          "attackable"
+        ]
+      },
+      "minecraft:physics": {
+        "has_collision": false,
+        "has_gravity": false
+      },
+      "minecraft:scale": {
+        "value": 0
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": false
+          }
+        ]
+      },
+      "minecraft:nameable": {
+        "allow_name_tag_renaming": false,
+        "always_show": false
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:collision_box": {
+        "height": 0,
+        "width": 0
+      },
+      "minecraft:entity_sensor": {
+        "maximum_count": -1,
+        "minimum_count": 1,
+        "relative_range": true,
+        "require_all": false,
+        "sensor_range": 3,
+        "event": "fs:player_nearby",
+        "event_filters": {
+          "all_of": [
+            {
+              "test": "is_family",
+              "value": "player",
+              "subject": "other"
+            }
+          ]
+        }
+      }
+    },
+    "events": {
+      "fs:instant_despawn": {
+        "add": {
+          "component_groups": [
+            "fs:instant_despawn"
+          ]
+        }
+      },
+      "fs:player_nearby": {
+        "add": {
+          "component_groups": [
+            "fs:player_nearby"
+          ]
+        }
+      },
+      "fs:quest_item_handle": {
+        "add": {
+          "component_groups": [
+            "fs:quest_item_handle"
+          ]
+        }
+      },
+      "fs:quest_item_valve": {
+        "add": {
+          "component_groups": [
+            "fs:quest_item_valve"
+          ]
+        }
+      }
+    }
+  }
+}

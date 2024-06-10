@@ -1,0 +1,48 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:placement_marker",
+            "spawn_egg": {
+                "base_color": "#000000",
+                "overlay_color": "#000000"
+            },
+            "render_controllers": [
+                "controller.render.fs_placement_marker"
+            ],
+            "geometry": {
+                "variant_0": "geometry.fs_placement_marker"
+            },
+            "textures": {
+                "variant_0": "textures/entity/fs_placement_marker/fs_placement_marker_v0",
+                "variant_1": "textures/entity/fs_placement_marker/fs_placement_marker_v1",
+                "variant_2": "textures/entity/fs_placement_marker/fs_placement_marker_v2",
+                "variant_3": "textures/entity/fs_placement_marker/fs_placement_marker_v3",
+                "variant_4": "textures/entity/fs_placement_marker/fs_placement_marker_v4",
+                "variant_5": "textures/entity/fs_placement_marker/fs_placement_marker_v5",
+                "variant_6": "textures/entity/fs_placement_marker/fs_placement_marker_v6",
+                "variant_7": "textures/entity/fs_placement_marker/fs_placement_marker_v7",
+                "variant_8": "textures/entity/fs_placement_marker/fs_placement_marker_v8",
+                "variant_9": "textures/entity/fs_placement_marker/fs_placement_marker_v9",
+                "variant_10": "textures/entity/fs_placement_marker/fs_placement_marker_v10",
+                "variant_11": "textures/entity/fs_placement_marker/fs_placement_marker_v11",
+                "variant_12": "textures/entity/fs_placement_marker/fs_placement_marker_v12",
+                "variant_13": "textures/entity/fs_placement_marker/fs_placement_marker_v13",
+                "variant_14": "textures/entity/fs_placement_marker/fs_placement_marker_v14",
+                "variant_15": "textures/entity/fs_placement_marker/fs_placement_marker_v15"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "animations": {
+                "controller": "controller.animation.fs_placement_marker.animate",
+                "idle": "animation.fs_placement_marker.idle"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            }
+        }
+    }
+}

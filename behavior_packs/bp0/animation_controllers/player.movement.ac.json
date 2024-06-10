@@ -1,0 +1,331 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.player.movement.movement_direction": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "north": "query.movement_direction(0) > 0"
+                        },
+                        {
+                            "east": "query.movement_direction(2) > 0"
+                        },
+                        {
+                            "south": "query.movement_direction(0) < 0"
+                        },
+                        {
+                            "west": "query.movement_direction(2) < 0"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s movement_compass 0"
+                    ]
+                },
+                "north": {
+                    "transitions": [
+                        {
+                            "default": "query.movement_direction(0) <= 0"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s movement_compass 1"
+                    ]
+                },
+                "east": {
+                    "transitions": [
+                        {
+                            "default": "query.movement_direction(2) <= 0"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s movement_compass 2"
+                    ]
+                },
+                "south": {
+                    "transitions": [
+                        {
+                            "default": "query.movement_direction(0) >= 0"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s movement_compass 3"
+                    ]
+                },
+                "west": {
+                    "transitions": [
+                        {
+                            "default": "query.movement_direction(2) >= 0"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s movement_compass 4"
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.movement.movement_direction_local": {
+            "initial_state": "init",
+            "states": {
+                "init": {
+                    "on_entry": [
+                        "v.local_z = 0;",
+                        "v.local_x = 0;"
+                    ],
+                    "animations": [
+                        "animation_player_movement_direction_local"
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.movement.movement_direction_local_z": {
+            "initial_state": "init",
+            "states": {
+                "init": {
+                    "on_entry": [
+                        "/scoreboard players set @s m_forward 0",
+                        "/scoreboard players set @s m_backwards 0",
+                        "/scoreboard players set @s movement_y 0",
+                        "/function events/player/movement/did_stop"
+                    ],
+                    "transitions": [
+                        {
+                            "forward": "v.local_z > 0.5 && query.is_moving"
+                        },
+                        {
+                            "backwards": "v.local_z < -0.5 && query.is_moving"
+                        }
+                    ]
+                },
+                "forward": {
+                    "transitions": [
+                        {
+                            "init": "v.local_z < 0.5 || !query.is_moving"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s m_forward 1",
+                        "/scoreboard players set @s movement_y 1",
+                        "/function events/player/movement/did_start_moving_forward"
+                    ],
+                    "on_exit": [
+                        "/scoreboard players set @s m_forward 0",
+                        "/scoreboard players set @s m_backwards 0",
+                        "/scoreboard players set @s movement_y 0",
+                        "/function events/player/movement/did_stop"
+                    ]
+                },
+                "backwards": {
+                    "transitions": [
+                        {
+                            "init": "v.local_z > -0.5 || !query.is_moving"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s m_backwards 1",
+                        "/scoreboard players set @s movement_y -1",
+                        "/function events/player/movement/did_start_moving_backwards"
+                    ],
+                    "on_exit": [
+                        "/scoreboard players set @s m_forward 0",
+                        "/scoreboard players set @s m_backwards 0",
+                        "/scoreboard players set @s movement_y 0",
+                        "/function events/player/movement/did_stop"
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.movement.movement_direction_local_x": {
+            "initial_state": "init",
+            "states": {
+                "init": {
+                    "on_entry": [
+                        "/scoreboard players set @s m_left 0",
+                        "/scoreboard players set @s m_right 0",
+                        "/scoreboard players set @s movement_x 0",
+                        "/function events/player/movement/did_stop"
+                    ],
+                    "transitions": [
+                        {
+                            "left": "v.local_x > 0.5 && query.is_moving"
+                        },
+                        {
+                            "right": "v.local_x < -0.5 && query.is_moving"
+                        }
+                    ]
+                },
+                "left": {
+                    "transitions": [
+                        {
+                            "init": "v.local_x < 0.5 || !query.is_moving"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s m_left 1",
+                        "/scoreboard players set @s movement_x 1",
+                        "/function events/player/movement/did_start_moving_left"
+                    ],
+                    "on_exit": [                        
+                        "/scoreboard players set @s m_left 0",
+                        "/scoreboard players set @s m_right 0",
+                        "/scoreboard players set @s movement_x 0",
+                        "/function events/player/movement/did_stop"
+                    ]
+                },
+                "right": {
+                    "transitions": [
+                        {
+                            "init": "v.local_x > -0.5 || !query.is_moving"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s m_right 1",
+                        "/scoreboard players set @s movement_x -1",
+                        "/function events/player/movement/did_start_moving_right"
+                    ],
+                    "on_exit": [                        
+                        "/scoreboard players set @s m_left 0",
+                        "/scoreboard players set @s m_right 0",
+                        "/scoreboard players set @s movement_x 0",
+                        "/function events/player/movement/did_stop"
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.movement.is_jumping": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "jumping": "query.is_jumping"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/is_jumping_did_end"
+                    ]
+                },
+                "jumping": {
+                    "transitions": [
+                        {
+                            "default": "query.is_on_ground || query.is_riding"
+                        },
+                        {
+                            "in_air": "!query.is_jumping"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/is_jumping_did_start"
+                    ]
+                },
+                "in_air": {
+                    "transitions": [
+                        {
+                            "default": "query.is_on_ground || query.is_riding"
+                        },
+                        {
+                            "jumping": "query.is_jumping"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.movement.is_moving": {
+            "states": {
+                "not_moving": {
+                    "transitions": [
+                        {
+                            "is_moving": "query.is_moving"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/is_moving_did_end"
+                    ]
+                },
+                "is_moving": {
+                    "transitions": [
+                        {
+                            "not_moving": "!query.is_moving"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/is_moving_did_start"
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.movement.in_air": {
+            "states": {
+                "is_on_ground": {
+                    "transitions": [
+                        {
+                            "is_in_air": "!query.is_on_ground"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/on_ground_did_start",
+                        "/function events/player/in_air_did_end"
+                    ]
+                },
+                "is_in_air": {
+                    "transitions": [
+                        {
+                            "is_on_ground": "query.is_on_ground || query.is_riding"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/on_ground_did_end",
+                        "/function events/player/in_air_did_start"
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.movement.is_sneaking": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "is_sneaking": "query.is_sneaking"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/is_sneaking_did_end"
+                    ]
+                },
+                "is_sneaking": {
+                    "transitions": [
+                        {
+                            "default": "!query.is_sneaking"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/is_sneaking_did_start"
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.movement.is_riding": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "is_riding": "query.is_riding"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/is_riding_did_end"
+                    ]
+                },
+                "is_riding": {
+                    "transitions": [
+                        {
+                            "default": "!query.is_riding"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/is_riding_did_start"
+                    ]
+                }
+            }
+        }
+    }
+}

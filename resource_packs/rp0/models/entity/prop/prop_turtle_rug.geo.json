@@ -1,0 +1,35 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.prop_turtle_rug",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "bb_main",
+					"pivot": [0, -0.5, 0],
+					"cubes": [
+						{
+							"origin": [-16, -0.5, -12],
+							"size": [32, 1, 24],
+							"uv": {
+								"north": {"uv": [32, 24], "uv_size": [32, 1]},
+								"east": {"uv": [0, 24], "uv_size": [24, 1]},
+								"south": {"uv": [32, 25], "uv_size": [32, 1]},
+								"west": {"uv": [0, 25], "uv_size": [24, 1]},
+								"up": {"uv": [0, 0], "uv_size": [32, 24]},
+								"down": {"uv": [32, 24], "uv_size": [32, -24]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

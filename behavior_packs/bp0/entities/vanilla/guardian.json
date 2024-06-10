@@ -1,0 +1,103 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:guardian",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {}
+            }
+        },
+        "components": {
+            "minecraft:is_hidden_when_invisible": {},
+            "minecraft:nameable": {},
+            "minecraft:collision_box": {
+                "width": 0.85,
+                "height": 0.85
+            },
+            "minecraft:scale": {
+                "value": 0
+            },
+            "minecraft:health": {
+                "value": 999,
+                "max": 999
+            },
+            "minecraft:movement": {
+                "value": 0
+            },
+            "minecraft:underwater_movement": {
+                "value": 0
+            },
+            "minecraft:attack": {
+                "damage": 5
+            },
+            "minecraft:follow_range": {
+                "value": 32,
+                "max": 32
+            },
+            "minecraft:navigation.generic": {
+                "is_amphibious": true,
+                "can_path_over_water": false,
+                "can_swim": true,
+                "can_walk": false,
+                "can_breach": true
+            },
+            "minecraft:movement.sway": {},
+            "minecraft:jump.static": {},
+            "minecraft:breathable": {
+                "breathes_water": true
+            },
+            "minecraft:loot": {
+                "table": "loot_tables/entities/guardian.json"
+            },
+            "minecraft:behavior.nearest_prioritized_attackable_target": {
+                "priority": 0,
+                "entity_types": [
+                    {
+                        "filters": {
+                            "any_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "player"
+                                }
+                            ]
+                        },
+                        "max_dist": 32
+                    }
+                ],
+                "must_see": false
+            },
+            "minecraft:behavior.guardian_attack": {
+                "priority": 1
+            },
+            "minecraft:type_family": {
+                "family": [
+                    "eye_laser"
+                ]
+            },
+            "minecraft:physics": {
+                "has_collision": true,
+                "has_gravity": true
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:conditional_bandwidth_optimization": {}
+        },
+        "events": {
+            "fs:instant_despawn": {
+                "add": {
+                    "component_groups": [
+                        "fs:instant_despawn"
+                    ]
+                }
+            }
+        }
+    }
+}

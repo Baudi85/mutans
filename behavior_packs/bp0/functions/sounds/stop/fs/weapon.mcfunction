@@ -1,0 +1,22 @@
+## @(com.57digital.shulker.generated)
+stopsound @s fs.weapon.hit_dagger_4
+stopsound @s fs.weapon.hit_staff_3
+stopsound @s fs.weapon.hit_staff_4
+stopsound @s fs.weapon.swing_dagger_1
+stopsound @s fs.weapon.swing_dagger_2
+stopsound @s fs.weapon.swing_dagger_3
+stopsound @s fs.weapon.swing_nunchuk_1
+stopsound @s fs.weapon.swing_nunchuk_2
+stopsound @s fs.weapon.swing_nunchuk_3
+stopsound @s fs.weapon.swing_nunchuk_4
+stopsound @s fs.weapon.swing_staff_1
+stopsound @s fs.weapon.swing_staff_2
+stopsound @s fs.weapon.swing_whoosh_1
+stopsound @s fs.weapon.swing_whoosh_2
+stopsound @s fs.weapon.swing_whoosh_3
+stopsound @s fs.weapon.swing_whoosh_4
+stopsound @s fs.weapon.hit_ninjastar_0
+stopsound @s fs.weapon.throw_ninjastar_0
+stopsound @s fs.weapon.throw_ninjastar_1
+stopsound @s fs.weapon.throw_ninjastar_2
+stopsound @s fs.weapon.hit_ninjastar_1

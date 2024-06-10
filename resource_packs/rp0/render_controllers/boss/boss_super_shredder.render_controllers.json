@@ -1,0 +1,30 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.boss_super_shredder": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.variant_super_shredder",
+                        "Texture.variant_shredder"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_super_shredder",
+                        "Geometry.variant_shredder"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ]
+        }
+    }
+}

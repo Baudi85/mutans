@@ -1,0 +1,132 @@
+{
+    "namespace": "pause",
+  
+    "menu_background@pause.transparent_background": {
+      "size": [ "100% - 2px", "100%c + 8px" ],
+      "anchor_from": "center",
+      "anchor_to": "center",
+      "controls": [
+        {
+          "button_panel": {
+            "type": "stack_panel",
+            "size": [ "100% - 8px", "100%c" ],
+            "anchor_from": "center",
+            "anchor_to": "center",
+            "controls": [
+              { "return_to_game_button@pause.return_to_game_button": {} },
+              { "return@pause.vertical_padding": {} },
+              { "settings_button@pause.settings_button": {} },
+              { "settings@pause.vertical_padding": {} },
+              { "buy_button@pause.buy_button": {} },
+              {
+                "buy@pause.vertical_padding": {
+                  "bindings": [
+                    {
+                      "binding_name": "#is_trial_version",
+                      "binding_name_override": "#visible",
+                      "binding_type": "global"
+                    }
+                  ]
+                }
+              },
+              { "store_button_panel@pause.store_button_panel": {} },
+              // {
+              //   "padding_rate_0": {
+              //       "type": "panel",
+              //       "size": [0, 4]
+              //   }
+              // },
+              {
+                "custom_box": {
+                  "type": "panel",
+                  "size": ["100%", 30],
+                  "controls": [
+                    {
+                      "custom_content": {
+                        "type": "panel",
+                        // "color": [0, 0, 0],
+                        "size": [ "100%", 38 ],
+                        "offset": [0, -4],
+                        "alpha": 1,
+                        "clips_children": true,
+                        "allow_clipping": true,
+                        "controls": [
+                          {
+                            "bg": {
+                              "type": "image",
+                              "texture": "textures/ui/Black",
+                              "size": [ "100%", "100%"],
+                              "alpha": 0.3
+                            }
+                          },
+                          {
+                            "rate_1": {
+                                "type": "label",
+                                "text": "    §aLove TMNT?   \n§fRate this DLC on the Marketplace!",
+                                "text_alignment": "center",
+                                "shadow": true,
+                                "alpha": 0,
+                                "font_scale_factor": 0.8,
+                                "line_padding": 10,
+                                "offset": [0, 4],
+                                "size": ["100%", "default"],
+                                "anims": [
+                                  "@pause.anim_rate_1_alpha",
+                                  "@pause.anim_rate_1_offset"
+                                ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "padding_rate": {
+                    "type": "panel",
+                    "size": [0, 0]
+                }
+              },
+              {
+                "server@pause.vertical_padding": {
+                  "bindings": [
+                    {
+                      "binding_name": "#store_button_visible",
+                      "binding_name_override": "#visible",
+                      "binding_type": "global"
+                    }
+                  ]
+                }
+              },
+              { "quit_button@pause.quit_button": {} }
+            ]
+          }
+        }
+      ]
+    },
+    "anim_rate_1_alpha": {
+      "anim_type": "wait",
+      "duration": 0.33,
+      "next": "@pause.anim_rate_1_alpha_2"
+    },
+    "anim_rate_1_alpha_2": {
+      "anim_type": "alpha",
+      "from": 0,
+      "to": 1,
+      "easing": "in_quad",
+      "duration": 1
+    },
+    "anim_rate_1_offset": {
+      "anim_type": "wait",
+      "duration": 0.33,
+      "next": "@pause.anim_rate_1_offset_2"
+    },
+    "anim_rate_1_offset_2": {
+      "anim_type": "offset",
+      "easing": "spring",
+      "from": [0, -30],
+      "to": [0, 4],
+      "duration": 0.5
+    }
+  }

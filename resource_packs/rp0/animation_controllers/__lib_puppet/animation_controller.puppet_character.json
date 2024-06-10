@@ -1,0 +1,121 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.puppet_character.pose": {
+            "states": {
+                "default": {
+                    "animations": [
+                        {
+                            "pose_riding_0": "query.mark_variant == 0 && query.is_riding"
+                        },
+                        {
+                            "pose_riding_1": "query.mark_variant == 1 && query.is_riding"
+                        },
+                        {
+                            "pose_riding_2": "query.mark_variant == 2 && query.is_riding"
+                        },
+                        {
+                            "pose_riding_3": "query.mark_variant == 3 && query.is_riding"
+                        },
+                        {
+                            "pose_riding_4": "query.mark_variant == 4 && query.is_riding"
+                        },
+                        {
+                            "pose_riding_5": "query.mark_variant == 5 && query.is_riding"
+                        },
+                        {
+                            "pose_riding_6": "query.mark_variant == 6 && query.is_riding"
+                        },
+                        {
+                            "pose_riding_7": "query.mark_variant == 7 && query.is_riding"
+                        },
+                        {
+                            "pose_riding_8": "query.mark_variant == 8 && query.is_riding"
+                        },
+                        {
+                            "pose_riding_9": "query.mark_variant == 9 && query.is_riding"
+                        },
+                        {
+                            "pose_riding_10": "query.mark_variant == 10 && query.is_riding"
+                        },
+                        {
+                            "pose_riding_11": "query.mark_variant == 11 && query.is_riding"
+                        },                     
+                        {
+                            "character_0_pose_0": "query.variant == 0 && query.mark_variant == 0"
+                        },                      
+                        {
+                            "character_0_pose_1": "query.variant == 0 && query.mark_variant == 1"
+                        },                      
+                        {
+                            "character_0_pose_2": "query.variant == 0 && query.mark_variant == 2"
+                        },                      
+                        {
+                            "character_0_pose_3": "query.variant == 0 && query.mark_variant == 3"
+                        },                      
+                        {
+                            "character_0_pose_4": "query.variant == 0 && query.mark_variant == 4"
+                        },                     
+                        {
+                            "character_0_pose_5": "query.variant == 0 && query.mark_variant == 5"
+                        },                      
+                        {
+                            "character_1_pose_0": "query.variant == 1 && query.mark_variant == 0"
+                        },                      
+                        {
+                            "character_1_pose_1": "query.variant == 1 && query.mark_variant == 1"
+                        },                      
+                        {
+                            "character_1_pose_2": "query.variant == 1 && query.mark_variant == 2"
+                        },                      
+                        {
+                            "character_1_pose_3": "query.variant == 1 && query.mark_variant == 3"
+                        },                      
+                        {
+                            "character_1_pose_4": "query.variant == 1 && query.mark_variant == 4"
+                        },                     
+                        {
+                            "character_1_pose_5": "query.variant == 1 && query.mark_variant == 5"
+                        },                       
+                        {
+                            "character_2_pose_0": "query.variant == 2 && query.mark_variant == 0"
+                        },                      
+                        {
+                            "character_2_pose_1": "query.variant == 2 && query.mark_variant == 1"
+                        },                      
+                        {
+                            "character_2_pose_2": "query.variant == 2 && query.mark_variant == 2"
+                        },                      
+                        {
+                            "character_2_pose_3": "query.variant == 2 && query.mark_variant == 3"
+                        },                      
+                        {
+                            "character_2_pose_4": "query.variant == 2 && query.mark_variant == 4"
+                        },                     
+                        {
+                            "character_2_pose_5": "query.variant == 2 && query.mark_variant == 5"
+                        },                       
+                        {
+                            "character_3_pose_0": "query.variant == 3 && query.mark_variant == 0"
+                        },                      
+                        {
+                            "character_3_pose_1": "query.variant == 3 && query.mark_variant == 1"
+                        },                      
+                        {
+                            "character_3_pose_2": "query.variant == 3 && query.mark_variant == 2"
+                        },                      
+                        {
+                            "character_3_pose_3": "query.variant == 3 && query.mark_variant == 3"
+                        },                      
+                        {
+                            "character_3_pose_4": "query.variant == 3 && query.mark_variant == 4"
+                        },                     
+                        {
+                            "character_3_pose_5": "query.variant == 3 && query.mark_variant == 5"
+                        } 
+                    ]
+                }
+            }
+        }
+    }
+}

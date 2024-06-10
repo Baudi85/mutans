@@ -1,0 +1,7 @@
+{
+    "values": [
+        "__lib/tick",
+        "__lib_multiplayer/tick",
+        "tick"
+    ]
+}

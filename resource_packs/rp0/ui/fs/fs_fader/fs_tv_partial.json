@@ -1,0 +1,228 @@
+{
+  "namespace": "fs_fader_tv_partial",
+  "root_panel": {
+    "type": "panel",
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "controls": [
+      {
+        "_tv@tv": {}
+      }
+    ]
+  },
+  "tv": {
+    "type": "panel",
+    "size": [
+      209.5,
+      160
+    ],
+    "controls": [
+      {
+        "_overlay@tv_overlay": {}
+      },
+      {
+        "_april@april": {}
+      },
+      {
+        "_headline@headline": {}
+      },
+      {
+        "_ticker@ticker": {}
+      },
+      {
+        "_tv_screen@tv_screen": {}
+      }
+    ]
+  },
+  "tv_overlay": {
+    "type": "image",
+    "texture": "textures/ui/fader/tv/tv_overlay",
+    "size": [
+      209.5,
+      240
+    ],
+    "alpha": 1,
+    // "offset": [-15, -15],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "layer": 59000
+  },
+  "tv_screen": {
+    "type": "image",
+    "texture": "textures/ui/fader/tv/screen_bg",
+    "size": [120, 90],
+    "offset": [33, 35],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 57500
+  },
+  "april": {
+    "type": "image",
+    "texture": "textures/ui/fader/tv/april_flipbook",
+    "size": [57.5, 82.5],
+    "offset": [90, 43],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 57600,
+    "uv_size": [115, 165],
+		"uv": "@fs_fader_tv_partial.flipbook_anim"
+  },
+  "headline": {
+    "type": "image",
+    "texture": "textures/ui/fader/tv/headline_box",
+    "size": [40, 40],
+    "offset": [38, 39],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 57510,
+    "controls": [
+      {
+        "_headline_text@headline_text_clipper": {}
+      }
+    ]
+  },
+  "headline_text_clipper": {
+    "type": "panel",
+    "size": [40, 40],
+    "offset": [0, 8],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 57511,
+    "clips_children": true,
+    "allow_clipping": true,
+    "controls": [
+      {
+        "_headline_text_label@headline_text": {}
+      }
+    ]
+  },
+  "headline_text": {
+    "type": "label",
+    "text": "Breaking News!", // intentionally not localized due to tight spacing
+    "localize": false,
+    "color": [1, 1, 1, 1],
+    "size": [40, 40],
+    "text_alignment": "center",
+    "locked_alpha": 1.0,
+    "font_scale_factor": 0.8,
+    "font_type": "MinecraftTen",
+    "layer": 57512
+  },
+  "ticker": {
+    "type": "image",
+    "texture": "textures/ui/fader/tv/bottom_ticker",
+    "size": [120, 16],
+    "offset": [33, 105],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 57700,
+    "controls": [
+      {
+        "_ticker_text_clipper@ticker_text_clipper": {}
+      }
+    ]
+  },
+  "ticker_text_clipper": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 57750,
+    "clips_children": true,
+    "allow_clipping": true,
+    "controls": [
+      {
+        "_ticker_text_stack@ticker_text_stack": {}
+      }
+    ]
+  },
+  "ticker_text_stack": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 57760,
+    "offset": [0, 3],
+    "anims": [
+      "@fs_fader_tv_partial.anim_ticker_text_stack"
+    ],
+    "controls": [
+      {
+        "_ticker_padding_0@ticker_padding": {
+          "size": [130, 10]
+        }
+      },
+      {
+        "_ticker_item_0@ticker_item": {}
+      },
+      {
+        "_ticker_padding_1@ticker_padding": {}
+      },
+      {
+        "_ticker_item_1@ticker_item": {}
+      },
+      {
+        "_ticker_padding_2@ticker_padding": {}
+      },
+      {
+        "_ticker_item_2@ticker_item": {}
+      },
+      {
+        "_ticker_padding_3@ticker_padding": {}
+      },
+      {
+        "_ticker_item_3@ticker_item": {}
+      },
+      {
+        "_ticker_padding_4@ticker_padding": {}
+      },
+      {
+        "_ticker_item_4@ticker_item": {}
+      },
+      {
+        "_ticker_padding_5@ticker_padding": {}
+      },
+      {
+        "_ticker_item_5@ticker_item": {}
+      }
+    ]
+  },
+  "ticker_padding": {
+    "type": "panel",
+    "size": [10, 10]
+  },
+  "ticker_item": {
+    "type": "label",
+    "text": "ui.ending.ticker",
+    "localize": true,
+    "color": [1, 1, 1, 1],
+    "size": ["default", 10],
+    "text_alignment": "center",
+    "locked_alpha": 1.0,
+    "font_scale_factor": 1.0,
+    "layer": 57770
+  },
+  "debug": {
+    "type": "image",
+    "texture": "textures/ui/colors/green",
+    "size": [120, 90],
+    "offset": [33, 35],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 57500
+  },
+  "flipbook_anim": {
+    "anim_type": "flip_book",
+    "initial_uv": [ 0, 0 ],
+    "frame_count": 3,
+    "frame_step": 1,
+    "fps": 5
+	},
+  "anim_ticker_text_stack": {
+    "anim_type": "offset",
+    "easing": "linear",
+    "from": [0, 3],
+    "to": [-1800, 3],
+    "duration": 60
+  }
+}

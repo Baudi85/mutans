@@ -1,0 +1,823 @@
+// @(com.57digital.shulker.inherited)
+// Inheritance Chain: [fs:player_did_interact_with] ~> [fs:player_turtle_interact] ~> [fs:player_platformer] ~> [fs:player] ~> minecraft:player
+{
+  "format_version": "1.19.60",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minecraft:player",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "scripts": {
+        "animate": [
+          "controller_player_item_use",
+          "controller_player_item_use_instant",
+          "controller_player_item_did_change",
+          "controller_player_movement_is_jumping",
+          "controller_player_movement_in_air",
+          "controller_player_movement_is_sneaking",
+          "controller_player_movement_is_moving",
+          "controller_player_movement_is_riding",
+          "controller_player_property_is_target",
+          "controller_player_property_turtle",
+          "controller_player_property_damage_type",
+          "controller_player_property_did_interact_with",
+          "controller_player_movement_direction",
+          "controller_player_movement_direction_local",
+          "controller_player_movement_direction_local_z",
+          "controller_player_movement_direction_local_x"
+        ]
+      },
+      "animations": {
+        "controller_player_item_use": "controller.animation.player.item_use",
+        "controller_player_item_use_instant": "controller.animation.player.item_use_instant",
+        "controller_player_item_did_change": "controller.animation.player.item_did_change",
+        "controller_player_movement_is_jumping": "controller.animation.player.movement.is_jumping",
+        "controller_player_movement_in_air": "controller.animation.player.movement.in_air",
+        "controller_player_movement_is_sneaking": "controller.animation.player.movement.is_sneaking",
+        "controller_player_movement_is_moving": "controller.animation.player.movement.is_moving",
+        "controller_player_movement_is_riding": "controller.animation.player.movement.is_riding",
+        "controller_player_property_is_target": "controller.animation.player.property.is_target",
+        "controller_player_property_turtle": "controller.animation.player.property.turtle",
+        "controller_player_property_damage_type": "controller.animation.player.property.damage_type",
+        "controller_player_property_did_interact_with": "controller.animation.player.property.did_interact_with",
+        "controller_player_movement_direction": "controller.animation.player.movement.movement_direction",
+        "controller_player_movement_direction_local": "controller.animation.player.movement.movement_direction_local",
+        "controller_player_movement_direction_local_z": "controller.animation.player.movement.movement_direction_local_z",
+        "controller_player_movement_direction_local_x": "controller.animation.player.movement.movement_direction_local_x",
+        "animation_player_movement_direction_local": "animation.player.movement_direction_local"
+      },
+      "properties": {
+        "property:turtle": {
+          "type": "enum",
+          "values": [
+            "none",
+            "leonardo",
+            "raphael",
+            "donatello",
+            "michelangelo"
+          ],
+          "default": "none",
+          "client_sync": true
+        },
+        "property:did_interact_with": {
+          "type": "enum",
+          "values": [
+            "none",
+            "april",
+            "splinter",
+            "casey_jones",
+            "research_board"
+          ],
+          "default": "none",
+          "client_sync": false
+        },
+        "property:attack_type": {
+          "type": "enum",
+          "values": [
+            "none",
+            "melee_0",
+            "melee_1",
+            "melee_2",
+            "combo_0",
+            "combo_1",
+            "combo_2",
+            "combo_3"
+          ],
+          "default": "none",
+          "client_sync": true
+        },
+        "property:is_skateboarding": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "property:is_surfing": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "property:is_target": {
+          "type": "bool",
+          "default": false,
+          "client_sync": false
+        },
+        "property:attack_idx": {
+          "type": "int",
+          "default": 0,
+          "client_sync": true,
+          "range": [
+            0,
+            2
+          ]
+        },
+        "property:damage_type": {
+          "type": "enum",
+          "values": [
+            "none",
+            "projectile",
+            "explosion",
+            "knockback",
+            "is_downed"
+          ],
+          "default": "none",
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "fs:did_interact_with_leonardo": {
+        "minecraft:type_family": {
+          "family": [
+            "player",
+            "barrier_pushback",
+            "leonardo"
+          ]
+        },
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "fs:did_interact_with_raphael": {
+        "minecraft:type_family": {
+          "family": [
+            "player",
+            "barrier_pushback",
+            "raphael"
+          ]
+        },
+        "minecraft:variant": {
+          "value": 2
+        }
+      },
+      "fs:did_interact_with_donatello": {
+        "minecraft:type_family": {
+          "family": [
+            "player",
+            "barrier_pushback",
+            "donatello"
+          ]
+        },
+        "minecraft:variant": {
+          "value": 3
+        }
+      },
+      "fs:did_interact_with_michelangelo": {
+        "minecraft:type_family": {
+          "family": [
+            "player",
+            "barrier_pushback",
+            "michelangelo"
+          ]
+        },
+        "minecraft:variant": {
+          "value": 4
+        }
+      },
+      "fs:enable_platformer_mode_0": {
+        "minecraft:collision_box": {
+          "width": 0.5,
+          "height": 0.999
+        },
+        "minecraft:addrider": {
+          "entity_type": "fs:platformer_character",
+          "spawn_event": "fs:add_character_0"
+        },
+        "minecraft:rideable": {
+          "controlling_seat": 0,
+          "crouching_skip_interact": true,
+          "family_types": [
+            "platformer_character"
+          ],
+          "interact_text": "",
+          "pull_in_entities": false,
+          "rider_can_interact": false,
+          "seat_count": 1,
+          "seats": [
+            {
+              "position": [
+                0,
+                -1.6,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "fs:enable_platformer_mode_1": {
+        "minecraft:collision_box": {
+          "width": 0.5,
+          "height": 0.999
+        },
+        "minecraft:addrider": {
+          "entity_type": "fs:platformer_character",
+          "spawn_event": "fs:add_character_1"
+        },
+        "minecraft:rideable": {
+          "controlling_seat": 0,
+          "crouching_skip_interact": true,
+          "family_types": [
+            "platformer_character"
+          ],
+          "interact_text": "",
+          "pull_in_entities": false,
+          "rider_can_interact": false,
+          "seat_count": 1,
+          "seats": [
+            {
+              "position": [
+                0,
+                -1.6,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "fs:enable_platformer_mode_2": {
+        "minecraft:collision_box": {
+          "width": 0.5,
+          "height": 0.999
+        },
+        "minecraft:addrider": {
+          "entity_type": "fs:platformer_character",
+          "spawn_event": "fs:add_character_2"
+        },
+        "minecraft:rideable": {
+          "controlling_seat": 0,
+          "crouching_skip_interact": true,
+          "family_types": [
+            "platformer_character"
+          ],
+          "interact_text": "",
+          "pull_in_entities": false,
+          "rider_can_interact": false,
+          "seat_count": 1,
+          "seats": [
+            {
+              "position": [
+                0,
+                -1.6,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "fs:enable_platformer_mode_3": {
+        "minecraft:collision_box": {
+          "width": 0.5,
+          "height": 0.999
+        },
+        "minecraft:addrider": {
+          "entity_type": "fs:platformer_character",
+          "spawn_event": "fs:add_character_3"
+        },
+        "minecraft:rideable": {
+          "controlling_seat": 0,
+          "crouching_skip_interact": true,
+          "family_types": [
+            "platformer_character"
+          ],
+          "interact_text": "",
+          "pull_in_entities": false,
+          "rider_can_interact": false,
+          "seat_count": 1,
+          "seats": [
+            {
+              "position": [
+                0,
+                -1.6,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "fs:disable_platformer_mode": {
+        "minecraft:collision_box": {
+          "width": 0.6,
+          "height": 1.8
+        }
+      },
+      "fs:movement_fast": {
+        "minecraft:movement": {
+          "value": 0.175
+        }
+      },
+      "fs:movement_sprint": {
+        "minecraft:movement": {
+          "value": 0.225
+        }
+      },
+      "fs:movement_normal": {
+        "minecraft:movement": {
+          "value": 0.075
+        }
+      },
+      "fs:turtle_none": {
+        "minecraft:type_family": {
+          "family": [
+            "player",
+            "barrier_pushback",
+            "none"
+          ]
+        },
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "fs:spawn_ninja_star": {
+        "minecraft:spawn_entity": {
+          "entities": [
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "spawn_entity": "fs:projectile_shuriken",
+              "num_to_spawn": 1,
+              "single_use": true,
+              "spawn_event": "fs:projectile"
+            }
+          ]
+        }
+      },
+      "fs:disable_sfx": {
+        "minecraft:is_baby": {}
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "barrier_pushback",
+          "player"
+        ]
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "deals_damage": false,
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "value": "projectile_explosion",
+                    "subject": "damager"
+                  }
+                ]
+              },
+              "event": "fs:set_damaged_by_explosion"
+            }
+          },
+          {
+            "deals_damage": false,
+            "cause": "projectile",
+            "on_damage": {
+              "event": "fs:set_damaged_by_projectile"
+            }
+          },
+          {
+            "deals_damage": false,
+            "on_damage": {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "value": "enemy_launcher",
+                    "subject": "other"
+                  },
+                  {
+                    "test": "is_family",
+                    "value": "boss_launcher",
+                    "subject": "other"
+                  }
+                ]
+              },
+              "event": "fs:set_damaged_by_knockback"
+            }
+          },
+          {
+            "cause": "all",
+            "deals_damage": false
+          }
+        ]
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:loot": {
+        "table": "loot_tables/empty.json"
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 1.8
+      },
+      "minecraft:can_climb": {},
+      "minecraft:movement": {
+        "value": 0.1
+      },
+      "minecraft:attack": {
+        "damage": 1
+      },
+      "minecraft:nameable": {
+        "always_show": true,
+        "allow_name_tag_renaming": false
+      },
+      "minecraft:physics": {},
+      "minecraft:push_through": {
+        "value": 1
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:block_climber": {},
+      "minecraft:environment_sensor": {
+        "triggers": [
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_target",
+                  "value": true
+                }
+              ]
+            },
+            "event": "fs:is_target"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_target",
+                  "value": false
+                }
+              ]
+            },
+            "event": "fs:not_target"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_tag",
+                  "value": "movement_fast"
+                }
+              ]
+            },
+            "event": "fs:movement_fast"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_tag",
+                  "value": "movement_sprint"
+                }
+              ]
+            },
+            "event": "fs:movement_sprint"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_tag",
+                  "value": "movement_fast",
+                  "operator": "not"
+                }
+              ]
+            },
+            "event": "fs:movement_normal"
+          }
+        ]
+      },
+      "minecraft:npc": {
+        "npc_data": {
+          "skin_list": [
+            {
+              "variant": 0
+            }
+          ],
+          "portrait_offsets": {
+            "translate": [
+              0,
+              -60,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      },
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {
+              "filters": [
+                {
+                  "all_of": [
+                    {
+                      "subject": "other",
+                      "test": "is_family",
+                      "value": "player"
+                    }
+                  ]
+                }
+              ],
+              "target": "self",
+              "event": "fs:interact"
+            }
+          }
+        ]
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": -1,
+        "inhale_time": 3.75,
+        "generates_bubbles": false
+      }
+    },
+    "events": {
+      "fs:reset_did_interact_with": {
+        "set_property": {
+          "property:did_interact_with": "none"
+        }
+      },
+      "fs:did_interact_with_april": {
+        "set_property": {
+          "property:did_interact_with": "april"
+        }
+      },
+      "fs:did_interact_with_splinter": {
+        "set_property": {
+          "property:did_interact_with": "splinter"
+        }
+      },
+      "fs:did_interact_with_casey_jones": {
+        "set_property": {
+          "property:did_interact_with": "casey_jones"
+        }
+      },
+      "fs:did_interact_with_research_board": {
+        "set_property": {
+          "property:did_interact_with": "research_board"
+        }
+      },
+      "fs:did_interact_with_leonardo": {
+        "add": {
+          "component_groups": [
+            "fs:did_interact_with_leonardo"
+          ]
+        },
+        "set_property": {
+          "property:turtle": "leonardo"
+        }
+      },
+      "fs:did_interact_with_raphael": {
+        "add": {
+          "component_groups": [
+            "fs:did_interact_with_raphael"
+          ]
+        },
+        "set_property": {
+          "property:turtle": "raphael"
+        }
+      },
+      "fs:did_interact_with_donatello": {
+        "add": {
+          "component_groups": [
+            "fs:did_interact_with_donatello"
+          ]
+        },
+        "set_property": {
+          "property:turtle": "donatello"
+        }
+      },
+      "fs:did_interact_with_michelangelo": {
+        "add": {
+          "component_groups": [
+            "fs:did_interact_with_michelangelo"
+          ]
+        },
+        "set_property": {
+          "property:turtle": "michelangelo"
+        }
+      },
+      "fs:enable_platformer_mode_0": {
+        "add": {
+          "component_groups": [
+            "fs:enable_platformer_mode_0"
+          ]
+        }
+      },
+      "fs:enable_platformer_mode_1": {
+        "add": {
+          "component_groups": [
+            "fs:enable_platformer_mode_1"
+          ]
+        }
+      },
+      "fs:enable_platformer_mode_2": {
+        "add": {
+          "component_groups": [
+            "fs:enable_platformer_mode_2"
+          ]
+        }
+      },
+      "fs:enable_platformer_mode_3": {
+        "add": {
+          "component_groups": [
+            "fs:enable_platformer_mode_3"
+          ]
+        }
+      },
+      "fs:disable_platformer_mode": {
+        "remove": {
+          "component_groups": [
+            "fs:enable_platformer_mode"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "fs:disable_platformer_mode"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "fs:turtle_none"
+          ]
+        },
+        "set_property": {
+          "property:turtle": "none"
+        }
+      },
+      "event:set_turtle_none": {
+        "add": {
+          "component_groups": [
+            "fs:turtle_none"
+          ]
+        },
+        "set_property": {
+          "property:turtle": "none"
+        }
+      },
+      "fs:set_attack_type_none": {
+        "set_property": {
+          "property:attack_type": "none"
+        }
+      },
+      "fs:set_attack_type_melee_0": {
+        "set_property": {
+          "property:attack_type": "melee_0"
+        }
+      },
+      "fs:set_attack_type_melee_1": {
+        "set_property": {
+          "property:attack_type": "melee_1"
+        }
+      },
+      "fs:set_attack_type_melee_2": {
+        "set_property": {
+          "property:attack_type": "melee_2"
+        }
+      },
+      "fs:set_attack_type_combo_0": {
+        "set_property": {
+          "property:attack_type": "combo_0"
+        }
+      },
+      "fs:set_attack_type_combo_1": {
+        "set_property": {
+          "property:attack_type": "combo_1"
+        }
+      },
+      "fs:set_attack_type_combo_2": {
+        "set_property": {
+          "property:attack_type": "combo_2"
+        }
+      },
+      "fs:set_attack_type_combo_3": {
+        "set_property": {
+          "property:attack_type": "combo_3"
+        }
+      },
+      "fs:is_target": {
+        "set_property": {
+          "property:is_target": true
+        }
+      },
+      "fs:not_target": {
+        "set_property": {
+          "property:is_target": false
+        }
+      },
+      "fs:is_skateboarding": {
+        "set_property": {
+          "property:is_skateboarding": true
+        }
+      },
+      "fs:not_skateboarding": {
+        "set_property": {
+          "property:is_skateboarding": false
+        }
+      },
+      "fs:is_surfing": {
+        "set_property": {
+          "property:is_surfing": true
+        }
+      },
+      "fs:not_surfing": {
+        "set_property": {
+          "property:is_surfing": false
+        }
+      },
+      "fs:set_attack_idx_0": {
+        "set_property": {
+          "property:attack_idx": 0
+        }
+      },
+      "fs:set_attack_idx_1": {
+        "set_property": {
+          "property:attack_idx": 1
+        }
+      },
+      "fs:set_attack_idx_2": {
+        "set_property": {
+          "property:attack_idx": 2
+        }
+      },
+      "fs:movement_normal": {
+        "add": {
+          "component_groups": [
+            "fs:movement_normal"
+          ]
+        }
+      },
+      "fs:movement_fast": {
+        "add": {
+          "component_groups": [
+            "fs:movement_fast"
+          ]
+        }
+      },
+      "fs:movement_sprint": {
+        "add": {
+          "component_groups": [
+            "fs:movement_sprint"
+          ]
+        }
+      },
+      "fs:spawn_ninja_star": {
+        "add": {
+          "component_groups": [
+            "fs:spawn_ninja_star"
+          ]
+        }
+      },
+      "fs:disable_sfx": {
+        "add": {
+          "component_groups": [
+            "fs:disable_sfx"
+          ]
+        }
+      },
+      "fs:enable_sfx": {
+        "remove": {
+          "component_groups": [
+            "fs:disable_sfx"
+          ]
+        }
+      },
+      "fs:set_damaged_by_projectile": {
+        "set_property": {
+          "property:damage_type": "projectile"
+        }
+      },
+      "fs:set_damaged_by_explosion": {
+        "set_property": {
+          "property:damage_type": "explosion"
+        }
+      },
+      "fs:set_damaged_by_knockback": {
+        "set_property": {
+          "property:damage_type": "knockback"
+        }
+      },
+      "fs:set_damaged_is_downed": {
+        "set_property": {
+          "property:damage_type": "is_downed"
+        }
+      },
+      "fs:set_damaged_by_none": {
+        "set_property": {
+          "property:damage_type": "none"
+        }
+      }
+    }
+  }
+}

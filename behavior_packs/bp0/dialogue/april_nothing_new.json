@@ -1,0 +1,59 @@
+// @(com.57digital.shulker.generated)
+// @generated File (generated via ShulkerScript: <BP> dialogue/config/npc_april/april_nothing_new.js)
+{
+	"format_version": "1.17",
+	"minecraft:npc_dialogue": {
+		"scenes": [
+			{
+				"scene_tag": "april_nothing_new",
+				"npc_name": {
+					"rawtext": [
+						{
+							/* "April O'Neil" (@ipterm)*/
+							"translate": "april_nothing_newname"
+						}
+					]
+				},
+				"text": {
+					"rawtext": [
+						{
+							/* "I don't have any breaking news at the moment, Turtles, but why not take a trip down memory lane? You can revisit any of your previous adventures!" (April is outside Weird Pizza.)*/
+							"translate": "april_nothing_newmsg"
+						},
+						{
+							"text": "§f§1§3§3§7§f§0§1§f"
+						}
+					]
+				},
+				"buttons": [
+					{
+						"name": "34288dt01z01",
+						"commands": [
+							"/execute as @initiator run function prototype/open_episode_select_page"
+						]
+					}
+				],
+				"on_open_commands": [
+					"/tag @initiator remove did_req_dlg",
+					"/execute as @a run function utils/remove_dlg_tags",
+					"/execute as @initiator[tag=!dlg.did_segue] run playsound fs.sfx.placeholder_april @s[scores={s_sfx_enabled=1}]",
+					"/tag @initiator add player.in_ui",
+					"/tag @initiator remove dlg.did_segue",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§eapril_nothing_new§7].§2DidOpen§7\"}]}",
+					"/scoreboard players add @a __is_host 0",
+					"/execute as @a[scores={__is_host=0}] run function dlg/april_nothing_new_m"
+				],
+				"on_close_commands": [
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§eDid run on_close_commands\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] at @s run function sounds/stop/_dialogue",
+					"/tag @s remove particle_emitter",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§eapril_nothing_new§7].§4CloseFn§7: Aborted due to segue.\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§eapril_nothing_new§7].§eDidNotSegue...\"}]}",
+					"/tag @initiator remove player.in_ui",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§eapril_nothing_new§7].§4DidClose§7\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] run function ui/m/close_ui"
+				]
+			}
+		]
+	}
+}

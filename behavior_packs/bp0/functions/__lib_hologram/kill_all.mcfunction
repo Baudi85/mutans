@@ -1,0 +1,1 @@
+event entity @e[type=fs:hologram] fs:instant_despawn

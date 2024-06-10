@@ -1,0 +1,84 @@
+// @(com.57digital.shulker.inherited)
+// Inheritance Chain: [fs:entity] ~> [fs:vehicle] ~> fs:vehicle_transport_module
+{
+  "format_version": "1.19.60",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "fs:vehicle_transport_module",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "property:perf_mode": {
+          "type": "bool",
+          "default": true,
+          "client_sync": true
+        }
+      },
+      "scripts": {
+        "animate": [
+          "controller_entity_has_rider"
+        ]
+      },
+      "animations": {
+        "controller_entity_has_rider": "controller.animation.enemy_target.has_rider"
+      }
+    },
+    "component_groups": {
+      "fs:instant_despawn": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "vehicle"
+        ]
+      },
+      "minecraft:physics": {
+        "has_collision": true,
+        "has_gravity": true
+      },
+      "minecraft:scale": {
+        "value": 1
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": false
+          }
+        ]
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:collision_box": {
+        "height": 0,
+        "width": 0
+      }
+    },
+    "events": {
+      "fs:instant_despawn": {
+        "add": {
+          "component_groups": [
+            "fs:instant_despawn"
+          ]
+        }
+      },
+      "fs:enable_perf_mode": {
+        "set_property": {
+          "property:perf_mode": true
+        }
+      },
+      "fs:disable_perf_mode": {
+        "set_property": {
+          "property:perf_mode": false
+        }
+      }
+    }
+  }
+}

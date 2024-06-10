@@ -1,0 +1,216 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "minecraft:player",
+            "materials": {
+                "default": "entity_alphatest",
+                "cape": "entity_alphatest",
+                "animated": "player_animated",
+                "spectator": "player_spectator"
+            },
+            "textures": {
+                "default": "textures/entity/steve",
+                "cape": "textures/entity/cape_invisible",
+                "leonardo": "textures/entity/player/leonardo",
+                "raphael": "textures/entity/player/raphael",
+                "donatello": "textures/entity/player/donatello",
+                "michelangelo": "textures/entity/player/michelangelo"
+            },
+            "geometry": {
+                "default": "geometry.humanoid.custom",
+                "cape": "geometry.cape",
+                "first_person_leonardo": "geometry.player_first_person_leonardo",
+                "first_person_raphael": "geometry.player_first_person_raphael",
+                "first_person_donatello": "geometry.player_first_person_donatello",
+                "first_person_michelangelo": "geometry.player_first_person_michelangelo",
+                "third_person_leonardo": "geometry.player_third_person_leonardo",
+                "third_person_raphael": "geometry.player_third_person_raphael",
+                "third_person_donatello": "geometry.player_third_person_donatello",
+                "third_person_michelangelo": "geometry.player_third_person_michelangelo"
+            },
+            "scripts": {
+                "scale": "0.9375",
+                "initialize": [
+                    "variable.is_holding_right = 0.0;",
+                    "variable.is_blinking = 0.0;",
+                    "variable.last_blink_time = 0.0;",
+                    "variable.hand_bob = 0.0;",
+                    "variable.direction = 0;",
+                    "variable.turtle = 'none';",
+                    "variable.is_skateboarding = false;",
+                    "variable.is_surfing = false;",
+                    "variable.is_skateboarding_or_surfing = false;",
+                    "variable.damage_type = 'none';"
+                ],
+                "pre_animation": [
+                    "variable.helmet_layer_visible = 1.0;",
+                    "variable.leg_layer_visible = 1.0;",
+                    "variable.boot_layer_visible = 1.0;",
+                    "variable.chest_layer_visible = 1.0;",
+                    "variable.attack_body_rot_y = Math.sin(360*Math.sqrt(variable.attack_time)) * 5.0;",
+                    "variable.tcos0 = (math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 57.3;",
+                    "variable.first_person_rotation_factor = math.sin((1 - variable.attack_time) * 180.0);",
+                    "variable.hand_bob = query.life_time < 0.01 ? 0.0 : variable.hand_bob + ((query.is_on_ground && query.is_alive ? math.clamp(math.sqrt(math.pow(query.position_delta(0), 2.0) + math.pow(query.position_delta(2), 2.0)), 0.0, 0.1) : 0.0) - variable.hand_bob) * 0.02;",
+                    "variable.map_angle = math.clamp(1 - variable.player_x_rotation / 45.1, 0.0, 1.0);",
+                    "variable.item_use_normalized = query.main_hand_item_use_duration / query.main_hand_item_max_duration;",
+                    "variable.turtle = (q.is_in_ui || v.is_paperdoll) ? 'none' : query.property('property:turtle');",
+                    "variable.is_skateboarding = (q.is_in_ui || v.is_paperdoll) ? false : query.property('property:is_skateboarding');",
+                    "variable.is_surfing = (q.is_in_ui || v.is_paperdoll) ? false : query.property('property:is_surfing');",
+                    "variable.is_skateboarding_or_surfing = (variable.is_skateboarding || variable.is_surfing);",
+                    "variable.attack_type = (q.is_in_ui || v.is_paperdoll) ? 'none' : query.property('property:attack_type');",
+                    "variable.damage_type = (q.is_in_ui || v.is_paperdoll) ? 'none' : query.property('property:damage_type');"
+                ],
+                "animate": [
+                    "root",
+                    {
+                        "player_first_person_leonardo_idle": "(!q.is_in_ui && !v.is_paperdoll) && variable.is_first_person && !(variable.is_skateboarding || variable.is_surfing) && variable.turtle == 'leonardo'"
+                    },
+                    {
+                        "player_first_person_raphael_idle": "(!q.is_in_ui && !v.is_paperdoll) && variable.is_first_person && !(variable.is_skateboarding || variable.is_surfing) && variable.turtle == 'raphael'"
+                    },
+                    {
+                        "player_first_person_donatello_idle": "(!q.is_in_ui && !v.is_paperdoll) && variable.is_first_person && !(variable.is_skateboarding || variable.is_surfing) && variable.turtle == 'donatello'"
+                    },
+                    {
+                        "player_first_person_michelangelo_idle": "(!q.is_in_ui && !v.is_paperdoll) && variable.is_first_person && !(variable.is_skateboarding || variable.is_surfing) && variable.turtle == 'michelangelo'"
+                    },
+                    {
+                        "player_skateboarding_leonardo_idle": "(!q.is_in_ui && !v.is_paperdoll) && !variable.is_first_person && (variable.is_skateboarding || variable.is_surfing) && variable.turtle == 'leonardo'"
+                    },
+                    {
+                        "player_skateboarding_raphael_idle": "(!q.is_in_ui && !v.is_paperdoll) && !variable.is_first_person && (variable.is_skateboarding || variable.is_surfing) && variable.turtle == 'raphael'"
+                    },
+                    {
+                        "player_skateboarding_donatello_idle": "(!q.is_in_ui && !v.is_paperdoll) && !variable.is_first_person && (variable.is_skateboarding || variable.is_surfing) && variable.turtle == 'donatello'"
+                    },
+                    {
+                        "player_skateboarding_michelangelo_idle": "(!q.is_in_ui && !v.is_paperdoll) && !variable.is_first_person && (variable.is_skateboarding || variable.is_surfing) && variable.turtle == 'michelangelo'"
+                    }
+                ]
+            },
+            "animations": {
+                "root": "controller.animation.player.root",
+                "base_controller": "controller.animation.player.base",
+                "hudplayer": "controller.animation.player.hudplayer",
+                "humanoid_base_pose": "animation.humanoid.base_pose",
+                "look_at_target": "controller.animation.humanoid.look_at_target",
+                "look_at_target_ui": "animation.player.look_at_target.ui",
+                "look_at_target_default": "animation.humanoid.look_at_target.default",
+                "look_at_target_gliding": "animation.humanoid.look_at_target.gliding",
+                "look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
+                "look_at_target_inverted": "animation.player.look_at_target.inverted",
+                "cape": "animation.player.cape",
+                "move.arms": "animation.player.move.arms",
+                "move.legs": "animation.player.move.legs",
+                "swimming": "animation.player.swim",
+                "swimming.legs": "animation.player.swim.legs",
+                "riding.arms": "animation.player.riding.arms",
+                "riding.legs": "animation.player.riding.legs",
+                "holding": "animation.player.holding",
+                "attack.positions": "animation.player.attack.positions",
+                "attack.rotations": "animation.player.attack.rotations",
+                "sneaking": "animation.player.sneaking",
+                "bob": "animation.player.bob",
+                "use_item_progress": "animation.humanoid.use_item_progress",
+                "first_person_base_pose": "animation.player.first_person.base_pose",
+                "first_person_empty_hand": "animation.player.first_person.empty_hand",
+                "first_person_swap_item": "animation.player.first_person.swap_item",
+
+                "first_person_attack_controller": "controller.animation.player.first_person_attack",                
+                "first_person_attack_rotation": "animation.player.first_person.attack_rotation",
+                "third_person_attack_controller": "controller.animation.player.third_person_attack",
+
+                "first_person_vr_attack_rotation": "animation.player.first_person.vr_attack_rotation",
+                "first_person_walk": "animation.player.first_person.walk",
+                "blink": "controller.animation.persona.blink",
+
+                "player_first_person_leonardo_idle": "animation.player_first_person_leonardo.idle",
+                "player_first_person_leonardo_attack_0": "animation.player_first_person_leonardo.attack_0",
+                "player_first_person_leonardo_attack_1": "animation.player_first_person_leonardo.attack_1",
+                "player_first_person_leonardo_attack_2": "animation.player_first_person_leonardo.attack_2",
+                "player_third_person_leonardo_idle": "animation.player_third_person_leonardo.idle",
+                "player_third_person_leonardo_attack_0": "animation.player_third_person_leonardo.attack_0",
+                "player_third_person_leonardo_attack_1": "animation.player_third_person_leonardo.attack_1",
+                "player_third_person_leonardo_attack_2": "animation.player_third_person_leonardo.attack_2",
+
+                "player_first_person_raphael_idle": "animation.player_first_person_raphael.idle",
+                "player_first_person_raphael_attack_0": "animation.player_first_person_raphael.attack_0",
+                "player_first_person_raphael_attack_1": "animation.player_first_person_raphael.attack_1",
+                "player_first_person_raphael_attack_2": "animation.player_first_person_raphael.attack_2",
+                "player_third_person_raphael_idle": "animation.player_third_person_raphael.idle",
+                "player_third_person_raphael_attack_0": "animation.player_third_person_raphael.attack_0",
+                "player_third_person_raphael_attack_1": "animation.player_third_person_raphael.attack_1",
+                "player_third_person_raphael_attack_2": "animation.player_third_person_raphael.attack_2",
+
+                "player_first_person_donatello_idle": "animation.player_first_person_donatello.idle",
+                "player_first_person_donatello_attack_0": "animation.player_first_person_donatello.attack_0",
+                "player_first_person_donatello_attack_1": "animation.player_first_person_donatello.attack_1",
+                "player_first_person_donatello_attack_2": "animation.player_first_person_donatello.attack_2",
+                "player_third_person_donatello_idle": "animation.player_third_person_donatello.idle",
+                "player_third_person_donatello_attack_0": "animation.player_third_person_donatello.attack_0",
+                "player_third_person_donatello_attack_1": "animation.player_third_person_donatello.attack_1",
+                "player_third_person_donatello_attack_2": "animation.player_third_person_donatello.attack_2",
+
+                "player_first_person_michelangelo_idle": "animation.player_first_person_michelangelo.idle",                
+                "player_first_person_michelangelo_attack_0": "animation.player_first_person_michelangelo.attack_0",
+                "player_first_person_michelangelo_attack_1": "animation.player_first_person_michelangelo.attack_1",
+                "player_first_person_michelangelo_attack_2": "animation.player_first_person_michelangelo.attack_2",
+                "player_third_person_michelangelo_idle": "animation.player_third_person_michelangelo.idle",
+                "player_third_person_michelangelo_attack_0": "animation.player_third_person_michelangelo.attack_0",
+                "player_third_person_michelangelo_attack_1": "animation.player_third_person_michelangelo.attack_1",
+                "player_third_person_michelangelo_attack_2": "animation.player_third_person_michelangelo.attack_2",
+
+                "player_third_person_common_jump": "animation.player_third_person_common.jump",
+                "player_third_person_common_double_jump": "animation.player_third_person_common.double_jump",
+                "player_third_person_common_dash_forward": "animation.player_third_person_common.dash_forward",
+                "player_third_person_common_dash_left": "animation.player_third_person_common.dash_left",
+                "player_third_person_common_dash_right": "animation.player_third_person_common.dash_right",
+                "player_third_person_common_dash_back": "animation.player_third_person_common.dash_back",
+
+                "player_third_person_common_push_ups": "animation.player_third_person_common.push_ups",
+                "player_third_person_common_jumping_jacks": "animation.player_third_person_common.jumping_jacks",
+                "player_third_person_common_dance_mikey": "animation.player_third_person_common.dance_mikey",
+                "player_third_person_common_dance_leo": "animation.player_third_person_common.dance_leo",
+                "player_third_person_common_dance_raph": "animation.player_third_person_common.dance_raph",
+                "player_third_person_common_dance_donnie": "animation.player_third_person_common.dance_donnie",
+                "player_third_person_common_downed": "animation.player_third_person_common.downed",
+                "player_third_person_common_revived": "animation.player_third_person_common.revived",
+                "player_third_person_common_reviving": "animation.player_third_person_common.reviving",
+
+                "player_first_person_leonardo_block": "animation.player_first_person_leonardo.block",
+                "player_first_person_raphael_block": "animation.player_first_person_raphael.block",
+                "player_first_person_donatello_block": "animation.player_first_person_donatello.block",
+                "player_first_person_michelangelo_block": "animation.player_first_person_michelangelo.block",
+
+                "player_first_person_donatello_push_back": "animation.player_first_person_donatello.push_back",
+
+                "player_skateboarding_leonardo_idle": "animation.player_skateboarding_leonardo.idle",
+                "player_skateboarding_raphael_idle": "animation.player_skateboarding_raphael.idle",
+                "player_skateboarding_donatello_idle": "animation.player_skateboarding_donatello.idle",
+                "player_skateboarding_michelangelo_idle": "animation.player_skateboarding_michelangelo.idle",
+
+                "skateboarding_moving": "animation.player_skateboarding.moving"
+            },
+            "render_controllers": [
+                {
+                    "controller.render.player.first_person_spectator": "variable.is_first_person && query.is_spectator"
+                },
+                {
+                    "controller.render.player.third_person_spectator": "!variable.is_first_person && query.is_spectator && !q.is_in_ui"
+                },
+                {
+                    "controller.render.player.first_person": "variable.is_first_person && !query.is_spectator"
+                },
+                {
+                    "controller.render.player.third_person": "!variable.is_first_person && !query.is_spectator && !q.is_in_ui"
+                },
+                {
+                    "controller.render.player.third_person_ui": "!variable.is_first_person && !query.is_spectator && q.is_in_ui"
+                }
+                
+            ],
+            "enable_attachables": false
+        }
+    }
+}

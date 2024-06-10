@@ -1,0 +1,1 @@
+scoreboard players set @e[family=boss] zone 15

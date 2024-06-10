@@ -1,0 +1,19 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:item": {
+    "description": {
+      "identifier": "fs:item_placement_shift_left",
+      "category": "Equipment"
+    },
+    "components": {
+      "minecraft:food": {
+        "on_use_action": "none",
+        "can_always_eat": true,
+        "nutrition": 0,
+        "cooldown_time": 1,
+        "cooldown_type": "chorusfruit"
+      },
+      "minecraft:use_duration": 0
+    }
+  }
+}

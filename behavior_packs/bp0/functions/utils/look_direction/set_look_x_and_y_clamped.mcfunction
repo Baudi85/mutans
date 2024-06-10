@@ -1,0 +1,2 @@
+function utils/look_direction/set_look_x_clamped
+function utils/look_direction/set_look_y_clamped

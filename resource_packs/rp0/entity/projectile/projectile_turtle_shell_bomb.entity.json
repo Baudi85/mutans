@@ -1,0 +1,28 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:projectile_turtle_shell_bomb",
+            "render_controllers": [
+                "controller.render.entity.common"
+            ],
+            "geometry": {
+                "variant_0": "geometry.projectile_turtle_shell_bomb"
+            },
+            "textures": {
+                "variant_0": "textures/entity/projectile_turtle_shell_bomb/projectile_turtle_shell_bomb_v0"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "animations": {
+                "move": "animation.plunger.move"
+            },
+            "scripts": {
+                "animate": [
+                    "move"
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:hologram",
+            "render_controllers": [
+                "controller.render.hologram"
+            ],
+            "geometry": {
+                "default": "geometry.hologram"
+            },
+            "textures": {
+                "default": "textures/entity/__lib/game/game"
+            },
+            "materials": {
+                "default": "entity"
+            }
+        }
+    }
+}

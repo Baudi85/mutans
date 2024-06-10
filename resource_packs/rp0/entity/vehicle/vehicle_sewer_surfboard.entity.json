@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "fs:vehicle_sewer_surfboard",
+      "render_controllers": [
+        "controller.render.vehicle.sewer_surfboard"
+      ],
+      "geometry": {
+        "variant_0": "geometry.vehicle_sewer_surfboard"
+      },
+      "textures": {
+        "variant_leonardo": "textures/entity/vehicle_sewer_surfboard/vehicle_sewer_surfboard_leonardo",
+        "variant_raphael": "textures/entity/vehicle_sewer_surfboard/vehicle_sewer_surfboard_raphael",
+        "variant_donatello": "textures/entity/vehicle_sewer_surfboard/vehicle_sewer_surfboard_donatello",
+        "variant_michelangelo": "textures/entity/vehicle_sewer_surfboard/vehicle_sewer_surfboard_michelangelo"
+      },
+      "materials": {
+        "default": "entity"
+      },
+      "animations": {
+        "idle": "animation.vehicle_sewer_surfboard.idle",
+        "animation_controller": "controller.animation.vehicle_sewer_surfboard.animate"
+      },
+      "scripts": {
+        "animate": [
+          "animation_controller"
+        ]
+      }
+    }
+  }
+}

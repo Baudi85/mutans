@@ -1,0 +1,31 @@
+{
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.vehicle.sewer_surfboard": {
+      "arrays": {
+        "textures": {
+          "Array.textures": [
+            "Texture.variant_leonardo",
+            "Texture.variant_raphael",
+            "Texture.variant_donatello",
+            "Texture.variant_michelangelo"
+          ]
+        },
+        "geometries": {
+          "Array.geometries": [
+            "Geometry.variant_0"
+          ]
+        }
+      },
+      "geometry": "Array.geometries[query.variant]",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.textures[query.variant]"
+      ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "fs:projectile_invisible",
+      "spawn_egg": {
+        "base_color": "#000000",
+        "overlay_color": "#000000"
+      },
+      "render_controllers": [
+        "controller.render.projectile_invisible"
+      ],
+      "geometry": {
+        "variant_0": "geometry.projectile_invisible"
+      },
+      "textures": {
+        "variant_0": "textures/entity/projectile_invisible/projectile_invisible_v0"
+      },
+      "materials": {
+        "default": "entity"
+      }
+    }
+  }
+}

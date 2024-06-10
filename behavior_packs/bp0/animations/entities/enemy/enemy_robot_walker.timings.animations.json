@@ -1,0 +1,49 @@
+{
+    "format_version": "1.16.0",
+    "animations": {
+        "animation.movement_appear.enemy_robot_walker": {
+            "loop": false,
+            "animation_length": 0.75
+        },
+        "animation.attack_melee.enemy_robot_walker": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.attack_jump.enemy_robot_walker": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_ranged.enemy_robot_walker": {
+            "loop": false,
+            "animation_length": 0.70
+        },
+        "animation.attack_dash.enemy_robot_walker": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_block.enemy_robot_walker": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.damage_hit.enemy_robot_walker": {
+            "loop": false,
+            "animation_length": 0.1
+        },
+        "animation.damage_hurt.enemy_robot_walker": {
+            "loop": false,
+            "animation_length": 0.66
+        },
+        "animation.damage_knockdown.enemy_robot_walker": {
+            "loop": false,
+            "animation_length": 1
+        },
+        "animation.damage_get_up.enemy_robot_walker": {
+            "loop": false,
+            "animation_length": 0.95
+        },
+        "animation.damage_killed.enemy_robot_walker": {
+            "loop": false,
+            "animation_length": 0.5
+        }
+    }
+}

@@ -1,0 +1,74 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:puppet_character",
+            "spawn_egg": {
+                "base_color": "#53bf26",
+                "overlay_color": "#b3f354"
+            },
+            "geometry": {
+                "variant_0": "geometry.puppet_marker",
+                "variant_1": "geometry.puppet_marker",
+                "variant_2": "geometry.puppet_marker",
+                "variant_3": "geometry.puppet_marker"
+            },
+            "textures": {
+                "variant_0": "textures/entity/player/leonardo",
+                "variant_1": "textures/entity/player/raphael",
+                "variant_2": "textures/entity/player/donatello",
+                "variant_3": "textures/entity/player/michelangelo"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "render_controllers": [
+                "controller.render.puppet_character"
+            ],
+            "animations": {
+                "pose": "controller.animation.puppet_character.pose",
+                "pose_riding_0": "animation.puppet.pose_riding_0",
+                "pose_riding_1": "animation.puppet.pose_riding_1",
+                "pose_riding_2": "animation.puppet.pose_riding_2",
+                "pose_riding_3": "animation.puppet.pose_riding_3",
+                "pose_riding_4": "animation.puppet.pose_riding_4",
+                "pose_riding_5": "animation.puppet.pose_riding_5",
+                "pose_riding_6": "animation.puppet.pose_riding_6",
+                "pose_riding_7": "animation.puppet.pose_riding_7",
+                "pose_riding_8": "animation.puppet.pose_riding_8",
+                "pose_riding_9": "animation.puppet.pose_riding_9",
+                "pose_riding_10": "animation.puppet.pose_riding_10",
+                "pose_riding_11": "animation.puppet.pose_riding_11",
+                "character_0_pose_0": "animation.puppet_character.character_0_pose_0",
+                "character_0_pose_1": "animation.puppet_character.character_0_pose_1",
+                "character_0_pose_2": "animation.puppet_character.character_0_pose_2",
+                "character_0_pose_3": "animation.puppet_character.character_0_pose_3",
+                "character_0_pose_4": "animation.puppet_character.character_0_pose_4",
+                "character_0_pose_5": "animation.puppet_character.character_0_pose_5",
+                "character_1_pose_0": "animation.puppet_character.character_1_pose_0",
+                "character_1_pose_1": "animation.puppet_character.character_1_pose_1",
+                "character_1_pose_2": "animation.puppet_character.character_1_pose_2",
+                "character_1_pose_3": "animation.puppet_character.character_1_pose_3",
+                "character_1_pose_4": "animation.puppet_character.character_1_pose_4",
+                "character_1_pose_5": "animation.puppet_character.character_1_pose_5",
+                "character_2_pose_0": "animation.puppet_character.character_2_pose_0",
+                "character_2_pose_1": "animation.puppet_character.character_2_pose_1",
+                "character_2_pose_2": "animation.puppet_character.character_2_pose_2",
+                "character_2_pose_3": "animation.puppet_character.character_2_pose_3",
+                "character_2_pose_4": "animation.puppet_character.character_2_pose_4",
+                "character_2_pose_5": "animation.puppet_character.character_2_pose_5",
+                "character_3_pose_0": "animation.puppet_character.character_3_pose_0",
+                "character_3_pose_1": "animation.puppet_character.character_3_pose_1",
+                "character_3_pose_2": "animation.puppet_character.character_3_pose_2",
+                "character_3_pose_3": "animation.puppet_character.character_3_pose_3",
+                "character_3_pose_4": "animation.puppet_character.character_3_pose_4",
+                "character_3_pose_5": "animation.puppet_character.character_3_pose_5"
+            },
+            "scripts": {
+                "animate": [
+                    "pose"
+                ]
+            }
+        }
+    }
+}

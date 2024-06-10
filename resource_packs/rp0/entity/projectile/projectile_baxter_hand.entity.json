@@ -1,0 +1,28 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:projectile_baxter_hand",
+            "render_controllers": [
+                "controller.render.entity.common"
+            ],
+            "geometry": {
+                "variant_0": "geometry.projectile_baxter_hand"
+            },
+            "textures": {
+                "variant_0": "textures/entity/projectile_baxter_hand/projectile_baxter_hand_v0"
+            },
+            "materials": {
+                "default": "entity"
+            },
+            "animations": {
+                "move": "animation.projectile.move"
+            },
+            "scripts": {
+                "animate": [
+                    "move"
+                ]
+            }
+        }
+    }
+}

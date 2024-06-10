@@ -1,0 +1,31 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:interact_padlock",
+            "render_controllers": [
+                "controller.render.interact_padlock"
+            ],
+            "geometry": {
+                "variant_0": "geometry.interact_padlock"
+            },
+            "textures": {
+                "variant_locked": "textures/entity/interact_padlock/interact_padlock_v0",
+                "variant_unlocked": "textures/entity/interact_padlock/interact_padlock_v0"
+            },
+            "materials": {
+                "default": "entity"
+            },
+            "animations": {
+                "unlocked": "animation.interact_padlock.unlocked"
+            },
+            "scripts": {
+                "animate": [
+                    {
+                        "unlocked": "query.variant == 1"
+                    }
+                ]
+            }
+        }
+    }
+}

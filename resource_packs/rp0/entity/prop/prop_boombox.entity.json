@@ -1,0 +1,24 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "fs:prop_boombox",
+      "spawn_egg": {
+        "base_color": "#000000",
+        "overlay_color": "#000000"
+      },
+      "render_controllers": [
+        "controller.render.prop_boombox"
+      ],
+      "geometry": {
+        "variant_0": "geometry.prop_boombox"
+      },
+      "textures": {
+        "variant_0": "textures/entity/prop_boombox/prop_boombox_v0"
+      },
+      "materials": {
+        "default": "entity"
+      }
+    }
+  }
+}

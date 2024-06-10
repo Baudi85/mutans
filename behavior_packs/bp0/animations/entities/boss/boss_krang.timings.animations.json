@@ -1,0 +1,72 @@
+{
+    "format_version": "1.16.0",
+    "animations": {
+        "animation.movement_appear.boss_krang": {
+            "loop": false,
+            "animation_length": 1.0
+        },
+        "animation.attack_melee.boss_krang": {
+            "loop": false,
+            "animation_length": 1,
+            "timeline": {
+                "0.5": [
+                    "/execute as @s at @s positioned ^ ^ ^1 run function ai_boss/action/melee/detect_player"
+                ]
+            }
+        },
+        "animation.attack_jump.boss_krang": {
+            "loop": false,
+            "animation_length": 1.16
+        },
+        "animation.attack_ranged.boss_krang": {
+            "loop": false,
+            "animation_length": 1.875,
+            "timeline": {
+                "0.5": [
+                    "/execute as @s at @s positioned ^ ^ ^1 run function ai_boss/action/melee/detect_player"
+                ],
+                "0.6": [
+                    "/execute as @s at @s positioned ^ ^ ^1.5 run function ai_boss/action/melee/detect_player"
+                ],
+                "0.7": [
+                    "/execute as @s at @s positioned ^ ^ ^2 run function ai_boss/action/melee/detect_player"
+                ],
+                "0.8": [
+                    "/execute as @s at @s positioned ^ ^ ^2.5 run function ai_boss/action/melee/detect_player"
+                ]
+            }
+        },
+        "animation.attack_ranged_alt.boss_krang": {
+            "loop": false,
+            "animation_length": 1.875
+        },
+        "animation.attack_dash.boss_krang": {
+            "loop": false,
+            "animation_length": 2.50
+        },
+        "animation.attack_block.boss_krang": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.damage_hit.boss_krang": {
+            "loop": false,
+            "animation_length": 0.1
+        },
+        "animation.damage_hurt.boss_krang": {
+            "loop": false,
+            "animation_length": 0.79
+        },
+        "animation.damage_knockdown.boss_krang": {
+            "loop": false,
+            "animation_length": 0.75
+        },
+        "animation.damage_get_up.boss_krang": {
+            "loop": false,
+            "animation_length": 0.75
+        },
+        "animation.damage_killed.boss_krang": {
+            "loop": false,
+            "animation_length": 0.79
+        }
+    }
+}

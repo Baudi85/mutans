@@ -1,0 +1,58 @@
+{
+    "format_version": "1.16.0",
+    "animations": {
+        "animation.movement_appear.boss_super_shredder": {
+            "loop": false,
+            "animation_length": 1.0
+        },
+        "animation.attack_melee.boss_super_shredder": {
+            "loop": false,
+            "animation_length": 0.91,
+            "timeline": {
+                "0.45": [
+                    "/execute as @s at @s positioned ^ ^ ^1 run function ai_boss/action/melee/detect_player"
+                ]
+            }
+        },
+        "animation.attack_jump.boss_super_shredder": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_ranged.boss_super_shredder": {
+            "loop": false,
+            "animation_length": 1.60
+        },
+        "animation.attack_ranged_alt.boss_super_shredder": {
+            "loop": false,
+            "animation_length": 1.60
+        },
+        "animation.attack_dash.boss_super_shredder": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_block.boss_super_shredder": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.damage_hit.boss_super_shredder": {
+            "loop": false,
+            "animation_length": 0.1
+        },
+        "animation.damage_hurt.boss_super_shredder": {
+            "loop": false,
+            "animation_length": 0.5
+        },
+        "animation.damage_knockdown.boss_super_shredder": {
+            "loop": false,
+            "animation_length": 0.5
+        },
+        "animation.damage_get_up.boss_super_shredder": {
+            "loop": false,
+            "animation_length": 0.6
+        },
+        "animation.damage_killed.boss_super_shredder": {
+            "loop": false,
+            "animation_length": 0.5
+        }
+    }
+}

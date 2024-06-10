@@ -1,0 +1,13 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:item": {
+    "description": {
+      "identifier": "fs:item_sewer_handle",
+      "category": "Items"
+    },
+    "components": {
+      "minecraft:icon": "item_sewer_handle",
+      "minecraft:use_animation": "none"
+    }
+  }
+}

@@ -1,0 +1,90 @@
+// @(com.57digital.shulker.generated)
+// @generated File (generated via ShulkerScript: <BP> dialogue/config/oobe.js)
+{
+	"format_version": "1.17",
+	"minecraft:npc_dialogue": {
+		"scenes": [
+			{
+				"scene_tag": "oobe_review_pc_0",
+				"npc_name": {
+					"rawtext": [
+						{
+							"text": "oobe.title_review"
+						}
+					]
+				},
+				"text": {
+					"rawtext": [
+						{
+							"translate": "oobe.device_review_1"
+						},
+						{
+							"text": "\n\n§a§l"
+						},
+						{
+							"text": ""
+						},
+						{
+							"translate": "device.type.pc"
+						},
+						{
+							"text": "§r§a"
+						},
+						{
+							"text": " ("
+						},
+						{
+							"translate": "device.age.0"
+						},
+						{
+							"text": ")"
+						},
+						{
+							"text": "\n\n§f"
+						},
+						{
+							"translate": "oobe.device_review_2"
+						},
+						{
+							"text": "§f§1§3§3§7§f§0§0§f"
+						}
+					]
+				},
+				"buttons": [
+					{
+						"name": "re000t02z50",
+						"commands": [
+							"/execute as @initiator run function events/settings/oobe_complete"
+						]
+					},
+					{
+						"name": "re001t05z02",
+						"commands": [
+							"/execute as @initiator run tag @s add dlg.did_segue",
+							"/execute as @initiator run function dlg/oobe_welcome"
+						]
+					}
+				],
+				"on_open_commands": [
+					"/tag @initiator remove did_req_dlg",
+					"/execute as @a run function utils/remove_dlg_tags",
+					"/execute as @initiator[tag=!dlg.did_segue] run playsound fs.dlg.open @s[scores={s_sfx_enabled=1}]",
+					"/tag @initiator add player.in_ui",
+					"/tag @initiator remove dlg.did_segue",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§eoobe_review_pc_0§7].§2DidOpen§7\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§eoobe_review_pc_0§7].§2OpenFn§7: §e/scoreboard players add @e[type=fs:game] s_device_type 0\"}]}",
+					"/scoreboard players add @e[type=fs:game] s_device_type 0"
+				],
+				"on_close_commands": [
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§eDid run on_close_commands\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] at @s run function sounds/stop/_dialogue",
+					"/tag @s remove particle_emitter",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§eoobe_review_pc_0§7].§4CloseFn§7: Aborted due to segue.\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§eoobe_review_pc_0§7].§eDidNotSegue...\"}]}",
+					"/tag @initiator remove player.in_ui",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§eoobe_review_pc_0§7].§4DidClose§7\"}]}"
+				]
+			}
+		]
+	}
+}

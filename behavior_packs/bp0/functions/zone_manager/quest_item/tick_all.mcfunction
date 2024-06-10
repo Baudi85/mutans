@@ -1,0 +1,1 @@
+execute as @e[type=fs:quest_item] run function zone_manager/quest_item/tick

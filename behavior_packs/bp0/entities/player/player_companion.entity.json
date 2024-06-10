@@ -1,0 +1,315 @@
+{
+    "format_version": "1.19.60",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:player_companion",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false,
+            "properties": {
+                "property:attack_status": {
+                    "type": "enum",
+                    "values": [
+                        "none",
+                        "did_attack"
+                    ],
+                    "default": "none",
+                    "client_sync": true
+                }
+            },
+            "animations": {
+                "controller_property_attack_status": "controller.animation.player_companion.property.attack_status",
+                "controller_property_has_target": "controller.animation.player_companion.property.has_target"
+            },
+            "scripts": {
+                "animate": [
+                    "controller_property_attack_status",
+                    "controller_property_has_target"
+                ]
+            }
+        },
+        "component_groups": {
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            },
+            "fs:leonardo": {
+                "minecraft:variant": {
+                    "value": 0
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "player_companion",
+                        "player_companion_leonardo",
+                        "barrier_pushback"
+                    ]
+                }
+            },
+            "fs:raphael": {
+                "minecraft:variant": {
+                    "value": 1
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "player_companion",
+                        "player_companion_raphael",
+                        "barrier_pushback"
+                    ]
+                }
+            },
+            "fs:donatello": {
+                "minecraft:variant": {
+                    "value": 2
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "player_companion",
+                        "player_companion_donatello",
+                        "barrier_pushback"
+                    ]
+                }
+            },
+            "fs:michelangelo": {
+                "minecraft:variant": {
+                    "value": 3
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "player_companion",
+                        "player_companion_michelangelo",
+                        "barrier_pushback"
+                    ]
+                }
+            },
+            "fs:set_ai_mode_chilled": {
+                "minecraft:behavior.melee_attack": {
+                    "priority": 0,
+                    "track_target": false,
+                    "reach_multiplier": 4,
+                    "random_stop_interval": 0,
+                    "cooldown_time": 2,
+                    "on_attack": {
+                        "target": "self",
+                        "event": "fs:set_attack_status_did_attack"
+                    },
+                    "on_kill": {
+                        "target": "self",
+                        "event": "fs:set_attack_status_did_attack"
+                    }
+                }
+            },
+            "fs:set_ai_mode_aggressive": {
+                "minecraft:behavior.melee_attack": {
+                    "priority": 0,
+                    "track_target": true,
+                    "reach_multiplier": 4,
+                    "random_stop_interval": 0,
+                    "cooldown_time": 1,
+                    "on_attack": {
+                        "target": "self",
+                        "event": "fs:set_attack_status_did_attack"
+                    },
+                    "on_kill": {
+                        "target": "self",
+                        "event": "fs:set_attack_status_did_attack"
+                    }
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "player_companion",
+                    "barrier_pushback"
+                ]
+            },
+            "minecraft:tick_world": {
+                "never_despawn": true,
+                "radius": 2
+            },
+            "minecraft:physics": {
+                "has_collision": true,
+                "has_gravity": true
+            },
+            "minecraft:scale": {
+                "value": 1
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:collision_box": {
+                "height": 1.8,
+                "width": 0.75
+            },
+            "minecraft:movement": {
+                "value": [
+                    0.4,
+                    0.4
+                ]
+            },
+            "minecraft:navigation.walk": {
+                "is_amphibious": false,
+                "avoid_sun": false,
+                "avoid_water": true
+            },
+            "minecraft:variable_max_auto_step": {
+                "base_value": 3
+            },
+            "minecraft:movement.basic": {},
+            "minecraft:jump.static": {},
+            "minecraft:can_climb": {},
+            "minecraft:preferred_path": {
+                "default_block_cost": 0,
+                "jump_cost": 0,
+                "max_fall_blocks": 10
+            },
+            "minecraft:behavior.random_stroll": {
+                "priority": 1,
+                "speed_multiplier": 1
+            },
+            "minecraft:behavior.look_at_player": {
+                "priority": 4,
+                "look_distance": 8
+            },
+            "minecraft:behavior.random_look_around": {
+                "priority": 8
+            },
+            "minecraft:behavior.nearest_prioritized_attackable_target": {
+                "priority": 0,
+                "attack_interval": 0,
+                "must_reach": true,
+                "must_see": false,
+                "must_see_forget_duration": 60,
+                "persist_time": 60,
+                "reselect_targets": false,
+                "scan_interval": 1,
+                "set_persistent": true,
+                "target_search_height": -1,
+                "within_radius": 64,
+                "entity_types": {
+                    "filters": {
+                        "any_of": [
+                            {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "enemy"
+                            },
+                            {
+                                "all_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "boss"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "attackable"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "max_dist": 64,
+                    "must_see": true,
+                    "walk_speed_multiplier": 2,
+                    "sprint_speed_multiplier": 16
+                }
+            },
+            "minecraft:attack": {
+                "damage": 1
+            },
+            "minecraft:behavior.melee_attack": {
+                "priority": 0,
+                "track_target": false,
+                "reach_multiplier": 4,
+                "random_stop_interval": 0,
+                "cooldown_time": 2,
+                "on_attack": {
+                    "target": "self",
+                    "event": "fs:set_attack_status_did_attack"
+                },
+                "on_kill": {
+                    "target": "self",
+                    "event": "fs:set_attack_status_did_attack"
+                }
+            },
+            "minecraft:behavior.move_towards_target": {
+                "priority": 1,
+                "within_radius": 6,
+                "speed_multiplier": 1.5
+            }
+        },
+        "events": {
+            "fs:instant_despawn": {
+                "add": {
+                    "component_groups": [
+                        "fs:instant_despawn"
+                    ]
+                }
+            },
+            "fs:set_ai_mode_chilled": {
+                "add": {
+                    "component_groups": [
+                        "fs:set_ai_mode_chilled"
+                    ]
+                }
+            },
+            "fs:set_ai_mode_aggressive": {
+                "add": {
+                    "component_groups": [
+                        "fs:set_ai_mode_aggressive"
+                    ]
+                }
+            },
+            "fs:set_attack_status_did_attack": {
+                "set_property": {
+                    "property:attack_status": "did_attack"
+                }
+            },
+            "fs:set_attack_status_none": {
+                "set_property": {
+                    "property:attack_status": "none"
+                }
+            },
+            "fs:leonardo": {
+                "add": {
+                    "component_groups": [
+                        "fs:leonardo"
+                    ]
+                }
+            },
+            "fs:raphael": {
+                "add": {
+                    "component_groups": [
+                        "fs:raphael"
+                    ]
+                }
+            },
+            "fs:donatello": {
+                "add": {
+                    "component_groups": [
+                        "fs:donatello"
+                    ]
+                }
+            },
+            "fs:michelangelo": {
+                "add": {
+                    "component_groups": [
+                        "fs:michelangelo"
+                    ]
+                }
+            }
+        }
+    }
+}

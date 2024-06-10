@@ -1,0 +1,22 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:prop_tempestra_machine",
+            "render_controllers": [
+                "controller.render.prop.common_variants_c3"
+            ],
+            "geometry": {
+                "variant_0": "geometry.prop_tempestra_machine"
+            },
+            "textures": {
+                "variant_0": "textures/entity/prop_tempestra_machine/prop_tempestra_machine_v0",
+                "variant_1": "textures/entity/prop_tempestra_machine/prop_tempestra_machine_v1",
+                "variant_2": "textures/entity/prop_tempestra_machine/prop_tempestra_machine_v2"
+            },
+            "materials": {
+                "default": "entity"
+            }
+        }
+    }
+}

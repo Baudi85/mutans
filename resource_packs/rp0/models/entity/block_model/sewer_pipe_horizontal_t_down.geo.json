@@ -1,0 +1,32 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.sewer_pipe_horizontal_t_down",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3,
+				"visible_bounds_offset": [0, 0.5, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "pipe",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-8, 0, -8], "size": [16, 16, 16], "uv": [0, 0]},
+						{"origin": [-9, -14, -27], "size": [18, 18, 4], "pivot": [0, 8, -13], "rotation": [90, 0, 0], "uv": [0, 32]},
+						{"origin": [4, -1, -27], "size": [18, 18, 4], "pivot": [0, 8, -13], "rotation": [0, -90, 0], "uv": [0, 32]},
+						{"origin": [-22, -1, -26.5], "size": [18, 18, 4], "pivot": [0, 8, -13], "rotation": [0, 90, 0], "uv": [0, 32]}
+					]
+				}
+			]
+		}
+	]
+}

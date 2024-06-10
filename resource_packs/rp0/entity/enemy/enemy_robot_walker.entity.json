@@ -1,0 +1,55 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:enemy_robot_walker",
+            "render_controllers": [
+                {
+                    "controller.render.enemy.common": "query.property('property:perf_mode') == false"
+                },
+                {
+                    "controller.render.enemy.common.perf_mode": "query.property('property:perf_mode') == true"
+                }
+            ],
+            "geometry": {
+                "variant_0": "geometry.enemy_robot_walker"
+            },
+            "textures": {
+                "variant_default": "textures/entity/enemy_robot_walker/enemy_robot_walker_v0",
+                "variant_hit": "textures/entity/enemy_robot_walker/enemy_robot_walker_v0_hit",
+                "variant_knockdown": "textures/entity/enemy_robot_walker/enemy_robot_walker_v0_knockdown"
+            },
+            "materials": {
+                "default": "entity",
+                "alphatest": "entity_alphatest"
+            },
+            "animations": {
+                "movement_idle": "animation.enemy_robot_walker.movement_idle",
+                "movement_appear": "animation.enemy_robot_walker.movement_appear",
+                "movement_default": "animation.enemy_robot_walker.movement_default",
+                "movement_slow": "animation.enemy_robot_walker.movement_default",
+                "movement_fast": "animation.enemy_robot_walker.movement_fast",
+                "movement_jump": "animation.enemy_empty.movement_jump",
+                "attack_dash": "animation.enemy_empty.attack_dash",
+                "attack_melee": "animation.enemy_empty.attack_melee",
+                "attack_ranged": "animation.enemy_robot_walker.attack_ranged",
+                "attack_jump": "animation.enemy_empty.attack_jump",
+                "attack_block": "animation.enemy_empty.attack_block",
+                "damage_hurt": "animation.enemy_robot_walker.damage_hurt",
+                "damage_knockdown": "animation.enemy_robot_walker.damage_knockdown",
+                "damage_get_up": "animation.enemy_robot_walker.damage_get_up",
+                "damage_killed": "animation.enemy_robot_walker.damage_killed",
+                "controller_movement": "controller.animation.enemy.movement",
+                "controller_attack": "controller.animation.enemy.attack",
+                "controller_damage": "controller.animation.enemy.damage"
+            },
+            "scripts": {
+                "animate": [
+                    "controller_movement",
+                    "controller_attack",
+                    "controller_damage"
+                ]
+            }
+        }
+    }
+}

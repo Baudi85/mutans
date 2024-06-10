@@ -1,0 +1,1657 @@
+{
+  "namespace": "fs_fader",
+
+  // #region <root>
+  "root_panel": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "$fader_state|default": 0,
+    "$is_visible|default": false,
+    "$animation_key|default": "alpha_instant_hide",
+    "$content_animation_key_suffix|default": "",
+    "$chrome_color|default": [0, 0, 0, 1],
+    "layer": 57000,
+    "variables": [
+      {
+        "requires": "((not ($title_text - '&fs_fader_state=1&' = $title_text)))",
+        "$is_visible": true,
+        "$animation_key": "alpha_instant_show"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_state=2&' = $title_text)))",
+        "$is_visible": true,
+        "$animation_key": "alpha_instant_hide",
+        "$content_animation_key_suffix": "_run"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_state=3&' = $title_text)))",
+        "$is_visible": true,
+        "$animation_key": "alpha_fade_in_1s"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_state=4&' = $title_text)))",
+        "$is_visible": true,
+        "$animation_key": "alpha_fade_out_1s",
+        "$content_animation_key_suffix": "_run"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_state=5&' = $title_text)))",
+        "$is_visible": true,
+        "$animation_key": "alpha_fade_in_2s"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_state=6&' = $title_text)))",
+        "$is_visible": true,
+        "$animation_key": "alpha_fade_out_2s",
+        "$content_animation_key_suffix": "_run"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_state=7&' = $title_text)))",
+        "$is_visible": true,
+        "$animation_key": "alpha_fade_in_3s"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_state=8&' = $title_text)))",
+        "$is_visible": true,
+        "$animation_key": "alpha_fade_out_3s",
+        "$content_animation_key_suffix": "_run"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_state=9&' = $title_text)))",
+        "$is_visible": true,
+        "$animation_key": "alpha_fade_in_4s"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_state=10&' = $title_text)))",
+        "$is_visible": true,
+        "$animation_key": "alpha_fade_out_4s",
+        "$content_animation_key_suffix": "_run"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_state=11&' = $title_text)))",
+        "$is_visible": true,
+        "$animation_key": "alpha_fade_in_5s"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_state=12&' = $title_text)))",
+        "$is_visible": true,
+        "$animation_key": "alpha_fade_out_5s",
+        "$content_animation_key_suffix": "_run"
+      },
+      // colors
+      {
+        "requires": "((not ($title_text - '&fs_fader_color=0&' = $title_text)))", // black
+        "$chrome_color": "0"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_color=1&' = $title_text)))", // white
+        "$chrome_color": "1"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_color=2&' = $title_text)))", // clear
+        "$chrome_color": "2"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_color=3&' = $title_text)))", // portal
+        "$chrome_color": "3"
+      }
+    ],
+    "controls": [
+      {
+        "_backout@fs_fader.backout": {
+          "visible": "($is_visible)",
+          "$chrome_color": "$chrome_color"
+        }
+      },
+      {
+        "_content_container@fs_fader.content_container": {
+          "visible": true
+        }
+      }
+    ]
+  },
+  // #endregion </root>
+
+  // #region <controls>
+  "backout": {
+    "type": "image",
+    "size": ["1000%", "1000%"], // exceeds bounds of safe area
+    "texture": "('textures/ui/fader/bg_' + $chrome_color)",
+    "alpha": "@fs_fader.$animation_key"
+  },
+  "content_container": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "$adjusted_animation_key|default": "('fs_fader.' + $animation_key + '_content_container' + $content_animation_key_suffix)",
+    "alpha": 0,
+    "anims": [
+      "@$adjusted_animation_key"
+    ],
+    "layer": 57100,
+    "propagate_alpha": true,
+    "$content_type_enum|default": 0,
+    "$content_title_loc_key|default": "",
+    "variables": [
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=0&' = $title_text)))",
+        "$content_type_enum": 0
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=1&' = $title_text)))",
+        "$content_type_enum": 1
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=2&' = $title_text)))",
+        "$content_type_enum": 2
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=3&' = $title_text)))",
+        "$content_type_enum": 3
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=4&' = $title_text)))", // leo
+        "$content_type_enum": 4
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=40&' = $title_text)))", // leo (out)
+        "$content_type_enum": 40
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=5&' = $title_text)))", // donny
+        "$content_type_enum": 5
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=50&' = $title_text)))", // donny (out)
+        "$content_type_enum": 50
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=6&' = $title_text)))", // raph
+        "$content_type_enum": 6
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=60&' = $title_text)))", // raph (out)
+        "$content_type_enum": 60
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=7&' = $title_text)))", // mich
+        "$content_type_enum": 7
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=70&' = $title_text)))", // mich (out)
+        "$content_type_enum": 70
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=8&' = $title_text)))", // blimp
+        "$content_type_enum": 8
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=9&' = $title_text)))", // blimp
+        "$content_type_enum": 9
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=10&' = $title_text)))", // portal
+        "$content_type_enum": 10
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=11&' = $title_text)))", // portal (empty)
+        "$content_type_enum": 11
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=12&' = $title_text)))", // cowabunga
+        "$content_type_enum": 12
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=13&' = $title_text)))", // cowabunga (out)
+        "$content_type_enum": 13
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=14&' = $title_text)))", // TV (partial)
+        "$content_type_enum": 14
+      },
+      // boss encounter
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=80&' = $title_text)))", // Boss Intro, bebop
+        "$content_type_enum": 80,
+        "$content_title_loc_key": "entity.fs:boss_bebop.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=81&' = $title_text)))", // Boss Outro, bebop
+        "$content_type_enum": 81,
+        "$content_title_loc_key": "entity.fs:boss_bebop.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=82&' = $title_text)))", // Boss Intro, rocksteady
+        "$content_type_enum": 82,
+        "$content_title_loc_key": "entity.fs:boss_rocksteady.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=83&' = $title_text)))", // Boss Outro, rocksteady
+        "$content_type_enum": 83,
+        "$content_title_loc_key": "entity.fs:boss_rocksteady.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=84&' = $title_text)))", // Boss Intro, shredder
+        "$content_type_enum": 84,
+        "$content_title_loc_key": "entity.fs:boss_shredder.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=85&' = $title_text)))", // Boss Outro, shredder
+        "$content_type_enum": 85,
+        "$content_title_loc_key": "entity.fs:boss_shredder.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=86&' = $title_text)))", // Boss Intro, tempestra
+        "$content_type_enum": 86,
+        "$content_title_loc_key": "entity.fs:boss_tempestra.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=87&' = $title_text)))", // Boss Outro, tempestra
+        "$content_type_enum": 87,
+        "$content_title_loc_key": "entity.fs:boss_tempestra.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=88&' = $title_text)))", // Boss Intro, baxter
+        "$content_type_enum": 88,
+        "$content_title_loc_key": "entity.fs:boss_baxter_stockman.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=89&' = $title_text)))", // Boss Outro, baxter
+        "$content_type_enum": 89,
+        "$content_title_loc_key": "entity.fs:boss_baxter_stockman.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=90&' = $title_text)))", // Boss Intro, leatherhead
+        "$content_type_enum": 90,
+        "$content_title_loc_key": "entity.fs:boss_leatherhead.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=91&' = $title_text)))", // Boss Outro, leatherhead
+        "$content_type_enum": 91,
+        "$content_title_loc_key": "entity.fs:boss_leatherhead.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=92&' = $title_text)))", // Boss Intro, krang
+        "$content_type_enum": 92,
+        "$content_title_loc_key": "entity.fs:boss_krang.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=93&' = $title_text)))", // Boss Outro, krang
+        "$content_type_enum": 93,
+        "$content_title_loc_key": "entity.fs:boss_krang.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=94&' = $title_text)))", // Boss Intro, s.krang
+        "$content_type_enum": 94,
+        "$content_title_loc_key": "entity.fs:boss_super_krang.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=95&' = $title_text)))", // Boss Outro, s.krang
+        "$content_type_enum": 95,
+        "$content_title_loc_key": "entity.fs:boss_super_krang.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=96&' = $title_text)))", // Boss Intro, s.shredder
+        "$content_type_enum": 96,
+        "$content_title_loc_key": "entity.fs:boss_super_shredder.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=97&' = $title_text)))", // Boss Outro, s.shredder
+        "$content_type_enum": 97,
+        "$content_title_loc_key": "entity.fs:boss_super_shredder.name"
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=1100&' = $title_text)))", // Boss Bar Init
+        "$content_type_enum": 1100
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=1005&' = $title_text)))", // Boss Bar (5 bars)
+        "$content_type_enum": 1005
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=1004&' = $title_text)))", // Boss Bar (4 bars)
+        "$content_type_enum": 1004
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=1003&' = $title_text)))", // Boss Bar (3 bars)
+        "$content_type_enum": 1003
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=1002&' = $title_text)))", // Boss Bar (2 bars)
+        "$content_type_enum": 1002
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=1001&' = $title_text)))", // Boss Bar (1 bars)
+        "$content_type_enum": 1001
+      },
+      {
+        "requires": "((not ($title_text - '&fs_fader_enum=1000&' = $title_text)))", // Boss Bar (0 bars)
+        "$content_type_enum": 1000
+      }
+    ],
+    "controls": [
+      {
+        "_content_loader@fs_fader.loading_icon_activity_indicator": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 0 or $content_type_enum = 8 or $content_type_enum = 9)",
+          "anchor_from": "bottom_right",
+          "anchor_to": "bottom_right",
+          "offset": [-30, -30]
+        }
+      },
+      {
+        "_content_loader_icon_pizza@fs_fader.loading_icon_pizza": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 1)"
+        }
+      },
+      {
+        "_content_loader_verbose@fs_fader.content_loader_verbose": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 2)"
+        }
+      },
+      {
+        "_content_loader_empty@fs_fader.empty_panel": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 3)"
+        }
+      },
+      {
+        "_content_clip_manhole_leo@fs_fader.clip_manhole_leo": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 4)"
+        }
+      },
+      {
+        "_content_clip_manhole_leo_out@fs_fader.clip_manhole_leo_out": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 40)"
+        }
+      },
+      {
+        "_content_clip_manhole_don@fs_fader.clip_manhole_don": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 5)"
+        }
+      },
+      {
+        "_content_clip_manhole_don_out@fs_fader.clip_manhole_don_out": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 50)"
+        }
+      },
+      {
+        "_content_clip_manhole_raph@fs_fader.clip_manhole_raph": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 6)"
+        }
+      },
+      {
+        "_content_clip_manhole_raph_out@fs_fader.clip_manhole_raph_out": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 60)"
+        }
+      },
+      {
+        "_content_clip_manhole_mich@fs_fader.clip_manhole_mich": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 7)"
+        }
+      },
+      {
+        "_content_clip_manhole_mich_out@fs_fader.clip_manhole_mich_out": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 70)"
+        }
+      },
+      {
+        "_content_blimp@fs_fader.clip_blimp": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 8)"
+        }
+      },
+      {
+        "_content_party_wagon@fs_fader.clip_party_wagon": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 9)"
+        }
+      },
+      {
+        "_content_portal@fs_fader.clip_portal": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 10)"
+        }
+      },
+      {
+        "_content_portal_empty@fs_fader.clip_portal_empty": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 11)"
+        }
+      },
+      {
+        "_content_cowabunga@fs_fader.clip_cowabunga": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 12)"
+        }
+      },
+      {
+        "_content_cowabunga_out@fs_fader.clip_cowabunga_out": {
+          "alpha": "@$adjusted_animation_key",
+          "visible": "($content_type_enum = 13)"
+        }
+      },
+      {
+        "_content_tv@fs_fader_tv_partial.root_panel": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 14)"
+        }
+      },
+      {
+        "_content_80@fs_fader.clip_boss_intro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 80)"
+        }
+      },
+      {
+        "_content_81@fs_fader.clip_boss_outro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 81)"
+        }
+      },
+      {
+        "_content_82@fs_fader.clip_boss_intro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 82)"
+        }
+      },
+      {
+        "_content_83@fs_fader.clip_boss_outro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 83)"
+        }
+      },
+      {
+        "_content_84@fs_fader.clip_boss_intro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 84)"
+        }
+      },
+      {
+        "_content_85@fs_fader.clip_boss_outro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 85)"
+        }
+      },
+      {
+        "_content_86@fs_fader.clip_boss_intro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 86)"
+        }
+      },
+      {
+        "_content_87@fs_fader.clip_boss_outro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 87)"
+        }
+      },
+      {
+        "_content_88@fs_fader.clip_boss_intro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 88)"
+        }
+      },
+      {
+        "_content_89@fs_fader.clip_boss_outro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 89)"
+        }
+      },
+      {
+        "_content_90@fs_fader.clip_boss_intro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 90)"
+        }
+      },
+      {
+        "_content_91@fs_fader.clip_boss_outro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 91)"
+        }
+      },
+      {
+        "_content_92@fs_fader.clip_boss_intro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 92)"
+        }
+      },
+      {
+        "_content_93@fs_fader.clip_boss_outro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 93)"
+        }
+      },
+      {
+        "_content_94@fs_fader.clip_boss_intro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 94)"
+        }
+      },
+      {
+        "_content_95@fs_fader.clip_boss_outro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 95)"
+        }
+      },
+      {
+        "_content_96@fs_fader.clip_boss_intro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 96)"
+        }
+      },
+      {
+        "_content_97@fs_fader.clip_boss_outro": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 97)"
+        }
+      },
+      {
+        "_content_1100@fs_fader.clip_boss_bar_init": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 1100)"
+        }
+      },
+      {
+        "_content_1005@fs_fader.boss_bar": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 1005)",
+          "$bar_count": 5,
+          "$bar_size": [217, 128],
+          "$bar_anim": "fs_fader.anim_boss_bar_anim_to_5",
+          "$bar_seg_anim": "fs_fader.anim_boss_bar_segments_in",
+          "$bar_seg_alpha": 0
+        }
+      },
+      {
+        "_content_1004@fs_fader.boss_bar": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 1004)",
+          "$bar_count": 4,
+          // "$bar_size": [166, 128],
+          "$bar_size": [166, 128],
+          "$bar_anim": "fs_fader.anim_boss_bar_anim_to_4",
+          "$bar_seg_anim": "fs_fader.anim_boss_bar_null",
+          "$bar_seg_alpha": 1
+        }
+      },
+      {
+        "_content_1003@fs_fader.boss_bar": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 1003)",
+          "$bar_count": 3,
+          // "$bar_size": [128, 128],
+          "$bar_size": [166, 128],
+          "$bar_anim": "fs_fader.anim_boss_bar_anim_to_3",
+          "$bar_seg_anim": "fs_fader.anim_boss_bar_null",
+          "$bar_seg_alpha": 1
+        }
+      },
+      {
+        "_content_1002@fs_fader.boss_bar": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 1002)",
+          "$bar_count": 2,
+          // "$bar_size": [90, 128],
+          "$bar_size": [217, 128],
+          "$bar_anim": "fs_fader.anim_boss_bar_anim_to_2",
+          "$bar_seg_anim": "fs_fader.anim_boss_bar_null",
+          "$bar_seg_alpha": 1
+        }
+      },
+      {
+        "_content_1001@fs_fader.boss_bar": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 1001)",
+          "$bar_count": 1,
+          // "$bar_size": [53, 128],
+          "$bar_size": [217, 128],
+          "$bar_anim": "fs_fader.anim_boss_bar_anim_to_1",
+          "$bar_seg_anim": "fs_fader.anim_boss_bar_null",
+          "$bar_seg_alpha": 1
+        }
+      },
+      {
+        "_content_1000@fs_fader.boss_bar": {
+          "alpha": 1,
+          "visible": "($content_type_enum = 1000)",
+          "$bar_count": 0,
+          // "$bar_size": [0, 128],
+          "$bar_size": [217, 128],
+          "$bar_anim": "fs_fader.anim_boss_bar_anim_to_0",
+          "$bar_seg_anim": "fs_fader.anim_boss_bar_null",
+          "$bar_seg_alpha": 1
+        }
+      }
+    ]
+  },
+  "empty_panel": {
+    "type": "panel"
+  },
+  "loading_icon_pizza": {
+    "type": "image",
+		"texture": "textures/ui/fader/load_pizza",
+    "size": [100, 100],
+		"uv_size": [24, 24],
+		"uv": "@fs_fader.image_uv_animation"
+  },
+  "clip_manhole_leo": {
+    "type": "image",
+		"texture": "textures/ui/fader/clips/manhole_flip_leo",
+    "size": [192, 192],
+		"uv_size": [96, 96],
+		"uv": "@fs_fader.image_uv_animation"
+  },
+  "clip_manhole_leo_out": {
+    "type": "image",
+		"texture": "textures/ui/fader/clips/manhole_flip_leo_out",
+    "size": [192, 192]
+  },
+  "clip_manhole_don": {
+    "type": "image",
+		"texture": "textures/ui/fader/clips/manhole_flip_don",
+    "size": [192, 192],
+		"uv_size": [96, 96],
+		"uv": "@fs_fader.image_uv_animation"
+  },
+  "clip_manhole_don_out": {
+    "type": "image",
+		"texture": "textures/ui/fader/clips/manhole_flip_don_out",
+    "size": [192, 192]
+  },
+  "clip_manhole_raph": {
+    "type": "image",
+		"texture": "textures/ui/fader/clips/manhole_flip_raph",
+    "size": [192, 192],
+		"uv_size": [96, 96],
+		"uv": "@fs_fader.image_uv_animation"
+  },
+  "clip_manhole_raph_out": {
+    "type": "image",
+		"texture": "textures/ui/fader/clips/manhole_flip_raph_out",
+    "size": [192, 192]
+  },
+  "clip_manhole_mich": {
+    "type": "image",
+		"texture": "textures/ui/fader/clips/manhole_flip_mich",
+    "size": [192, 192],
+		"uv_size": [96, 96],
+		"uv": "@fs_fader.image_uv_animation"
+  },
+  "clip_manhole_mich_out": {
+    "type": "image",
+		"texture": "textures/ui/fader/clips/manhole_flip_mich_out",
+    "size": [192, 192]
+  },
+  "clip_blimp": {
+    "type": "image",
+		"texture": "textures/ui/fader/clips/blimp",
+    "size": [192, 144],
+		"uv_size": [192, 144],
+		"uv": "@fs_fader.image_uv_animation"
+  },
+  "clip_party_wagon": {
+    "type": "image",
+		"texture": "textures/ui/fader/clips/party_wagon",
+    "size": [192, 144],
+		"uv_size": [192, 144],
+		"uv": "@fs_fader.image_uv_animation"
+  },
+  "clip_cowabunga": {
+    "type": "image",
+		"texture": "textures/ui/fader/clips/cowabunga",
+    "size": [192, 144],
+		"uv_size": [192, 144],
+		"uv": "@fs_fader.image_uv_animation"
+  },
+  "clip_cowabunga_out": {
+    "type": "image",
+		"texture": "textures/ui/fader/cowabunga_end",
+    "size": [192, 144]
+  },
+  "clip_portal": {
+    "type": "image",
+		"texture": "textures/ui/fader/clips/portal",
+    "size": [192, 144],
+		"uv_size": [192, 144],
+		"uv": "@fs_fader.image_uv_animation",
+    "controls": [
+      {
+        "_front_leo": {
+          "type": "image",
+          "texture": "textures/ui/fader/clips/portal_leo_front",
+          "size": [96, 80],
+          "uv_size": [96, 80],
+          "offset": [10, 10],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "alpha": 1,
+          "anims": [
+            "@fs_fader.anim_turtle_front"
+          ],
+          "uv": "@fs_fader.image_uv_animation"
+        }
+      },
+      {
+        "_front_donnie": {
+          "type": "image",
+          "texture": "textures/ui/fader/clips/portal_don_front",
+          "size": [96, 80],
+          "uv_size": [96, 80],
+          "offset": [-10, -10],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "alpha": 1,
+          "anims": [
+            "@fs_fader.anim_turtle_front"
+          ],
+          "uv": "@fs_fader.image_uv_animation"
+        }
+      },
+      {
+        "_front_raph": {
+          "type": "image",
+          "texture": "textures/ui/fader/clips/portal_raph_front",
+          "size": [96, 80],
+          "uv_size": [96, 80],
+          "offset": [18, 10],
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "alpha": 1,
+          "anims": [
+            "@fs_fader.anim_turtle_front"
+          ],
+          "uv": "@fs_fader.image_uv_animation"
+        }
+      },
+      {
+        "_front_mikey": {
+          "type": "image",
+          "texture": "textures/ui/fader/clips/portal_mikey_front",
+          "size": [96, 80],
+          "uv_size": [96, 80],
+          "offset": [-7, -8],
+          "anchor_from": "bottom_right",
+          "anchor_to": "bottom_right",
+          "alpha": 1,
+          "anims": [
+            "@fs_fader.anim_turtle_front"
+          ],
+          "uv": "@fs_fader.image_uv_animation"
+        }
+      },
+      {
+        "_back_leo": {
+          "type": "image",
+          "texture": "textures/ui/fader/clips/portal_leo_back",
+          "size": [96, 80],
+          "uv_size": [96, 80],
+          "offset": [10, 10],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "alpha": 0,
+          "anims": [
+            "@fs_fader.anim_turtle_back"
+          ],
+          "uv": "@fs_fader.image_uv_animation"
+        }
+      },
+      {
+        "_back_donnie": {
+          "type": "image",
+          "texture": "textures/ui/fader/clips/portal_don_back",
+          "size": [96, 80],
+          "uv_size": [96, 80],
+          "offset": [-10, -10],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "alpha": 0,
+          "anims": [
+            "@fs_fader.anim_turtle_back"
+          ],
+          "uv": "@fs_fader.image_uv_animation"
+        }
+      },
+      {
+        "_back_raph": {
+          "type": "image",
+          "texture": "textures/ui/fader/clips/portal_raph_back",
+          "size": [96, 80],
+          "uv_size": [96, 80],
+          "offset": [18, 10],
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "alpha": 0,
+          "anims": [
+            "@fs_fader.anim_turtle_back"
+          ],
+          "uv": "@fs_fader.image_uv_animation"
+        }
+      },
+      {
+        "_back_mikey": {
+          "type": "image",
+          "texture": "textures/ui/fader/clips/portal_mikey_back",
+          "size": [96, 80],
+          "uv_size": [96, 80],
+          "offset": [-7, -8],
+          "anchor_from": "bottom_right",
+          "anchor_to": "bottom_right",
+          "alpha": 0,
+          "anims": [
+            "@fs_fader.anim_turtle_back"
+          ],
+          "uv": "@fs_fader.image_uv_animation"
+        }
+      }
+    ]
+  },
+  "clip_portal_empty": {
+    "type": "image",
+		"texture": "textures/ui/fader/clips/portal",
+    "size": [192, 144],
+		"uv_size": [192, 144],
+		"uv": "@fs_fader.image_uv_animation"
+  },
+
+  "clip_boss_intro": {
+    "type": "panel",
+    "size": [217, 128],
+    "controls": [
+      {
+        "_anim_panel": {
+          "type": "image",
+          "texture": "textures/ui/boss/boss_bar_intro",
+          "size": [217, 128],
+          "uv_size": [217, 128],
+          "uv": "@fs_fader.image_uv_animation"
+        }
+      },
+      {
+        "_boss_name_shadow": {
+          "type": "label",
+          "text": "$content_title_loc_key",
+          "font_type": "MinecraftTen",
+          "color": [0.0, 0.0, 0.0],
+          "font_scale_factor": 3,
+          "offset": [1, 5],
+          "alpha": 0,
+          "anims": [
+            "@fs_fader.anim_boss_intro_fade_in"
+          ]
+        }
+      },
+      {
+        "_boss_name": {
+          "type": "label",
+          "text": "$content_title_loc_key",
+          "font_type": "MinecraftTen",
+          "color": [1.0, 1.0, 1.0],
+          "font_scale_factor": 3,
+          "offset": [0, 4],
+          "alpha": 0,
+          "anims": [
+            "@fs_fader.anim_boss_intro_fade_in"
+          ]
+        }
+      },
+      {
+        "preloaders_1": {
+          "type": "image",
+          "texture": "textures/ui/fader/clips/boss_bar_outro",
+          "size": [1, 1],
+          "uv_size": [217, 128],
+          "alpha": 1,
+          "uv": "@fs_fader.image_uv_animation",
+          "offset": [0, "-3000%"]
+        }
+      },
+      {
+        "preloaders_2": {
+          "type": "image",
+          "texture": "textures/ui/boss/bar_segs",
+          "size": [1, 1],
+          "offset": [0, "-3000%"]
+        }
+      },
+      {
+        "preloaders_3": {
+          "type": "image",
+          "texture": "textures/ui/boss/bar_full",
+          "size": [1, 1],
+          "offset": [0, "-3000%"]
+        }
+      },
+      {
+        "preloaders_4": {
+          "type": "image",
+          "texture": "textures/ui/boss/bar_empty",
+          "size": [1, 1],
+          "offset": [0, "-3000%"]
+        }
+      }
+    ]
+  },
+
+  "clip_boss_outro": {
+    "type": "panel",
+    "size": [217, 128],
+    "controls": [
+      {
+        "_anim_panel": {
+          "type": "image",
+          "texture": "textures/ui/boss/boss_bar_outro",
+          "size": [217, 128],
+          "uv_size": [217, 128],
+          "uv": "@fs_fader.image_uv_animation"
+        }
+      },
+      {
+        "_boss_name_shadow": {
+          "type": "label",
+          "text": "$content_title_loc_key",
+          "font_type": "MinecraftTen",
+          "color": [0.0, 0.0, 0.0],
+          "font_scale_factor": 3,
+          "offset": [1, 5],
+          "alpha": 1,
+          "anims": [
+            "@fs_fader.anim_boss_outro_fade_out"
+          ]
+        }
+      },
+      {
+        "_boss_name": {
+          "type": "label",
+          "text": "$content_title_loc_key",
+          "font_type": "MinecraftTen",
+          "color": [1.0, 1.0, 1.0],
+          "font_scale_factor": 3,
+          "offset": [0, 4],
+          "alpha": 1,
+          "anims": [
+            "@fs_fader.anim_boss_outro_fade_out"
+          ]
+        }
+      }
+    ]
+  },
+
+  "clip_boss_bar_init": {
+    "type": "panel",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "$master_offset|default": [0, 0],
+    "$device_idiom|default": "desktop",
+    "variables": [
+      { "requires": "($is_ios or $is_android)", "$master_offset": [0, 25], "$device_idiom": "pocket"  }, // pocket
+      { "requires": "(not ($is_ios or $is_android))", "$master_offset": [0, 12], "$device_idiom": "desktop" } // not pocket
+
+      // inverted for debugging:
+      // { "requires": "(not ($is_ios or $is_android))", "$master_offset": [0, 25], "$device_idiom": "pocket"}, // pocket
+      // { "requires": "(($is_ios or $is_android)", "$master_offset": [0, 25], "$device_idiom": "desktop" } // not pocket
+    ],
+    "controls": [
+      {
+        "_pc@clip_boss_bar_init_animated": {
+          "offset": [0, 63],
+          "visible": "($device_idiom = 'desktop')"
+        }
+      },
+      {
+        "_pocket@clip_boss_bar_init_animated": {
+          "offset": [0, 65],
+          "visible": "($device_idiom = 'pocket')"
+        }
+      }
+    ]
+  },
+
+  "boss_bar": {
+    "type": "panel",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "$master_offset|default": [0, 0],
+    "$device_idiom|default": "desktop",
+    "$bar_count|default": 0,
+    "$bar_size|default": [50, 128],
+    "$bar_anim|default": "fs_fader.anim_boss_bar_null",
+    "$bar_seg_anim|default": "fs_fader.anim_boss_bar_null",
+    "$bar_seg_alpha|default": 0,
+    "variables": [
+      { "requires": "($is_ios or $is_android)", "$master_offset": [0, 25], "$device_idiom": "pocket"  }, // pocket
+      { "requires": "(not ($is_ios or $is_android))", "$master_offset": [0, 12], "$device_idiom": "desktop" } // not pocket
+
+      // inverted for debugging:
+      // { "requires": "(not ($is_ios or $is_android))", "$master_offset": [0, 25], "$device_idiom": "pocket"}, // pocket
+      // { "requires": "(($is_ios or $is_android)", "$master_offset": [0, 25], "$device_idiom": "desktop" } // not pocket
+    ],
+    "controls": [
+      {
+        "_pc@boss_bar_dynamic": {
+          "offset": [0, 63],
+          "visible": "($device_idiom = 'desktop')",
+          "$bar_count": "($bar_count)",
+          "$bar_size": "$bar_size",
+          "$bar_anim": "$bar_anim",
+          "$bar_seg_anim": "$bar_seg_anim",
+          "$bar_seg_alpha": "$bar_seg_alpha"
+        }
+      },
+      {
+        "_pocket@boss_bar_dynamic": {
+          "offset": [0, 65],
+          "visible": "($device_idiom = 'pocket')",
+          "$bar_count": "($bar_count)",
+          "$bar_size": "$bar_size",
+          "$bar_anim": "$bar_anim",
+          "$bar_seg_anim": "$bar_seg_anim",
+          "$bar_seg_alpha": "$bar_seg_alpha"
+        }
+      }
+    ]
+  },
+
+  "boss_bar_dynamic": {
+    "type": "panel",
+    "size": [217, 128],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "controls": [
+      {
+        "_bar_container": {
+          "type": "image",
+          "texture": "textures/ui/boss/bar_empty",
+          "size": [217, 128]
+        }
+      },
+      {
+        "_bar_content_container": {
+          "type": "panel",
+          "size": "$bar_size",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "clips_children": true,
+          "allow_clipping": true,
+          "anims": [
+            "@$bar_anim"
+          ],
+          "controls": [
+            {
+              "bar_coverage": {
+                "type": "image",
+                "texture": "textures/ui/boss/bar_full",
+                "size": [217, 128],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "_bar_segs": {
+          "type": "image",
+          "texture": "textures/ui/boss/bar_segs",
+          "size": [217, 128],
+          "alpha": "($bar_seg_alpha)",
+          "anims": [
+            "@$bar_seg_anim"
+          ]
+        }
+      }
+    ]
+  },
+  
+
+  "clip_boss_bar_init_animated": {
+    "type": "panel",
+    "size": [217, 128],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "controls": [
+      {
+        "_anim_panel": {
+          "type": "image",
+          "texture": "textures/ui/boss/boss_start",
+          "size": [217, 128],
+          "uv_size": [217, 128],
+          "uv": "@fs_fader.image_uv_animation"
+        }
+      }
+    ]
+  },
+
+  "loading_icon_activity_indicator": {
+    "type": "panel",
+    "size": [19.5, 19.5],
+    "clips_children": true,
+    "controls": [
+      {
+        "_image@loading_icon_activity_indicator_sprite": {}
+      }
+    ]
+  },
+  "loading_icon_activity_indicator_sprite": {
+    "type": "image",
+		"texture": "textures/ui/fader/loading_spin",
+    "size": [20, 20],
+		"uv_size": [7, 7],
+		"uv": "@fs_fader.spinner_animation",
+    "anchor_from": "center",
+    "anchor_to": "center"
+  },
+  "content_loader_verbose": {
+    "type": "panel",
+    "size": [200, 200],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "controls": [
+      {
+        "_content_loader_verbose_loader@fs_fader.loading_icon_pizza": {
+        }
+      },
+      {
+        "__loading_text": {
+          "type": "label",
+          "text": "ui.fader.loader_verbose.text",
+          "localize": true,
+          "color": [1, 1, 1],
+          "size": ["100%", 50],
+          "offset": [0, 20],
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "font_type": "MinecraftTen",
+          "text_alignment": "center"
+          // "font_size": "24"
+        }
+      }
+      // {
+      //   "_loading_bar": {
+      //     "type": "custom",
+      //     "renderer": "progress_bar_renderer",
+      //     "primary_color": [0, 0, 0],
+      //     "secondary_color": [0, 1, 0],
+      //     "size": ["100%", 10],
+      //     "layer": 11000,
+      //     "property_bag": {
+      //       "#progress_bar_visible": true,
+      //       "#progress_bar_total_amount":  100.0,
+      //       "#progress_bar_current_amount": 50.0,
+      //       "#round_value": true
+      //     }
+      //   }
+      // }
+    ]
+  },
+  "content_become_mask": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "controls": [
+      {
+        "__mask_overlay": {
+          "type": "image",
+          "texture": "textures/ui/fader/mask_don",
+          // "size": "@fs_fader.anim_content_become_mask",
+          "size": ["500%", "500%"],
+          "alpha": "@fs_fader.anim_content_become_mask"
+          // "offset": [0, -30]
+        }
+      }
+    ]
+  },
+  "anim_content_become_mask": {
+    "anim_type": "alpha",
+    "easing": "out_quad",
+    "from": 0,
+    "to": 1,
+    "duration": 1.5,
+    "next": "@fs_fader.anim_content_become_mask_outro"
+  },
+  "anim_content_become_mask_2": {
+    "anim_type": "size",
+    "easing": "out_quad",
+    "from": ["30%", "30%"],
+    "to": ["200%", "200%"],
+    "duration": 1,
+    "next": "@fs_fader.anim_content_become_mask_outro"
+  },
+  "anim_content_become_mask_outro": {
+    "anim_type": "alpha",
+    "easing": "in_quad",
+    "from": 1.0,
+    "to": 0.0,
+    "duration": 1
+  },
+  // #endregion </controls>
+
+  // #region <sprites>
+  "image_uv_animation": {
+		"anim_type": "aseprite_flip_book",
+		"initial_uv": [0, 0]
+	},
+  "spinner_animation": {
+    "anim_type": "flip_book",
+    "initial_uv": [ 0, 0 ],
+    "frame_count": 10,
+    "frame_step": 7,
+    "fps": 10
+  },
+  "clip_manhole_leo_animation": {
+    "anim_type": "flip_book",
+    "initial_uv": [ 0, 0 ],
+    "frame_count": 10,
+    "frame_step": 1,
+    "fps": 10
+  },
+  // #endregion </sprites>
+
+  // #region <animations>
+  // #region Chrome
+  "alpha_instant_hide": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 0,
+    "duration": 0
+  },
+  "alpha_instant_show": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 1,
+    "duration": 0
+  },
+  "alpha_fade_in_1s": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 1,
+    "duration": 1
+  },
+  "alpha_fade_out_1s": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 1,
+    "to": 0,
+    "duration": 1
+  },
+  "alpha_fade_in_2s": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 1,
+    "duration": 2
+  },
+  "alpha_fade_out_2s": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 1,
+    "to": 0,
+    "duration": 2
+  },
+  "alpha_fade_in_3s": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 1,
+    "duration": 3
+  },
+  "alpha_fade_out_3s": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 1,
+    "to": 0,
+    "duration": 3
+  },
+  "alpha_fade_in_4s": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 1,
+    "duration": 4
+  },
+  "alpha_fade_out_4s": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 1,
+    "to": 0,
+    "duration": 4
+  },
+  "alpha_fade_in_5s": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 1,
+    "duration": 5
+  },
+  "alpha_fade_out_5s": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 1,
+    "to": 0,
+    "duration": 5
+  },
+  // #endregion
+  // #region Container (sleep)
+  "alpha_instant_hide_content_container": {
+    "anim_type": "wait",
+    "duration": 0,
+    "next": "@fs_fader.alpha_instant_hide_content_container_run"
+  },
+  "alpha_instant_show_content_container": {
+    "anim_type": "wait",
+    "duration": 0,
+    "next": "@fs_fader.alpha_instant_show_content_container_run"
+  },
+  "alpha_fade_in_1s_content_container": {
+    "anim_type": "wait",
+    "duration": 1,
+    "next": "@fs_fader.alpha_fade_in_1s_content_container_run"
+  },
+  "alpha_fade_out_1s_content_container": {
+    "anim_type": "wait",
+    "duration": 1,
+    "next": "@fs_fader.alpha_fade_out_1s_content_container_run"
+  },
+  "alpha_fade_in_2s_content_container": {
+    "anim_type": "wait",
+    "duration": 2,
+    "next": "@fs_fader.alpha_fade_in_2s_content_container_run"
+  },
+  "alpha_fade_out_2s_content_container": {
+    "anim_type": "wait",
+    "duration": 2,
+    "next": "@fs_fader.alpha_fade_out_2s_content_container_run"
+  },
+  "alpha_fade_in_3s_content_container": {
+    "anim_type": "wait",
+    "duration": 3,
+    "next": "@fs_fader.alpha_fade_in_3s_content_container_run"
+  },
+  "alpha_fade_out_3s_content_container": {
+    "anim_type": "wait",
+    "duration": 3,
+    "next": "@fs_fader.alpha_fade_out_3s_content_container_run"
+  },
+  "alpha_fade_in_4s_content_container": {
+    "anim_type": "wait",
+    "duration": 4,
+    "next": "@fs_fader.alpha_fade_in_4s_content_container_run"
+  },
+  "alpha_fade_out_4s_content_container": {
+    "anim_type": "wait",
+    "duration": 4,
+    "next": "@fs_fader.alpha_fade_out_4s_content_container_run"
+  },
+  "alpha_fade_in_5s_content_container": {
+    "anim_type": "wait",
+    "duration": 5,
+    "next": "@fs_fader.alpha_fade_in_5s_content_container_run"
+  },
+  "alpha_fade_out_5s_content_container": {
+    "anim_type": "wait",
+    "duration": 5,
+    "next": "@fs_fader.alpha_fade_out_5s_content_container_run"
+  },
+  // #endregion
+  // #region Container (fade in content)
+  "alpha_instant_hide_content_container_run": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 0,
+    "duration": 0
+  },
+  "alpha_instant_show_content_container_run": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 1,
+    "duration": 0
+  },
+  "alpha_fade_in_1s_content_container_run": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 1,
+    "duration": 0.33
+  },
+  "alpha_fade_out_1s_content_container_run": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 1,
+    "to": 0,
+    "duration": 0.33
+  },
+  "alpha_fade_in_2s_content_container_run": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 1,
+    "duration": 0.5
+  },
+  "alpha_fade_out_2s_content_container_run": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 1,
+    "to": 0,
+    "duration": 0.5
+  },
+  "alpha_fade_in_3s_content_container_run": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 1,
+    "duration": 0.5
+  },
+  "alpha_fade_out_3s_content_container_run": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 1,
+    "to": 0,
+    "duration": 0.5
+  },
+  "alpha_fade_in_4s_content_container_run": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 1,
+    "duration": 0.5
+  },
+  "alpha_fade_out_4s_content_container_run": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 1,
+    "to": 0,
+    "duration": 1
+  },
+  "alpha_fade_in_5s_content_container_run": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 1,
+    "duration": 0.5
+  },
+  "alpha_fade_out_5s_content_container_run": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 1,
+    "to": 0,
+    "duration": 1
+  },
+  "anim_turtle_front": {
+    "anim_type": "alpha",
+    "from": 1,
+    "to": 1,
+    "duration": 0,
+    "next": "@fs_fader.anim_turtle_front_wait"
+  },
+  "anim_turtle_front_wait": {
+    "anim_type": "wait",
+    "duration": 3,
+    "next": "@fs_fader.anim_turtle_front_out"
+  },
+  "anim_turtle_front_out": {
+    "anim_type": "alpha",
+    "from": 1,
+    "to": 0,
+    "duration": 0
+  },
+  "anim_turtle_back": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 0,
+    "duration": 0,
+    "next": "@fs_fader.anim_turtle_back_wait"
+  },
+  "anim_turtle_back_wait": {
+    "anim_type": "wait",
+    "duration": 3,
+    "next": "@fs_fader.anim_turtle_back_out"
+  },
+  "anim_turtle_back_out": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 1,
+    "duration": 0
+  },
+  // boss faders
+  "anim_boss_intro_fade_in": {
+    "anim_type": "wait",
+    "duration": 2,
+    "next": "@fs_fader.anim_boss_intro_fade_in_1"
+  },
+  "anim_boss_intro_fade_in_1": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 1,
+    "duration": 0.5
+  },
+  "anim_boss_outro_fade_out": {
+    "anim_type": "wait",
+    "duration": 0.8,
+    "next": "@fs_fader.anim_boss_outro_fade_out_1"
+  },
+  "anim_boss_outro_fade_out_1": {
+    "anim_type": "alpha",
+    "from": 1,
+    "to": 0,
+    "duration": 0.25
+  },
+  // boss bar anims
+  "anim_boss_bar_null": {
+    "anim_type": "wait",
+    "duration": 0.1
+  },
+  "anim_boss_bar_segments_in": {
+    "anim_type": "wait",
+    "duration": 0.1,
+    "next": "@fs_fader.anim_boss_bar_segments_in_1"
+  },
+  "anim_boss_bar_segments_in_1": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 1,
+    "duration": 0.2
+  },
+  "anim_boss_bar_segments_show": {
+    "anim_type": "alpha",
+    "from": 1,
+    "to": 1,
+    "duration": 0.0000001,
+    "next": "@fs_fader.anim_boss_bar_segments_in_1"
+  },
+  "anim_boss_bar_anim_to_5": {
+    "anim_type": "wait",
+    "duration": 0.1,
+    "next": "@fs_fader.anim_boss_bar_anim_to_5_1"
+  },
+  "anim_boss_bar_anim_to_5_1": {
+    "anim_type": "size",
+    "from": [217, 128],
+    "to": [217, 128],
+    "duration": 0.1
+  },
+  "anim_boss_bar_anim_to_4": {
+    "anim_type": "wait",
+    "duration": 0,
+    "next": "@fs_fader.anim_boss_bar_anim_to_4_1"
+  },
+  "anim_boss_bar_anim_to_4_1": {
+    "anim_type": "size",
+    "from": [217, 128],
+    "to": [166, 128],
+    "duration": 0.8
+  },
+  "anim_boss_bar_anim_to_3": {
+    "anim_type": "wait",
+    "duration": 0,
+    "next": "@fs_fader.anim_boss_bar_anim_to_3_1"
+  },
+  "anim_boss_bar_anim_to_3_1": {
+    "anim_type": "size",
+    "from": [166, 128],
+    "to": [128, 128],
+    "duration": 0.8
+  },
+  "anim_boss_bar_anim_to_2": {
+    "anim_type": "wait",
+    "duration": 0,
+    "next": "@fs_fader.anim_boss_bar_anim_to_2_1"
+  },
+  "anim_boss_bar_anim_to_2_1": {
+    "anim_type": "size",
+    "from": [128, 128],
+    "to": [90, 128],
+    "duration": 0.8
+  },
+  "anim_boss_bar_anim_to_1": {
+    "anim_type": "wait",
+    "duration": 0,
+    "next": "@fs_fader.anim_boss_bar_anim_to_1_1"
+  },
+  "anim_boss_bar_anim_to_1_1": {
+    "anim_type": "size",
+    "from": [90, 128],
+    "to": [53, 128],
+    "duration": 0.8
+  },
+  "anim_boss_bar_anim_to_0": {
+    "anim_type": "wait",
+    "duration": 0,
+    "next": "@fs_fader.anim_boss_bar_anim_to_0_1"
+  },
+  "anim_boss_bar_anim_to_0_1": {
+    "anim_type": "size",
+    "from": [53, 128],
+    "to": [0, 128],
+    "duration": 0.8
+  },
+  // #endregion
+  // #endregion
+
+  // #region <factory>
+  "fader_factory": {
+    "type": "panel",
+    "factory": {
+      "name": "hud_title_text_factory",
+      "control_ids": {
+        "hud_title_text": "fs_fader@fs_fader.root_panel"
+      }
+    }
+  }
+  // #endregion </factory>
+}

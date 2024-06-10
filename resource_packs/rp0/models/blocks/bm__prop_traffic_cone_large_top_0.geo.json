@@ -1,0 +1,1 @@
+{"format_version":"1.12.0","minecraft:geometry":[{"description":{"identifier":"geometry.prop_traffic_cone_large_top_0","texture_width":128,"texture_height":128,"visible_bounds_width":2,"visible_bounds_height":3.5,"visible_bounds_offset":[0,1.25,0]},"bones":[{"name":"bb_main","pivot":[0,-11,0],"cubes":[{"origin":[-5,1,-5],"size":[10,15,10],"uv":[38,35]}],"rotation":[0,0,0]}]}]}

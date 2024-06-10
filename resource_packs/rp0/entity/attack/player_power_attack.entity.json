@@ -1,0 +1,59 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:player_power_attack",
+            "render_controllers": [
+                {
+                    "controller.render.player_power_attack.donatello": "query.property('property:turtle') == 'donatello'"
+                },
+                {
+                    "controller.render.player_power_attack.leonardo": "query.property('property:turtle') == 'leonardo'"
+                },
+                {
+                    "controller.render.player_power_attack.michelangelo": "query.property('property:turtle') == 'michelangelo'"
+                },
+                {
+                    "controller.render.player_power_attack.raphael": "query.property('property:turtle') == 'raphael'"
+                }
+            ],
+            "geometry": {
+                "donatello": "geometry.player_third_person_donatello",
+                "leonardo": "geometry.player_third_person_leonardo",
+                "michelangelo": "geometry.player_third_person_michelangelo",
+                "raphael": "geometry.player_third_person_raphael"
+            },
+            "textures": {
+                "donatello": "textures/entity/player/donatello",
+                "leonardo": "textures/entity/player/leonardo",
+                "michelangelo": "textures/entity/player/michelangelo",
+                "raphael": "textures/entity/player/raphael"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "animations": {
+                "player_power_attack_donatello": "animation.player_power_attack.donatello",
+                "player_power_attack_leonardo": "animation.player_power_attack.leonardo",
+                "player_power_attack_michelangelo": "animation.player_power_attack.michelangelo",
+                "player_power_attack_raphael": "animation.player_power_attack.raphael"
+            },
+            "scripts": {
+                "animate": [
+                    {
+                        "player_power_attack_donatello": "query.property('property:turtle') == 'donatello'"
+                    },
+                    {
+                        "player_power_attack_leonardo": "query.property('property:turtle') == 'leonardo'"
+                    },
+                    {
+                        "player_power_attack_michelangelo": "query.property('property:turtle') == 'michelangelo'"
+                    },
+                    {
+                        "player_power_attack_raphael": "query.property('property:turtle') == 'raphael'"
+                    }
+                ]
+            }
+        }
+    }
+}

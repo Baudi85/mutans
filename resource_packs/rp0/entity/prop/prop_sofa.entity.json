@@ -1,0 +1,24 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "fs:prop_sofa",
+      "spawn_egg": {
+        "base_color": "#000000",
+        "overlay_color": "#000000"
+      },
+      "render_controllers": [
+        "controller.render.prop_sofa"
+      ],
+      "geometry": {
+        "variant_0": "geometry.prop_sofa"
+      },
+      "textures": {
+        "variant_0": "textures/entity/prop_sofa/prop_sofa_v0"
+      },
+      "materials": {
+        "default": "entity"
+      }
+    }
+  }
+}

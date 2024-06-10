@@ -1,0 +1,35 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.prop_weird_pizza_sign_weird",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 6,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "bb_main",
+					"pivot": [0, 0, 7],
+					"cubes": [
+						{
+							"origin": [-40, 0, 6],
+							"size": [80, 24, 2],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [80, 24]},
+								"east": {"uv": [0, 52], "uv_size": [2, 24]},
+								"south": {"uv": [0, 24], "uv_size": [80, 24]},
+								"west": {"uv": [2, 52], "uv_size": [2, 24]},
+								"up": {"uv": [0, 48], "uv_size": [80, 2]},
+								"down": {"uv": [0, 52], "uv_size": [80, -2]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,1 @@
+execute as @a[scores={is_camera=0}] run tp @s ~ ~ ~ facing @e[type=fs:boss_bebop,c=1]

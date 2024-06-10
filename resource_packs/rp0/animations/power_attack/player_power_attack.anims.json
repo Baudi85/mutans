@@ -1,0 +1,169 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.player_power_attack.donatello": {
+			"loop": true,
+			"animation_length": 0.6,
+			"anim_time_update": "query.anim_time + (query.delta_time * 1.5)",
+			"bones": {
+				"leftArm": {
+					"rotation": [-360, -32.5, -445],
+					"position": [1.5, -2, 0]
+				},
+				"rightArm": {
+					"rotation": [0, -15, 85],
+					"position": [-1.5, -2, 0]
+				},
+				"leftLeg": {
+					"rotation": [52.5, 0, 0]
+				},
+				"rightLeg": {
+					"rotation": [-47.5, 0, 0]
+				},
+				"sword_1": {
+					"rotation": {
+						"0.0": [0, -20, 0],
+						"0.3": [0, -62.5, 0]
+					}
+				},
+				"sword_0": {
+					"rotation": {
+						"0.0": [0, -20, 0],
+						"0.3": [0, -50, 0]
+					}
+				},
+				"root": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.3": [0, 180, 0],
+						"0.6": [0, 360, 0]
+					},
+					"position": [0, -2.5, 0]
+				}
+			}
+		},
+		"animation.player_power_attack.leonardo": {
+			"loop": true,
+			"animation_length": 0.6,
+			"anim_time_update": "query.anim_time + (query.delta_time * 1.5)",
+			"bones": {
+				"leftArm": {
+					"rotation": [-360, -32.5, -445],
+					"position": [1.5, -2, 0]
+				},
+				"rightArm": {
+					"rotation": [0, -15, 85],
+					"position": [-1.5, -2, 0]
+				},
+				"leftLeg": {
+					"rotation": [52.5, 0, 0]
+				},
+				"rightLeg": {
+					"rotation": [-47.5, 0, 0]
+				},
+				"sword_1": {
+					"rotation": {
+						"0.0": [0, -20, 0],
+						"0.3": [0, -62.5, 0]
+					}
+				},
+				"sword_0": {
+					"rotation": {
+						"0.0": [0, -20, 0],
+						"0.3": [0, -50, 0]
+					}
+				},
+				"root": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.3": [0, 180, 0],
+						"0.6": [0, 360, 0]
+					},
+					"position": [0, -2.5, 0]
+				}
+			}
+		},
+		"animation.player_power_attack.michelangelo": {
+			"loop": true,
+			"animation_length": 0.6,
+			"anim_time_update": "query.anim_time + (query.delta_time * 1.5)",
+			"bones": {
+				"leftArm": {
+					"rotation": [-360, -32.5, -445],
+					"position": [1.5, -2, 0]
+				},
+				"rightArm": {
+					"rotation": [0, -15, 85],
+					"position": [-1.5, -2, 0]
+				},
+				"leftLeg": {
+					"rotation": [52.5, 0, 0]
+				},
+				"rightLeg": {
+					"rotation": [-47.5, 0, 0]
+				},
+				"sword_1": {
+					"rotation": {
+						"0.0": [0, -20, 0],
+						"0.3": [0, -62.5, 0]
+					}
+				},
+				"sword_0": {
+					"rotation": {
+						"0.0": [0, -20, 0],
+						"0.3": [0, -50, 0]
+					}
+				},
+				"root": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.3": [0, 180, 0],
+						"0.6": [0, 360, 0]
+					},
+					"position": [0, -2.5, 0]
+				}
+			}
+		},
+		"animation.player_power_attack.raphael": {
+			"loop": true,
+			"animation_length": 0.6,
+			"anim_time_update": "query.anim_time + (query.delta_time * 1.5)",
+			"bones": {
+				"leftArm": {
+					"rotation": [-360, -32.5, -445],
+					"position": [1.5, -2, 0]
+				},
+				"rightArm": {
+					"rotation": [0, -15, 85],
+					"position": [-1.5, -2, 0]
+				},
+				"leftLeg": {
+					"rotation": [52.5, 0, 0]
+				},
+				"rightLeg": {
+					"rotation": [-47.5, 0, 0]
+				},
+				"sword_1": {
+					"rotation": {
+						"0.0": [0, -20, 0],
+						"0.3": [0, -62.5, 0]
+					}
+				},
+				"sword_0": {
+					"rotation": {
+						"0.0": [0, -20, 0],
+						"0.3": [0, -50, 0]
+					}
+				},
+				"root": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.3": [0, 180, 0],
+						"0.6": [0, 360, 0]
+					},
+					"position": [0, -2.5, 0]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,452 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.player.first_person": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.default",
+                        "Texture.leonardo",
+                        "Texture.raphael",
+                        "Texture.donatello",
+                        "Texture.michelangelo"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.default",
+                        "Geometry.first_person_leonardo",
+                        "Geometry.first_person_raphael",
+                        "Geometry.first_person_donatello",
+                        "Geometry.first_person_michelangelo"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ],
+            "part_visibility": [
+                {
+                    "*": "query.variant != 0"
+                },
+                {
+                    "weapon": "!query.is_riding"
+                },
+                {
+                    "fp_right_weapon": "!query.is_riding"
+                },
+                {
+                    "fp_left_weapon": "!query.is_riding"
+                },
+                {
+                    "sai8": "!query.is_riding"
+                },
+                {
+                    "sai7": "!query.is_riding"
+                },
+                {
+                    "fp_right_nunchuk": "!query.is_riding"
+                },
+                {
+                    "fp_left_nunchuk": "!query.is_riding"
+                },
+                {
+                    "fp_left_chain": "!query.is_riding"
+                },
+                {
+                    "fp_right_chain": "!query.is_riding"
+                }
+            ]
+        },
+        "controller.render.player.third_person": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.default",
+                        "Texture.leonardo",
+                        "Texture.raphael",
+                        "Texture.donatello",
+                        "Texture.michelangelo"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.default",
+                        "Geometry.third_person_leonardo",
+                        "Geometry.third_person_raphael",
+                        "Geometry.third_person_donatello",
+                        "Geometry.third_person_michelangelo"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ],
+            "part_visibility": [
+                {
+                    "*": "true"
+                },
+                {
+                    "helmet": "variable.helmet_layer_visible"
+                },
+                {
+                    "leftLegging": "variable.leg_layer_visible"
+                },
+                {
+                    "rightLegging": "variable.leg_layer_visible"
+                },
+                {
+                    "leftBoot": "variable.boot_layer_visible"
+                },
+                {
+                    "rightBoot": "variable.boot_layer_visible"
+                },
+                {
+                    "leftSock": "variable.boot_layer_visible && variable.leg_layer_visible"
+                },
+                {
+                    "rightSock": "variable.boot_layer_visible && variable.leg_layer_visible"
+                },
+                {
+                    "bodyArmor": "variable.chest_layer_visible && !query.has_cape"
+                },
+                {
+                    "leftArmArmor": "variable.chest_layer_visible && !query.has_cape"
+                },
+                {
+                    "rightArmArmor": "variable.chest_layer_visible && !query.has_cape"
+                },
+                {
+                    "belt": "variable.chest_layer_visible && variable.leg_layer_visible"
+                },
+                {
+                    "skateboard": "variable.is_skateboarding"
+                },
+                {
+                    "wheels_front": "variable.is_skateboarding"
+                },
+                {
+                    "wheels_rear": "variable.is_skateboarding"
+                },
+                {
+                    "sword_left": "!query.is_riding"
+                },
+                {
+                    "sword_right": "!query.is_riding"
+                },
+                {
+                    "staff": "!query.is_riding"
+                },
+                {
+                    "sai": "!query.is_riding"
+                },
+                {
+                    "sai2": "!query.is_riding"
+                },
+                {
+                    "nunchuk_right": "!query.is_riding"
+                },
+                {
+                    "nunchuk_right2": "!query.is_riding"
+                },
+                {
+                    "bone3": "!query.is_riding"
+                },
+                {
+                    "nunchuk_left": "!query.is_riding"
+                },
+                {
+                    "nunchuk_left2": "!query.is_riding"
+                },
+                {
+                    "bone2": "!query.is_riding"
+                }
+            ]
+        },
+        "controller.render.player.third_person_ui": {
+            "geometry": "Geometry.default",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.default"
+            ],
+            "part_visibility": [
+                {
+                    "*": true
+                },
+                {
+                    "helmet": "variable.helmet_layer_visible"
+                },
+                {
+                    "leftLegging": "variable.leg_layer_visible"
+                },
+                {
+                    "rightLegging": "variable.leg_layer_visible"
+                },
+                {
+                    "leftBoot": "variable.boot_layer_visible"
+                },
+                {
+                    "rightBoot": "variable.boot_layer_visible"
+                },
+                {
+                    "leftSock": "variable.boot_layer_visible && variable.leg_layer_visible"
+                },
+                {
+                    "rightSock": "variable.boot_layer_visible && variable.leg_layer_visible"
+                },
+                {
+                    "bodyArmor": "variable.chest_layer_visible && !query.has_cape"
+                },
+                {
+                    "leftArmArmor": "variable.chest_layer_visible && !query.has_cape"
+                },
+                {
+                    "rightArmArmor": "variable.chest_layer_visible && !query.has_cape"
+                },
+                {
+                    "belt": "variable.chest_layer_visible && variable.leg_layer_visible"
+                }
+            ]
+        },
+        "controller.render.player.third_person_leonardo": {
+            "geometry": "Geometry.third_person_leonardo",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.third_person_leonardo"
+            ],
+            "part_visibility": [
+                {
+                    "*": true
+                },
+                {
+                    "skateboard": false
+                }
+            ]
+        },
+        "controller.render.player.third_person_raphael": {
+            "geometry": "Geometry.third_person_raphael",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.third_person_raphael"
+            ],
+            "part_visibility": [
+                {
+                    "*": true
+                },
+                {
+                    "skateboard": false
+                }
+            ]
+        },
+        "controller.render.player.third_person_donatello": {
+            "geometry": "Geometry.third_person_donatello",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.third_person_donatello"
+            ],
+            "part_visibility": [
+                {
+                    "*": true
+                },
+                {
+                    "skateboard": false
+                }
+            ]
+        },
+        "controller.render.player.third_person_michelangelo": {
+            "geometry": "Geometry.third_person_michelangelo",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.third_person_michelangelo"
+            ],
+            "part_visibility": [
+                {
+                    "*": true
+                },
+                {
+                    "skateboard": false
+                }
+            ]
+        },
+        "controller.render.player.third_person_skating_leonardo": {
+            "geometry": "Geometry.skateboarding_leonardo",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.skateboarding_leonardo"
+            ],
+            "part_visibility": [
+                {
+                    "*": true
+                },
+                {
+                    "skateboard": true
+                }
+            ]
+        },
+        "controller.render.player.third_person_skating_raphael": {
+            "geometry": "Geometry.skateboarding_raphael",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.skateboarding_raphael"
+            ],
+            "part_visibility": [
+                {
+                    "*": true
+                },
+                {
+                    "skateboard": true
+                }
+            ]
+        },
+        "controller.render.player.third_person_skating_donatello": {
+            "geometry": "Geometry.skateboarding_donatello",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.skateboarding_donatello"
+            ],
+            "part_visibility": [
+                {
+                    "*": true
+                },
+                {
+                    "skateboard": true
+                }
+            ]
+        },
+        "controller.render.player.third_person_skating_michelangelo": {
+            "geometry": "Geometry.skateboarding_michelangelo",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.skateboarding_michelangelo"
+            ],
+            "part_visibility": [
+                {
+                    "*": true
+                },
+                {
+                    "skateboard": true
+                }
+            ]
+        },
+        "controller.render.player.first_person_spectator": {
+            "geometry": "Geometry.default",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.default"
+            ],
+            "part_visibility": [
+                {
+                    "*": false
+                }
+            ]
+        },
+        "controller.render.player.third_person_spectator": {
+            "geometry": "Geometry.default",
+            "materials": [
+                {
+                    "*": "Material.spectator"
+                }
+            ],
+            "textures": [
+                "Texture.default"
+            ],
+            "part_visibility": [
+                {
+                    "*": false
+                },
+                {
+                    "head": true
+                },
+                {
+                    "hat": true
+                },
+                {
+                    "helmet": "variable.helmet_layer_visible"
+                }
+            ],
+            "color": {
+                "r": "1.0f",
+                "g": "1.0f",
+                "b": "1.0f",
+                "a": "0.3f"
+            }
+        },
+        "controller.render.player.map": {
+            "geometry": "Geometry.default",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.default"
+            ],
+            "part_visibility": [
+                {
+                    "*": false
+                },
+                {
+                    "head": true
+                },
+                {
+                    "hat": true
+                },
+                {
+                    "helmet": true
+                }
+            ]
+        }
+    }
+}

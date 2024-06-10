@@ -1,0 +1,67 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.puppet_boss.pose": {
+            "states": {
+                "default": {
+                    "animations": [                        
+                        {
+                            "boss_0_pose_0": "query.variant == 0 && query.mark_variant == 0"
+                        },                        
+                        {
+                            "boss_0_pose_1": "query.variant == 0 && query.mark_variant == 1"
+                        },                       
+                        {
+                            "boss_1_pose_0": "query.variant == 1 && query.mark_variant == 0"
+                        },                        
+                        {
+                            "boss_1_pose_1": "query.variant == 1 && query.mark_variant == 1"
+                        },                       
+                        {
+                            "boss_2_pose_0": "query.variant == 2 && query.mark_variant == 0"
+                        },                        
+                        {
+                            "boss_2_pose_1": "query.variant == 2 && query.mark_variant == 1"
+                        },                       
+                        {
+                            "boss_3_pose_0": "query.variant == 3 && query.mark_variant == 0"
+                        },                        
+                        {
+                            "boss_3_pose_1": "query.variant == 3 && query.mark_variant == 1"
+                        },                       
+                        {
+                            "boss_4_pose_0": "query.variant == 4 && query.mark_variant == 0"
+                        },                        
+                        {
+                            "boss_4_pose_1": "query.variant == 4 && query.mark_variant == 1"
+                        },                       
+                        {
+                            "boss_5_pose_0": "query.variant == 5 && query.mark_variant == 0"
+                        },                        
+                        {
+                            "boss_5_pose_1": "query.variant == 5 && query.mark_variant == 1"
+                        },                       
+                        {
+                            "boss_6_pose_0": "query.variant == 6 && query.mark_variant == 0"
+                        },                        
+                        {
+                            "boss_6_pose_1": "query.variant == 6 && query.mark_variant == 1"
+                        },                       
+                        {
+                            "boss_7_pose_0": "query.variant == 7 && query.mark_variant == 0"
+                        },                        
+                        {
+                            "boss_7_pose_1": "query.variant == 7 && query.mark_variant == 1"
+                        },                     
+                        {
+                            "boss_8_pose_0": "query.variant == 8 && query.mark_variant == 0"
+                        },                        
+                        {
+                            "boss_8_pose_1": "query.variant == 8 && query.mark_variant == 1"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

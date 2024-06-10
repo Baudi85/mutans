@@ -1,0 +1,1 @@
+execute as @e[type=fs:game] run function zone/trigger/next_zone

@@ -1,0 +1,20 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:zone",
+            "render_controllers": [
+                "controller.render.zone"
+            ],
+            "geometry": {
+                "default": "geometry.object"
+            },
+            "textures": {
+                "default": "textures/entity/__lib/object/object"
+            },
+            "materials": {
+                "default": "entity"
+            }
+        }
+    }
+}

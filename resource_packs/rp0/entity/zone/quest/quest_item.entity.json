@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "fs:quest_item",
+      "render_controllers": [
+        "controller.render.entity.quest_item"
+      ],
+      "geometry": {
+        "variant_0": "geometry.quest_item",
+        "variant_1": "geometry.quest_item_handle",
+        "variant_2": "geometry.quest_item_valve"
+      },
+      "textures": {
+        "variant_0": "textures/entity/quest_item/quest_item_v0",
+        "variant_1": "textures/entity/quest_item_handle/quest_item_handle_v0",
+        "variant_2": "textures/entity/quest_item_valve/quest_item_valve_v0"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "animations": {
+        "idle": "animation.quest_item.idle",
+        "animation_controller": "controller.animation.quest_item.animate"
+      },
+      "scripts": {
+        "animate": [
+          "animation_controller"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+    "format_version": "1.16.0",
+    "animations": {
+        "animation.movement_appear.enemy_roadkill_rodney": {
+            "loop": false,
+            "animation_length": 1
+        },
+        "animation.attack_melee.enemy_roadkill_rodney": {
+            "loop": false,
+            "animation_length": 1.25,
+            "timeline": {
+                "0.6": [
+                    "/function ai_enemy/action/melee/detect_player"
+                ]
+            }
+        },
+        "animation.attack_jump.enemy_roadkill_rodney": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_ranged.enemy_roadkill_rodney": {
+            "loop": false,
+            "animation_length": 1.45
+        },
+        "animation.attack_dash.enemy_roadkill_rodney": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_block.enemy_roadkill_rodney": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.damage_hit.enemy_roadkill_rodney": {
+            "loop": false,
+            "animation_length": 0.1
+        },
+        "animation.damage_hurt.enemy_roadkill_rodney": {
+            "loop": false,
+            "animation_length": 0.5
+        },
+        "animation.damage_knockdown.enemy_roadkill_rodney": {
+            "loop": false,
+            "animation_length": 0.5
+        },
+        "animation.damage_get_up.enemy_roadkill_rodney": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.damage_killed.enemy_roadkill_rodney": {
+            "loop": false,
+            "animation_length": 1
+        }
+    }
+}

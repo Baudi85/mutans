@@ -1,0 +1,81 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.player_companion": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.third_person_leonardo",
+                        "Texture.third_person_raphael",
+                        "Texture.third_person_donatello",
+                        "Texture.third_person_michelangelo"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.third_person_leonardo",
+                        "Geometry.third_person_raphael",
+                        "Geometry.third_person_donatello",
+                        "Geometry.third_person_michelangelo"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ],
+            "part_visibility": [
+                {
+                    "*": true
+                },
+                {
+                    "skateboard": false
+                },
+                {
+                    "wheels_rear": false
+                },
+                {
+                    "wheels_front": false
+                },
+                {
+                    "sword_left": "!query.is_riding"
+                },
+                {
+                    "sword_right": "!query.is_riding"
+                },
+                {
+                    "staff": "!query.is_riding"
+                },
+                {
+                    "sai": "!query.is_riding"
+                },
+                {
+                    "sai2": "!query.is_riding"
+                },
+                {
+                    "nunchuk_right": "!query.is_riding"
+                },
+                {
+                    "nunchuk_right2": "!query.is_riding"
+                },
+                {
+                    "bone3": "!query.is_riding"
+                },
+                {
+                    "nunchuk_left": "!query.is_riding"
+                },
+                {
+                    "nunchuk_left2": "!query.is_riding"
+                },
+                {
+                    "bone2": "!query.is_riding"
+                }
+            ]
+        }
+    }
+}

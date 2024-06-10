@@ -1,0 +1,1 @@
+effect @s[tag=__admin__57digital__] night_vision 999999 1 true

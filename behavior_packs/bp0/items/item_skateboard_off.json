@@ -1,0 +1,16 @@
+{
+    "format_version": "1.12.0",
+    "minecraft:item": {
+        "description": {
+            "identifier": "fs:item_skateboard_off",
+            "category": "Equipment"
+        },
+        "components": {
+            "minecraft:food": {
+                "can_always_eat": true,
+                "nutrition": 0
+            },
+            "minecraft:use_duration": 1000
+        }
+    }
+}

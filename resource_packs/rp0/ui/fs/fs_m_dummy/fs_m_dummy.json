@@ -1,0 +1,21 @@
+{
+    // §r§r§r§0§1§1§1§1§0§0§0§r§r§r (rrrXrrr)
+    "namespace": "fs_m_dummy",
+    "root_panel": {
+        "type": "panel",
+        "visible": false,
+        "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_name": "#dialogtext"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (#dialogtext - '§r§r§r§0§1§1§1§1§0§0§0§r§r§r' = #dialogtext))", // signal: §r§r§r§0§1§1§1§1§0§0§0§r§r§r for invisible UI
+              "target_property_name": "#visible"
+            }
+        ]
+    }
+}

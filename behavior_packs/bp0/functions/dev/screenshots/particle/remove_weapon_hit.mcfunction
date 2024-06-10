@@ -1,0 +1,1 @@
+tag @e[type=!player,c=1] remove particle_weapon_hit

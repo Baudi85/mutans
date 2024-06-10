@@ -1,0 +1,250 @@
+/*
+    Raw show:   /title @a title fsdata://?_=1&toast=1&_=1
+    Configure in: toasts.js
+*/
+{
+  "namespace": "fs_title_letterbox",
+  "root_panel": {
+    "type": "panel",
+    "$is_visible|default": false,
+    "visible": "$is_visible",
+    // constants
+    "$const_anim_open_time": 1.5,
+    // end of constants
+    "variables": [
+      {
+        "requires": "((not ($title_text - '&letterboxing=1&' = $title_text)))",
+        "$is_visible": true
+      }
+    ],
+    "controls": [
+      {
+        "_letterbox_open_animated@panels": {}
+      },
+      {
+        "_ftb": {
+          "type": "image",
+          "texture": "textures/ui/Black",
+          "size": ["150%", "150%"],
+          "alpha": 0,
+          "layer": 99999999,
+          "$anim|default": "fs_title_letterbox.anim_null",
+          "variables": [
+            {
+              "requires": "((not ($title_text - '&letterbox_hide_ftb_animated=1&' = $title_text)))",
+              "$anim": "fs_title_letterbox.anim_screen_ftb"
+            }
+          ],
+          "anims": [
+            "@$anim"
+          ]
+        }
+      }
+    ]
+  },
+  "panels": {
+    "type": "panel",
+    "size": ["150%", "150%"],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "controls": [
+      {
+        "_frame_top@frame_top": {
+          "alpha": 0,
+          "$anim|default": "fs_title_letterbox.anim_null",
+          "variables": [
+            {
+              "requires": "((not ($title_text - '&letterbox_show_animated=1&' = $title_text)))",
+              "$anim": "fs_title_letterbox.anim_open_top"
+            },
+            {
+              "requires": "((not ($title_text - '&letterbox_show_instant=1&' = $title_text)))",
+              "$anim": "fs_title_letterbox.anim_instant_open_top"
+            },
+            {
+              "requires": "((not ($title_text - '&letterbox_hide_ftb_animated=1&' = $title_text)))",
+              "$anim": "fs_title_letterbox.anim_instant_open_top"
+            },
+            {
+              "requires": "((not ($title_text - '&letterbox_hide_animated=1&' = $title_text)))",
+              "$anim": "fs_title_letterbox.anim_out_top"
+            }
+          ],
+          "anims": [
+            "@$anim"
+          ]
+        }
+      },
+      {
+        "_frame_btm@frame_btm": {
+          "alpha": 0,
+          "$anim|default": "fs_title_letterbox.anim_null",
+          "variables": [
+            {
+              "requires": "((not ($title_text - '&letterbox_show_animated=1&' = $title_text)))",
+              "$anim": "fs_title_letterbox.anim_open_btm"
+            },
+            {
+              "requires": "((not ($title_text - '&letterbox_show_instant=1&' = $title_text)))",
+              "$anim": "fs_title_letterbox.anim_instant_open_btm"
+            },
+            {
+              "requires": "((not ($title_text - '&letterbox_hide_ftb_animated=1&' = $title_text)))",
+              "$anim": "fs_title_letterbox.anim_instant_open_btm"
+            },
+            {
+              "requires": "((not ($title_text - '&letterbox_hide_animated=1&' = $title_text)))",
+              "$anim": "fs_title_letterbox.anim_out_btm"
+            }
+          ],
+          "anims": [
+            "@$anim"
+          ]
+        }
+      }
+    ]
+  },
+  "frame_top": {
+    "type": "image",
+    "texture": "textures/ui/Black",
+    "size": ["150%", "50%"],
+    "offset": [0, "-25%"],
+    "layer": 99999999
+  },
+  "frame_btm": {
+    "type": "image",
+    "texture": "textures/ui/Black",
+    "size": ["150%", "50%"],
+    "offset": [0, "25%"],
+    "layer": 99999999
+  },
+  "letterbox_factory": {
+    "type": "panel",
+    "factory": {
+        "name": "hud_title_text_factory",
+        "control_ids": {
+        "hud_title_text": "_letterbox_factory@fs_title_letterbox.root_panel"
+        }
+    }
+  },
+  // anims
+  "anim_null": {
+    "anim_type": "wait",
+    "duration": 0
+  },
+  // anim, top:
+  "anim_open_top": {
+    "anim_type": "wait",
+    "duration": 0,
+    "next": "@fs_title_letterbox.anim_open_top_frame_1"
+  },
+  "anim_open_top_frame_1": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 1,
+    "duration": 0,
+    "next": "@fs_title_letterbox.anim_open_top_frame_2"
+  },
+  "anim_open_top_frame_2": {
+    "anim_type": "offset",
+    "from": [0, "-25%"],
+    "to": [0, "-49%"],
+    "duration": "$const_anim_open_time"
+  },
+  "anim_instant_open_top": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 1,
+    "duration": 0,
+    "next": "@fs_title_letterbox.anim_instant_open_top_frame_1"
+  },
+  "anim_instant_open_top_frame_1": {
+    "anim_type": "offset",
+    "from": [0, "-25%"],
+    "to": [0, "-49%"],
+    "duration": 0
+  },
+
+  "anim_out_top": {
+    "anim_type": "wait",
+    "duration": 0,
+    "next": "@fs_title_letterbox.anim_out_top_frame_1"
+  },
+  "anim_out_top_frame_1": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 1,
+    "duration": 0,
+    "next": "@fs_title_letterbox.anim_out_top_frame_2"
+  },
+  "anim_out_top_frame_2": {
+    "anim_type": "offset",
+    "from": [0, "-49%"],
+    "to": [0, "-80%"],
+    "duration": "$const_anim_open_time"
+  },
+  
+  
+  // anim, btm:
+  "anim_open_btm": {
+    "anim_type": "wait",
+    "duration": 0,
+    "next": "@fs_title_letterbox.anim_open_btm_frame_1"
+  },
+  "anim_open_btm_frame_1": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 1,
+    "duration": 0,
+    "next": "@fs_title_letterbox.anim_open_btm_frame_2"
+  },
+  "anim_open_btm_frame_2": {
+    "anim_type": "offset",
+    "from": [0, "25%"],
+    "to": [0, "49%"],
+    "duration": "$const_anim_open_time"
+  },
+  "anim_instant_open_btm": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 1,
+    "duration": 0,
+    "next": "@fs_title_letterbox.anim_instant_open_btm_frame_1"
+  },
+  "anim_instant_open_btm_frame_1": {
+    "anim_type": "offset",
+    "from": [0, "25%"],
+    "to": [0, "49%"],
+    "duration": 0
+  },
+  "anim_out_btm": {
+    "anim_type": "wait",
+    "duration": 0,
+    "next": "@fs_title_letterbox.anim_out_btm_frame_1"
+  },
+  "anim_out_btm_frame_1": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 1,
+    "duration": 0,
+    "next": "@fs_title_letterbox.anim_out_btm_frame_2"
+  },
+  "anim_out_btm_frame_2": {
+    "anim_type": "offset",
+    "from": [0, "49%"],
+    "to": [0, "80%"],
+    "duration": "$const_anim_open_time"
+  },
+  // anim, screen:
+  "anim_screen_ftb": {
+    "anim_type": "wait",
+    "duration": 0,
+    "next": "@fs_title_letterbox.anim_screen_ftb_frame_1"
+  },
+  "anim_screen_ftb_frame_1": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 1,
+    "duration": 1
+  }
+}

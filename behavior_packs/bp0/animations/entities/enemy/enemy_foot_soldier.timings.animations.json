@@ -1,0 +1,54 @@
+{
+    "format_version": "1.16.0",
+    "animations": {
+        "animation.movement_appear.enemy_foot_soldier": {
+            "loop": false,
+            "animation_length": 1.0
+        },
+        "animation.attack_melee.enemy_foot_soldier": {
+            "loop": false,
+            "animation_length": 0.91,
+            "timeline": {
+                "0.45": [
+                    "/function ai_enemy/action/melee/detect_player"
+                ]
+            }
+        },
+        "animation.attack_jump.enemy_foot_soldier": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_ranged.enemy_foot_soldier": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_dash.enemy_foot_soldier": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_block.enemy_foot_soldier": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.damage_hit.enemy_foot_soldier": {
+            "loop": false,
+            "animation_length": 0.1
+        },
+        "animation.damage_hurt.enemy_foot_soldier": {
+            "loop": false,
+            "animation_length": 0.50
+        },
+        "animation.damage_knockdown.enemy_foot_soldier": {
+            "loop": false,
+            "animation_length": 1.5
+        },
+        "animation.damage_get_up.enemy_foot_soldier": {
+            "loop": false,
+            "animation_length": 0.8
+        },
+        "animation.damage_killed.enemy_foot_soldier": {
+            "loop": false,
+            "animation_length": 0.5
+        }
+    }
+}

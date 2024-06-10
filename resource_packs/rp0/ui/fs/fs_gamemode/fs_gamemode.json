@@ -1,0 +1,66 @@
+{
+    "namespace": "fs_gamemode",
+    "root_panel": {
+      "type": "panel",
+      "size": [
+        "100%",
+        "100%"
+      ],
+      "controls": [
+        {
+            "c_mode": {
+                "type": "image",
+                "texture": "textures/ui/Black",
+                "size": [25, 25],
+                "anchor_from": "bottom_right",
+                "anchor_to": "bottom_right",
+                "controls": [
+                    {
+                        "creative": {
+                            "type": "label",
+                            "text": "C",
+                            "font_scale_factor": 1.8,
+                            "offset": [0, 5],
+                            "text_alignment": "center",
+                            "size": ["100%", "100%"]
+                        }
+                    }
+                ],
+                "bindings": [
+                    {
+                      "binding_name": "#is_creative_mode",
+                      "binding_name_override": "#visible"
+                    }
+                ]
+            }
+        },
+        {
+            "s_mode": {
+                "type": "image",
+                "texture": "textures/ui/Black",
+                "size": [25, 25],
+                "anchor_from": "bottom_right",
+                "anchor_to": "bottom_right",
+                "controls": [
+                    {
+                        "survival": {
+                            "type": "label",
+                            "text": "S",
+                            "font_scale_factor": 1.8,
+                            "offset": [0, 5],
+                            "text_alignment": "center",
+                            "size": ["100%", "100%"]
+                        }
+                    }
+                ],
+                "bindings": [
+                    {
+                      "binding_name": "#show_survival_ui",
+                      "binding_name_override": "#visible"
+                    }
+                ]
+            }
+        }
+      ]
+    }
+}

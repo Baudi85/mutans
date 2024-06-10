@@ -1,0 +1,39 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.npc.common": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.variant_0"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_0"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ],
+            "part_visibility": [
+                {
+                    "skateboard": false
+                },
+                {
+                    "wheels_rear": false
+                },
+                {
+                    "wheels_front": false
+                }
+            ]
+        }
+    }
+}

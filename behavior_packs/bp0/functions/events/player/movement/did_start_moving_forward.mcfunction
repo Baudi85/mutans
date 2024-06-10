@@ -1,0 +1,1 @@
+tag @s add movement_fast

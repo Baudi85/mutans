@@ -1,0 +1,110 @@
+// @(com.57digital.shulker.generated)
+// @generated File (generated via ShulkerScript: <BP> dialogue/config/settings.js)
+{
+	"format_version": "1.17",
+	"minecraft:npc_dialogue": {
+		"scenes": [
+			{
+				"scene_tag": "settings",
+				"npc_name": {
+					"rawtext": [
+						{
+							/* "Settings" (Title for settings popup)*/
+							"translate": "settingsname"
+						}
+					]
+				},
+				"text": {
+					"rawtext": [
+						{
+							"translate": "ui.dlg_settings.title"
+						},
+						{
+							"text": "§r§r§r§0§1§1§1§0§1§1§0§r§r§r"
+						},
+						{
+							"text": "§f§1§3§3§7§f§0§7§f"
+						}
+					]
+				},
+				"buttons": [
+					{
+						"name": "56e30ft01z01",
+						"commands": [
+							"/execute as @initiator run execute if entity @s[scores={s_music_enabled=1}] run tag @s add dlg.did_segue",
+							"/execute as @initiator run execute if entity @s[scores={s_music_enabled=1}] run function dlg/settings_music_is_1",
+							"/execute as @initiator run execute unless entity @s[scores={s_music_enabled=1}] run tag @s add dlg.did_segue",
+							"/execute as @initiator run execute unless entity @s[scores={s_music_enabled=1}] run function dlg/settings_music_is_0"
+						]
+					},
+					{
+						"name": "d1ddb8t01z01",
+						"commands": [
+							"/execute as @initiator run execute if entity @s[scores={s_sfx_enabled=1}] run tag @s add dlg.did_segue",
+							"/execute as @initiator run execute if entity @s[scores={s_sfx_enabled=1}] run function dlg/settings_sfx_is_1",
+							"/execute as @initiator run execute unless entity @s[scores={s_sfx_enabled=1}] run tag @s add dlg.did_segue",
+							"/execute as @initiator run execute unless entity @s[scores={s_sfx_enabled=1}] run function dlg/settings_sfx_is_0"
+						]
+					},
+					{
+						"name": "2fc1d6t08z01",
+						"commands": [
+							"/execute as @initiator run execute if entity @s[scores={s_streamer=1}] run tag @s add dlg.did_segue",
+							"/execute as @initiator run execute if entity @s[scores={s_streamer=1}] run function dlg/settings_streamer_is_1",
+							"/execute as @initiator run execute unless entity @s[scores={s_streamer=1}] run tag @s add dlg.did_segue",
+							"/execute as @initiator run execute unless entity @s[scores={s_streamer=1}] run function dlg/settings_streamer_is_0"
+						]
+					},
+					{
+						"name": "961e07t01z01",
+						"commands": [
+							"/execute as @initiator run execute if entity @s[scores={s_perf_mode=1}] run tag @s add dlg.did_segue",
+							"/execute as @initiator run execute if entity @s[scores={s_perf_mode=1}] run function dlg/settings_perf_is_1",
+							"/execute as @initiator run execute unless entity @s[scores={s_perf_mode=1}] run tag @s add dlg.did_segue",
+							"/execute as @initiator run execute unless entity @s[scores={s_perf_mode=1}] run function dlg/settings_perf_is_0"
+						]
+					},
+					{
+						"name": "fc1cdet07z00",
+						"commands": []
+					}
+				],
+				"on_open_commands": [
+					"/tag @initiator remove did_req_dlg",
+					"/execute as @a run function utils/remove_dlg_tags",
+					"/execute as @initiator[tag=!dlg.did_segue] run playsound fs.dlg.open @s[scores={s_sfx_enabled=1}]",
+					"/tag @initiator add player.in_ui",
+					"/tag @initiator remove dlg.did_segue",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings§7].§2DidOpen§7\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings§7].§2OpenFn§7: §e/tag @initiator remove settings_ingame\"}]}",
+					"/tag @initiator remove settings_ingame",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings§7].§2OpenFn§7: §e/scoreboard players operation @a s_music_enabled = @e[type=fs:game] s_music_enabled\"}]}",
+					"/scoreboard players operation @a s_music_enabled = @e[type=fs:game] s_music_enabled",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings§7].§2OpenFn§7: §e/scoreboard players operation @a s_sfx_enabled = @e[type=fs:game] s_sfx_enabled\"}]}",
+					"/scoreboard players operation @a s_sfx_enabled = @e[type=fs:game] s_sfx_enabled",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings§7].§2OpenFn§7: §e/scoreboard players operation @a s_perf_mode = @e[type=fs:game] s_perf_mode\"}]}",
+					"/scoreboard players operation @a s_perf_mode = @e[type=fs:game] s_perf_mode",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings§7].§2OpenFn§7: §e/scoreboard players operation @a s_steamer = @e[type=fs:game] s_streamer\"}]}",
+					"/scoreboard players operation @a s_steamer = @e[type=fs:game] s_streamer"
+				],
+				"on_close_commands": [
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§eDid run on_close_commands\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] at @s run function sounds/stop/_dialogue",
+					"/tag @s remove particle_emitter",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings§7].§4CloseFn§7: Aborted due to segue.\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings§7].§eDidNotSegue...\"}]}",
+					"/tag @initiator remove player.in_ui",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings§7].§4DidClose§7\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings§7].§4CloseFn§7: §e/scoreboard players operation @a s_music_enabled = @e[type=fs:game] s_music_enabled\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] run /scoreboard players operation @a s_music_enabled = @e[type=fs:game] s_music_enabled",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings§7].§4CloseFn§7: §e/scoreboard players operation @a s_sfx_enabled = @e[type=fs:game] s_sfx_enabled\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] run /scoreboard players operation @a s_sfx_enabled = @e[type=fs:game] s_sfx_enabled",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings§7].§4CloseFn§7: §e/scoreboard players operation @a s_perf_mode = @e[type=fs:game] s_perf_mode\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] run /scoreboard players operation @a s_perf_mode = @e[type=fs:game] s_perf_mode",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings§7].§4CloseFn§7: §e/scoreboard players operation @a s_steamer = @e[type=fs:game] s_streamer\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] run /scoreboard players operation @a s_steamer = @e[type=fs:game] s_streamer"
+				]
+			}
+		]
+	}
+}

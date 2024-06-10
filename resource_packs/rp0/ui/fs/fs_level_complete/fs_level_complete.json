@@ -1,0 +1,226 @@
+// toggle with: /title @a title fsdata://?1&levelcomplete=1
+{
+  "namespace": "fs_level_complete",
+  "root_panel": {
+    "type": "panel",
+    "$is_visible|default": false,
+    "visible": "$is_visible",
+    "variables": [
+      {
+        "requires": "((not ($title_text - '&levelcomplete=1' = $title_text)))",
+        "$is_visible": true
+      }
+    ],
+    "controls": [
+      {
+        "fade_to_black": {
+          "type": "image",
+          "texture": "textures/ui/Black",
+          "size": ["150%", "150%"],
+          "alpha": 0,
+          "layer": 200000,
+          "anims": [
+            "@fs_level_complete.anim_fade_to_black"
+          ]
+        }
+      },
+      {
+        "backdrop": {
+          "type": "image",
+          "texture": "textures/ui/Black",
+          "size": ["150%", "150%"],
+          "alpha": 0,
+          "layer": 100000,
+          "anims": [
+            "@fs_level_complete.anim_backdrop_fade_in"
+          ]
+        }
+      },
+      {
+        "clipper": {
+          "type": "panel",
+          "size": [0, 0],
+          "clips_children": true,
+          "anims": [
+            "@fs_level_complete.anim_scale_in"
+          ],
+          "layer": 101000,
+          "controls": [
+            {
+              "image": {
+                "type": "image",
+                "texture": "textures/ui/complete/level_complete",
+                "size": [261, 148],
+                "clip_pixelperfect": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "level_complete": {
+          "type": "label",
+          "text": "ui.level_complete",
+          "localize": true,
+          "font_scale_factor": 1.6,
+          "font_type": "MinecraftTen",
+          "color": [1, 1, 1],
+          "layer": 102000,
+          "offset": [0, 60],
+          "alpha": 0,
+          "size": ["100%", "default"],
+          "text_alignment": "center",
+          "anims": [
+            "@fs_level_complete.anim_text_fade_in"
+          ],
+          "controls": [
+            {
+              "saving_stack": {
+                "type": "stack_panel",
+                "orientation": "horizontal",
+                "size": [120, "default"],
+                "anchor_to": "center",
+                "anchor_from": "center",
+                "offset": [0, 50],
+                "layer": 103000,
+                "propagate_alpha": true,
+                "alpha": 0,
+                "anims": [
+                  "@fs_level_complete.anim_saving_stack"
+                ],
+                "controls": [
+                  {
+                    "saving_progress": {
+                      "type": "image",
+                      "texture": "textures/ui/fader/loading_spin",
+                      "size": [10, 10],
+                      "uv_size": [7, 7],
+                      "layer": 103000,
+                      "uv": "@fs_fader.spinner_animation",
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "alpha": 0.7,
+                      "propagate_alpha": true
+                    }
+                  },
+                  {
+                    "padding": {
+                      "type": "panel",
+                      "size": [10, 10],
+                      "layer": 103000
+                    }
+                  },
+                  {
+                    "saving_label": {
+                      "type": "label",
+                      "text": "ui.saving_progress",
+                      "size": ["default", 20],
+                      "layer": 103000,
+                      "color": [1, 1, 1],
+                      "alpha": 0.7,
+                      "localize": true,
+                      "propagate_alpha": true
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "factory": {
+    "type": "panel",
+    "factory": {
+      "name": "hud_title_text_factory",
+      "control_ids": {
+        "hud_title_text": "fs_level_complete@fs_level_complete.root_panel"
+      }
+    }
+  },
+  "anim_backdrop_fade_in": {
+    "anim_type": "alpha",
+    "easing": "in_quad",
+    "from": 0,
+    "to": 1,
+    "duration": 0.9
+  },
+  "anim_scale_in": {
+    "anim_type": "wait",
+    "duration": 1,
+    "next": "@fs_level_complete.anim_scale_in_1"
+  },
+  "anim_scale_in_1": {
+    "anim_type": "size",
+    "easing": "in_quad",
+    "from": [0, 0],
+    "to": [261, 148],
+    "duration": 1.0,
+    "next": "@fs_level_complete.anim_scale_in_2"
+  },
+  "anim_scale_in_2": {
+    "anim_type": "offset",
+    "easing": "in_quad",
+    "from": [0, 0],
+    "to": [0, -10],
+    "duration": 0.3,
+    "next": "@fs_level_complete.anim_scale_in_3"
+  },
+  "anim_scale_in_3": {
+    "anim_type": "offset",
+    "easing": "out_elastic",
+    "from": [0, -10],
+    "to": [0, 0],
+    "duration": 0.2,
+    "next": "@fs_level_complete.anim_scale_in_4"
+  },
+  "anim_scale_in_4": {
+    "anim_type": "wait",
+    "duration": 1,
+    "next": "@fs_level_complete.anim_scale_in_5"
+  },
+  "anim_scale_in_5": {
+    "anim_type": "offset",
+    "easing": "linear",
+    "from": [0, 0],
+    "to": [0, -30],
+    "duration": 1
+  },
+  "anim_text_fade_in": {
+    "anim_type": "wait",
+    "duration": 4, 
+    "next": "@fs_level_complete.anim_text_fade_in_1"
+  },
+  "anim_text_fade_in_1": {
+    "anim_type": "alpha",
+    "easing": "in_quad",
+    "from": 0,
+    "to": 1,
+    "duration": 0.9
+  },
+  "anim_saving_stack": {
+    "anim_type": "wait",
+    "duration": 5, 
+    "next": "@fs_level_complete.anim_saving_stack_1"
+  },
+  "anim_saving_stack_1": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 0.7,
+    "duration": 1
+  },
+  "anim_fade_to_black": {
+    "anim_type": "wait",
+    "duration": 9, 
+    "next": "@fs_level_complete.anim_fade_to_black_1"
+  },
+  "anim_fade_to_black_1": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "from": 0,
+    "to": 1,
+    "duration": 1
+  }
+}

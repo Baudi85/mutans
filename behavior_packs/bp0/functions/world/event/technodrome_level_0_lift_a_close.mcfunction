@@ -1,0 +1,1 @@
+fill 6060 -15 271 6051 -12 271 polished_deepslate_wall

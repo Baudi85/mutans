@@ -1,0 +1,28 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:projectile_krang_eye_laser",
+            "render_controllers": [
+                "controller.render.entity.common"
+            ],
+            "geometry": {
+                "variant_0": "geometry.projectile_krang_eye_laser"
+            },
+            "textures": {
+                "variant_0": "textures/entity/projectile_krang_eye_laser/projectile_krang_eye_laser_v0"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "animations": {
+                "move": "animation.laser.move"
+            },
+            "scripts": {
+                "animate": [
+                    "move"
+                ]
+            }
+        }
+    }
+}

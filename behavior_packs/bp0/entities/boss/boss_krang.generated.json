@@ -1,0 +1,1017 @@
+// @(com.57digital.shulker.inherited)
+// Inheritance Chain: [fs:entity] ~> [fs:boss_pathfinding] ~> [fs:boss_states] ~> [fs:boss] ~> fs:boss_krang
+{
+  "format_version": "1.19.60",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "fs:boss_krang",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "property:perf_mode": {
+          "type": "bool",
+          "default": true,
+          "client_sync": true
+        },
+        "property:animation_enabled": {
+          "type": "bool",
+          "default": true,
+          "client_sync": true
+        },
+        "property:movement_state": {
+          "type": "enum",
+          "values": [
+            "appear",
+            "idle",
+            "move",
+            "none"
+          ],
+          "default": "idle",
+          "client_sync": true
+        },
+        "property:movement_speed": {
+          "type": "enum",
+          "values": [
+            "default",
+            "slow",
+            "fast",
+            "shocked"
+          ],
+          "default": "default",
+          "client_sync": true
+        },
+        "property:attack_state": {
+          "type": "enum",
+          "values": [
+            "none",
+            "melee",
+            "dash",
+            "ranged",
+            "ranged_alt",
+            "jump",
+            "block"
+          ],
+          "default": "none",
+          "client_sync": true
+        },
+        "property:attack_variant": {
+          "type": "int",
+          "range": [
+            0,
+            1
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "property:damage_state": {
+          "type": "enum",
+          "values": [
+            "none",
+            "hit",
+            "hurt",
+            "knockdown",
+            "get_up",
+            "kill",
+            "killed"
+          ],
+          "default": "none",
+          "client_sync": true
+        },
+        "property:damage_type": {
+          "type": "enum",
+          "values": [
+            "none",
+            "light",
+            "heavy",
+            "super",
+            "prop_exploding",
+            "player_companion",
+            "projectile"
+          ],
+          "default": "none",
+          "client_sync": true
+        },
+        "property:is_killed": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        }
+      },
+      "animations": {
+        "controller_movement": "controller.animation.boss.movement_state",
+        "controller_attack": "controller.animation.boss.attack_state",
+        "controller_damage": "controller.animation.boss.damage_state",
+        "animation_movement_appear": "animation.movement_appear.boss_krang",
+        "animation_attack_melee": "animation.attack_melee.boss_krang",
+        "animation_attack_jump": "animation.attack_jump.boss_krang",
+        "animation_attack_ranged": "animation.attack_ranged.boss_krang",
+        "animation_attack_ranged_alt": "animation.attack_ranged_alt.boss_krang",
+        "animation_attack_dash": "animation.attack_dash.boss_krang",
+        "animation_attack_block": "animation.attack_block.boss_krang",
+        "animation_damage_hit": "animation.damage_hit.boss_krang",
+        "animation_damage_hurt": "animation.damage_hurt.boss_krang",
+        "animation_damage_knockdown": "animation.damage_knockdown.boss_krang",
+        "animation_damage_get_up": "animation.damage_get_up.boss_krang",
+        "animation_damage_killed": "animation.damage_killed.boss_krang"
+      },
+      "scripts": {
+        "animate": [
+          "controller_movement",
+          "controller_attack",
+          "controller_damage"
+        ]
+      }
+    },
+    "component_groups": {
+      "fs:instant_despawn": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": false
+        }
+      },
+      "fs:stop_pathfinding": {
+        "minecraft:movement": {
+          "value": 0
+        }
+      },
+      "fs:start_pathfinding": {
+        "minecraft:behavior.nearest_prioritized_attackable_target": {
+          "priority": 0,
+          "attack_interval": 0,
+          "must_reach": true,
+          "must_see": false,
+          "must_see_forget_duration": 60,
+          "persist_time": 60,
+          "reselect_targets": false,
+          "scan_interval": 1,
+          "set_persistent": true,
+          "target_search_height": -1,
+          "within_radius": 64,
+          "entity_types": {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "path_node"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "path_goal"
+                }
+              ]
+            },
+            "max_dist": 64,
+            "must_see": false,
+            "walk_speed_multiplier": 1,
+            "sprint_speed_multiplier": 1
+          }
+        },
+        "minecraft:attack": {
+          "damage": 2
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 1,
+          "track_target": true,
+          "reach_multiplier": 2,
+          "random_stop_interval": 0,
+          "cooldown_time": 2
+        },
+        "minecraft:behavior.move_towards_target": {
+          "priority": 0,
+          "within_radius": 2,
+          "speed_multiplier": 1
+        },
+        "minecraft:movement": {
+          "value": 0.4
+        },
+        "minecraft:navigation.walk": {
+          "is_amphibious": false,
+          "avoid_sun": false,
+          "avoid_water": true,
+          "can_jump": true,
+          "can_walk": true,
+          "can_swim": false,
+          "can_breach": false,
+          "can_float": false,
+          "can_break_doors": false,
+          "can_open_doors": false,
+          "can_open_iron_doors": false,
+          "can_pass_doors": true,
+          "can_path_from_air": false,
+          "can_path_over_lava": false,
+          "can_path_over_water": false,
+          "can_sink": true,
+          "can_walk_in_lava": false,
+          "avoid_damage_blocks": false,
+          "avoid_portals": true,
+          "blocks_to_avoid": []
+        },
+        "minecraft:movement.basic": {},
+        "minecraft:jump.static": {},
+        "minecraft:can_climb": {}
+      },
+      "fs:replenish_health": {
+        "minecraft:health": {
+          "value": 1000,
+          "max": 1000
+        }
+      },
+      "fs:add_damage_sensor_default": {
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "deals_damage": false,
+              "cause": "projectile",
+              "on_damage": {
+                "event": "fs:set_damaged_by_projectile"
+              }
+            },
+            {
+              "deals_damage": true,
+              "on_damage": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "value": "player_companion",
+                      "subject": "damager"
+                    }
+                  ]
+                },
+                "event": "fs:set_damaged_by_player_companion"
+              }
+            },
+            {
+              "deals_damage": false,
+              "on_damage": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "value": "enemy_launcher_damager",
+                      "subject": "damager"
+                    }
+                  ]
+                },
+                "event": "fs:set_damaged_by_player_companion"
+              }
+            },
+            {
+              "deals_damage": false,
+              "on_damage": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "value": "power_attack",
+                      "subject": "damager"
+                    }
+                  ]
+                },
+                "event": "fs:set_damaged_by_player_super"
+              }
+            },
+            {
+              "deals_damage": false,
+              "on_damage": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "value": "prop_exploding",
+                      "subject": "damager"
+                    }
+                  ]
+                },
+                "event": "fs:set_damaged_by_prop_exploding"
+              }
+            },
+            {
+              "cause": "all",
+              "deals_damage": false
+            }
+          ]
+        }
+      },
+      "fs:add_damage_sensor_no_damage": {
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "all",
+              "deals_damage": false
+            }
+          ]
+        }
+      },
+      "fs:damaged_state_killed": {
+        "minecraft:collision_box": {
+          "height": 4.75,
+          "width": 4.75
+        },
+        "minecraft:type_family": {
+          "family": [
+            "boss",
+            "boss_killed",
+            "boss_krang"
+          ]
+        },
+        "minecraft:navigation.walk": {},
+        "minecraft:movement.basic": {},
+        "minecraft:movement": {
+          "value": 0
+        }
+      },
+      "fs:movement_state_none": {
+        "minecraft:navigation.walk": {},
+        "minecraft:movement.basic": {},
+        "minecraft:movement": {
+          "value": 0
+        }
+      },
+      "fs:movement_state_move": {
+        "minecraft:navigation.walk": {
+          "is_amphibious": false,
+          "avoid_sun": false,
+          "avoid_water": true
+        },
+        "minecraft:variable_max_auto_step": {
+          "base_value": 3
+        },
+        "minecraft:movement.basic": {},
+        "minecraft:jump.static": {},
+        "minecraft:can_climb": {},
+        "minecraft:preferred_path": {
+          "default_block_cost": 0,
+          "jump_cost": 0,
+          "max_fall_blocks": 20
+        },
+        "minecraft:behavior.look_at_player": {
+          "priority": 4,
+          "look_distance": 8
+        }
+      },
+      "fs:movement_speed_default": {
+        "minecraft:movement": {
+          "value": 0.3
+        }
+      },
+      "fs:movement_speed_slow": {
+        "minecraft:movement": {
+          "value": 0.2
+        }
+      },
+      "fs:movement_speed_fast": {
+        "minecraft:movement": {
+          "value": 0.4
+        }
+      },
+      "fs:set_attack_state_melee": {
+        "minecraft:navigation.walk": {
+          "is_amphibious": false,
+          "avoid_sun": false,
+          "avoid_water": true
+        },
+        "minecraft:movement.basic": {},
+        "minecraft:movement": {
+          "value": 0.3
+        },
+        "minecraft:preferred_path": {
+          "default_block_cost": 0,
+          "jump_cost": 0,
+          "max_fall_blocks": 10
+        },
+        "minecraft:behavior.look_at_player": {
+          "priority": 4,
+          "look_distance": 8
+        },
+        "minecraft:behavior.nearest_prioritized_attackable_target": {
+          "priority": 0,
+          "attack_interval": 0,
+          "must_reach": false,
+          "must_see": false,
+          "must_see_forget_duration": 60,
+          "persist_time": 60,
+          "reselect_targets": false,
+          "scan_interval": 1,
+          "set_persistent": true,
+          "target_search_height": -1,
+          "within_radius": 64,
+          "entity_types": {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "player"
+                },
+                {
+                  "test": "has_tag",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "is_downed"
+                }
+              ]
+            },
+            "max_dist": 64,
+            "must_see": false,
+            "walk_speed_multiplier": 1.25
+          }
+        },
+        "minecraft:attack": {
+          "damage": 2
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 0,
+          "track_target": true,
+          "reach_multiplier": 4,
+          "random_stop_interval": 0,
+          "cooldown_time": 2
+        },
+        "minecraft:behavior.move_towards_target": {
+          "priority": 1,
+          "within_radius": 6,
+          "speed_multiplier": 1
+        }
+      },
+      "fs:set_attack_state_ranged": {
+        "minecraft:navigation.walk": {
+          "is_amphibious": false,
+          "avoid_sun": false,
+          "avoid_water": true
+        },
+        "minecraft:movement.basic": {},
+        "minecraft:movement": {
+          "value": 0
+        },
+        "minecraft:behavior.look_at_player": {
+          "priority": 4,
+          "look_distance": 8
+        },
+        "minecraft:behavior.nearest_prioritized_attackable_target": {
+          "priority": 0,
+          "attack_interval": 0,
+          "must_reach": false,
+          "must_see": false,
+          "must_see_forget_duration": 60,
+          "persist_time": 60,
+          "reselect_targets": false,
+          "scan_interval": 1,
+          "set_persistent": true,
+          "target_search_height": -1,
+          "within_radius": 64,
+          "entity_types": {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "player"
+                },
+                {
+                  "test": "has_tag",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "is_downed"
+                }
+              ]
+            },
+            "max_dist": 64,
+            "must_see": false,
+            "walk_speed_multiplier": 1.25
+          }
+        },
+        "minecraft:shooter": {
+          "def": "fs:projectile_invisible"
+        },
+        "minecraft:behavior.ranged_attack": {
+          "priority": 0,
+          "charge_charged_trigger": 3,
+          "charge_shoot_trigger": 10,
+          "burst_interval": 10,
+          "burst_shots": 1,
+          "attack_radius": 32
+        },
+        "minecraft:follow_range": {
+          "value": 32,
+          "max": 32
+        }
+      },
+      "fs:set_attack_state_ranged_alt": {
+        "minecraft:navigation.walk": {
+          "is_amphibious": false,
+          "avoid_sun": false,
+          "avoid_water": true
+        },
+        "minecraft:movement.basic": {},
+        "minecraft:movement": {
+          "value": 0
+        },
+        "minecraft:behavior.look_at_player": {
+          "priority": 4,
+          "look_distance": 8
+        },
+        "minecraft:behavior.nearest_prioritized_attackable_target": {
+          "priority": 0,
+          "attack_interval": 0,
+          "must_reach": false,
+          "must_see": false,
+          "must_see_forget_duration": 60,
+          "persist_time": 60,
+          "reselect_targets": false,
+          "scan_interval": 1,
+          "set_persistent": true,
+          "target_search_height": -1,
+          "within_radius": 64,
+          "entity_types": {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "player"
+                },
+                {
+                  "test": "has_tag",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "is_downed"
+                }
+              ]
+            },
+            "max_dist": 64,
+            "must_see": false,
+            "walk_speed_multiplier": 1.25
+          }
+        },
+        "minecraft:shooter": {
+          "def": "fs:projectile_invisible"
+        },
+        "minecraft:behavior.ranged_attack": {
+          "priority": 0,
+          "charge_charged_trigger": 3,
+          "charge_shoot_trigger": 10,
+          "burst_interval": 10,
+          "burst_shots": 1,
+          "attack_radius": 32
+        },
+        "minecraft:follow_range": {
+          "value": 32,
+          "max": 32
+        }
+      },
+      "fs:collision_box_default": {
+        "minecraft:collision_box": {
+          "height": 4.75,
+          "width": 2.25
+        }
+      },
+      "fs:collision_box_knockdown": {
+        "minecraft:collision_box": {
+          "height": 4.75,
+          "width": 4.75
+        }
+      },
+      "fs:become_npc": {
+        "minecraft:npc": {
+          "npc_data": {
+            "skin_list": [
+              {
+                "variant": 0
+              }
+            ]
+          }
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": [
+                  {
+                    "all_of": [
+                      {
+                        "subject": "other",
+                        "test": "is_family",
+                        "value": "player"
+                      }
+                    ]
+                  }
+                ],
+                "target": "self",
+                "event": "fs:interact"
+              },
+              "interact_text": "action.interact.entity.common"
+            }
+          ]
+        }
+      },
+      "fs:become_attackable": {
+        "minecraft:type_family": {
+          "family": [
+            "boss",
+            "attackable",
+            "boss_krang",
+            "collision_large"
+          ]
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "boss",
+          "boss_krang",
+          "can_pathfind",
+          "collision_large"
+        ]
+      },
+      "minecraft:physics": {
+        "has_collision": true,
+        "has_gravity": true
+      },
+      "minecraft:scale": {
+        "value": 1
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": false
+          }
+        ]
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:collision_box": {
+        "height": 4.75,
+        "width": 2.25
+      },
+      "minecraft:variant": {
+        "value": 0
+      },
+      "minecraft:health": {
+        "value": 1000,
+        "max": 1000
+      }
+    },
+    "events": {
+      "fs:instant_despawn": {
+        "add": {
+          "component_groups": [
+            "fs:instant_despawn"
+          ]
+        }
+      },
+      "fs:enable_perf_mode": {
+        "set_property": {
+          "property:perf_mode": true
+        }
+      },
+      "fs:disable_perf_mode": {
+        "set_property": {
+          "property:perf_mode": false
+        }
+      },
+      "fs:start_pathfinding": {
+        "set_property": {
+          "property:movement_state": "move",
+          "property:movement_speed": "shocked"
+        },
+        "remove": {
+          "component_groups": [
+            "fs:stop_pathfinding"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "fs:start_pathfinding"
+          ]
+        }
+      },
+      "fs:stop_pathfinding": {
+        "set_property": {
+          "property:movement_state": "idle",
+          "property:movement_speed": "default"
+        },
+        "add": {
+          "component_groups": [
+            "fs:stop_pathfinding"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "fs:add_damage_sensor_no_damage",
+            "fs:become_npc"
+          ]
+        }
+      },
+      "fs:spawn": {
+        "add": {
+          "component_groups": [
+            "fs:add_damage_sensor_no_damage",
+            "fs:become_npc"
+          ]
+        }
+      },
+      "fs:add_damage_sensor_default": {
+        "add": {
+          "component_groups": [
+            "fs:add_damage_sensor_default"
+          ]
+        }
+      },
+      "fs:add_damage_sensor_no_damage": {
+        "add": {
+          "component_groups": [
+            "fs:add_damage_sensor_no_damage"
+          ]
+        }
+      },
+      "fs:set_movement_state_appear": {
+        "set_property": {
+          "property:movement_state": "appear"
+        }
+      },
+      "fs:set_movement_state_idle": {
+        "set_property": {
+          "property:movement_state": "idle"
+        },
+        "add": {
+          "component_groups": [
+            "fs:movement_state_none"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "fs:movement_state_move",
+            "fs:movement_speed_default",
+            "fs:movement_speed_fast",
+            "fs:movement_speed_slow"
+          ]
+        }
+      },
+      "fs:set_movement_state_none": {
+        "set_property": {
+          "property:movement_state": "none"
+        },
+        "add": {
+          "component_groups": [
+            "fs:movement_state_none"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "fs:movement_state_move",
+            "fs:movement_speed_default",
+            "fs:movement_speed_fast",
+            "fs:movement_speed_slow"
+          ]
+        }
+      },
+      "fs:set_movement_state_move": {
+        "set_property": {
+          "property:movement_state": "move"
+        },
+        "add": {
+          "component_groups": [
+            "fs:movement_state_move",
+            "fs:movement_speed_default"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "fs:movement_state_none"
+          ]
+        }
+      },
+      "fs:set_movement_speed_default": {
+        "set_property": {
+          "property:movement_speed": "default"
+        },
+        "add": {
+          "component_groups": [
+            "fs:movement_speed_default"
+          ]
+        }
+      },
+      "fs:set_movement_speed_slow": {
+        "set_property": {
+          "property:movement_speed": "slow"
+        },
+        "add": {
+          "component_groups": [
+            "fs:movement_speed_slow"
+          ]
+        }
+      },
+      "fs:set_movement_speed_fast": {
+        "set_property": {
+          "property:movement_speed": "fast"
+        },
+        "add": {
+          "component_groups": [
+            "fs:movement_speed_fast"
+          ]
+        }
+      },
+      "fs:set_attack_state_none": {
+        "set_property": {
+          "property:attack_state": "none"
+        },
+        "remove": {
+          "component_groups": [
+            "fs:set_attack_state_ranged",
+            "fs:set_attack_state_ranged_alt",
+            "fs:set_attack_state_melee"
+          ]
+        }
+      },
+      "fs:set_attack_state_melee": {
+        "set_property": {
+          "property:attack_state": "melee"
+        },
+        "add": {
+          "component_groups": [
+            "fs:set_attack_state_melee"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "fs:set_attack_state_ranged",
+            "fs:set_attack_state_ranged_alt"
+          ]
+        }
+      },
+      "fs:set_attack_state_ranged": {
+        "set_property": {
+          "property:attack_state": "ranged"
+        },
+        "add": {
+          "component_groups": [
+            "fs:set_attack_state_ranged"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "fs:set_attack_state_melee",
+            "fs:set_attack_state_ranged_alt"
+          ]
+        }
+      },
+      "fs:set_attack_state_ranged_alt": {
+        "set_property": {
+          "property:attack_state": "ranged_alt"
+        },
+        "add": {
+          "component_groups": [
+            "fs:set_attack_state_ranged_alt"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "fs:set_attack_state_melee",
+            "fs:set_attack_state_ranged"
+          ]
+        }
+      },
+      "fs:set_attack_state_dash": {
+        "set_property": {
+          "property:attack_state": "dash"
+        }
+      },
+      "fs:set_attack_state_jump": {
+        "set_property": {
+          "property:attack_state": "jump"
+        }
+      },
+      "fs:set_attack_state_block": {
+        "set_property": {
+          "property:attack_state": "block"
+        }
+      },
+      "fs:set_damage_state_none": {
+        "add": {
+          "component_groups": [
+            "fs:collision_box_default"
+          ]
+        },
+        "set_property": {
+          "property:damage_state": "none"
+        }
+      },
+      "fs:set_damage_state_knockdown": {
+        "add": {
+          "component_groups": [
+            "fs:movement_state_none",
+            "fs:collision_box_knockdown"
+          ]
+        },
+        "set_property": {
+          "property:damage_state": "knockdown"
+        }
+      },
+      "fs:set_damage_state_get_up": {
+        "set_property": {
+          "property:damage_state": "get_up"
+        }
+      },
+      "fs:set_damage_state_hit": {
+        "set_property": {
+          "property:damage_state": "hit"
+        }
+      },
+      "fs:set_damage_state_hurt": {
+        "set_property": {
+          "property:damage_state": "hurt"
+        }
+      },
+      "fs:set_is_killed": {
+        "set_property": {
+          "property:is_killed": true
+        }
+      },
+      "fs:set_damage_state_killed": {
+        "add": {
+          "component_groups": [
+            "fs:damaged_state_killed"
+          ]
+        },
+        "set_property": {
+          "property:damage_state": "killed"
+        }
+      },
+      "fs:set_damaged_by_player_light": {
+        "set_property": {
+          "property:damage_type": "light"
+        }
+      },
+      "fs:set_damaged_by_player_heavy": {
+        "set_property": {
+          "property:damage_type": "heavy"
+        }
+      },
+      "fs:set_damaged_by_player_super": {
+        "set_property": {
+          "property:damage_type": "super"
+        }
+      },
+      "fs:set_damaged_by_projectile": {
+        "set_property": {
+          "property:damage_type": "projectile"
+        }
+      },
+      "fs:set_damaged_by_player_companion": {
+        "add": {
+          "component_groups": [
+            "fs:replenish_health"
+          ]
+        },
+        "set_property": {
+          "property:damage_type": "player_companion"
+        }
+      },
+      "fs:set_damaged_by_prop_exploding": {
+        "set_property": {
+          "property:damage_type": "prop_exploding"
+        }
+      },
+      "fs:set_damaged_by_player_none": {
+        "set_property": {
+          "property:damage_type": "none"
+        }
+      },
+      "fs:become_npc": {
+        "add": {
+          "component_groups": [
+            "fs:become_npc"
+          ]
+        }
+      },
+      "fs:remove_npc": {
+        "remove": {
+          "component_groups": [
+            "fs:become_npc"
+          ]
+        }
+      },
+      "fs:become_attackable": {
+        "remove": {
+          "component_groups": [
+            "fs:become_npc"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "fs:become_attackable",
+            "fs:add_damage_sensor_default"
+          ]
+        }
+      }
+    }
+  }
+}

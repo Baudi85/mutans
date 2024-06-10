@@ -1,0 +1,78 @@
+// @(com.57digital.shulker.inherited)
+// Inheritance Chain: [fs:entity] ~> [fs:prop] ~> fs:prop_sofa
+{
+  "format_version": "1.19.60",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "fs:prop_sofa",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "property:perf_mode": {
+          "type": "bool",
+          "default": true,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "fs:instant_despawn": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "prop",
+          "not_attackable",
+          "collision_normal"
+        ]
+      },
+      "minecraft:physics": {
+        "has_collision": false,
+        "has_gravity": false
+      },
+      "minecraft:scale": {
+        "value": 1.5
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": false
+          }
+        ]
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:collision_box": {
+        "height": 0,
+        "width": 0
+      }
+    },
+    "events": {
+      "fs:instant_despawn": {
+        "add": {
+          "component_groups": [
+            "fs:instant_despawn"
+          ]
+        }
+      },
+      "fs:enable_perf_mode": {
+        "set_property": {
+          "property:perf_mode": true
+        }
+      },
+      "fs:disable_perf_mode": {
+        "set_property": {
+          "property:perf_mode": false
+        }
+      }
+    }
+  }
+}

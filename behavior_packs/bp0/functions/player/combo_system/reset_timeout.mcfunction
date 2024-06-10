@@ -1,0 +1,1 @@
+scoreboard players set @s combo_timeout 20

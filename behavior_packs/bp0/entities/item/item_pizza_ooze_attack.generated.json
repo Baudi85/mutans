@@ -1,0 +1,78 @@
+// @(com.57digital.shulker.inherited)
+// Inheritance Chain: [fs:entity] ~> [fs:item] ~> fs:item_pizza_ooze_attack
+{
+  "format_version": "1.19.60",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "fs:item_pizza_ooze_attack",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "property:perf_mode": {
+          "type": "bool",
+          "default": true,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "fs:instant_despawn": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "item",
+          "item_pizza",
+          "item_pizza_ooze_attack"
+        ]
+      },
+      "minecraft:physics": {
+        "has_collision": true,
+        "has_gravity": true
+      },
+      "minecraft:scale": {
+        "value": 1
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": false
+          }
+        ]
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:collision_box": {
+        "height": 0.25,
+        "width": 0.9
+      }
+    },
+    "events": {
+      "fs:instant_despawn": {
+        "add": {
+          "component_groups": [
+            "fs:instant_despawn"
+          ]
+        }
+      },
+      "fs:enable_perf_mode": {
+        "set_property": {
+          "property:perf_mode": true
+        }
+      },
+      "fs:disable_perf_mode": {
+        "set_property": {
+          "property:perf_mode": false
+        }
+      }
+    }
+  }
+}

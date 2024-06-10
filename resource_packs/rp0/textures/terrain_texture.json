@@ -1,0 +1,362 @@
+{
+    "resource_pack_name": "PA_RP",
+    "texture_name": "atlas.terrain",
+    "padding": 8,
+    "num_mip_levels": 4,
+    "texture_data": {
+        "boss_floor": {
+            "textures": "textures/blocks/amethyst_block"
+        },
+        "powered_off": {
+            "textures": "textures/blocks/powered_off"
+        },
+        "powered_on": {
+            "textures": "textures/blocks/powered_on"
+        },
+        "custom_prop_fire_hydrant": {
+            "textures": "textures/entity/prop_fire_hydrant/prop_fire_hydrant_v0"
+        },
+        "bm__wall_clock": {
+            "textures": "textures/entity/block_model/wall_clock/wall_clock"
+        },
+        "bm__office_chair": {
+            "textures": "textures/entity/block_model/office_chair/office_chair"
+        },
+        "bm__prop_desk_small_v0": {
+            "textures": "textures/entity/prop_desk_small/prop_desk_small_v0"
+        },
+        "bm__water_cooler": {
+            "textures": "textures/entity/block_model/water_cooler/water_cooler"
+        },
+        "bm__filing_cabinet_blue": {
+            "textures": "textures/entity/block_model/filing_cabinet/filing_cabinet_blue"
+        },
+        "bm__filing_cabinet_red": {
+            "textures": "textures/entity/block_model/filing_cabinet/filing_cabinet_red"
+        },
+        "bm__filing_cabinet_green": {
+            "textures": "textures/entity/block_model/filing_cabinet/filing_cabinet_green"
+        },
+        "bm__filing_cabinet_grey": {
+            "textures": "textures/entity/block_model/filing_cabinet/filing_cabinet_grey"
+        },
+        "bm__brick_block_slime": {
+            "textures": "textures/entity/block_model/brick_block/brick_block_slime"
+        },
+        "bm__tunnel_internal": {
+            "textures": "textures/entity/block_model/sewer_tunnel/tunnel_internal"
+        },
+        "bm__tunnel_internal_slime": {
+            "textures": "textures/entity/block_model/sewer_tunnel/tunnel_internal_slime"
+        },
+        "bm__tunnel_bottom": {
+            "textures": "textures/entity/block_model/sewer_tunnel/tunnel_bottom"
+        },
+        "bm__tunnel_bottom_slime": {
+            "textures": "textures/entity/block_model/sewer_tunnel/tunnel_bottom_slime"
+        },
+        "bm__tunnel_top": {
+            "textures": "textures/entity/block_model/sewer_tunnel/tunnel_top"
+        },
+        "bm__tunnel_left": {
+            "textures": "textures/entity/block_model/sewer_tunnel/tunnel_left"
+        },
+        "bm__tunnel_left_marked": {
+            "textures": "textures/entity/block_model/sewer_tunnel/tunnel_left_marked"
+        },
+        "bm__tunnel_right": {
+            "textures": "textures/entity/block_model/sewer_tunnel/tunnel_right"
+        },
+        "bm__tunnel_corner_tr": {
+            "textures": "textures/entity/block_model/sewer_tunnel/tunnel_corner_tr"
+        },
+        "bm__tunnel_corner_br": {
+            "textures": "textures/entity/block_model/sewer_tunnel/tunnel_corner_br"
+        },
+        "bm__tunnel_corner_tl": {
+            "textures": "textures/entity/block_model/sewer_tunnel/tunnel_corner_tl"
+        },
+        "bm__tunnel_corner_bl": {
+            "textures": "textures/entity/block_model/sewer_tunnel/tunnel_corner_bl"
+        },
+        "bm__prop_alley_bin_v0": {
+            "textures": "textures/entity/prop_alley_bin/prop_alley_bin_v0"
+        },
+        "bm__prop_armchair_v0": {
+            "textures": "textures/entity/prop_armchair/prop_armchair_v0"
+        },
+        "bm__prop_barrier_v0": {
+            "textures": "textures/entity/prop_barrier/prop_barrier_v0"
+        },
+        "bm__prop_bonsai_tree_v0": {
+            "textures": "textures/entity/prop_bonsai_tree/prop_bonsai_tree_v0"
+        },
+        "bm__prop_crate_v0": {
+            "textures": "textures/entity/prop_crate/prop_crate_v0"
+        },
+        "bm__prop_crate_v1": {
+            "textures": "textures/entity/prop_crate/prop_crate_v1"
+        },
+        "bm__prop_kitchen_oven_v0": {
+            "textures": "textures/entity/prop_kitchen_oven/prop_kitchen_oven_v0"
+        },
+        "bm__prop_kitchen_unit_v0": {
+            "textures": "textures/entity/prop_kitchen_unit/prop_kitchen_unit_v0"
+        },
+        "bm__prop_kitchen_unit_microwave_v0": {
+            "textures": "textures/entity/prop_kitchen_unit_microwave/prop_kitchen_unit_microwave_v0"
+        },
+        "bm__prop_kitchen_unit_sink_v0": {
+            "textures": "textures/entity/prop_kitchen_unit_sink/prop_kitchen_unit_sink_v0"
+        },
+        "bm__prop_mail_box_v0": {
+            "textures": "textures/entity/prop_mail_box/prop_mail_box_v0"
+        },
+        "bm__prop_manhole_cover_v0": {
+            "textures": "textures/entity/prop_manhole_cover/prop_manhole_cover_v0"
+        },
+        "bm__prop_mirror_v0": {
+            "textures": "textures/entity/prop_mirror/prop_mirror_v0"
+        },
+        "bm__prop_one_way_sign_v0": {
+            "textures": "textures/entity/prop_one_way_sign/prop_one_way_sign_v0"
+        },
+        "bm__prop_exit_sign_v0": {
+            "textures": "textures/entity/prop_exit_sign/prop_exit_sign_v0"
+        },
+        "bm__prop_park_chess_table_v0": {
+            "textures": "textures/entity/prop_park_chess_table/prop_park_chess_table_v0"
+        },
+        "bm__prop_parking_meter_v0": {
+            "textures": "textures/entity/prop_parking_meter/prop_parking_meter_v0"
+        },
+        "bm__prop_stop_sign_v0": {
+            "textures": "textures/entity/prop_stop_sign/prop_stop_sign_v0"
+        },
+        "bm__prop_picture_beast_v0": {
+            "textures": "textures/entity/prop_picture_beast/prop_picture_beast_v0"
+        },
+        "bm__prop_shoji_lamp_v0": {
+            "textures": "textures/entity/prop_shoji_lamp/prop_shoji_lamp_v0"
+        },
+        "bm__prop_street_bin_v0": {
+            "textures": "textures/entity/prop_street_bin/prop_street_bin_v0"
+        },
+        "bm__prop_traffic_barrier_v0": {
+            "textures": "textures/entity/prop_traffic_barrier/prop_traffic_barrier_v0"
+        },
+        "bm__prop_traffic_cone_v0": {
+            "textures": "textures/entity/prop_traffic_cone/prop_traffic_cone_v0"
+        },
+        "bm__prop_traffic_cone_large_v0": {
+            "textures": "textures/entity/prop_traffic_cone_large/prop_traffic_cone_large_v0"
+        },
+        "bm__prop_tripod_camera_v0": {
+            "textures": "textures/entity/prop_tripod_camera/prop_tripod_camera_v0"
+        },
+        "bm__prop_roadwork_sign_v0": {
+            "textures": "textures/entity/prop_roadwork_sign/prop_roadwork_sign_v0"
+        },
+        "bm__prop_park_bench_v0": {
+            "textures": "textures/entity/prop_park_bench/prop_park_bench_v0"
+        },
+        "bm__prop_floor_lamp_v0": {
+            "textures": "textures/entity/prop_floor_lamp/prop_floor_lamp_v0"
+        },
+        "bm__prop_steam_vent_v0": {
+            "textures": "textures/entity/prop_steam_vent/prop_steam_vent_v0"
+        },
+        "bm__prop_kitchen_wall_unit_v0": {
+            "textures": "textures/entity/prop_kitchen_wall_unit/prop_kitchen_wall_unit_v0"
+        },
+        "bm__prop_kitchen_wall_unit_v1": {
+            "textures": "textures/entity/prop_kitchen_wall_unit/prop_kitchen_wall_unit_v1"
+        },
+        "bm__prop_museum_armor_v0": {
+            "textures": "textures/entity/prop_museum_armor/prop_museum_armor_v0"
+        },
+        "bm__prop_museum_skull_v0": {
+            "textures": "textures/entity/prop_museum_skull/prop_museum_skull_v0"
+        },
+        "bm__prop_museum_sword_v0": {
+            "textures": "textures/entity/prop_museum_sword/prop_museum_sword_v0"
+        },
+        "bm__prop_museum_vase_v0": {
+            "textures": "textures/entity/prop_museum_vase/prop_museum_vase_v0"
+        },
+        "bm__prop_coffee_table_v1": {
+            "textures": "textures/entity/prop_coffee_table/prop_coffee_table_v1"
+        },
+        "bm__prop_wall_shelf_v0": {
+            "textures": "textures/entity/prop_wall_shelf/prop_wall_shelf_v0"
+        },
+        "bm__quest_item_handle_v0": {
+            "textures": "textures/entity/quest_item_handle/quest_item_handle_v0"
+        },
+        "bm__quest_item_valve_v0": {
+            "textures": "textures/entity/quest_item_valve/quest_item_valve_v0"
+        },
+        "bm__gui_icon_museum_armor_v0": {
+            "textures": "textures/entity/gui_icon_museum_armor/gui_icon_museum_armor_v0"
+        },
+        "bm__gui_icon_museum_skull_v0": {
+            "textures": "textures/entity/gui_icon_museum_skull/gui_icon_museum_skull_v0"
+        },
+        "bm__gui_icon_museum_sword_v0": {
+            "textures": "textures/entity/gui_icon_museum_sword/gui_icon_museum_sword_v0"
+        },
+        "bm__gui_icon_museum_vase_v0": {
+            "textures": "textures/entity/gui_icon_museum_vase/gui_icon_museum_vase_v0"
+        },
+        "bm__sewer_pipe": {
+            "textures": "textures/entity/block_model/sewer_pipe/sewer_pipe"
+        },
+        "bm__sewer_pipe_end": {
+            "textures": "textures/entity/block_model/sewer_pipe/sewer_pipe_end"
+        },
+        "bm__sewer_pipe_end_up": {
+            "textures": "textures/entity/block_model/sewer_pipe/sewer_pipe_end_up"
+        },
+        "bm__sewer_pipe_end_down": {
+            "textures": "textures/entity/block_model/sewer_pipe/sewer_pipe_end_down"
+        },
+        "bm__sewer_pipe_vertical": {
+            "textures": "textures/entity/block_model/sewer_pipe/sewer_pipe_vertical"
+        },
+        "bm__sewer_pipe_corner": {
+            "textures": "textures/entity/block_model/sewer_pipe/sewer_pipe_corner"
+        },
+        "bm__sewer_pipe_corner_up": {
+            "textures": "textures/entity/block_model/sewer_pipe/sewer_pipe_corner_up"
+        },
+        "bm__sewer_pipe_corner_down": {
+            "textures": "textures/entity/block_model/sewer_pipe/sewer_pipe_corner_down"
+        },
+        "bm__sewer_pipe_vertical_t": {
+            "textures": "textures/entity/block_model/sewer_pipe/sewer_pipe_vertical_t"
+        },
+        "bm__sewer_pipe_horizontal_t": {
+            "textures": "textures/entity/block_model/sewer_pipe/sewer_pipe_horizontal_t"
+        },
+        "bm__sewer_pipe_horizontal_t_up": {
+            "textures": "textures/entity/block_model/sewer_pipe/sewer_pipe_horizontal_t_up"
+        },
+        "bm__sewer_pipe_horizontal_t_down": {
+            "textures": "textures/entity/block_model/sewer_pipe/sewer_pipe_horizontal_t_down"
+        },
+        "bm__pipe_corner": {
+            "textures": "textures/entity/block_model/pipe/pipe_corner"
+        },
+        "bm__pipe_corner_down": {
+            "textures": "textures/entity/block_model/pipe/pipe_corner_down"
+        },
+        "bm__pipe_corner_up": {
+            "textures": "textures/entity/block_model/pipe/pipe_corner_up"
+        },
+        "bm__pipe_end_horizontal": {
+            "textures": "textures/entity/block_model/pipe/pipe_end_horizontal"
+        },
+        "bm__pipe_end_vertical": {
+            "textures": "textures/entity/block_model/pipe/pipe_end_vertical"
+        },
+        "bm__pipe_end_vertical_down": {
+            "textures": "textures/entity/block_model/pipe/pipe_end_vertical_down"
+        },
+        "bm__pipe_end_vertical_up": {
+            "textures": "textures/entity/block_model/pipe/pipe_end_vertical_up"
+        },
+        "bm__pipe_horizontal": {
+            "textures": "textures/entity/block_model/pipe/pipe_horizontal"
+        },
+        "bm__pipe_horizontal_t": {
+            "textures": "textures/entity/block_model/pipe/pipe_horizontal_t"
+        },
+        "bm__pipe_six_way": {
+            "textures": "textures/entity/block_model/pipe/pipe_six_way"
+        },
+        "bm__pipe_vertical": {
+            "textures": "textures/entity/block_model/pipe/pipe_vertical"
+        },
+        "bm__pipe_vertical_t": {
+            "textures": "textures/entity/block_model/pipe/pipe_vertical_t"
+        },
+        "bm__wire_end_cap": {
+            "textures": "textures/entity/block_model/wire_end_cap"
+        },
+        "bm__wire_vertical_red": {
+            "textures": "textures/entity/block_model/wire_vertical_red"
+        },
+        "bm__wire_vertical_green": {
+            "textures": "textures/entity/block_model/wire_vertical_green"
+        },
+        "bm__wire_vertical_blue": {
+            "textures": "textures/entity/block_model/wire_vertical_blue"
+        },
+        "bm__wire_vertical_yellow": {
+            "textures": "textures/entity/block_model/wire_vertical_yellow"
+        },
+        "bm__wire_horizontal_red": {
+            "textures": "textures/entity/block_model/wire_horizontal_red"
+        },
+        "bm__wire_horizontal_green": {
+            "textures": "textures/entity/block_model/wire_horizontal_green"
+        },
+        "bm__wire_horizontal_blue": {
+            "textures": "textures/entity/block_model/wire_horizontal_blue"
+        },
+        "bm__wire_horizontal_yellow": {
+            "textures": "textures/entity/block_model/wire_horizontal_yellow"
+        },
+        "bm__wire_corner_down": {
+            "textures": "textures/entity/block_model/wire_corner_down"
+        },
+        "bm__wire_corner_up": {
+            "textures": "textures/entity/block_model/wire_corner_up"
+        },
+        "bm__sticker_graffiti_foot_left_v0": {
+            "textures": "textures/entity/sticker_graffiti_foot_left/sticker_graffiti_foot_left_v0"
+        },
+        "bm__sticker_graffiti_foot_right_v0": {
+            "textures": "textures/entity/sticker_graffiti_foot_right/sticker_graffiti_foot_right_v0"
+        },
+        "bm__prop_arcade_machine_v0": {
+            "textures": "textures/entity/prop_arcade_machine/prop_arcade_machine_v0"
+        },
+        "bm__prop_arcade_machine_v1": {
+            "textures": "textures/entity/prop_arcade_machine/prop_arcade_machine_v1"
+        },
+        "bm__prop_arcade_machine_v2": {
+            "textures": "textures/entity/prop_arcade_machine/prop_arcade_machine_v2"
+        },
+        "bm__prop_arcade_machine_v3": {
+            "textures": "textures/entity/prop_arcade_machine/prop_arcade_machine_v3"
+        },
+        "bm__prop_arcade_machine_v4": {
+            "textures": "textures/entity/prop_arcade_machine/prop_arcade_machine_v4"
+        },
+        "bm__prop_arcade_machine_v5": {
+            "textures": "textures/entity/prop_arcade_machine/prop_arcade_machine_v5"
+        },
+        "bm__prop_arcade_machine_v6": {
+            "textures": "textures/entity/prop_arcade_machine/prop_arcade_machine_v6"
+        },
+        "bm__prop_arcade_machine_v7": {
+            "textures": "textures/entity/prop_arcade_machine/prop_arcade_machine_v7"
+        },
+        "bm__prop_boombox_v0": {
+            "textures": "textures/entity/prop_boombox/prop_boombox_v0"
+        },
+        "bm__prop_fire_hydrant_v0": {
+            "textures": "textures/entity/prop_fire_hydrant/prop_fire_hydrant_v0"
+        },
+        "bm__prop_tv_v0": {
+            "textures": "textures/entity/prop_tv/prop_tv_v0"
+        },
+        "bm__prop_pizza_box_v0": {
+            "textures": "textures/entity/prop_pizza_box/prop_pizza_box_v0"
+        },
+        "bm__prop_pizza_box_v1": {
+            "textures": "textures/entity/prop_pizza_box/prop_pizza_box_v1"
+        }
+    }
+}

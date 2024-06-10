@@ -1,0 +1,1 @@
+execute as @a run function dlg/tcom_0006

@@ -1,0 +1,69 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.player.property.did_interact_with": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "april_oneil": "query.property('property:did_interact_with') == 'april'"
+                        },
+                        {
+                            "splinter": "query.property('property:did_interact_with') == 'splinter'"
+                        },
+                        {
+                            "casey_jones": "query.property('property:did_interact_with') == 'casey_jones'"
+                        },
+                        {
+                            "research_board": "query.property('property:did_interact_with') == 'research_board'"
+                        }
+                    ],
+                    "on_entry": [
+                        "@s fs:reset_did_interact_with"
+                    ]
+                },
+                "april_oneil": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/did_interact_with/april_oneil"
+                    ]
+                },
+                "research_board": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/did_interact_with/research_board"
+                    ]
+                },
+                "splinter": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/did_interact_with/splinter"
+                    ]
+                },
+                "casey_jones": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/did_interact_with/casey_jones"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:projectile_plunger",
+            "render_controllers": [
+                "controller.render.entity.common"
+            ],
+            "geometry": {
+                "variant_0": "geometry.projectile_plunger"
+            },
+            "textures": {
+                "variant_0": "textures/entity/projectile_plunger/projectile_plunger_v0"
+            },
+            "materials": {
+                "default": "entity"
+            },
+            "animations": {
+                "move": "animation.plunger.move"
+            },
+            "scripts": {
+                "animate": [
+                    "move"
+                ]
+            }
+        }
+    }
+}

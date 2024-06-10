@@ -1,0 +1,2 @@
+execute as @e[type=fs:game,scores={squad_ai=0}] run event entity @e[type=fs:player_companion] fs:set_ai_mode_chilled
+execute as @e[type=fs:game,scores={squad_ai=1}] run event entity @e[type=fs:player_companion] fs:set_ai_mode_aggressive

@@ -1,0 +1,24 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:puppet_marker",
+            "spawn_egg": {
+                "base_color": "#000000",
+                "overlay_color": "#FFFFFF"
+            },
+            "render_controllers": [
+                "controller.render.puppet_marker"
+            ],
+            "geometry": {
+                "default": "geometry.puppet_marker"
+            },
+            "textures": {
+                "default": "textures/entity/__lib_puppet/puppet_marker/puppet_marker"
+            },
+            "materials": {
+                "default": "entity"
+            }
+        }
+    }
+}

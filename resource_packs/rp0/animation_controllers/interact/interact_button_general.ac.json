@@ -1,0 +1,14 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.interact_button_general.animate": {
+      "states": {
+        "default": {
+          "animations": [
+            "idle"
+          ]
+        }
+      }
+    }
+  }
+}

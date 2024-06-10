@@ -1,0 +1,1 @@
+function __lib/object/kill

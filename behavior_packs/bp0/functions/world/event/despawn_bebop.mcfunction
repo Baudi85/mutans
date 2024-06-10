@@ -1,0 +1,1 @@
+event entity @e[type=fs:boss_bebop] fs:instant_despawn

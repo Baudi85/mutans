@@ -1,0 +1,116 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:prop_tempestra_machine",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            },
+            "fs:variant_0": {
+                "minecraft:variant": {
+                    "value": 0
+                },
+                "minecraft:entity_sensor": {
+                    "maximum_count": -1,
+                    "minimum_count": 1,
+                    "relative_range": true,
+                    "require_all": false,
+                    "sensor_range": 6,
+                    "event_filters": [
+                        {
+                            "all_of": {
+                                "test": "is_family",
+                                "operator": "==",
+                                "value": "player"
+                            }
+                        }
+                    ],
+                    "event": "fs:variant_1"
+                }
+            },
+            "fs:variant_1": {
+                "minecraft:variant": {
+                    "value": 1
+                }
+            },
+            "fs:variant_2": {
+                "minecraft:variant": {
+                    "value": 2
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "prop",
+                    "prop_tempestra_machine"
+                ]
+            },
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            },
+            "minecraft:scale": {
+                "value": 1
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:collision_box": {
+                "height": 0,
+                "width": 0
+            }
+        },
+        "events": {
+            "fs:instant_despawn": {
+                "add": {
+                    "component_groups": [
+                        "fs:instant_despawn"
+                    ]
+                }
+            },
+            "fs:variant_0": {
+                "add": {
+                    "component_groups": [
+                        "fs:variant_0"
+                    ]
+                }
+            },
+            "fs:variant_1": {
+                "add": {
+                    "component_groups": [
+                        "fs:variant_1"
+                    ]
+                },
+                "remove": {
+                  "component_groups": [
+                    "fs:variant_0"
+                  ]
+                }
+            },
+            "fs:variant_2": {
+                "add": {
+                    "component_groups": [
+                        "fs:variant_2"
+                    ]
+                }
+            }
+        }
+    }
+}

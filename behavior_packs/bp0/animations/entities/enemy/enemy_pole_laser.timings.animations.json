@@ -1,0 +1,49 @@
+{
+    "format_version": "1.16.0",
+    "animations": {
+        "animation.movement_appear.enemy_pole_laser": {
+            "loop": false,
+            "animation_length": 1.0
+        },
+        "animation.attack_melee.enemy_pole_laser": {
+            "loop": false,
+            "animation_length": 0.0
+        },
+        "animation.attack_jump.enemy_pole_laser": {
+            "loop": false,
+            "animation_length": 0.0
+        },
+        "animation.attack_ranged.enemy_pole_laser": {
+            "loop": false,
+            "animation_length": 0.33
+        },
+        "animation.attack_dash.enemy_pole_laser": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.damage_hit.enemy_pole_laser": {
+            "loop": false,
+            "animation_length": 0.1
+        },
+        "animation.damage_hurt.enemy_pole_laser": {
+            "loop": false,
+            "animation_length": 0.46
+        },
+        "animation.attack_block.enemy_pole_laser": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.damage_knockdown.enemy_pole_laser": {
+            "loop": false,
+            "animation_length": 0.46
+        },
+        "animation.damage_get_up.enemy_pole_laser": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.damage_killed.enemy_pole_laser": {
+            "loop": false,
+            "animation_length": 0.58
+        }
+    }
+}

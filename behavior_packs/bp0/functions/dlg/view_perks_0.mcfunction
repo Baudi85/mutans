@@ -1,0 +1,12 @@
+## @(com.57digital.shulker.generated)
+## @generated File
+## Dialogue: view_perks_0
+## Actor: @s
+## Title: "tmnt.level.my_perks"
+## Message: {"rawtext":[{"text":"§a"},{"translate":"tmnt.level.you_are_level"},{"text":": §l§e"},{"text":"1"},{"text":"§r§a!§f"},{"text":"\n\n"},{"text":""},{"text":" "},{"text":"§l§a"},{"translate":"tmnt.level.prefix"},{"text":": "},{"text":"1"},{"text":"\n§r§f"},{"translate":"tmnt.level.perk.level_0"},{"text":"\n\n"},{"text":""},{"text":" "},{"text":"§l§5"},{"translate":"tmnt.level.prefix"},{"text":": "},{"text":"2"},{"text":"\n§r§7"},{"translate":"tmnt.level.perk.level_1"},{"text":"\n\n"},{"text":""},{"text":" "},{"text":"§l§5"},{"translate":"tmnt.level.prefix"},{"text":": "},{"text":"3"},{"text":"\n§r§7"},{"translate":"tmnt.level.perk.level_2"},{"text":"\n\n"},{"text":""},{"text":" "},{"text":"§l§5"},{"translate":"tmnt.level.prefix"},{"text":": "},{"text":"4"},{"text":"\n§r§7"},{"translate":"tmnt.level.perk.level_3"},{"text":"\n\n"},{"text":""},{"text":" "},{"text":"§l§5"},{"translate":"tmnt.level.prefix"},{"text":": "},{"text":"5"},{"text":"\n§r§7"},{"translate":"tmnt.level.perk.level_4"},{"text":"\n\n"},{"text":""},{"text":" "},{"text":"§l§5"},{"translate":"tmnt.level.prefix"},{"text":": "},{"text":"6"},{"text":"\n§r§7"},{"translate":"tmnt.level.perk.level_5"},{"text":"\n\n"},{"text":""},{"text":" "},{"text":"§l§5"},{"translate":"tmnt.level.prefix"},{"text":": "},{"text":"7"},{"text":"\n§r§7"},{"translate":"tmnt.level.perk.level_6"},{"text":"\n\n"},{"text":""},{"text":" "},{"text":"§l§5"},{"translate":"tmnt.level.prefix"},{"text":": "},{"text":"8"},{"text":"\n§r§7"},{"translate":"tmnt.level.perk.level_7"},{"text":"\n\n"},{"text":""},{"text":" "},{"text":"§l§5"},{"translate":"tmnt.level.prefix"},{"text":": "},{"text":"9"},{"text":"\n§r§7"},{"translate":"tmnt.level.perk.level_8"},{"text":"\n\n"},{"text":""},{"text":" "},{"text":"§l§5"},{"translate":"tmnt.level.prefix"},{"text":": "},{"text":"10"},{"text":"\n§r§7"},{"translate":"tmnt.level.perk.level_9"},{"text":"\n\n"},{"text":"§f§1§3§3§7§f§0§5§f"}]}
+## Button Count: 1
+## Adagio: true
+tag @s add dlg_view_perks_0
+tag @s add did_req_dlg
+gamemode adventure @s[m=!a]
+dialogue open @s @s view_perks_0

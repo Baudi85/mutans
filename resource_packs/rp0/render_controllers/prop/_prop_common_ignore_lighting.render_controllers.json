@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.prop.common.ignore_lighting": {
+      "arrays": {
+        "textures": {
+          "Array.textures": [
+            "Texture.variant_0"
+          ]
+        },
+        "geometries": {
+          "Array.geometries": [
+            "Geometry.variant_0"
+          ]
+        }
+      },
+      "geometry": "Array.geometries[query.variant]",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.textures[query.variant]"
+      ],
+      "ignore_lighting":true
+    }
+  }
+}

@@ -1,0 +1,1 @@
+scoreboard players set @e game_paused 1

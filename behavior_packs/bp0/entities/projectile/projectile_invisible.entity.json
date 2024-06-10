@@ -1,0 +1,111 @@
+{
+    "format_version": "1.19.60",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:projectile_invisible",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false,
+            "scripts": {
+                "animate": [
+                    "controller_is_riding"
+                ]
+            },
+            "animations": {
+                "controller_is_riding": "controller.animation.enemy_target.is_riding"
+            }
+        },
+        "component_groups": {
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            },
+            "fs:projectile": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "impact_damage": {
+                            "damage": 3,
+                            "knockback": false
+                        }
+                    },
+                    "anchor": 1,
+                    "power": 0.75,
+                    "gravity": 0,
+                    "angle_offset": 0,
+                    "offset": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "inertia": 1,
+                    "liquid_inertia": 1
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "projectile",
+                    "projectile_invisible"
+                ]
+            },
+            "minecraft:timer": {
+                "time": 2,
+                "looping": false,
+                "time_down_event": {
+                    "event": "fs:instant_despawn",
+                    "target": "self"
+                }
+            },
+            "minecraft:collision_box": {
+                "height": 0,
+                "width": 0
+            },
+            "minecraft:custom_hit_test": {
+                "hitboxes": [
+                    {
+                        "width": 1,
+                        "height": 1,
+                        "pivot": [
+                            0,
+                            0.5,
+                            0
+                        ]
+                    }
+                ]
+            },
+            "minecraft:physics": {
+                "has_collision": true,
+                "has_gravity": false
+            },
+            "minecraft:scale": {
+                "value": 1
+            },            
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "add": {
+                    "component_groups": [
+                        "fs:projectile"
+                    ]
+                }
+            },
+            "fs:instant_despawn": {
+                "add": {
+                    "component_groups": [
+                        "fs:instant_despawn"
+                    ]
+                }
+            }
+        }
+    }
+}

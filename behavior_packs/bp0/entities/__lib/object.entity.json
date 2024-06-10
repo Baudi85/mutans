@@ -1,0 +1,92 @@
+{
+    "format_version": "1.19.60",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:object",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "fs:game_start_object": {
+                "minecraft:type_family": {
+                    "family": [
+                        "object",
+                        "game_start"
+                    ]
+                }
+            },
+            "fs:tick_world": {
+                "minecraft:tick_world": {
+                    "never_despawn": true,
+                    "radius": 2
+                }
+            },
+            "fs:kill": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": true
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "object",
+                    "game_start"
+                ]
+            },
+            "minecraft:collision_box": {
+                "height": 0.0,
+                "width": 0.0
+            },
+            "minecraft:health": {
+                "max": 1,
+                "value": 1,
+                "min": 1
+            },
+            "minecraft:physics": {
+                "has_gravity": false,
+                "has_collision": false
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:nameable": {
+                "allow_name_tag_renaming": false,
+                "always_show": false
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            }
+        },
+        "events": {
+            "fs:game_start_object": {
+                "add": {
+                    "component_groups": [
+                        "fs:game_start_object"
+                    ]
+                }
+            },
+            "fs:tick_world": {
+                "add": {
+                    "component_groups": [
+                        "fs:tick_world"
+                    ]
+                }
+            },
+            "fs:kill": {
+                "add": {
+                    "component_groups": [
+                        "fs:kill"
+                    ]
+                }
+            }
+        }
+    }
+}

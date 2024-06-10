@@ -1,0 +1,24 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "fs:sticker_graffiti_wall_4",
+      "spawn_egg": {
+        "base_color": "#000000",
+        "overlay_color": "#000000"
+      },
+      "render_controllers": [
+        "controller.render.prop.common"
+      ],
+      "geometry": {
+        "variant_0": "geometry.sticker_graffiti_wall_4"
+      },
+      "textures": {
+        "variant_0": "textures/entity/sticker_graffiti_wall_4/sticker_graffiti_wall_4_v0"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      }
+    }
+  }
+}

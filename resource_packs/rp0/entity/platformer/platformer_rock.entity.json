@@ -1,0 +1,23 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:platformer_rock",
+            "render_controllers": [
+                "controller.render.entity.platformer_rock"
+            ],
+            "geometry": {
+                "variant_0": "geometry.platformer_rock"
+            },
+            "textures": {
+                "variant_0": "textures/entity/platformer_rock/platformer_rock_v0",
+                "variant_1": "textures/entity/platformer_rock/platformer_rock_v1",
+                "variant_2": "textures/entity/platformer_rock/platformer_rock_v2",
+                "variant_3": "textures/entity/platformer_rock/platformer_rock_v3"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            }
+        }
+    }
+}

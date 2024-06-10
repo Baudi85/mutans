@@ -1,0 +1,13 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:item": {
+    "description": {
+      "identifier": "fs:item_turtle_don",
+      "category": "Items"
+    },
+    "components": {
+      "minecraft:icon": "item_turtle_don",
+      "minecraft:use_animation": "none"
+    }
+  }
+}

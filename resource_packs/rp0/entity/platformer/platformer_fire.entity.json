@@ -1,0 +1,21 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:platformer_fire",
+            "render_controllers": [
+                "controller.render.entity.platformer_fire"
+            ],
+            "geometry": {
+                "variant_0": "geometry.platformer_fire"
+            },
+            "textures": {
+                "variant_0": "textures/entity/platformer_fire/platformer_fire_v0",
+                "variant_1": "textures/entity/platformer_fire/platformer_fire_v1"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            }
+        }
+    }
+}

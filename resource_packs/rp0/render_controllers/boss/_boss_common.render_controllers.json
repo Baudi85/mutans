@@ -1,0 +1,47 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.boss.common": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.variant_default",
+                        "Texture.variant_hit",
+                        "Texture.variant_knockdown"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_0"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[(query.property('property:damage_state') == 'hit' || query.property('property:damage_state') == 'hurt') ? 1 : query.property('property:damage_state') == 'knockdown' ? 2 : 0]"
+            ],
+            "is_hurt_color": {
+                "r": "1.0",
+                "g": "1.0",
+                "b": "1.0",
+                "a": "0.25"
+            },
+            "part_visibility": [
+                {
+                    "drill": "query.property('property:movement_state') == 'appear'"
+                },
+                {
+                    "launcher": "query.property('property:attack_state') == 'ranged'"
+                },
+                {
+                    "barrel": "query.property('property:attack_state') == 'ranged'"
+                }
+            ]
+        }
+    }
+}

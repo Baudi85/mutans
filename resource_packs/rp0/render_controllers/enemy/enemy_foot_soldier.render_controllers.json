@@ -1,0 +1,92 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.enemy_foot_soldier": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.variant_default",
+                        "Texture.variant_hit",
+                        "Texture.variant_knockdown"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_0"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[0]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                },
+                {
+                    "right_arm_armor": "Material.alphatest"
+                },
+                {
+                    "left_arm_armor": "Material.alphatest"
+                },
+                {
+                    "right_left_armor": "Material.alphatest"
+                },
+                {
+                    "left_left_armor": "Material.alphatest"
+                },
+                {
+                    "weapon": "Material.alphatest"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.property('property:damage_state') == 'hit' ? 1 : query.property('property:damage_state') == 'knockdown' ? 2 : 0]"
+            ],
+            "is_hurt_color": {
+                "r": "1.0",
+                "g": "1.0",
+                "b": "1.0",
+                "a": "0.25"
+            }
+        },        
+        "controller.render.enemy_foot_soldier.perf_mode": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.variant_default"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_0"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[0]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                },
+                {
+                    "right_arm_armor": "Material.alphatest"
+                },
+                {
+                    "left_arm_armor": "Material.alphatest"
+                },
+                {
+                    "right_left_armor": "Material.alphatest"
+                },
+                {
+                    "left_left_armor": "Material.alphatest"
+                }
+            ],
+            "textures": [
+                "Array.textures[0]"
+            ],
+            "is_hurt_color": {
+                "r": "1.0",
+                "g": "1.0",
+                "b": "1.0",
+                "a": "0.25"
+            }
+        }
+    }
+}

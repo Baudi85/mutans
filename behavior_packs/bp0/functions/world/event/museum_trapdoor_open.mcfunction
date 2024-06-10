@@ -1,0 +1,2 @@
+fill 3744 1 231 3744 1 230 minecraft:iron_trapdoor ["direction":1,"open_bit":true,"upside_down_bit":false]
+fill 3743 1 231 3743 1 230 minecraft:iron_trapdoor ["direction":0,"open_bit":true,"upside_down_bit":false]

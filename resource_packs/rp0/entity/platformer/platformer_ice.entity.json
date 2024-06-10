@@ -1,0 +1,21 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:platformer_ice",
+            "render_controllers": [
+                "controller.render.entity.platformer_ice"
+            ],
+            "geometry": {
+                "variant_0": "geometry.platformer_ice"
+            },
+            "textures": {
+                "variant_0": "textures/entity/platformer_ice/platformer_ice_v0",
+                "variant_1": "textures/entity/platformer_ice/platformer_ice_v1"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            }
+        }
+    }
+}

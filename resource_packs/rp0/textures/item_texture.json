@@ -1,0 +1,108 @@
+{
+    "texture_name": "atlas.items",
+    "resource_pack_name": "fs",
+    "texture_data": {
+        "snowball": {
+            "textures": "textures/items/item_ninja_star"
+        },
+        "item_april_read": {
+            "textures": "textures/items/item_april_read"
+        },
+        "item_regroup": {
+            "textures": "textures/items/item_regroup"
+        },
+        "item_april_unread": {
+            "textures": "textures/items/item_april_unread"
+        },
+        "item_splinter_read": {
+            "textures": "textures/items/item_splinter_read"
+        },
+        "item_splinter_unread": {
+            "textures": "textures/items/item_splinter_unread"
+        },
+        "item_menu": {
+            "textures": "textures/items/item_menu"
+        },
+        "item_ninja_star": {
+            "textures": "textures/items/item_ninja_star"
+        },
+        "item_ninja_star_empty": {
+            "textures": "textures/items/item_ninja_star_empty"
+        },
+        "item_ooze_attack": {
+            "textures": "textures/items/item_ooze_attack"
+        },
+        "item_ooze_attack_empty": {
+            "textures": "textures/items/item_ooze_attack_empty"
+        },
+        "item_ooze_tank": {
+            "textures": "textures/items/item_ooze_tank"
+        },
+        "item_skateboard_off": {
+            "textures": "textures/items/item_skateboard_off"
+        },
+        "item_skateboard_on": {
+            "textures": "textures/items/item_skateboard_on"
+        },
+        "item_weapon_nunchuk": {
+            "textures": "textures/items/item_weapon_nunchuk"
+        },
+        "item_weapon_sai": {
+            "textures": "textures/items/item_weapon_sai"
+        },
+        "item_weapon_staff": {
+            "textures": "textures/items/item_weapon_staff"
+        },
+        "item_weapon_sword": {
+            "textures": "textures/items/item_weapon_sword"
+        },
+        "item_turtle_don": {
+            "textures": "textures/items/item_turtle_don"
+        },
+        "item_turtle_leo": {
+            "textures": "textures/items/item_turtle_leo"
+        },
+        "item_turtle_raph": {
+            "textures": "textures/items/item_turtle_raph"
+        },
+        "item_turtle_mikey": {
+            "textures": "textures/items/item_turtle_mikey"
+        },
+        "item_no_item": {
+            "textures": "textures/items/item_no_item"
+        },
+        "item_sewer_handle": {
+            "textures": "textures/items/item_sewer_handle"
+        },
+        "item_sewer_valve": {
+            "textures": "textures/items/item_sewer_valve"
+        },
+        "item_fwd": {
+            "textures": "textures/items/dev/item_fwd"
+        },
+        "item_back": {
+            "textures": "textures/items/dev/item_back"
+        },
+        "item_left": {
+            "textures": "textures/items/dev/item_left"
+        },
+        "item_right": {
+            "textures": "textures/items/dev/item_right"
+        },
+        "item_up": {
+            "textures": "textures/items/dev/item_up"
+        },
+        "item_down": {
+            "textures": "textures/items/dev/item_down"
+        },
+        "item_del": {
+            "textures": "textures/items/dev/item_del"
+        },
+        "item_rot": {
+            "textures": "textures/items/dev/item_rot"
+        },
+        "item_sel": {
+            "textures": "textures/items/dev/item_sel"
+        }
+    }
+}

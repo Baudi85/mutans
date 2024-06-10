@@ -1,0 +1,26 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:prop_crate",
+            "spawn_egg": {
+                "base_color": "#000000",
+                "overlay_color": "#000000"
+            },
+            "render_controllers": [
+                "controller.render.entity.common_variants_c2"
+            ],
+            "geometry": {
+                "variant_0": "geometry.prop_crate",
+                "variant_1": "geometry.prop_crate"
+            },
+            "textures": {
+                "variant_0": "textures/entity/prop_crate/prop_crate_v0",
+                "variant_1": "textures/entity/prop_crate/prop_crate_v1"
+            },
+            "materials": {
+                "default": "entity"
+            }
+        }
+    }
+}

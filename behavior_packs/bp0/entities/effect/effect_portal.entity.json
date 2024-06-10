@@ -1,0 +1,205 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:effect_portal",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            },
+            "fs:variant_1": {
+                "minecraft:variant": {
+                    "value": 1
+                },
+                "minecraft:scale": {
+                    "value": 2
+                }
+            },
+            "fs:variant_super_krang_side": {
+                "minecraft:variant": {
+                    "value": 1
+                },
+                "minecraft:scale": {
+                    "value": 4
+                }
+            },
+            "fs:variant_super_krang_top": {
+                "minecraft:variant": {
+                    "value": 2
+                },
+                "minecraft:scale": {
+                    "value": 4
+                }
+            },
+            "fs:variant_super_krang_bottom": {
+                "minecraft:variant": {
+                    "value": 0
+                },
+                "minecraft:scale": {
+                    "value": 4
+                }
+            },
+            "fs:vanish": {
+                "minecraft:is_baby": {},
+                "minecraft:explode": {
+                    "breaks_blocks": false,
+                    "causes_fire": false,
+                    "destroy_affected_by_griefing": true,
+                    "fire_affected_by_griefing": true,
+                    "fuse_lit": true,
+                    "max_resistance": 0,
+                    "power": 0,
+                    "fuse_length": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "fs:owned_by_player_0": {
+                "minecraft:type_family": {
+                    "family": [
+                        "entity",
+                        "zone_entity",
+                        "owned_by_player_0"
+                    ]
+                }
+            },
+            "fs:owned_by_player_1": {
+                "minecraft:type_family": {
+                    "family": [
+                        "entity",
+                        "zone_entity",
+                        "owned_by_player_1"
+                    ]
+                }
+            },
+            "fs:owned_by_player_2": {
+                "minecraft:type_family": {
+                    "family": [
+                        "entity",
+                        "zone_entity",
+                        "owned_by_player_2"
+                    ]
+                }
+            },
+            "fs:owned_by_player_3": {
+                "minecraft:type_family": {
+                    "family": [
+                        "entity",
+                        "zone_entity",
+                        "owned_by_player_3"
+                    ]
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "entity",
+                    "zone_entity"
+                ]
+            },
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            },
+            "minecraft:scale": {
+                "value": 3
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:collision_box": {
+                "height": 0,
+                "width": 0
+            }            
+        },
+        "events": {
+            "fs:instant_despawn": {
+                "add": {
+                    "component_groups": [
+                        "fs:instant_despawn"
+                    ]
+                }
+            },
+            "fs:vanish": {
+                "add": {
+                    "component_groups": [
+                        "fs:vanish"
+                    ]
+                }
+            },
+            "fs:variant_1": {
+                "add": {
+                    "component_groups": [
+                        "fs:variant_1"
+                    ]
+                }
+            },
+            "fs:variant_super_krang_side": {
+                "add": {
+                    "component_groups": [
+                        "fs:variant_super_krang_side"
+                    ]
+                }
+            },
+            "fs:variant_super_krang_top": {
+                "add": {
+                    "component_groups": [
+                        "fs:variant_super_krang_top"
+                    ]
+                }
+            },
+            "fs:variant_super_krang_bottom": {
+                "add": {
+                    "component_groups": [
+                        "fs:variant_super_krang_bottom"
+                    ]
+                }
+            },
+            "fs:owned_by_player_0": {
+                "add": {
+                    "component_groups": [
+                        "fs:owned_by_player_0"
+                    ]
+                }
+            },
+            "fs:owned_by_player_1": {
+                "add": {
+                    "component_groups": [
+                        "fs:owned_by_player_1"
+                    ]
+                }
+            },
+            "fs:owned_by_player_2": {
+                "add": {
+                    "component_groups": [
+                        "fs:owned_by_player_2"
+                    ]
+                }
+            },
+            "fs:owned_by_player_3": {
+                "add": {
+                    "component_groups": [
+                        "fs:owned_by_player_3"
+                    ]
+                }
+            }
+        }
+    }
+}

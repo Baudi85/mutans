@@ -1,0 +1,33 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:placement_marker_cursor",
+            "spawn_egg": {
+                "base_color": "#000000",
+                "overlay_color": "#000000"
+            },
+            "render_controllers": [
+                "controller.render.fs_placement_marker_cursor"
+            ],
+            "geometry": {
+                "variant_0": "geometry.fs_placement_marker"
+            },
+            "textures": {
+                "variant_0": "textures/entity/fs_placement_marker/fs_placement_marker_cursor"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "animations": {
+                "controller": "controller.animation.fs_placement_marker.animate",
+                "idle": "animation.fs_placement_marker.idle"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            }
+        }
+    }
+}

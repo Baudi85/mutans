@@ -1,0 +1,24 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "fs:prop_subway_sign",
+      "spawn_egg": {
+        "base_color": "#000000",
+        "overlay_color": "#000000"
+      },
+      "render_controllers": [
+        "controller.render.prop.common"
+      ],
+      "geometry": {
+        "variant_0": "geometry.prop_subway_sign"
+      },
+      "textures": {
+        "variant_0": "textures/entity/prop_subway_sign/prop_subway_sign_v0"
+      },
+      "materials": {
+        "default": "entity"
+      }
+    }
+  }
+}

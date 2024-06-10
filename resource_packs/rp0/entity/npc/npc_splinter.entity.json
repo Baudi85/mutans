@@ -1,0 +1,30 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:npc_splinter",
+            "render_controllers": [
+                "controller.render.npc_splinter"
+            ],
+            "geometry": {
+                "variant_0": "geometry.npc_splinter"
+            },
+            "textures": {
+                "variant_0": "textures/entity/npc_splinter/npc_splinter_v0"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "animations": {
+                "controller": "controller.animation.npc.movement",
+                "idle": "animation.npc_splinter.idle"
+            },
+            "scripts": {
+                "should_update_bones_and_effects_offscreen": true,
+                "animate": [
+                    "controller"
+                ]
+            }
+        }
+    }
+}

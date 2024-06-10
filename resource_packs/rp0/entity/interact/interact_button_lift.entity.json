@@ -1,0 +1,32 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:interact_button_lift",
+            "render_controllers": [
+                "controller.render.interact_button_lift"
+            ],
+            "geometry": {
+                "variant_0": "geometry.interact_button_lift"
+            },
+            "textures": {
+                "variant_up_off": "textures/entity/interact_button_lift/interact_button_lift_v0",
+                "variant_up_on": "textures/entity/interact_button_lift/interact_button_lift_v1",
+                "variant_open_off": "textures/entity/interact_button_lift/interact_button_lift_v2",
+                "variant_open_on": "textures/entity/interact_button_lift/interact_button_lift_v3"
+            },
+            "materials": {
+                "default": "entity"
+            },
+            "animations": {
+                "idle": "animation.interact_button_lift.idle",
+                "animation_controller": "controller.animation.interact_button_lift.animate"
+            },
+            "scripts": {
+                "animate": [
+                    "animation_controller"
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,247 @@
+/*
+    Raw show:   /title @a title fsdata://?_=1&arcade_cabinet=1&_=1
+    Toggle on:  /function ui/arcade_cab/show/tempestra
+    Toggle off: /function ui/arcade_cab/hide
+*/
+{
+    "namespace": "fs_title_arcade",
+    "root_panel": {
+        "type": "panel",
+        "$is_visible|default": false,
+        "visible": "$is_visible",
+        "variables": [
+            {
+              "requires": "((not ($title_text - '&arcade_cabinet=1&' = $title_text)))",
+              "$is_visible": true
+            }
+        ],
+        "controls": [
+            {
+                "_frame@frame": {}
+            },
+            {
+                "_ftb": {
+                    "type": "image",
+                    "texture": "textures/ui/Black",
+                    "size": ["200%", "200%"],
+                    "layer": 9999999,
+                    "alpha": 0,
+                    "$anim_ftb|default": "fs_title_arcade.anim_null",
+                    "variables": [
+                        {
+                            "requires": "((not ($title_text - 'fadetoblack' = $title_text)))",
+                            "$anim_ftb": "fs_title_arcade.anim_fade_to_black"
+                        }
+                    ],
+                    "anims": [
+                        "@$anim_ftb"
+                    ]
+                }
+            },
+            {
+                "_ffb": {
+                    "type": "image",
+                    "texture": "textures/ui/Black",
+                    "size": ["200%", "200%"],
+                    "layer": 9999999,
+                    "alpha": 0,
+                    "$anim|default": "fs_title_arcade.anim_null",
+                    "variables": [
+                        {
+                          "requires": "((not ($title_text - 'fadefromblack' = $title_text)))",
+                          "$anim": "fs_title_arcade.anim_fade_from_black"
+                        }
+                    ],
+                    "anims": [
+                        "@$anim"
+                    ]
+                }
+            }
+        ]
+    },
+    "frame": {
+        "type": "image",
+        "texture": "textures/ui/arcade/cabinet_frame",
+        "size": [342, 230], // slightly smaller than true texture
+        "alpha": 1,
+        "layer": 999999,
+        "controls": [
+            {"_top@blackout_panel": {"offset": [0, "-120%"], "layer": 99999}},
+            {"_bottom@blackout_panel": {"offset": [0, "120%"], "layer": 99999}},
+            {"_left@blackout_panel": {"offset": ["-80%", 0], "size": ["100%", "300%"]}},
+            {"_left_extreme@blackout_panel": {"offset": ["-580%", 0], "size": ["1000%", "300%"]}},
+            {"_right@blackout_panel": {"offset": ["80%", 0], "size": ["100%", "300%"]}},
+            {"_right_extreme@blackout_panel": {"offset": ["580%", 0], "size": ["1000%", "300%"]}},
+            {
+                "_frame": {
+                    "type": "image",
+                    "texture": "textures/ui/arcade/cabinet_frame",
+                    "size": [342, 230], // slightly smaller than true texture
+                    "alpha": 1,
+                    "layer": 999999,
+                    "controls": [
+                        {
+                            "_crack": {
+                                "type": "image",
+                                "texture": "textures/ui/arcade/screen_crack",
+                                "size": [120, 130],
+                                "offset": [0, -3],
+                                "visible": "$is_visible",
+                                "$is_visible|default": false,
+                                "variables": [
+                                    {
+                                        "requires": "(((§z + ('%.45s' * ($title_text))) - (§z + ('%.44s' * $title_text)))) = 'n')",
+                                        "$is_visible": false
+                                    },
+                                    {
+                                        "requires": "(((§z + ('%.45s' * ($title_text))) - (§z + ('%.44s' * $title_text)))) = 'c')",
+                                        "$is_visible": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "_controls": {
+                                "type": "panel",
+                                "anchor_from": "bottom_middle",
+                                "anchor_to": "bottom_middle",
+                                "size": [220, 46],
+                                "offset": [0, -12],
+                                "controls": [
+                                    // {
+                                    //     "_debug": {
+                                    //         "type": "label",
+                                    //         "text": "((§z + ('%.45s' * ($title_text))) - (§z + ('%.44s' * $title_text))))",
+                                    //         "layer": 9999,
+                                    //         "offset": [0, -20]
+                                    //     }
+                                    // },
+                                    {
+                                        "_stick": {
+                                            "type": "image",
+                                            "texture": "$texture_path",
+                                            "$texture_path|default": "textures/ui/arcade/joystick_default",
+                                            "size": [46, 46],
+                                            "offset": [0, 0],
+                                            "variables": [
+                                                {
+                                                    "requires": "(((§z + ('%.48s' * ($title_text))) - (§z + ('%.47s' * $title_text)))) = 'l')",
+                                                    "$texture_path":  "textures/ui/arcade/joystick_left"
+                                                },
+                                                {
+                                                    "requires": "(((§z + ('%.48s' * ($title_text))) - (§z + ('%.47s' * $title_text)))) = 'r')",
+                                                    "$texture_path":  "textures/ui/arcade/joystick_right"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "_blue_btn": {
+                                            "type": "image",
+                                            "texture": "$texture_path",
+                                            "$texture_path|default": "textures/ui/arcade/button_blue_default",
+                                            "size": [26, 18],
+                                            "offset": [57, 12],
+                                            "variables": [
+                                                {
+                                                    "requires": "(((§z + ('%.49s' * ($title_text))) - (§z + ('%.48s' * $title_text)))) = 'd')",
+                                                    "$texture_path":  "textures/ui/arcade/button_blue_pressed"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "_red_btn": {
+                                            "type": "image",
+                                            "texture": "$texture_path",
+                                            "$texture_path|default": "textures/ui/arcade/button_red_default",
+                                            "size": [26, 18],
+                                            "offset": [87, 12],
+                                            "variables": [
+                                                {
+                                                    "requires": "(((§z + ('%.50s' * ($title_text))) - (§z + ('%.49s' * $title_text)))) = 'd')",
+                                                    "$texture_path":  "textures/ui/arcade/button_red_pressed"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "_white_btn_1": {
+                                            "type": "image",
+                                            "texture": "$texture_path",
+                                            "$texture_path|default": "textures/ui/arcade/button_white_default",
+                                            "size": [18, 14],
+                                            "offset": [-90, 12],
+                                            "variables": [
+                                                {
+                                                    "requires": "(((§z + ('%.46s' * ($title_text))) - (§z + ('%.45s' * $title_text)))) = 'd')",
+                                                    "$texture_path":  "textures/ui/arcade/button_white_pressed"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "_white_btn_2": {
+                                            "type": "image",
+                                            "texture": "$texture_path",
+                                            "$texture_path|default": "textures/ui/arcade/button_white_default",
+                                            "size": [18, 14],
+                                            "offset": [-67, 12],
+                                            "variables": [
+                                                {
+                                                    "requires": "(((§z + ('%.47s' * ($title_text))) - (§z + ('%.46s' * $title_text)))) = 'd')",
+                                                    "$texture_path":  "textures/ui/arcade/button_white_pressed"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "blackout_panel": {
+        "type": "image",
+        "texture": "textures/ui/Black",
+        "size": ["100%", "150%"]
+    },
+    "arcade_factory": {
+        "type": "panel",
+        "factory": {
+            "name": "hud_title_text_factory",
+            "control_ids": {
+                "hud_title_text": "_fs_title_arcade@fs_title_arcade.root_panel"
+            }
+        }
+    },
+    // anims
+    "anim_null": {
+        "anim_type": "wait",
+        "duration": 0
+    },
+    "anim_fade_to_black": {
+        "anim_type": "wait",
+        "duration": 0,
+        "next": "@fs_title_arcade.anim_fade_to_black_1"
+    },
+    "anim_fade_to_black_1": {
+        "anim_type": "alpha",
+        "from": 0,
+        "to": 1,
+        "duration": 1
+    },
+    "anim_fade_from_black": {
+        "anim_type": "wait",
+        "duration": 0,
+        "next": "@fs_title_arcade.anim_fade_from_black_1"
+    },
+    "anim_fade_from_black_1": {
+        "anim_type": "alpha",
+        "from": 1,
+        "to": 0,
+        "duration": 2
+    }
+}

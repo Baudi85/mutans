@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "fs:zone_event",
+      "render_controllers": [
+        "controller.render.entity.common"
+      ],
+      "geometry": {
+        "variant_0": "geometry.zone_event"
+      },
+      "textures": {
+        "variant_0": "textures/entity/zone_event/zone_event_v0"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      }
+    }
+  }
+}

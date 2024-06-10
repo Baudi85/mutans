@@ -1,0 +1,54 @@
+{
+    "format_version": "1.16.0",
+    "animations": {
+        "animation.movement_appear.enemy_mouser": {
+            "loop": false,
+            "animation_length": 0.62
+        },
+        "animation.attack_melee.enemy_mouser": {
+            "loop": false,
+            "animation_length": 1.08,
+            "timeline": {
+                "0.5": [
+                    "/function ai_enemy/action/melee/detect_player"
+                ]
+            }
+        },
+        "animation.attack_jump.enemy_mouser": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_ranged.enemy_mouser": {
+            "loop": false,
+            "animation_length": 0.70
+        },
+        "animation.attack_dash.enemy_mouser": {
+            "loop": false,
+            "animation_length": 2.25
+        },
+        "animation.attack_block.enemy_mouser": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.damage_hit.enemy_mouser": {
+            "loop": false,
+            "animation_length": 0.1
+        },
+        "animation.damage_hurt.enemy_mouser": {
+            "loop": false,
+            "animation_length": 0.66
+        },
+        "animation.damage_knockdown.enemy_mouser": {
+            "loop": false,
+            "animation_length": 0.7
+        },
+        "animation.damage_get_up.enemy_mouser": {
+            "loop": false,
+            "animation_length": 0.95
+        },
+        "animation.damage_killed.enemy_mouser": {
+            "loop": false,
+            "animation_length": 0.75
+        }
+    }
+}

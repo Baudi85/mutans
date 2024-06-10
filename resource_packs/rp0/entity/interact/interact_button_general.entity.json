@@ -1,0 +1,31 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:interact_button_general",
+            "render_controllers": [
+                "controller.render.interact_button_general"
+            ],
+            "geometry": {
+                "variant_0": "geometry.interact_button_general"
+            },
+            "textures": {
+                "variant_off": "textures/entity/interact_button_general/interact_button_general_v0",
+                "variant_on_green": "textures/entity/interact_button_general/interact_button_general_v1",
+                "variant_on_red": "textures/entity/interact_button_general/interact_button_general_v2"
+            },
+            "materials": {
+                "default": "entity"
+            },
+            "animations": {
+                "idle": "animation.interact_button_general.idle",
+                "animation_controller": "controller.animation.interact_button_general.animate"
+            },
+            "scripts": {
+                "animate": [
+                    "animation_controller"
+                ]
+            }
+        }
+    }
+}

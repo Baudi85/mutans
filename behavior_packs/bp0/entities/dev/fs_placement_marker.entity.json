@@ -1,0 +1,1641 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:placement_marker",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "fs:kill": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": true
+                }
+            },
+            "fs:did_request_interaction_placement_marker": {
+                "minecraft:type_family": {
+                    "family": [
+                        "did_request_interaction_placement_marker"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 2
+                }
+            },
+            "fs:placement_did_use_name_tag": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_did_use_name_tag"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 0.5
+                }
+            },
+            "fs:callback_placement_did_use_name_tag": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_next_page_1"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 1
+                }
+            },
+            "fs:init": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_next_page_1"
+                    ]
+                }
+            },
+            "fs:clear": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_next_page_1"
+                    ]
+                }
+            },
+            "fs:punched": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_page_1"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 1
+                }
+            },
+            "fs:prepare_page_2": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_next_page_2"
+                    ]
+                }
+            },
+            "fs:punched_2": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_page_2"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 1
+                }
+            },
+            "fs:prepare_page_3": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_next_page_3"
+                    ]
+                }
+            },
+            "fs:punched_3": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_page_3"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 1
+                }
+            },
+            "fs:prepare_page_4": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_next_page_4"
+                    ]
+                }
+            },
+            "fs:punched_4": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_page_4"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 1
+                }
+            },
+            "fs:prepare_page_5": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_next_page_5"
+                    ]
+                }
+            },
+            "fs:punched_5": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_page_5"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 1
+                }
+            },
+            "fs:prepare_page_6": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_next_page_6"
+                    ]
+                }
+            },
+            "fs:punched_6": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_page_6"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 1
+                }
+            },
+            "fs:prepare_page_7": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_next_page_7"
+                    ]
+                }
+            },
+            "fs:punched_7": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_page_7"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 1
+                }
+            },
+            "fs:prepare_page_8": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_next_page_8"
+                    ]
+                }
+            },
+            "fs:punched_8": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_page_8"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 1
+                }
+            },
+            "fs:prepare_page_9": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_next_page_9"
+                    ]
+                }
+            },
+            "fs:punched_9": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_page_9"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 1
+                }
+            },
+            "fs:prepare_page_10": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_next_page_10"
+                    ]
+                }
+            },
+            "fs:punched_10": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_page_10"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 1
+                }
+            },
+            "fs:prepare_page_11": {
+                "minecraft:type_family": {
+                    "family": [
+                        "null"
+                    ]
+                }
+            },
+            "fs:fwd": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_fwd"
+                    ]
+                }
+            },
+            "fs:back": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_back"
+                    ]
+                }
+            },
+            "fs:left": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_left"
+                    ]
+                }
+            },
+            "fs:right": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_right"
+                    ]
+                }
+            },
+            "fs:up": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_up"
+                    ]
+                }
+            },
+            "fs:down": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_down"
+                    ]
+                }
+            },
+            "fs:del": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_del"
+                    ]
+                }
+            },
+            "fs:rot": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_rot"
+                    ]
+                }
+            },
+            "fs:sel": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_sel"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_0": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_0"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 0
+                }
+            },
+            "fs:shift_variant_to_1": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_1"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 1
+                }
+            },
+            "fs:shift_variant_to_2": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_2"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 2
+                }
+            },
+            "fs:shift_variant_to_3": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_3"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 3
+                }
+            },
+            "fs:shift_variant_to_4": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_4"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 4
+                }
+            },
+            "fs:shift_variant_to_5": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_5"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 5
+                }
+            },
+            "fs:shift_variant_to_6": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_6"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 6
+                }
+            },
+            "fs:shift_variant_to_7": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_7"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 7
+                }
+            },
+            "fs:shift_variant_to_8": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_8"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 8
+                }
+            },
+            "fs:shift_variant_to_9": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_9"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 9
+                }
+            },
+            "fs:shift_variant_to_10": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_10"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 10
+                }
+            },
+            "fs:shift_variant_to_11": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_11"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 11
+                }
+            },
+            "fs:shift_variant_to_12": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_12"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 12
+                }
+            },
+            "fs:shift_variant_to_13": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_13"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 13
+                }
+            },
+            "fs:shift_variant_to_14": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_14"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 14
+                }
+            },
+            "fs:shift_variant_to_15": {
+                "minecraft:type_family": {
+                    "family": [
+                        "placement_variant_15"
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 15
+                }
+            }
+        },
+        "components": {
+            "minecraft:collision_box": {
+                "height": 1,
+                "width": 1
+            },
+            "minecraft:nameable": {
+                "allow_name_tag_renaming": true,
+                "always_show": true,
+                "default_trigger": {
+                    "target": "self",
+                    "event": "fs:placement_did_use_name_tag"
+                }
+            },
+            "minecraft:physics": {
+                "has_gravity": false,
+                "has_collision": false
+            },
+            "minecraft:rideable": {
+                "controlling_seat": 0,
+                "crouching_skip_interact": true,
+                "family_types": [
+                    "fs_placement_marker_cursor"
+                ],
+                "interact_text": "action.interact.entity.fsplacement_marker.ride",
+                "pull_in_entities": true,
+                "rider_can_interact": false,
+                "seat_count": 1,
+                "seats": {
+                    "lock_rider_rotation": 181,
+                    "max_rider_count": 1,
+                    "min_rider_count": 0,
+                    "position": [0, 0, 0],
+                    "rotate_rider_by": 0
+                }
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "attack",
+                        "deals_damage": false,
+                        "on_damage": {
+                            "filters": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "player"
+                                }
+                            ],
+                            "event": "fs:punched"
+                        }
+                    },
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:scale": {
+                "value": 1
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:interact": {
+                "interactions": [
+                    {
+                        "on_interact": {
+                            "filters": [
+                                {
+                                    "all_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "domain": "hand",
+                                            "subject": "other",
+                                            "value": "fs:item_placement_shift_fwd"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "target": "self",
+                            "event": "fs:fwd"
+                        },
+                        "interact_text": "raw.interact_text.interact"
+                    },
+                    {
+                        "on_interact": {
+                            "filters": [
+                                {
+                                    "all_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "domain": "hand",
+                                            "subject": "other",
+                                            "value": "fs:item_placement_shift_back"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "target": "self",
+                            "event": "fs:back"
+                        },
+                        "interact_text": "raw.interact_text.interact"
+                    },
+                    {
+                        "on_interact": {
+                            "filters": [
+                                {
+                                    "all_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "domain": "hand",
+                                            "subject": "other",
+                                            "value": "fs:item_placement_shift_left"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "target": "self",
+                            "event": "fs:left"
+                        },
+                        "interact_text": "raw.interact_text.interact"
+                    },
+                    {
+                        "on_interact": {
+                            "filters": [
+                                {
+                                    "all_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "domain": "hand",
+                                            "subject": "other",
+                                            "value": "fs:item_placement_shift_right"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "target": "self",
+                            "event": "fs:right"
+                        },
+                        "interact_text": "raw.interact_text.interact"
+                    },
+                    {
+                        "on_interact": {
+                            "filters": [
+                                {
+                                    "all_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "domain": "hand",
+                                            "subject": "other",
+                                            "value": "fs:item_placement_shift_up"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "target": "self",
+                            "event": "fs:up"
+                        },
+                        "interact_text": "raw.interact_text.interact"
+                    },
+                    {
+                        "on_interact": {
+                            "filters": [
+                                {
+                                    "all_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "domain": "hand",
+                                            "subject": "other",
+                                            "value": "fs:item_placement_shift_down"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "target": "self",
+                            "event": "fs:down"
+                        },
+                        "interact_text": "raw.interact_text.interact"
+                    },
+                    {
+                        "on_interact": {
+                            "filters": [
+                                {
+                                    "all_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "domain": "hand",
+                                            "subject": "other",
+                                            "value": "fs:item_placement_del"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "target": "self",
+                            "event": "fs:del"
+                        },
+                        "interact_text": "raw.interact_text.interact"
+                    },
+                    {
+                        "on_interact": {
+                            "filters": [
+                                {
+                                    "all_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "domain": "hand",
+                                            "subject": "other",
+                                            "value": "fs:item_placement_rot"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "target": "self",
+                            "event": "fs:rot"
+                        },
+                        "interact_text": "raw.interact_text.interact"
+                    },
+                    {
+                        "on_interact": {
+                            "filters": [
+                                {
+                                    "all_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "domain": "hand",
+                                            "subject": "other",
+                                            "value": "fs:item_placement_sel"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "target": "self",
+                            "event": "fs:sel"
+                        },
+                        "interact_text": "raw.interact_text.interact"
+                    },
+                    {
+                        "on_interact": {
+                            "filters": [
+                                {
+                                    "all_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "is_sneaking",
+                                            "subject": "other",
+                                            "value": false
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "domain": "hand",
+                                            "subject": "other",
+                                            "value": "fs:placement_marker_spawn_egg"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "target": "self",
+                            "event": "fs:did_request_interaction_placement_marker"
+                        },
+                        "interact_text": "raw.interact_text.interact"
+                    },
+                    {
+                        "on_interact": {
+                            "filters": [
+                                {
+                                    "all_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "domain": "hand",
+                                            "subject": "other",
+                                            "value": "fs:placement_marker_spawn_egg"
+                                        },
+                                        {
+                                            "test": "is_sneaking",
+                                            "subject": "other",
+                                            "value": true
+                                        }
+                                    ]
+                                }
+                            ],
+                            "target": "self",
+                            "event": "fs:did_request_interaction_placement_marker_sneaking"
+                        },
+                        "interact_text": "raw.interact_text.interact"
+                    }
+                ]
+            }
+        },
+        "events": {
+            "fs:init": {
+                "add": {
+                    "component_groups": [
+                        "fs:init"
+                    ]
+                }
+            },
+            "fs:clear": {
+                "add": {
+                    "component_groups": [
+                        "fs:clear"
+                    ]
+                }
+            },
+            "fs:punched": {
+                "sequence": [
+                    {
+                        "filters": [
+                            {
+                                "test": "is_family",
+                                "value": "placement_next_page_1"
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:punched"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_family",
+                                "value": "placement_next_page_2"
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:punched_2"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_family",
+                                "value": "placement_next_page_3"
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:punched_3"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_family",
+                                "value": "placement_next_page_4"
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:punched_4"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_family",
+                                "value": "placement_next_page_5"
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:punched_5"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_family",
+                                "value": "placement_next_page_6"
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:punched_6"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_family",
+                                "value": "placement_next_page_7"
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:punched_7"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_family",
+                                "value": "placement_next_page_8"
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:punched_8"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_family",
+                                "value": "placement_next_page_9"
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:punched_9"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_family",
+                                "value": "placement_next_page_10"
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:punched_10"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "fs:kill": {
+                "add": {
+                    "component_groups": [
+                        "fs:kill"
+                    ]
+                }
+            },
+            "fs:fwd": {
+                "add": {
+                    "component_groups": [
+                        "fs:fwd"
+                    ]
+                }
+            },
+            "fs:back": {
+                "add": {
+                    "component_groups": [
+                        "fs:back"
+                    ]
+                }
+            },
+            "fs:left": {
+                "add": {
+                    "component_groups": [
+                        "fs:left"
+                    ]
+                }
+            },
+            "fs:right": {
+                "add": {
+                    "component_groups": [
+                        "fs:right"
+                    ]
+                }
+            },
+            "fs:up": {
+                "add": {
+                    "component_groups": [
+                        "fs:up"
+                    ]
+                }
+            },
+            "fs:down": {
+                "add": {
+                    "component_groups": [
+                        "fs:down"
+                    ]
+                }
+            },
+            "fs:del": {
+                "add": {
+                    "component_groups": [
+                        "fs:del"
+                    ]
+                }
+            },
+            "fs:rot": {
+                "add": {
+                    "component_groups": [
+                        "fs:rot"
+                    ]
+                }
+            },
+            "fs:sel": {
+                "add": {
+                    "component_groups": [
+                        "fs:sel"
+                    ]
+                }
+            },
+            "fs:prepare_page_2": {
+                "add": {
+                    "component_groups": [
+                        "fs:prepare_page_2"
+                    ]
+                }
+            },
+            "fs:prepare_page_3": {
+                "add": {
+                    "component_groups": [
+                        "fs:prepare_page_3"
+                    ]
+                }
+            },
+            "fs:prepare_page_4": {
+                "add": {
+                    "component_groups": [
+                        "fs:prepare_page_4"
+                    ]
+                }
+            },
+            "fs:prepare_page_5": {
+                "add": {
+                    "component_groups": [
+                        "fs:prepare_page_5"
+                    ]
+                }
+            },
+            "fs:prepare_page_6": {
+                "add": {
+                    "component_groups": [
+                        "fs:prepare_page_6"
+                    ]
+                }
+            },
+            "fs:prepare_page_7": {
+                "add": {
+                    "component_groups": [
+                        "fs:prepare_page_7"
+                    ]
+                }
+            },
+            "fs:prepare_page_8": {
+                "add": {
+                    "component_groups": [
+                        "fs:prepare_page_8"
+                    ]
+                }
+            },
+            "fs:prepare_page_9": {
+                "add": {
+                    "component_groups": [
+                        "fs:prepare_page_9"
+                    ]
+                }
+            },
+            "fs:prepare_page_10": {
+                "add": {
+                    "component_groups": [
+                        "fs:prepare_page_10"
+                    ]
+                }
+            },
+            "fs:did_handle_interaction_callback": {
+                "add": {
+                    "component_groups": [
+                        "fs:init"
+                    ]
+                },
+                "remove": {
+                    "component_groups": []
+                }
+            },
+            "fs:placement_did_use_name_tag": {
+                "add": {
+                    "component_groups": [
+                        "fs:placement_did_use_name_tag"
+                    ]
+                }
+            },
+            "fs:callback_placement_did_use_name_tag": {
+                "add": {
+                    "component_groups": [
+                        "fs:callback_placement_did_use_name_tag"
+                    ]
+                }
+            },
+            "fs:did_request_interaction_placement_marker": {
+                "sequence": [
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 0
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_1"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 1
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_2"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 2
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_3"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 3
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_4"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 4
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_5"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 5
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_6"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 6
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_7"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 7
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_8"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 8
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_9"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 9
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_10"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 10
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_11"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 11
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_12"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 12
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_13"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 13
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_14"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 14
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_15"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 15
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_0"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "fs:did_request_interaction_placement_marker_sneaking": {
+                "sequence": [
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 0
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_15"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 1
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_0"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 2
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_1"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 3
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_2"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 4
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_3"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 5
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_4"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 6
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_5"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 7
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_6"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 8
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_7"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 9
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_8"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 10
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_9"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 11
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_10"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 12
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_11"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 13
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_12"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 14
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_13"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_variant",
+                                "value": 15
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:shift_variant_to_14"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "fs:shift_variant_to_0": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_0"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_1": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_1"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_2": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_2"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_3": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_3"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_4": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_4"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_5": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_5"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_6": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_6"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_7": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_7"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_8": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_8"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_9": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_9"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_10": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_10"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_11": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_11"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_12": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_12"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_13": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_13"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_14": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_14"
+                    ]
+                }
+            },
+            "fs:shift_variant_to_15": {
+                "add": {
+                    "component_groups": [
+                        "fs:shift_variant_to_15"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,86 @@
+// @(com.57digital.shulker.generated)
+// @generated File (generated via ShulkerScript: <BP> dialogue/config/episode_select.js)
+{
+	"format_version": "1.17",
+	"minecraft:npc_dialogue": {
+		"scenes": [
+			{
+				"scene_tag": "epsel_p1_210",
+				"npc_name": {
+					"rawtext": [
+						{
+							"text": "epsel_p1_210"
+						}
+					]
+				},
+				"text": {
+					"rawtext": [
+						{
+							"text": "fsepisodeselect://?_=1&isp1=1&currPage=1&totalPages=3&_=1"
+						},
+						{
+							"text": "§r§e§1§1§5§0§0§3§r"
+						}
+					]
+				},
+				"buttons": [
+					{
+						"name": "<",
+						"commands": [
+							"/execute as @initiator run function prototype/open_episode_select_dlg_0"
+						]
+					},
+					{
+						"name": "C400",
+						"commands": [
+							"/scoreboard players add @initiator ui_debug 0",
+							"/execute as @initiator run execute as @s[scores={level_400=0}] run function dlg/deny_400",
+							"/execute as @initiator run execute as @s[scores={level_400=1..}] run function dlg/start_400"
+						]
+					},
+					{
+						"name": "A500",
+						"commands": [
+							"/scoreboard players add @initiator ui_debug 0",
+							"/execute as @initiator run execute as @s[scores={level_500=0}] run function dlg/deny_500",
+							"/execute as @initiator run execute as @s[scores={level_500=1..}] run function dlg/start_500"
+						]
+					},
+					{
+						"name": "L600",
+						"commands": [
+							"/scoreboard players add @initiator ui_debug 0",
+							"/execute as @initiator run execute as @s[scores={level_600=0}] run function dlg/deny_600",
+							"/execute as @initiator run execute as @s[scores={level_600=1..}] run function dlg/start_600"
+						]
+					},
+					{
+						"name": ">",
+						"commands": [
+							"/execute as @initiator run function prototype/open_episode_select_dlg_2"
+						]
+					}
+				],
+				"on_open_commands": [
+					"/tag @initiator remove did_req_dlg",
+					"/execute as @a run function utils/remove_dlg_tags",
+					"/execute as @initiator[tag=!dlg.did_segue] run playsound fs.dlg.open @s[scores={s_sfx_enabled=1}]",
+					"/tag @initiator add player.in_ui",
+					"/tag @initiator remove dlg.did_segue",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§eepsel_p1_210§7].§2DidOpen§7\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§eepsel_p1_210§7].§2OpenFn§7: §e/execute as @initiator run tag @s remove player.did_request_level_select\"}]}",
+					"/execute as @initiator run tag @s remove player.did_request_level_select"
+				],
+				"on_close_commands": [
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§eDid run on_close_commands\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] at @s run function sounds/stop/_dialogue",
+					"/tag @s remove particle_emitter",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§eepsel_p1_210§7].§4CloseFn§7: Aborted due to segue.\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§eepsel_p1_210§7].§eDidNotSegue...\"}]}",
+					"/tag @initiator remove player.in_ui",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§eepsel_p1_210§7].§4DidClose§7\"}]}"
+				]
+			}
+		]
+	}
+}

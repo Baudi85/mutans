@@ -1,0 +1,32 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:gui_go",
+            "spawn_egg": {
+                "base_color": "#000000",
+                "overlay_color": "#000000"
+            },
+            "render_controllers": [
+                "controller.render.prop.common"
+            ],
+            "geometry": {
+                "variant_0": "geometry.gui_go"
+            },
+            "textures": {
+                "variant_0": "textures/entity/gui_go/gui_go_v0"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "animations": {
+                "idle": "animation.gui_go.idle"
+            },
+            "scripts": {
+                "animate": [
+                    "idle"
+                ]
+            }
+        }
+    }
+}

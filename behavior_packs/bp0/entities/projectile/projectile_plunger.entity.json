@@ -1,0 +1,99 @@
+{
+    "format_version": "1.19.60",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:projectile_plunger",
+            "runtime_identifier": "minecraft:arrow",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "projectile",
+                    "projectile_plunger"
+                ]
+            },
+            "minecraft:timer": {
+                "time": 2,
+                "looping": false,
+                "time_down_event": {
+                    "event": "fs:instant_despawn",
+                    "target": "self"
+                }
+            },
+            "minecraft:physics": {},
+            "minecraft:scale": {
+                "value": 1
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:collision_box": {
+                "height": 0.5,
+                "width": 0.25
+            },
+            "minecraft:projectile": {
+                "on_hit": {
+                    "impact_damage": {
+                        "damage": 4,
+                        "knockback": true,
+                        "semi_random_diff_damage": false,
+                        "destroy_on_hit": true
+                    },
+                    "stick_in_ground": {
+                        "shake_time": 0.35
+                    },
+                    "arrow_effect": {},
+                    "remove_on_hit": {}
+                },
+                "hit_sound": "bow.hit",
+                "power": 1.6,
+                "gravity": 0.05,
+                "uncertainty_base": 16,
+                "uncertainty_multiplier": 4,
+                "anchor": 1,
+                "should_bounce": true,
+                "offset": [
+                    0,
+                    -0.1,
+                    0
+                ],
+                "reflect_on_hurt": true
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_optimized_distance": 80,
+                    "max_dropped_ticks": 7,
+                    "use_motion_prediction_hints": true
+                }
+            }
+        },
+        "events": {
+            "fs:instant_despawn": {
+                "add": {
+                    "component_groups": [
+                        "fs:instant_despawn"
+                    ]
+                }
+            }
+        }
+    }
+}

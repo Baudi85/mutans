@@ -1,0 +1,44 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.puppet_boss": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.variant_0",
+                        "Texture.variant_1",
+                        "Texture.variant_2",
+                        "Texture.variant_3",
+                        "Texture.variant_4",
+                        "Texture.variant_5",
+                        "Texture.variant_6",
+                        "Texture.variant_7",
+                        "Texture.variant_8"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_0",
+                        "Geometry.variant_1",
+                        "Geometry.variant_2",
+                        "Geometry.variant_3",
+                        "Geometry.variant_4",
+                        "Geometry.variant_5",
+                        "Geometry.variant_6",
+                        "Geometry.variant_7",
+                        "Geometry.variant_8"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ]
+        }
+    }
+}

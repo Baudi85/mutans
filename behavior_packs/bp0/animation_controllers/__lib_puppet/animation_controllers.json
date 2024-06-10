@@ -1,0 +1,33 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.puppet.is_riding": {
+            "states": {
+                "default": {
+                    "on_entry": [
+                        "/tag @s remove is_riding",
+                        "/function __map/puppet/toggle_is_riding",
+                        "@s fs:toggle_is_riding"
+                    ],
+                    "transitions": [
+                        {
+                            "is_riding": "query.is_riding"
+                        }
+                    ]
+                },
+                "is_riding": {
+                    "on_entry": [
+                        "/tag @s add is_riding",
+                        "/function __map/puppet/toggle_is_riding",
+                        "@s fs:toggle_is_riding"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "!query.is_riding"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

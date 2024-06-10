@@ -1,0 +1,66 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:puppet_boss",
+            "spawn_egg": {
+                "base_color": "#7a3ec8",
+                "overlay_color": "#9d59f4"
+            },
+            "geometry": {
+                "variant_0": "geometry.puppet_marker",
+                "variant_1": "geometry.puppet_marker",
+                "variant_2": "geometry.puppet_marker",
+                "variant_3": "geometry.puppet_marker",
+                "variant_4": "geometry.puppet_marker",
+                "variant_5": "geometry.puppet_marker",
+                "variant_6": "geometry.puppet_marker",
+                "variant_7": "geometry.puppet_marker",
+                "variant_8": "geometry.puppet_marker"
+            },
+            "textures": {
+                "variant_0": "textures/entity/boss_bebop/boss_bebop_v0",
+                "variant_1": "textures/entity/boss_rocksteady/boss_rocksteady_v0",
+                "variant_2": "textures/entity/boss_shredder/boss_shredder_v0",
+                "variant_3": "textures/entity/boss_tempestra/boss_tempestra_v0",
+                "variant_4": "textures/entity/boss_baxter_stockman/boss_baxter_stockman_v0",
+                "variant_5": "textures/entity/boss_leatherhead/boss_leatherhead_v0",
+                "variant_6": "textures/entity/boss_krang/boss_krang_v0",
+                "variant_7": "textures/entity/boss_super_krang/boss_super_krang_v0",
+                "variant_8": "textures/entity/boss_super_shredder/boss_super_shredder_v0"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "render_controllers": [
+                "controller.render.puppet_boss"
+            ],
+            "animations": {
+                "pose": "controller.animation.puppet_boss.pose",
+                "boss_0_pose_0": "animation.puppet_boss.boss_0_pose_0",
+                "boss_0_pose_1": "animation.puppet_boss.boss_0_pose_1",
+                "boss_1_pose_0": "animation.puppet_boss.boss_1_pose_0",
+                "boss_1_pose_1": "animation.puppet_boss.boss_1_pose_1",
+                "boss_2_pose_0": "animation.puppet_boss.boss_2_pose_0",
+                "boss_2_pose_1": "animation.puppet_boss.boss_2_pose_1",
+                "boss_3_pose_0": "animation.puppet_boss.boss_3_pose_0",
+                "boss_3_pose_1": "animation.puppet_boss.boss_3_pose_1",
+                "boss_4_pose_0": "animation.puppet_boss.boss_4_pose_0",
+                "boss_4_pose_1": "animation.puppet_boss.boss_4_pose_1",
+                "boss_5_pose_0": "animation.puppet_boss.boss_5_pose_0",
+                "boss_5_pose_1": "animation.puppet_boss.boss_5_pose_1",
+                "boss_6_pose_0": "animation.puppet_boss.boss_6_pose_0",
+                "boss_6_pose_1": "animation.puppet_boss.boss_6_pose_1",
+                "boss_7_pose_0": "animation.puppet_boss.boss_7_pose_0",
+                "boss_7_pose_1": "animation.puppet_boss.boss_7_pose_1",
+                "boss_8_pose_0": "animation.puppet_boss.boss_8_pose_0",
+                "boss_8_pose_1": "animation.puppet_boss.boss_8_pose_1"
+            },
+            "scripts": {
+                "animate": [
+                    "pose"
+                ]
+            }
+        }
+    }
+}

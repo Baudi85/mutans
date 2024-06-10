@@ -1,0 +1,70 @@
+// @(com.57digital.shulker.generated)
+// @generated File (generated via ShulkerScript: <BP> dialogue/config/npc_april/april_post_shredder.js)
+{
+	"format_version": "1.17",
+	"minecraft:npc_dialogue": {
+		"scenes": [
+			{
+				"scene_tag": "april_path_bad_2",
+				"npc_name": {
+					"rawtext": [
+						{
+							/* "April O'Neil" (@ipterm)*/
+							"translate": "april_path_bad_2name"
+						}
+					]
+				},
+				"text": {
+					"rawtext": [
+						{
+							/* "Together, we have the power to keep these parts out of Shredder's clutches!" (Story beat from April)*/
+							"translate": "april_path_bad_2msg"
+						},
+						{
+							"text": "§f§1§3§3§7§f§0§1§f"
+						}
+					]
+				},
+				"buttons": [
+					{
+						"name": "7027f2t01z50",
+						"commands": [
+							"/function music_utils/play_level_normal_loop",
+							"/execute as @initiator run function events/player/did_chat_with_lair_april",
+							"/execute as @initiator run function prototype/open_episode_select_page"
+						]
+					},
+					{
+						"name": "5b5644t07z02",
+						"commands": [
+							"/execute as @initiator run tag @s add dlg.did_segue",
+							"/execute as @initiator run function dlg/april_path_bad_1"
+						]
+					}
+				],
+				"on_open_commands": [
+					"/tag @initiator remove did_req_dlg",
+					"/execute as @a run function utils/remove_dlg_tags",
+					"/execute as @initiator[tag=!dlg.did_segue] run playsound fs.sfx.placeholder_april @s[scores={s_sfx_enabled=1}]",
+					"/tag @initiator add player.in_ui",
+					"/tag @initiator remove dlg.did_segue",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§eapril_path_bad_2§7].§2DidOpen§7\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§eapril_path_bad_2§7].§2OpenFn§7: §e/scoreboard players set @e[type=fs:game] dlg_post_lvl_3 2\"}]}",
+					"/scoreboard players set @e[type=fs:game] dlg_post_lvl_3 2",
+					"/scoreboard players add @a __is_host 0",
+					"/execute as @a[scores={__is_host=0}] run function dlg/april_path_bad_2_m"
+				],
+				"on_close_commands": [
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§eDid run on_close_commands\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] at @s run function sounds/stop/_dialogue",
+					"/tag @s remove particle_emitter",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§eapril_path_bad_2§7].§4CloseFn§7: Aborted due to segue.\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§eapril_path_bad_2§7].§eDidNotSegue...\"}]}",
+					"/tag @initiator remove player.in_ui",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§eapril_path_bad_2§7].§4DidClose§7\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] run function ui/m/close_ui"
+				]
+			}
+		]
+	}
+}

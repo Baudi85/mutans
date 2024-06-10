@@ -1,0 +1,28 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:npc_raphael",
+            "render_controllers": [
+                "controller.render.npc.common"
+            ],
+            "geometry": {
+                "variant_0": "geometry.player_third_person_raphael"
+            },
+            "textures": {
+                "variant_0": "textures/entity/player/raphael"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "animations": {
+                "idle": "animation.npc_raphael.idle"
+            },
+            "scripts": {
+                "animate": [
+                    "idle"
+                ]
+            }
+        }
+    }
+}

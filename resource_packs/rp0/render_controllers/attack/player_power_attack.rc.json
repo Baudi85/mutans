@@ -1,0 +1,93 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.player_power_attack.donatello": {
+            "geometry": "Geometry.donatello",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.donatello"
+            ],
+            "part_visibility": [
+                {
+                    "skateboard": false
+                },
+                {
+                    "wheels_front": false
+                },
+                {
+                    "wheels_rear": false
+                }
+            ]
+        },
+        "controller.render.player_power_attack.leonardo": {
+            "geometry": "Geometry.leonardo",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.leonardo"
+            ],
+            "part_visibility": [
+                {
+                    "skateboard": false
+                },
+                {
+                    "wheels_front": false
+                },
+                {
+                    "wheels_rear": false
+                }
+            ]
+        },
+        "controller.render.player_power_attack.michelangelo": {
+            "geometry": "Geometry.michelangelo",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.michelangelo"
+            ],
+            "part_visibility": [
+                {
+                    "skateboard": false
+                },
+                {
+                    "wheels_front": false
+                },
+                {
+                    "wheels_rear": false
+                }
+            ]
+        },
+        "controller.render.player_power_attack.raphael": {
+            "geometry": "Geometry.raphael",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.raphael"
+            ],
+            "part_visibility": [
+                {
+                    "skateboard": false
+                },
+                {
+                    "wheels_front": false
+                },
+                {
+                    "wheels_rear": false
+                }
+            ]
+        }
+    }
+}

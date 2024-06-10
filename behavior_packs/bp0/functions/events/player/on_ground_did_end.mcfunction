@@ -1,0 +1,1 @@
+scoreboard players set @s on_ground 0

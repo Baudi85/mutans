@@ -1,0 +1,1 @@
+execute as @e[type=fs:game,scores={squad_enabled=1}] run execute as @a[scores={__is_host=1},c=1] at @s run function player_companion/fill_squad

@@ -1,0 +1,403 @@
+{
+    "format_version": "1.16.0",
+    "animation_controllers": {
+        "controller.animation.boss.movement_state": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "appear": "query.property('property:movement_state') == 'appear'"
+                        },
+                        {
+                            "idle": "query.property('property:movement_state') == 'idle'"
+                        },
+                        {
+                            "move": "query.property('property:movement_state') == 'move'"
+                        }
+                    ]
+                },
+                "appear": {
+                    "animations": [
+                        "animation_movement_appear"
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s movement_state 0",
+                        "/playsound mob.shulker.teleport @a",
+                        "/execute as @s[scores={s_perf_mode=0}] at @s run particle fs:enemy_appear ~ ~ ~"
+                    ],
+                    "on_exit": [
+                        "/scoreboard players set @s movement_state -1",
+                        "@s fs:set_movement_state_idle",
+                        "/execute as @s[scores={s_perf_mode=0}] at @s run particle fs:enemy_land ~ ~ ~"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.all_animations_finished"
+                        }
+                    ]
+                },
+                "idle": {
+                    "on_entry": [
+                        "/scoreboard players set @s movement_state 1"
+                    ],
+                    "on_exit": [
+                        "/scoreboard players set @s movement_state -1"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.property('property:movement_state') != 'idle'"
+                        }
+                    ]
+                },
+                "move": {
+                    "on_entry": [
+                        "/scoreboard players set @s movement_state 2"
+                    ],
+                    "on_exit": [
+                        "/scoreboard players set @s movement_state -1"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.property('property:movement_state') != 'move'"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.boss.attack_state": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "melee": "(variable.attack_time > 0) && query.property('property:attack_state') == 'melee'"
+                        },
+                        {
+                            "jump": "query.property('property:attack_state') == 'jump'"
+                        },
+                        {
+                            "ranged": "(query.has_target && query.facing_target_to_range_attack) && query.property('property:attack_state') == 'ranged'"
+                        },
+                        {
+                            "ranged_alt": "(query.has_target && query.facing_target_to_range_attack) && query.property('property:attack_state') == 'ranged_alt'"
+                        },
+                        {
+                            "dash": "query.property('property:attack_state') == 'dash'"
+                        },
+                        {
+                            "block": "query.property('property:attack_state') == 'block'"
+                        }
+                    ],
+                    "on_entry": [
+                        "@s fs:set_attack_state_none",
+                        "/scoreboard players set @s attack_state 0"
+                    ]
+                },
+                "melee": {
+                    "animations": [
+                        "animation_attack_melee"
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s attack_state 1"
+                    ],
+                    "on_exit": [
+                        "/scoreboard players set @s attack_state 0"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.all_animations_finished"
+                        }
+                    ]
+                },
+                "jump": {
+                    "animations": [
+                        "animation_attack_jump"
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s attack_state 2"
+                    ],
+                    "on_exit": [
+                        "/scoreboard players set @s attack_state 0"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.all_animations_finished"
+                        }
+                    ]
+                },
+                "ranged": {
+                    "animations": [
+                        "animation_attack_ranged"
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s attack_state 3"
+                    ],
+                    "on_exit": [
+                        "/scoreboard players set @s attack_state 0"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.all_animations_finished"
+                        }
+                    ]
+                },
+                "ranged_alt": {
+                    "animations": [
+                        "animation_attack_ranged_alt"
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s attack_state 3"
+                    ],
+                    "on_exit": [
+                        "/scoreboard players set @s attack_state 0"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.all_animations_finished"
+                        }
+                    ]
+                },
+                "dash": {
+                    "animations": [
+                        "animation_attack_dash"
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s attack_state 4"
+                    ],
+                    "on_exit": [
+                        "/scoreboard players set @s attack_state 0"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.all_animations_finished"
+                        }
+                    ]
+                },
+                "block": {
+                    "animations": [
+                        "animation_attack_block"
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s attack_state 5"
+                    ],
+                    "on_exit": [
+                        "/scoreboard players set @s attack_state 0"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.all_animations_finished"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.boss.damage_state": {
+            "initial_state": "init",
+            "states": {
+                "init": {
+                    "on_entry": [
+                        "v.curr_health = 0;"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ]
+                },
+                "default": {
+                    "on_entry": [
+                        "v.curr_health = q.health;",
+                        "@s fs:set_damage_state_none",
+                        "/scoreboard players set @s damage_state 0"
+                    ],
+                    "transitions": [
+                        {
+                            "hit": "query.property('property:damage_type') == 'light'"
+                        },
+                        {
+                            "knockdown": "query.property('property:damage_type') == 'heavy'"
+                        },
+                        {
+                            "super_knockdown": "query.property('property:damage_type') == 'super'"
+                        },
+                        {
+                            "prop_exploding_knockdown": "query.property('property:damage_type') == 'prop_exploding'"
+                        },
+                        {
+                            "player_companion": "query.property('property:damage_type') == 'player_companion'"
+                        },
+                        {
+                            "projectile": "query.property('property:damage_type') == 'projectile'"
+                        }
+                    ]
+                },
+                "hit": {
+                    "animations": [
+                        "animation_damage_hit"
+                    ],
+                    "on_entry": [
+                        "@s fs:add_damage_sensor_no_damage",
+                        "@s fs:set_damage_state_hit",
+                        "/scoreboard players set @s damage_state 1",
+                        "@s fs:set_damaged_by_player_none"
+                    ],
+                    "on_exit": [
+                    ],
+                    "transitions": [
+                        {
+                            "hurt": "query.all_animations_finished"
+                        }
+                    ]
+                },
+                "hurt": {
+                    "animations": [
+                        "animation_damage_hurt"
+                    ],
+                    "on_entry": [
+                        "@s fs:add_damage_sensor_no_damage",
+                        "@s fs:set_damage_state_hurt",
+                        "/scoreboard players set @s damage_state 1",
+                        "@s fs:set_damaged_by_player_none"
+                    ],
+                    "on_exit": [
+                        "@s fs:add_damage_sensor_default",
+                        "@s fs:reset_damage_state"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.all_animations_finished"
+                        }
+                    ]
+                },
+                "knockdown": {
+                    "animations": [
+                        "animation_damage_knockdown"
+                    ],
+                    "on_entry": [
+                        "@s fs:add_damage_sensor_no_damage",
+                        "@s fs:set_damage_state_knockdown",
+                        "/scoreboard players set @s damage_state 2",
+                        "@s fs:set_damaged_by_player_none",
+                        "/execute as @s[scores={s_perf_mode=0}] at @s run particle fs:enemy_land ~ ~ ~"
+                    ],
+                    "on_exit": [
+                    ],
+                    "transitions": [
+                        {
+                            "get_up": "query.all_animations_finished && !query.property('property:is_killed')"
+                        },
+                        {
+                            "killed": "query.all_animations_finished && query.property('property:is_killed')"
+                        }
+                    ]
+                },
+                "super_knockdown": {
+                    "animations": [
+                        "animation_damage_knockdown"
+                    ],
+                    "on_entry": [
+                        "@s fs:add_damage_sensor_no_damage",
+                        "@s fs:set_damage_state_knockdown",
+                        "/scoreboard players set @s damage_state 2",
+                        "/function ai_boss/attacked/by_player_super",
+                        "@s fs:set_damaged_by_player_none",
+                        "/execute as @s[scores={s_perf_mode=0}] at @s run particle fs:enemy_land ~ ~ ~"
+                    ],
+                    "on_exit": [
+                    ],
+                    "transitions": [
+                        {
+                            "get_up": "query.all_animations_finished && !query.property('property:is_killed')"
+                        },
+                        {
+                            "killed": "query.all_animations_finished && query.property('property:is_killed')"
+                        }
+                    ]
+                },
+                "player_companion": {
+                    "on_entry": [
+                        "/function ai_boss/attacked/by_player_light"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ]
+                },
+                "projectile": {
+                    "on_entry": [
+                        "/function ai_boss/attacked/by_projectile"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ]
+                },
+                "prop_exploding_knockdown": {
+                    "animations": [
+                        "animation_damage_knockdown"
+                    ],
+                    "on_entry": [
+                        "@s fs:add_damage_sensor_no_damage",
+                        "@s fs:set_damage_state_knockdown",
+                        "/scoreboard players set @s damage_state 2",
+                        "/function ai_boss/attacked/by_prop_exploding",
+                        "@s fs:set_damaged_by_player_none",
+                        "/execute as @s[scores={s_perf_mode=0}] at @s run particle fs:enemy_land ~ ~ ~"
+                    ],
+                    "on_exit": [
+                    ],
+                    "transitions": [
+                        {
+                            "get_up": "query.all_animations_finished && !query.property('property:is_killed')"
+                        },
+                        {
+                            "killed": "query.all_animations_finished && query.property('property:is_killed')"
+                        }
+                    ]
+                },
+                "get_up": {
+                    "animations": [
+                        "animation_damage_get_up"
+                    ],
+                    "on_entry": [
+                        "@s fs:add_damage_sensor_no_damage",
+                        "@s fs:set_damage_state_get_up",
+                        "/scoreboard players set @s damage_state 3"
+                    ],
+                    "on_exit": [
+                        "@s fs:add_damage_sensor_default",
+                        "@s fs:reset_damage_state"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.all_animations_finished"
+                        }
+                    ]
+                },
+                "killed": {
+                    "animations": [
+                        "animation_damage_killed"
+                    ],
+                    "on_entry": [
+                        "@s fs:add_damage_sensor_no_damage",
+                        "@s fs:set_damage_state_killed",
+                        "/scoreboard players set @s damage_state 4"
+                    ],
+                    "on_exit": [
+                    ],
+                    "transitions": [
+                        {
+                            "instant_despawn": "query.all_animations_finished"
+                        }
+                    ]
+                },
+                "instant_despawn": {
+                    "on_entry": [
+                        "/scoreboard players set @s damage_state 5"
+                    ]
+                }
+            }
+        }
+    }
+}

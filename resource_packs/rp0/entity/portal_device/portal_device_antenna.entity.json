@@ -1,0 +1,24 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "fs:portal_device_antenna",
+      "spawn_egg": {
+        "base_color": "#000000",
+        "overlay_color": "#000000"
+      },
+      "render_controllers": [
+        "controller.render.prop.common"
+      ],
+      "geometry": {
+        "variant_0": "geometry.portal_device_antenna"
+      },
+      "textures": {
+        "variant_0": "textures/entity/portal_device_antenna/portal_device_antenna_v0"
+      },
+      "materials": {
+        "default": "entity"
+      }
+    }
+  }
+}

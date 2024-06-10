@@ -1,0 +1,5 @@
+### @(com.57digital.shulker.generated)
+### @generated File (generated via ShulkerScript: <BP> functions/___experiments/experiment_a.js)
+say Hello 2 (a)
+say Hello 2 (b)
+say Hello 2 (c)

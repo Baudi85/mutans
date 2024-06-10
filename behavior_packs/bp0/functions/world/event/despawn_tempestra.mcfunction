@@ -1,0 +1,1 @@
+event entity @e[type=fs:boss_tempestra] fs:instant_despawn

@@ -1,0 +1,181 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:projectile_krang_eye_laser",
+            "runtime_identifier": "minecraft:arrow",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            },
+            "fs:particle_hit": {
+                "minecraft:type_family": {
+                    "family": [
+                        "shuriken",
+                        "projectile",
+                        "projectile_hit"
+                    ]
+                }
+            },
+            "fs:projectile_left": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "impact_damage": {
+                            "damage": 3,
+                            "knockback": true
+                        },
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": {
+                                "event": "fs:particle_hit",
+                                "target": "self"
+                            }
+                        },
+                        "stick_in_ground": {},
+                        "remove_on_hit": {}
+                    },
+                    "anchor": 1,
+                    "power": 0.7,
+                    "gravity": 0,
+                    "angle_offset": 0,
+                    "offset": [
+                        -0.25,
+                        -1.7,
+                        1.5
+                    ],
+                    "reflect_on_hurt": false
+                }
+            },
+            "fs:projectile_right": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "impact_damage": {
+                            "damage": 3,
+                            "knockback": true
+                        },
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": {
+                                "event": "fs:particle_hit",
+                                "target": "self"
+                            }
+                        },
+                        "stick_in_ground": {},
+                        "remove_on_hit": {}
+                    },
+                    "anchor": 1,
+                    "power": 0.7,
+                    "gravity": 0,
+                    "angle_offset": 0,
+                    "offset": [
+                        0.25,
+                        -1.7,
+                        1.5
+                    ],
+                    "reflect_on_hurt": false
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "projectile",
+                    "projectile_krang_eye_laser"
+                ]
+            },
+            "minecraft:timer": {
+                "time": 2,
+                "looping": false,
+                "time_down_event": {
+                    "event": "fs:instant_despawn",
+                    "target": "self"
+                }
+            },
+            "minecraft:collision_box": {
+                "width": 1,
+                "height": 1
+            },
+            "minecraft:physics": {},
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_optimized_distance": 100,
+                    "max_dropped_ticks": 1,
+                    "use_motion_prediction_hints": true
+                }
+            },
+            "minecraft:projectile": {
+                "on_hit": {
+                    "impact_damage": {
+                        "damage": 3,
+                        "knockback": true
+                    },
+                    "definition_event": {
+                        "affect_projectile": true,
+                        "event_trigger": {
+                            "event": "fs:particle_hit",
+                            "target": "self"
+                        }
+                    },
+                    "stick_in_ground": {},
+                    "remove_on_hit": {}
+                },
+                "anchor": 1,
+                "power": 0.7,
+                "gravity": 0,
+                "angle_offset": 0,
+                "offset": [
+                    0,                    
+                    -1.7,
+                    1.5
+                ],
+                "reflect_on_hurt": false
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "randomize": [
+                    {
+                        "add": {
+                            "component_groups": [
+                                "fs:projectile_left"
+                            ]
+                        },
+                        "weight": 1
+                    },
+                    {
+                        "add": {
+                            "component_groups": [
+                                "fs:projectile_right"
+                            ]
+                        },
+                        "weight": 1
+                    }
+                ]
+            },
+            "fs:instant_despawn": {
+                "add": {
+                    "component_groups": [
+                        "fs:instant_despawn"
+                    ]
+                }
+            },
+            "fs:particle_hit": {
+                "add": {
+                    "component_groups": [
+                        "fs:particle_hit"
+                    ]
+                }
+            }
+        }
+    }
+}

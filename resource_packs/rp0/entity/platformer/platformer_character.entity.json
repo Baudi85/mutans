@@ -1,0 +1,60 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:platformer_character",
+            "render_controllers": [
+                {
+                    "controller.render.entity.platformer_character.leo": "query.skin_id == 0"
+                },
+                {
+                    "controller.render.entity.platformer_character.raph": "query.skin_id == 1"
+                },
+                {
+                    "controller.render.entity.platformer_character.don": "query.skin_id == 2"
+                },
+                {
+                    "controller.render.entity.platformer_character.mikey": "query.skin_id == 3"
+                }
+            ],
+            "geometry": {
+                "variant_0": "geometry.platformer_character"
+            },
+            "textures": {
+                "leo_idle": "textures/entity/platformer_character/leo/idle",
+                "leo_walk_0": "textures/entity/platformer_character/leo/walk_0",
+                "leo_walk_1": "textures/entity/platformer_character/leo/walk_1",
+                "leo_jump": "textures/entity/platformer_character/leo/jump",
+                "leo_block": "textures/entity/platformer_character/leo/block",
+                "leo_death": "textures/entity/platformer_character/leo/death",
+                "raph_idle": "textures/entity/platformer_character/raph/idle",
+                "raph_walk_0": "textures/entity/platformer_character/raph/walk_0",
+                "raph_walk_1": "textures/entity/platformer_character/raph/walk_1",
+                "raph_jump": "textures/entity/platformer_character/raph/jump",
+                "raph_block": "textures/entity/platformer_character/raph/block",
+                "raph_death": "textures/entity/platformer_character/raph/death",
+                "don_idle": "textures/entity/platformer_character/don/idle",
+                "don_walk_0": "textures/entity/platformer_character/don/walk_0",
+                "don_walk_1": "textures/entity/platformer_character/don/walk_1",
+                "don_jump": "textures/entity/platformer_character/don/jump",
+                "don_block": "textures/entity/platformer_character/don/block",
+                "don_death": "textures/entity/platformer_character/don/death",
+                "mikey_idle": "textures/entity/platformer_character/mikey/idle",
+                "mikey_walk_0": "textures/entity/platformer_character/mikey/walk_0",
+                "mikey_walk_1": "textures/entity/platformer_character/mikey/walk_1",
+                "mikey_jump": "textures/entity/platformer_character/mikey/jump",
+                "mikey_block": "textures/entity/platformer_character/mikey/block",
+                "mikey_death": "textures/entity/platformer_character/mikey/death",
+                "fire_hit_0": "textures/entity/platformer_character/platformer_character_fire_0",
+                "fire_hit_1": "textures/entity/platformer_character/platformer_character_fire_1",
+                "fire_death_0": "textures/entity/platformer_character/platformer_character_fire_death_0",
+                "fire_death_1": "textures/entity/platformer_character/platformer_character_fire_death_1",
+                "fire_death_2": "textures/entity/platformer_character/platformer_character_fire_death_2",
+                "fire_death_3": "textures/entity/platformer_character/platformer_character_fire_death_3"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            }
+        }
+    }
+}

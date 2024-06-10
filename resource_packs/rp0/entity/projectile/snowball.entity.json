@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minecraft:snowball",
+      "materials": {
+        "default": "snowball"
+      },
+      "geometry": {
+        "variant_0": "geometry.projectile_shuriken"
+      },
+      "textures": {
+        "variant_0": "textures/entity/projectile_shuriken/projectile_shuriken_v0"
+      },
+      "render_controllers": [ "controller.render.entity.common" ],
+      "animations": {
+        "move": "animation.shuriken.move"
+      },
+      "scripts": {
+        "animate": [
+          "move"
+        ]
+      }
+    }
+  }
+} 

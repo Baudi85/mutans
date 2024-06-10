@@ -1,0 +1,128 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.effect_portal.spin": {
+			"loop": true,
+			"animation_length": 16,
+			"bones": {
+				"layer_1": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"16.0": [0, 0, 360]
+					}
+				},
+				"layer_2": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"16.0": [0, 0, 2880]
+					}
+				},
+				"layer_3": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"16.0": [0, 0, 1440]
+					}
+				},
+				"layer_4": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"16.0": [0, 0, 720]
+					}
+				}
+			}
+		},
+		"animation.effect_portal.spin_vertical": {
+			"loop": true,
+			"animation_length": 16,
+			"bones": {
+				"layer_1": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"16.0": [0, 0, 360]
+					}
+				},
+				"layer_2": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"16.0": [0, 0, 2880]
+					}
+				},
+				"layer_3": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"16.0": [0, 0, 1440]
+					}
+				},
+				"layer_4": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"16.0": [0, 0, 720]
+					}
+				},
+				"root": {
+					"rotation": [90, 0, 0],
+					"position": [0, 9.5, 0]
+				}
+			}
+		},
+		"animation.effect_portal.spin_inverted": {
+			"loop": true,
+			"animation_length": 16,
+			"bones": {
+				"layer_1": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"16.0": [0, 0, 360]
+					}
+				},
+				"layer_2": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"16.0": [0, 0, 2880]
+					}
+				},
+				"layer_3": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"16.0": [0, 0, 1440]
+					}
+				},
+				"layer_4": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"16.0": [0, 0, 720]
+					}
+				},
+				"root": {
+					"rotation": [180, 0, 0]
+				}
+			}
+		},
+		"animation.effect_portal.vanish": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.6,
+			"bones": {
+				"root": {
+					"scale": {
+						"0.0": [1, 1, 1],
+						"0.1": [1.1, 1.1, 1.1],
+						"0.6": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.effect_portal.appear": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.6,
+			"bones": {
+				"root": {
+					"scale": {
+						"0.0": [0, 0, 0],
+						"0.5": [1.1, 1.1, 1.1],
+						"0.6": [1, 1, 1]
+					}
+				}
+			}
+		}
+	}
+}

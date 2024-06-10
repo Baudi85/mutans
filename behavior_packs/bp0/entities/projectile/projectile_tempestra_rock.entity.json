@@ -1,0 +1,160 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:projectile_tempestra_rock",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            },
+            "fs:particle_hit": {
+                "minecraft:type_family": {
+                    "family": [
+                        "shuriken",
+                        "projectile",
+                        "projectile_hit"
+                    ]
+                }
+            },
+            "fs:projectile_0": {
+                "minecraft:type_family": {
+                    "family": [
+                        "projectile",
+                        "projectile_tempestra_rock",
+                        "projectile_0"
+                    ]
+                }
+            },
+            "fs:projectile_1": {
+                "minecraft:type_family": {
+                    "family": [
+                        "projectile",
+                        "projectile_tempestra_rock",
+                        "projectile_1"
+                    ]
+                }
+            },
+            "fs:projectile_2": {
+                "minecraft:type_family": {
+                    "family": [
+                        "projectile",
+                        "projectile_tempestra_rock",
+                        "projectile_2"
+                    ]
+                }
+            },
+            "fs:projectile_3": {
+                "minecraft:type_family": {
+                    "family": [
+                        "projectile",
+                        "projectile_tempestra_rock",
+                        "projectile_3"
+                    ]
+                }
+            },
+            "fs:projectile_4": {
+                "minecraft:type_family": {
+                    "family": [
+                        "projectile",
+                        "projectile_tempestra_rock",
+                        "projectile_4"
+                    ]
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "projectile",
+                    "projectile_tempestra_rock"
+                ]
+            },
+            "minecraft:timer": {
+                "time": 2,
+                "looping": false,
+                "time_down_event": {
+                    "event": "fs:instant_despawn",
+                    "target": "self"
+                }
+            },
+            "minecraft:collision_box": {
+                "width": 1,
+                "height": 1
+            },
+            "minecraft:physics": {},
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:nameable": {
+                "allow_name_tag_renaming": false,
+                "always_show": false
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            }
+        },
+        "events": {
+            "fs:instant_despawn": {
+                "add": {
+                    "component_groups": [
+                        "fs:instant_despawn"
+                    ]
+                }
+            },
+            "fs:projectile_0": {
+                "add": {
+                    "component_groups": [
+                        "fs:projectile_0"
+                    ]
+                }
+            },
+            "fs:projectile_1": {
+                "add": {
+                    "component_groups": [
+                        "fs:projectile_1"
+                    ]
+                }
+            },
+            "fs:projectile_2": {
+                "add": {
+                    "component_groups": [
+                        "fs:projectile_2"
+                    ]
+                }
+            },
+            "fs:projectile_3": {
+                "add": {
+                    "component_groups": [
+                        "fs:projectile_3"
+                    ]
+                }
+            },
+            "fs:projectile_4": {
+                "add": {
+                    "component_groups": [
+                        "fs:projectile_4"
+                    ]
+                }
+            },
+            "fs:particle_hit": {
+                "add": {
+                    "component_groups": [
+                        "fs:particle_hit"
+                    ]
+                }
+            }
+        }
+    }
+}

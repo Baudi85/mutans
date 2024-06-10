@@ -1,0 +1,17 @@
+{
+    "format_version": "1.19.60",
+    "minecraft:block": {
+        "description": {
+            "identifier": "fs:powered_on",
+            "is_experimental": false,
+            "register_to_creative_menu": false,
+            "menu_category": {
+                "category": "none"
+            }
+        },
+        "components": {
+            "minecraft:destructible_by_mining": false,
+            "minecraft:destructible_by_explosion": false
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:game",
+            "render_controllers": [
+                "controller.render.game"
+            ],
+            "geometry": {
+                "default": "geometry.game"
+            },
+            "textures": {
+                "default": "textures/entity/__lib/game/game"
+            },
+            "materials": {
+                "default": "entity"
+            }
+        }
+    }
+}

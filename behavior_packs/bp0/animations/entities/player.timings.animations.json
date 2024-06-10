@@ -1,0 +1,91 @@
+{
+    "format_version": "1.16.0",
+    "animations": {
+        "animation.player.leonardo_attack_0": {
+            "loop": false,
+            "animation_length": 1,
+            "timeline": {
+                "0.0": [
+                    "/say start_0"
+                ],
+                "0.5": [
+                    "/say mid_0"
+                ],
+                "0.9": [
+                    "/say end_0"
+                ]
+            }
+        },
+        "animation.player.leonardo_attack_1": {
+            "loop": false,
+            "animation_length": 1,
+            "timeline": {
+                "0.0": [
+                    "/say start_1"
+                ],
+                "0.5": [
+                    "/say mid_1"
+                ],
+                "0.9": [
+                    "/say end_1"
+                ]
+            }
+        },
+        "animation.player.leonardo_attack_2": {
+            "loop": false,
+            "animation_length": 1,
+            "timeline": {
+                "0.0": [
+                    "/say start_2"
+                ],
+                "0.5": [
+                    "/say mid_2"
+                ],
+                "0.9": [
+                    "/say end_2"
+                ]
+            }
+        },
+        "animation.player.movement_direction_local": {
+            "loop": true,
+            "animation_length": 0.0001,
+            "timeline": {
+                "0.0": [
+                    "v.mot_z = q.movement_direction(2);",
+                    "v.mot_x = q.movement_direction(0);",
+                    "v.angle = q.head_y_rotation(0);",
+                    "v.cos = Math.cos(v.angle);",
+                    "v.sin = Math.sin(v.angle);",
+                    "v.local_z = v.mot_z*v.cos - v.mot_x*v.sin;",
+                    "v.local_x = v.mot_z*v.sin + v.mot_x*v.cos;",
+                    "v.local_xz = Math.sqrt(v.local_z*v.local_z + v.local_x*v.local_x);",
+                    "v.local_z = v.local_z / v.local_xz;",
+                    "v.local_x = v.local_x / v.local_xz;",
+                    "v.local_x = q.is_moving == 0 ? 0 : v.local_x;",
+                    "v.local_z = q.is_moving == 0 ? 0 : v.local_z;"
+                ]
+            }
+        },
+        "animation.player.movement_direction_local_debug": {
+            "loop": true,
+            "animation_length": 0.0001,
+            "timeline": {
+                "0.0": [
+                    "v.mot_z = q.movement_direction(2);",
+                    "v.mot_x = q.movement_direction(0);",
+                    "v.angle = q.head_y_rotation(0);",
+                    "v.cos = Math.cos(v.angle);",
+                    "v.sin = Math.sin(v.angle);",
+                    "v.local_z = v.mot_z*v.cos - v.mot_x*v.sin;",
+                    "v.local_x = v.mot_z*v.sin + v.mot_x*v.cos;",
+                    "v.local_xz = Math.sqrt(v.local_z*v.local_z + v.local_x*v.local_x);",
+                    "v.local_z = v.local_z / v.local_xz;",
+                    "v.local_x = v.local_x / v.local_xz;",
+                    "v.local_x = q.is_moving == 0 ? 0 : v.local_x;",
+                    "v.local_z = q.is_moving == 0 ? 0 : v.local_z;",
+                    "q.log(v.local_z)"
+                ]
+            }
+        }
+    }
+}

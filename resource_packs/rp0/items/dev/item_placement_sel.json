@@ -1,0 +1,13 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:item": {
+    "description": {
+      "identifier": "fs:item_placement_sel",
+      "category": "Items"
+    },
+    "components": {
+      "minecraft:icon": "item_sel",
+      "minecraft:use_animation": "none"
+    }
+  }
+}

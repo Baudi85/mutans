@@ -1,0 +1,1 @@
+execute as @e[family=vehicle,c=1] at @s run ride @s summon_rider fs:puppet_character

@@ -1,0 +1,1 @@
+scoreboard players set @e[type=fs:game] play_theme_tick 0

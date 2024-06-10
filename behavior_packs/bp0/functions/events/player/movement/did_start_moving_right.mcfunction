@@ -1,0 +1,2 @@
+#say right
+testfor @s

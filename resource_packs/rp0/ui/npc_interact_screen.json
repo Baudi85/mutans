@@ -1,0 +1,38 @@
+{
+  "npc_screen_contents/student": {
+    "ignored": true
+  },
+  "npc_screen_contents/teacher": {
+    "ignored": true
+  },
+  "npc_screen_contents": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "fs:ab_common_dlg@ab_common_dlg.root_panel": {}
+          },
+          {
+            "fs:fs_episode_select@fs_episode_select.root_panel": {}
+          },
+          {
+            "fs:turtlecom@fs_turtlecom.root_panel": {}
+          },
+          {
+            "fs:m_dummy@fs_m_dummy.root_panel": {}
+          }
+        ]
+      }
+    ]
+  },
+  "npc_screen": {
+    "gamepad_cursor": true,
+    "cache_screen": false,
+    "close_on_player_hurt": true,
+    "$screen_animations": [
+      
+    ]
+  }
+}

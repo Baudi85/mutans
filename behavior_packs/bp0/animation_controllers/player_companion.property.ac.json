@@ -1,0 +1,55 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.player_companion.property.attack_status": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "did_attack": "query.property('property:attack_status') == 'did_attack'"
+                        }
+                    ],
+                    "on_entry": [
+                        "/execute as @s[scores={power_attack_i=16..}] at @s run function player/power_attack/start"
+                    ]
+                },
+                "did_attack": {
+                    "transitions": [
+                        {
+                            "default": "query.property('property:attack_status') != 'did_attack'"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s power_attack_i 1",
+                        "/function ___experiments/scores/update_request",
+                        "@s fs:set_attack_status_none"
+                    ]
+                }
+            }
+        },
+        "controller.animation.player_companion.property.has_target": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "has_target": "query.has_target"
+                        }
+                    ],
+                    "on_entry": [
+                        "/tag @s remove has_target"
+                    ]
+                },
+                "has_target": {
+                    "transitions": [
+                        {
+                            "default": "!query.has_target"
+                        }
+                    ],
+                    "on_entry": [
+                        "/tag @s add has_target"
+                    ]
+                }
+            }
+        }
+    }
+}

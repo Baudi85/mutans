@@ -1,0 +1,372 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.player.item_did_change": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "item_april_read": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_april_read')"
+                        },
+                        {
+                            "item_april_unread": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_april_unread')"
+                        },
+                        {
+                            "item_splinter_read": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_splinter_read')"
+                        },
+                        {
+                            "item_splinter_unread": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_splinter_unread')"
+                        },
+                        {
+                            "item_menu": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_menu')"
+                        },
+                        {
+                            "item_ninja_star": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_ninja_star')"
+                        },
+                        {
+                            "item_ninja_star_empty": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_ninja_star_empty')"
+                        },
+                        {
+                            "item_ooze_attack": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_ooze_attack')"
+                        },
+                        {
+                            "item_ooze_attack_empty": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_ooze_attack_empty')"
+                        },
+                        {
+                            "item_ooze_tank": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_ooze_tank')"
+                        },
+                        {
+                            "item_sewer_handle": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_sewer_handle')"
+                        },
+                        {
+                            "item_sewer_valve": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_sewer_valve')"
+                        },
+                        {
+                            "item_skateboard_off": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_skateboard_off')"
+                        },
+                        {
+                            "item_skateboard_on": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_skateboard_on')"
+                        },
+                        {
+                            "item_turtle_leo": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_turtle_leo')"
+                        },
+                        {
+                            "item_turtle_don": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_turtle_don')"
+                        },
+                        {
+                            "item_turtle_raph": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_turtle_raph')"
+                        },
+                        {
+                            "item_turtle_mikey": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_turtle_mikey')"
+                        },
+                        {
+                            "item_weapon_nunchuk": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_weapon_nunchuk')"
+                        },
+                        {
+                            "item_weapon_sai": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_weapon_sai')"
+                        },
+                        {
+                            "item_weapon_staff": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_weapon_staff')"
+                        },
+                        {
+                            "item_weapon_sword": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_weapon_sword')"
+                        },
+                        {
+                            "item_regroup": "query.is_item_name_any('slot.weapon.mainhand', 'fs:item_regroup')"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_april_read": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_april_read'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_april_read",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_april_unread": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_april_unread'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_april_unread",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_splinter_read": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_splinter_read'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_splinter_read",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_splinter_unread": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_splinter_unread'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_splinter_unread",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_menu": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_menu'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_menu",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_ninja_star": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_ninja_star'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_ninja_star",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_ninja_star_empty": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_ninja_star_empty'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_ninja_star_empty",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_ooze_attack": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_ooze_attack'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_ooze_attack",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_ooze_attack_empty": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_ooze_attack_empty'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_ooze_attack_empty",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_ooze_tank": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_ooze_tank'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_ooze_tank",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_sewer_handle": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_sewer_handle'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_quest_item",
+                        "/tag @s add item_sewer_handle",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_sewer_valve": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_sewer_valve'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_quest_item",
+                        "/tag @s add item_sewer_valve",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_skateboard_off": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_skateboard_off'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_skateboard_off",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_skateboard_on": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_skateboard_on'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_skateboard_on",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_turtle_leo": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_turtle_leo'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_turtle_squad",
+                        "/tag @s add item_turtle_leo",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_turtle_don": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_turtle_don'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_turtle_squad",
+                        "/tag @s add item_turtle_don",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_turtle_mikey": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_turtle_mikey'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_turtle_squad",
+                        "/tag @s add item_turtle_mikey",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_turtle_raph": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_turtle_raph'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_turtle_squad",
+                        "/tag @s add item_turtle_raph",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_weapon_nunchuk": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_weapon_nunchuk'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_weapon",
+                        "/tag @s add item_weapon_nunchuk",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_weapon_sai": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_weapon_sai'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_weapon",
+                        "/tag @s add item_weapon_sai",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_weapon_staff": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_weapon_staff'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_weapon",
+                        "/tag @s add item_weapon_staff",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_weapon_sword": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_weapon_sword'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_weapon",
+                        "/tag @s add item_weapon_sword",
+                        "/function events/player/item/item_did_change"
+                    ]
+                },
+                "item_regroup": {
+                    "transitions": [
+                        {
+                            "default": "!(query.is_item_name_any('slot.weapon.mainhand', 'fs:item_regroup'))"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function utils/remove_item_tags",
+                        "/tag @s add item_regroup",
+                        "/function events/player/item/item_did_change"
+                    ]
+                }
+            }
+        }
+    }
+}

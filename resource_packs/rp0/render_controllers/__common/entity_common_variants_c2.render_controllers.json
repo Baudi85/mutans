@@ -1,0 +1,36 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.entity.common_variants_c2": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.variant_0",
+                        "Texture.variant_1"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_0",
+                        "Geometry.variant_1"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ],
+            "is_hurt_color": {
+                "r": "1.0",
+                "g": "1.0",
+                "b": "1.0",
+                "a": "0.25"
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+execute as @s[type=fs:boss_bebop] run execute as @a[scores={is_camera=0}] run function ui/fader/set_content/b_bebop
+execute as @s[type=fs:boss_rocksteady] run execute as @a[scores={is_camera=0}] run function ui/fader/set_content/b_rocksteady
+execute as @s[type=fs:boss_shredder] run execute as @a[scores={is_camera=0}] run function ui/fader/set_content/b_shredder
+execute as @s[type=fs:boss_tempestra] run execute as @a[scores={is_camera=0}] run function ui/fader/set_content/b_tempestra
+execute as @s[type=fs:boss_baxter_stockman] run execute as @a[scores={is_camera=0}] run function ui/fader/set_content/b_baxter
+execute as @s[type=fs:boss_leatherhead] run execute as @a[scores={is_camera=0}] run function ui/fader/set_content/b_leather
+execute as @s[type=fs:boss_krang] run execute as @a[scores={is_camera=0}] run function ui/fader/set_content/b_krang
+execute as @s[type=fs:boss_super_krang] run execute as @a[scores={is_camera=0}] run function ui/fader/set_content/b_s_krang
+execute as @s[type=fs:boss_super_shredder] run execute as @a[scores={is_camera=0}] run function ui/fader/set_content/b_s_shredder

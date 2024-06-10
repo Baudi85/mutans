@@ -1,0 +1,1 @@
+execute as @e[type=fs:game,scores={oobe_complete=0,oobe_step=-1}] run function oobe/start

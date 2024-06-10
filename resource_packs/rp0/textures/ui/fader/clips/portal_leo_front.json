@@ -1,0 +1,82 @@
+{ "frames": [
+   {
+    "filename": "leo_front 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 96, "h": 80 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 80 },
+    "sourceSize": { "w": 96, "h": 80 },
+    "duration": 167
+   },
+   {
+    "filename": "leo_front 1.aseprite",
+    "frame": { "x": 96, "y": 0, "w": 96, "h": 80 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 80 },
+    "sourceSize": { "w": 96, "h": 80 },
+    "duration": 167
+   },
+   {
+    "filename": "leo_front 2.aseprite",
+    "frame": { "x": 192, "y": 0, "w": 96, "h": 80 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 80 },
+    "sourceSize": { "w": 96, "h": 80 },
+    "duration": 167
+   },
+   {
+    "filename": "leo_front 3.aseprite",
+    "frame": { "x": 0, "y": 80, "w": 96, "h": 80 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 80 },
+    "sourceSize": { "w": 96, "h": 80 },
+    "duration": 167
+   },
+   {
+    "filename": "leo_front 4.aseprite",
+    "frame": { "x": 96, "y": 80, "w": 96, "h": 80 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 80 },
+    "sourceSize": { "w": 96, "h": 80 },
+    "duration": 167
+   },
+   {
+    "filename": "leo_front 5.aseprite",
+    "frame": { "x": 192, "y": 80, "w": 96, "h": 80 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 80 },
+    "sourceSize": { "w": 96, "h": 80 },
+    "duration": 167
+   },
+   {
+    "filename": "leo_front 6.aseprite",
+    "frame": { "x": 0, "y": 160, "w": 96, "h": 80 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 80 },
+    "sourceSize": { "w": 96, "h": 80 },
+    "duration": 167
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3-rc4-x64",
+  "image": "portal_leo_front.png",
+  "format": "RGBA8888",
+  "size": { "w": 288, "h": 240 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer 2", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 3", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

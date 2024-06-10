@@ -1,0 +1,13 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:item": {
+    "description": {
+      "identifier": "fs:item_weapon_sword",
+      "category": "Items"
+    },
+    "components": {
+      "minecraft:icon": "item_weapon_sword",
+      "minecraft:use_animation": "none"
+    }
+  }
+}

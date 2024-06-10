@@ -1,0 +1,140 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:interact_button_lift",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "fs:variant_up_off": {
+                "minecraft:variant": {
+                    "value": 0
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "interact",
+                        "interact_button_lift",
+                        "zone_entity",
+                        "variant_up_off"
+                    ]
+                }
+            },
+            "fs:variant_up_on": {
+                "minecraft:variant": {
+                    "value": 1
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "interact",
+                        "interact_button_lift",
+                        "zone_entity",
+                        "variant_up_on"
+                    ]
+                }
+            },
+            "fs:variant_open_off": {
+                "minecraft:variant": {
+                    "value": 2
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "interact",
+                        "interact_button_lift",
+                        "zone_entity",
+                        "variant_open_off"
+                    ]
+                }
+            },
+            "fs:variant_open_on": {
+                "minecraft:variant": {
+                    "value": 3
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "interact",
+                        "interact_button_lift",
+                        "zone_entity",
+                        "variant_open_on"
+                    ]
+                }
+            },
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "interact",
+                    "interact_button_lift",
+                    "zone_entity",
+                    "variant_up_off"
+                ]
+            },
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            },
+            "minecraft:scale": {
+                "value": 1
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:collision_box": {
+                "height": 0,
+                "width": 0
+            }
+        },
+        "events": {
+            "fs:variant_up_off": {
+                "add": {
+                    "component_groups": [
+                        "fs:variant_up_off"
+                    ]
+                }
+            },
+            "fs:variant_up_on": {
+                "add": {
+                    "component_groups": [
+                        "fs:variant_up_on"
+                    ]
+                }
+            },
+            "fs:variant_open_off": {
+                "add": {
+                    "component_groups": [
+                        "fs:variant_open_off"
+                    ]
+                }
+            },
+            "fs:variant_open_on": {
+                "add": {
+                    "component_groups": [
+                        "fs:variant_open_on"
+                    ]
+                }
+            },
+            "fs:instant_despawn": {
+                "add": {
+                    "component_groups": [
+                        "fs:instant_despawn"
+                    ]
+                }
+            }
+        }
+    }
+}

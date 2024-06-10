@@ -1,0 +1,16 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.boss.bebop_chef": {
+            "geometry": "Geometry.variant_chef",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.variant_chef"
+            ]
+        }
+    }
+}

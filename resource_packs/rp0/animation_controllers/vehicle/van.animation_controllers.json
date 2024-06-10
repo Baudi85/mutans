@@ -1,0 +1,19 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.vehicle.van.animate": {
+            "states": {
+                "default": {
+                    "animations": [
+                        {
+                            "animation_movement": "query.modified_move_speed"
+                        },
+                        {
+                            "animation_idle": "query.modified_move_speed <= 0.01"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

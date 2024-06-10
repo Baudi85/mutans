@@ -1,0 +1,31 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.prop_tv": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.variant_0"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_0"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                },
+                {
+                    "alphatest": "Material.alphatest"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ]
+        }
+    }
+}

@@ -1,0 +1,1 @@
+fill 4675 2 240 4684 6 240 polished_deepslate_stairs ["weirdo_direction":3]

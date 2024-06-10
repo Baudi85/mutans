@@ -1,0 +1,64 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.enemy_target.is_riding": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "is_riding": "query.is_riding"
+                        }
+                    ],
+                    "on_entry": [
+                        "/tag @s remove is_riding"
+                    ]
+                },
+                "is_riding": {
+                    "transitions": [
+                        {
+                            "is_not_riding": "!query.is_riding"
+                        }
+                    ],
+                    "on_entry": [
+                        "/tag @s add is_riding"
+                    ],
+                    "on_exit": [
+                        "@s fs:instant_despawn"
+                    ]
+                },
+                "is_not_riding": {
+                    "on_entry": [
+                        "/tag @s remove is_riding",
+                        "@s fs:instant_despawn"
+                    ]
+                }
+            }
+        },
+        "controller.animation.enemy_target.has_rider": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "has_rider": "query.has_rider"
+                        }
+                    ],
+                    "on_entry": [
+                        "/tag @s remove has_rider"
+                    ]
+                },
+                "has_rider": {
+                    "transitions": [
+                        {
+                            "default": "!query.has_rider"
+                        }
+                    ],
+                    "on_entry": [
+                        "/tag @s add has_rider"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,71 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:puppet_marker",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {
+					"remove_child_entities": true
+				}
+            }
+        },
+        "components": {
+            "minecraft:physics": {
+				"has_collision": true,
+				"has_gravity": false
+			},
+            "minecraft:scale": {
+                "value": 1
+            },
+            "minecraft:damage_sensor": {
+                "triggers":[
+                    {
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:interact": {
+                "interactions": [
+                    {
+                        "on_interact": {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_equipment",
+                                        "domain": "hand",
+                                        "subject": "other",
+                                        "value": "barrier",
+                                        "operator": "=="
+                                    }
+                                ]
+                            },
+                            "event": "fs:instant_despawn",
+                            "target": "self"
+                        },
+                        "use_item": false,
+                        "swing": true,
+                        "interact_text": "action.interact.entity.common"
+                    }
+                ]
+            }
+        },
+        "events": {
+            "fs:instant_despawn": {
+                "sequence": [
+                    {
+                        "add": {
+                            "component_groups": [
+                                "fs:instant_despawn"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

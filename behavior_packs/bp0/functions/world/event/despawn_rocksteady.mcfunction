@@ -1,0 +1,1 @@
+event entity @e[type=fs:boss_rocksteady] fs:instant_despawn

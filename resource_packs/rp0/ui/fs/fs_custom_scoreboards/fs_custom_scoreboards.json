@@ -1,0 +1,1971 @@
+{
+  "namespace": "fs_scoreboards",
+  /*
+    chracter index:
+    0: sorting multiplier
+    --------------------------------
+    1: selected character type
+    --------------------------------
+    2: health char 1 [tens]
+    3: health char 2 [ones]
+    --------------------------------
+    4: rage char 1 [tens] -- 1 bar (16), 2 bar (32), 3 bar (48) 
+    5: rage char 2 [ones]
+    --------------------------------
+    6: lives (SINGLE DIGIT, 0-3 - 0 = dead) [ones]
+    --------------------------------
+    7: not used
+    --------------------------------
+    8: not implemented
+
+    +---------+------+--------+--------+------+------+-------+---------+---------+
+    | Sorting | Char | Health | Health | Rage | Rage | Lives | NotUsed | NotUsed |
+    +---------+------+--------+--------+------+------+-------+---------+---------+
+    |       0 |    1 |      2 |      3 |    4 |    5 |     6 |       7 |       8 |
+    +---------+------+--------+--------+------+------+-------+---------+---------+
+  /*
+
+  /*
+    characters:
+    0: not selected
+    1: leo
+    2: raph
+    3: don
+    4: mikey
+  */
+
+  "root_panel": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    // global colors
+    "$text_color_character_1|default": [0.003921568627, 0.568627451, 0.9843137255, 1],
+    "$text_color_character_2|default": [0.003921568627, 0.568627451, 0.9843137255, 1],
+    "$text_color_character_3|default": [0.003921568627, 0.568627451, 0.9843137255, 1],
+    "$text_color_character_4|default": [0.003921568627, 0.568627451, 0.9843137255, 1],
+
+    "$master_statbar_offset_anim|default": [0, 12],
+    "$statbox_size|default": ["100%", 35],
+    "$device_idiom|default": "desktop",
+    "$bg_chrome_size|default": ["150%", 130],
+    "$bg_chrome_offset|default": [0, -35],
+    "$player_name_offset|default": [0, 23],
+    "$player_name_size|default": ["default", "default"],
+    "variables": [
+      { "requires": "($is_ios or $is_android)", "$master_statbar_offset_anim": [0, 25], "$device_idiom": "pocket", "$statbox_size": ["100%", 30], "$bg_chrome_size": ["150%", 105], "$player_name_offset": [0, -30], "$player_name_size": ["50%", "default"]}, // pocket
+      { "requires": "(not ($is_ios or $is_android))", "$master_statbar_offset_anim": [0, 12], "$device_idiom": "desktop", "$statbox_size": ["100%", 35] } // not pocket
+
+      // inverted for debugging:
+      // { "requires": "(not ($is_ios or $is_android))", "$master_statbar_offset_anim": [0, 25], "$device_idiom": "pocket", "$statbox_size": ["100%", 30], "$bg_chrome_size": ["150%", 105], "$player_name_offset": [0, -30], "$player_name_size": ["50%", "default"]}, // pocket
+      // { "requires": "(($is_ios or $is_android)", "$master_statbar_offset_anim": [0, 12], "$device_idiom": "desktop", "$statbox_size": ["100%", 35] } // not pocket
+    ],
+
+    // controls:
+    "controls": [
+      {
+        "container": {
+          "type": "panel",
+          // "texture": "textures/ui/Black",
+          // "size": [
+          //   "100%",
+          //   35 // <------------------------------------------------- overall box height
+          // ],
+          "size": "$statbox_size",
+          "offset": "$master_statbar_offset_anim",
+          // "offset": "@fs_scoreboards.offset_container_default",
+          // "visible": false,
+          // "alpha": 0.5,
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "controls": [
+            {
+              "player_1@fs_scoreboards.player_score_container": {
+                "$player_index": 0,
+                "$player_offset": [
+                  "3px",
+                  "2px"
+                ],
+                "$scoreboard_grid_offset": [
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "bg_chrome": {
+                "type": "image",
+                "texture": "textures/ui/colors/black",
+                "size": "$bg_chrome_size",
+                "offset": "$bg_chrome_offset",
+                "alpha": 0.4
+              }
+            },
+            {
+              "_preloader@preloader": {}
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#objective_sidebar_name",
+              "binding_type": "global"
+            }
+            // {
+            //   "binding_type": "view",
+            //   "source_property_name": "((not (#objective_sidebar_name - 'status') = #objective_sidebar_name))",
+            //   "target_property_name": "#visible"
+            // }
+          ]
+        }
+      },
+      {
+        "dev_lbl": {
+          "type": "label",
+          "text": "#text",
+          "bindings": [
+            {
+              "binding_name": "#objective_sidebar_name",
+              "binding_type": "global"
+            },
+            // ,
+            // {
+            //   "binding_type": "view",
+            //   "source_property_name": "#objective_sidebar_name",
+            //   "target_property_name": "#text"
+            // },
+            {
+              "binding_type": "view",
+              "source_property_name": "('§r' + #objective_sidebar_name - 'statbar'))",
+              "target_property_name": "#text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#text - '§r' = 'x'))",
+              "target_property_name": "#visible"
+            }
+            
+            // ,
+            // {
+            //   "binding_type": "view",
+            //   "source_property_name": "(not (#text = '§r' + #objective_sidebar_name))",
+            //   "target_property_name": "#visible"
+            // }
+          ]
+        }
+      }
+    ]
+  },
+  "preloader": {
+    "type": "panel",
+    "anchor_to":"center",
+    "anchor_from":"center",
+    "size": [
+      1, 1
+    ],
+    "offset": [-5000, -5000],
+    "controls": [
+      {
+        "preload_progress_0": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_0"
+        }
+      },
+      {
+        "preload_progress_1": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_1"
+        }
+      },
+      {
+        "preload_progress_2": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_2"
+        }
+      },
+      {
+        "preload_progress_3": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_3"
+        }
+      },
+      {
+        "preload_progress_4": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_4"
+        }
+      },
+      {
+        "preload_progress_5": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_5"
+        }
+      },
+      {
+        "preload_progress_6": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_6"
+        }
+      },
+      {
+        "preload_progress_7": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_7"
+        }
+      },
+      {
+        "preload_progress_8": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_8"
+        }
+      },
+      {
+        "preload_progress_9": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_9"
+        }
+      },
+      {
+        "preload_progress_10": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_10"
+        }
+      },
+      {
+        "preload_progress_11": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_11"
+        }
+      },
+      {
+        "preload_progress_12": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_12"
+        }
+      },
+      {
+        "preload_progress_13": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_13"
+        }
+      },
+      {
+        "preload_progress_14": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_14"
+        }
+      },
+      {
+        "preload_progress_15": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_15"
+        }
+      },
+      {
+        "preload_progress_full": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_full",
+          "size": [23, 10],
+          "uv_size": [23, 10],
+          "uv": "@fs_scoreboards.ooze_full_animation"
+        }
+      }
+    ]
+  },
+  "player_score_container": {
+    "type": "panel",
+    "size": [
+      "24.5%",
+      "100% - 4px"
+    ],
+    "$player_offset|default": [
+      0,
+      0
+    ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": "($player_offset)",
+    "controls": [
+      {
+        "bg": {
+          "type": "panel",
+          // "texture": "textures/ui/colors/clear",
+          // "tiled": true,
+          "clips_children": false,
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "controls": [
+            {
+              "xlists@fs_scoreboards.lists": {}
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "offset_container_default": {
+    "anim_type": "offset",
+    "from": [0, 12],
+    "to": [0, 12]
+  },
+  // prototypes
+  "lists": {
+    "type": "panel",
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "$scoreboard_grid_offset|default": [
+      0,
+      0
+    ],
+    "offset": "($scoreboard_grid_offset)",
+    "controls": [
+      {
+        "_stat_box@stat_box": {
+          "controls": [
+            {
+              "stat_stack": {
+                "type": "stack_panel",
+                "orientation": "vertical",
+                "size": ["100%", "100%"],
+                "controls": [
+                  {
+                    "scores": {
+                      "type": "stack_panel",
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "size": [
+                        "100%",
+                        "100%"
+                      ],
+                      "orientation": "horizontal",
+                      "use_child_anchors": true,
+                      "collection_name": "scoreboard_scores",
+                      "factory": {
+                        "name": "player_score_factory",
+                        "control_name": "fs_scoreboards.custom_score"
+                      },
+                      "bindings": [
+                        {
+                          "binding_name": "#scoreboard_sidebar_size",
+                          "binding_type": "global",
+                          "binding_name_override": "#collection_length"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "players": {
+          "type": "stack_panel",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "visible": true, ///////////////////////////////////////////////////////////////////////////////////////
+          "orientation": "horizontal",
+          "collection_name": "scoreboard_players",
+          "factory": {
+            "name": "player_list_factory",
+            "control_name": "fs_scoreboards.custom_player"
+          },
+          "bindings": [
+            {
+              "binding_name": "#scoreboard_sidebar_size",
+              "binding_type": "global",
+              "binding_name_override": "#collection_length"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "custom_player": {
+    "type": "panel",
+    // "texture": "textures/ui/colors/clear",
+    // "tiled": true,
+    "size": [
+      "100%",
+      "100%"
+    ],
+    // "alpha": 0.25,
+    "layer": 2,
+    // "clips_children": true,
+    "controls": [
+      {
+        "lbl_name_local": {
+          "type": "label",
+          "layer": 9999,
+          "text": "player.local.you",
+          "localize": true,
+          "size": "$player_name_size",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": "$player_name_offset",
+          "text_alignment": "center",
+          // "offset": [
+          //   0,
+          //   23
+          // ],
+          
+          "color": [1, 1, 0, 1],
+          "locked_alpha": 1.0,
+          "font_scale_factor": 0.8,
+          "bindings": [
+            {
+              "binding_name": "#player_name_sidebar",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_players"
+            },
+            {
+              "binding_name": "#player_index",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_players"
+            },
+            {
+              "binding_name": "#gamertag",
+              "binding_type": "collection",
+              "binding_collection_name": "players_collection"
+            },
+            {
+              "binding_name": "#player_name_sidebar",
+              "binding_type": "view",
+              "source_property_name": "(#player_name_sidebar)",
+              "target_property_name": "#player_name_sidebar"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(((#gamertag = #player_name_sidebar))",
+              "target_property_name": "#visible"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('§z' + ('%.12s' * #player_name_sidebar))",
+              "target_property_name": "#playername_truncated"
+            }
+          ]
+        }
+      },
+      {
+        "lbl_name_remote": {
+          "type": "label",
+          "layer": 9999,
+          "text": "#player_name_sidebar",
+          "localize": false,
+          "size": "$player_name_size",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": "$player_name_offset",
+          "text_alignment": "center",
+          // "offset": [
+          //   0,
+          //   23
+          // ],
+          "color": [1, 1, 1, 1],
+          // "locked_alpha": 0.8,
+          "alpha": 0.9,
+          "font_scale_factor": 0.8,
+          "bindings": [
+            {
+              "binding_name": "#player_name_sidebar",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_players"
+            },
+            {
+              "binding_name": "#player_index",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_players"
+            },
+            {
+              "binding_name": "#gamertag",
+              "binding_type": "collection",
+              "binding_collection_name": "players_collection"
+            },
+            {
+              "binding_name": "#player_name_sidebar",
+              "binding_type": "view",
+              "source_property_name": "(#player_name_sidebar)",
+              "target_property_name": "#player_name_sidebar"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((not (#gamertag = #player_name_sidebar))",
+              "target_property_name": "#visible"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('§z' + ('%.12s' * #player_name_sidebar))",
+              "target_property_name": "#playername_truncated"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "custom_score": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 3,
+
+    "$rage_int_value|default": "#rage_int_value",
+    "$rage_display_value|default": "?",
+
+    "controls": [
+      {
+        "color_coded_stat_box": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["95%", "100%"],
+          "bindings": [
+            {
+              "binding_name": "#player_score_sidebar",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_scores"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.2s' * (#player_score_sidebar))) - (§z + ('%.1s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_1"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#score_char_1)",
+              "target_property_name": "#score_int_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + #score_int_val))",
+              "target_property_name": "#score_str_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('textures/ui/stats/container_' + #score_int_val)",
+              "target_property_name": "#texture"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#score_int_val > -1)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "color_coded_stat_box_underlay": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["95%", "100%"],
+          "anims": [
+            "@fs_scoreboards.anim_low_health_1"
+          ],
+          "bindings": [
+            {
+              "binding_name": "#player_score_sidebar",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_scores"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.2s' * (#player_score_sidebar))) - (§z + ('%.1s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_1"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#score_char_1)",
+              "target_property_name": "#score_int_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + #score_int_val))",
+              "target_property_name": "#score_str_val"
+            },
+            // <health>
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.4s' * (#player_score_sidebar))) - (§z + ('%.3s' * #player_score_sidebar))))",
+              "target_property_name": "#health_score_char_3"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.3s' * (#player_score_sidebar))) - (§z + ('%.2s' * #player_score_sidebar))))",
+              "target_property_name": "#health_score_char_2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#health_score_char_2 * 10) + #health_score_char_3)",
+              "target_property_name": "#health_score_int_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + #health_score_int_val))",
+              "target_property_name": "#health_score_str_val"
+            },
+            // </health>            
+            {
+              "binding_type": "view",
+              "source_property_name": "('textures/ui/stats/container_' + #score_int_val + '_1')",
+              "target_property_name": "#texture"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#score_int_val > -1 and (#health_score_int_val < 5 and #health_score_int_val > 0))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "player_character_portrait": {
+          "type": "panel",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [
+            21,
+            11
+          ],
+          "offset": [
+            7,
+            -10
+          ],
+          "controls": [
+            {
+              "player_character_alive": {
+                "type": "image",
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "size": [
+                  21,
+                  11
+                ],
+                "layer": 100,
+                "visible": true,
+                "bindings": [
+                  {
+                    "binding_name": "#player_score_sidebar",
+                    "binding_type": "collection",
+                    "binding_collection_name": "scoreboard_scores"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + ('%.2s' * (#player_score_sidebar))) - (§z + ('%.1s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_char_1"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(#score_char_1)",
+                    "target_property_name": "#score_int_val"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + #score_int_val))",
+                    "target_property_name": "#score_str_val"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "('textures/ui/chars/portrait_' + #score_int_val)",
+                    "target_property_name": "#texture"
+                  }
+                ]
+              }
+            },
+            {
+              "player_character_ko": {
+                "type": "image",
+                "texture": "textures/ui/chars/ko_portrait_1",
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "size": [21, 16],
+                "uv_size": [21, 16],
+                "offset": [0, -5],
+                "layer": 110,
+                "uv": "@fs_scoreboards.char_ko_1",
+                "visible": false,
+                "bindings": [
+                  {
+                    "binding_name": "#player_score_sidebar",
+                    "binding_type": "collection",
+                    "binding_collection_name": "scoreboard_scores"
+                  },
+                  // <character type>
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + ('%.2s' * (#player_score_sidebar))) - (§z + ('%.1s' * #player_score_sidebar))))",
+                    "target_property_name": "#character_type_int"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(#character_type_int)",
+                    "target_property_name": "#score_int_character_type"
+                  },
+                  // </character type>
+                  // <health>
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + ('%.4s' * (#player_score_sidebar))) - (§z + ('%.3s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_char_3"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + ('%.3s' * (#player_score_sidebar))) - (§z + ('%.2s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_char_2"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((#score_char_2 * 10) + #score_char_3)",
+                    "target_property_name": "#score_int_val"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + #score_int_val))",
+                    "target_property_name": "#score_str_val"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "('textures/ui/chars/ko_portrait_' + #character_type_int)",
+                    "target_property_name": "#texture"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "('@fs_scoreboards.char_ko_' + #character_type_int)",
+                    "target_property_name": "#uv"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(#score_int_val = 99 and (#score_int_character_type > 0 and #score_int_character_type < 9))",
+                    "target_property_name": "#visible"
+                  }
+                  // </health>
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "playing_as_char_name": {
+          "type": "panel",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "controls": [
+            {
+              "player_char_name_lg": {
+                "type": "label",
+                "text": "#player_char_name_loc_key",
+                "localize": true,
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "size": ["default", "default"],
+                "font_type": "MinecraftTen",
+                "layer": 1000,
+                "offset": [
+                  30,
+                  -12.5
+                ],
+                "bindings": [
+                  {
+                    "binding_name": "#player_score_sidebar",
+                    "binding_type": "collection",
+                    "binding_collection_name": "scoreboard_scores"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + ('%.2s' * (#player_score_sidebar))) - (§z + ('%.1s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_char_1"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(#score_char_1)",
+                    "target_property_name": "#score_int_val"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "('char.' + #score_int_val + '_short')",
+                    "target_property_name": "#player_char_name_loc_key"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + ('%.7s' * (#player_score_sidebar))) - (§z + ('%.6s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_lives"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(#score_lives * 1)",
+                    "target_property_name": "#score_lives_int_val"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(#score_int_val > 0 and #score_lives_int_val < 5)",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            },
+            {
+              "player_char_name_sm": {
+                "type": "label",
+                "text": "#player_char_name_loc_key",
+                "localize": true,
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "size": ["default", "default"],
+                "font_type": "MinecraftTen",
+                "layer": 1000,
+                "font_scale_factor": 0.8,
+                "offset": [
+                  29,
+                  -11
+                ],
+                "bindings": [
+                  {
+                    "binding_name": "#player_score_sidebar",
+                    "binding_type": "collection",
+                    "binding_collection_name": "scoreboard_scores"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + ('%.2s' * (#player_score_sidebar))) - (§z + ('%.1s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_char_1"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(#score_char_1)",
+                    "target_property_name": "#score_int_val"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "('char.' + #score_int_val + '_short')",
+                    "target_property_name": "#player_char_name_loc_key"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + ('%.7s' * (#player_score_sidebar))) - (§z + ('%.6s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_lives"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(#score_lives * 1)",
+                    "target_property_name": "#score_lives_int_val"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(#score_int_val > 0 and #score_lives_int_val > 4)",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+          //('char.' +  + '_short')
+        }
+      },
+      {
+        "player_lives": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": [-2, -9],
+          "controls": [
+            // $life_icon_index are deliberately reversed to pin icons to the right of the container
+            {
+              "life_4@life_icon": {
+                "$life_icon_index": 4
+              }
+            },
+            {
+              "life_3@life_icon": {
+                "$life_icon_index": 3
+              }
+            },
+            {
+              "life_2@life_icon": {
+                "$life_icon_index": 2
+              }
+            },
+            {
+              "life_1@life_icon": {
+                "$life_icon_index": 1
+              }
+            },
+            {
+              "life_0@life_icon": {
+                "$life_icon_index": 0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "inner_stat_stack": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "size": ["90%", "90%"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "controls": [
+            {
+              "inner_stat_top_container": {
+                "type": "panel",
+                // "texture": "textures/ui/Black",
+                "size": ["100%", "50%"],
+                "controls": [
+                  {
+                    "player_health_stack": {
+                      "type": "stack_panel",
+                      "orientation": "horizontal",
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "size": ["default", 8],
+                      "controls": [
+                        {
+                          "health_0@health_cell": {
+                            "$health_cell_index": 0
+                          }
+                        },
+                        {
+                          "health_1@health_cell": {
+                            "$health_cell_index": 1
+                          }
+                        },
+                        {
+                          "health_2@health_cell": {
+                            "$health_cell_index": 2
+                          }
+                        },
+                        {
+                          "health_3@health_cell": {
+                            "$health_cell_index": 3
+                          }
+                        },
+                        {
+                          "health_4@health_cell": {
+                            "$health_cell_index": 4
+                          }
+                        },
+                        {
+                          "health_5@health_cell": {
+                            "$health_cell_index": 5
+                          }
+                        },
+                        {
+                          "health_6@health_cell": {
+                            "$health_cell_index": 6
+                          }
+                        },
+                        {
+                          "health_7@health_cell": {
+                            "$health_cell_index": 7
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "inner_stat_bottom_container": {
+                "type": "panel",
+                "size": ["100%", "50%"],
+                "controls": [
+                  {
+                    "ooze_stack_view": {
+                      "type": "stack_panel",
+                      "orientation": "horizontal",
+                      "size": ["default", 12],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [0, 0],
+                      "controls": [
+                        {
+                          "ozze_1@dynamic_ooze_container_0": {
+                          }
+                        },
+                        {
+                          "ooze_2@dynamic_ooze_container_1": {
+                          }
+                        },
+                        {
+                          "ooze_3@dynamic_ooze_container_2": {
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+      /*,
+      {
+        "player_rage": {
+          "type": "label",
+          "text": "#score_str_val",
+          "size": [
+            "default",
+            10
+          ],
+          "offset": [
+            0,
+            29
+          ],
+
+          "color": [1, 0, 0, 1], // red
+          "bindings": [
+            {
+              "binding_name": "#player_score_sidebar",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_scores"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.6s' * (#player_score_sidebar))) - (§z + ('%.5s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_5"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.5s' * (#player_score_sidebar))) - (§z + ('%.4s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_4"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#score_char_4 * 10) + #score_char_5)",
+              "target_property_name": "#score_int_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#score_char_4 * 10) + #score_char_5)",
+              "target_property_name": "#rage_int_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + #score_int_val))",
+              "resolve_sibling_scope": true,
+              "target_property_name": "#score_str_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#score_int_val > -1)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "player_power": {
+          "type": "label",
+          "text": "$str_val",
+          "size": [
+            "default",
+            10
+          ],
+          "offset": [
+            0,
+            39
+          ],
+          "visible": true,
+          "color": [0, 1, 0, 1], // green
+          "$str_val|default": "#score_str_val",
+          "bindings": [
+            {
+              "binding_name": "#player_score_sidebar",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_scores"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.8s' * (#player_score_sidebar))) - (§z + ('%.7s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_7"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.7s' * (#player_score_sidebar))) - (§z + ('%.6s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_6"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#score_char_6 * 10) + #score_char_7)",
+              "target_property_name": "#score_int_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + #score_int_val))",
+              "target_property_name": "#score_str_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#score_int_val > -1)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "gamer_tag": {
+          "type": "label",
+          "text": "#gamertag",
+          "size": [
+            "default",
+            10
+          ],
+          "offset": [0, 49],
+          "bindings": [
+            {
+              "binding_name": "#gamertag",
+              "binding_type": "collection",
+              "binding_collection_name": "players_collection"
+            }
+          ]
+        }
+      }
+      */
+      /*,
+      {
+        "__experimentation": {
+          "type": "label",
+          "layer": 2,
+          "size": [
+            "default",
+            10
+          ],
+          "offset": [
+            0,
+            5
+          ],
+          "text": "#player_score_sidebar",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "locked_alpha": 1,
+          "visible": false,
+          "color": [
+            0,
+            1,
+            0,
+            1
+          ], // green $player_score_color
+          "controls": [
+            {
+              "yellow": {
+                "type": "label",
+                "text": "#score_val",
+                "size": [
+                  "default",
+                  10
+                ],
+                "offset": [
+                  0,
+                  9
+                ],
+                "property_bag": {
+                  "#score_val": "",
+                  "#score_val_0": "",
+                  "#score_val_1": "",
+                  "#score_val_2": "",
+                  "#score_val_3": "",
+                  "#score_val_4": "",
+                  "#score_val_5": "",
+                  "#score_val_6": "",
+                  "#score_val_7": "",
+                  "#score_i_a": 0,
+                  "#score_i_b": 0,
+                  "#score_i_c": 0,
+                  "#z": "§z"
+                },
+                "visible": true,
+                "color": [
+                  1,
+                  1,
+                  0,
+                  1
+                ], // yellow
+                "bindings": [
+                  {
+                    "binding_name": "#player_score_sidebar",
+                    "binding_type": "collection",
+                    "binding_collection_name": "scoreboard_scores"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(('§z' + ('%.8s' * (#player_score_sidebar))) - (§z + ('%.7s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_val_7"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(('§z' + ('%.7s' * (#player_score_sidebar))) - (§z + ('%.6s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_val_6"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(('§z' + ('%.6s' * (#player_score_sidebar))) - (§z + ('%.5s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_val_5"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + ('%.5s' * (#player_score_sidebar))) - (§z + ('%.4s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_val_4"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + ('%.4s' * (#player_score_sidebar))) - (§z + ('%.3s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_val_3"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + ('%.3s' * (#player_score_sidebar))) - (§z + ('%.2s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_val_2"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + ('%.2s' * (#player_score_sidebar))) - (§z + ('%.1s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_val_1"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + ('%.1s' * (#player_score_sidebar))) - (§z + ('%.0s' * #player_score_sidebar))))",
+                    "target_property_name": "#score_val_0"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((#score_val_2 * 10) + #score_val_3)",
+                    "target_property_name": "#score_i_a"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((#score_val_4 * 10) + #score_val_5)",
+                    "target_property_name": "#score_i_b"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((#score_val_6 * 10) + #score_val_7)",
+                    "target_property_name": "#score_i_c"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((§z + #score_i_a) + '_' + (§z + #score_i_b) + '_' + (§z + #score_i_c))",
+                    "target_property_name": "#score_val"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(#score_i_c > 0)",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#player_score_sidebar",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_scores"
+            }
+          ]
+        }
+      }
+      */
+    ]
+  },
+
+  "dynamic_ooze_container_0": {
+    "type": "panel",
+    "size": [23, 10],
+    "controls": [
+      {
+        "_ooze_progress_bar_container@ooze_progress_bar_container": {
+          "$ooze_container_index": 0,
+          "$ooze_bar_count": 0
+        }
+      },
+      {
+        "_ooze_full_container@ooze_full_container": {
+          "$ooze_container_index": 0,
+          "$ooze_bar_count": 0
+        }
+      },
+      {
+        "ooze_lock_0@ooze_lock": {
+          "$ooze_container_index": 0
+        }
+      }
+    ]
+  },
+
+  "dynamic_ooze_container_1": {
+    "type": "panel",
+    "size": [24, 10],
+    "controls": [
+      {
+        "_ooze_progress_bar_container@ooze_progress_bar_container": {
+          "$ooze_container_index": 1,
+          "$ooze_bar_count": 16
+        }
+      },
+      {
+        "_ooze_full_container@ooze_full_container": {
+          "$ooze_container_index": 1,
+          "$ooze_bar_count": 16
+        }
+      },
+      {
+        "ooze_lock_0@ooze_lock": {
+          "$ooze_container_index": 1
+        }
+      }
+    ]
+  },
+
+  "dynamic_ooze_container_2": {
+    "type": "panel",
+    "size": [24, 10],
+    "controls": [
+      {
+        "_ooze_progress_bar_container@ooze_progress_bar_container": {
+          "$ooze_container_index": 2,
+          "$ooze_bar_count": 32
+        }
+      },
+      {
+        "_ooze_full_container@ooze_full_container": {
+          "$ooze_container_index": 2,
+          "$ooze_bar_count": 32
+        }
+      },
+      {
+        "ooze_lock_0@ooze_lock": {
+          "$ooze_container_index": 2
+        }
+      }
+    ]
+  },
+
+  "ooze_lock": {
+    "type": "image",
+    "layer": 1000,
+    "visible": true,
+    "texture": "textures/ui/stats/locked",
+    "bindings": [
+      {
+        "binding_name": "#player_score_sidebar",
+        "binding_type": "collection",
+        "binding_collection_name": "scoreboard_scores"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((§z + ('%.8s' * (#player_score_sidebar))) - (§z + ('%.7s' * #player_score_sidebar))))",
+        "target_property_name": "#score_char_6"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#score_char_6 * 1)",
+        "target_property_name": "#score_int_val"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(((($ooze_container_index = 0 and 1=0) or ($ooze_container_index = 1 and #score_int_val < 2) or ($ooze_container_index = 2 and #score_int_val < 3)))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "ooze_progress_bar_container": {
+    "type": "panel",
+    "size": [24, 10],
+    "$ooze_container_index|default": 0,
+    "controls": [
+      {
+        "progress": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_0",
+          "size": ["default", 10],
+          "bindings": [
+            {
+              "binding_name": "#player_score_sidebar",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_scores"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.6s' * (#player_score_sidebar))) - (§z + ('%.5s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_5"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.5s' * (#player_score_sidebar))) - (§z + ('%.4s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_4"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#score_char_4 * 10) + #score_char_5))",
+              "target_property_name": "#score_int_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#score_int_val - $ooze_bar_count)",
+              "target_property_name": "#score_int_val_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('textures/ui/stats/ooze_progress_' + #score_int_val_r)",
+              "target_property_name": "#texture"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#score_int_val_r > 0) and (($ooze_container_index = 0 and #score_int_val < 16) or ($ooze_container_index = 1 and #score_int_val < 32) or ($ooze_container_index = 2 and #score_int_val < 48)))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "progress_empty": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_progress_0",
+          "size": ["default", 10],
+          "bindings": [
+            {
+              "binding_name": "#player_score_sidebar",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_scores"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.6s' * (#player_score_sidebar))) - (§z + ('%.5s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_5"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.5s' * (#player_score_sidebar))) - (§z + ('%.4s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_4"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#score_char_4 * 10) + #score_char_5))",
+              "target_property_name": "#score_int_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#score_int_val - $ooze_bar_count)",
+              "target_property_name": "#score_int_val_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#score_int_val_r < 1)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "ooze_full_container": {
+    "type": "panel",
+    "size": [24, 10],
+    "controls": [
+      {
+        "ooze_full_flip_book": {
+          "type": "image",
+          "texture": "textures/ui/stats/ooze_full",
+          "size": [23, 10],
+          "uv_size": [23, 10],
+          "uv": "@fs_scoreboards.ooze_full_animation",
+          "visible": false,
+          // "offset": "@fs_scoreboards.ooze_full_jiggle",
+          "bindings": [
+            {
+              "binding_name": "#player_score_sidebar",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_scores"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.6s' * (#player_score_sidebar))) - (§z + ('%.5s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_5"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.5s' * (#player_score_sidebar))) - (§z + ('%.4s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_4"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#score_char_4 * 10) + #score_char_5)",
+              "target_property_name": "#score_int_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(($ooze_container_index = 0 and #score_int_val > 15) or ($ooze_container_index = 1 and #score_int_val > 31) or ($ooze_container_index = 2 and #score_int_val > 47))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "health_cell": {
+    "type": "panel",
+    "size": [10, 10],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "controls": [
+      {
+        "heart_empty_icon": {
+          "type": "image",
+          "texture": "textures/ui/stats/health_empty",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "$health_cell_index|default": -1,
+          "layer": 10,
+          "size": [
+            8, 8
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "visible": true
+        }
+      },
+      {
+        "dynamic_heart_icon": {
+          "type": "panel",
+          "controls": [
+            {
+              "full_or_half_hearts": {
+                "type": "panel",
+                "controls": [
+                  {
+                    "heart_full_icon": {
+                      "type": "image",
+                      "texture": "textures/ui/stats/health_1_full",
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      // "text": "#score_str_val",
+                      "$health_cell_index|default": -1,
+                      "size": [
+                        8, 8
+                      ],
+                      "offset": [
+                        0,
+                        0
+                      ],
+                      "layer": 11,
+                      "visible": false,
+                      "bindings": [
+                        {
+                          "binding_name": "#player_score_sidebar",
+                          "binding_type": "collection",
+                          "binding_collection_name": "scoreboard_scores"
+                        },
+                        // <character type>
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((§z + ('%.2s' * (#player_score_sidebar))) - (§z + ('%.1s' * #player_score_sidebar))))",
+                          "target_property_name": "#score_char_1"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "(#score_char_1)",
+                          "target_property_name": "#score_int_character_type"
+                        },
+                        // </character type>
+                        // <health>
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((§z + ('%.4s' * (#player_score_sidebar))) - (§z + ('%.3s' * #player_score_sidebar))))",
+                          "target_property_name": "#score_char_3"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((§z + ('%.3s' * (#player_score_sidebar))) - (§z + ('%.2s' * #player_score_sidebar))))",
+                          "target_property_name": "#score_char_2"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((#score_char_2 * 10) + #score_char_3)",
+                          "target_property_name": "#score_int_val"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((§z + #score_int_val))",
+                          "target_property_name": "#score_str_val"
+                        },
+                        // </health>
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "('textures/ui/stats/health_' + #score_int_character_type + '_full')",
+                          "target_property_name": "#texture"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((#score_int_val > 1 and $health_cell_index = 0) or (#score_int_val > 3 and $health_cell_index = 1) or (#score_int_val > 5 and $health_cell_index = 2) or (#score_int_val > 7 and $health_cell_index = 3) or (#score_int_val > 9 and $health_cell_index = 4) or (#score_int_val > 11 and $health_cell_index = 5) or (#score_int_val > 13 and $health_cell_index = 6) or (#score_int_val > 15 and $health_cell_index = 7))",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "heart_half_icon": {
+                      "type": "image",
+                      "texture": "textures/ui/stats/health_1_half",
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      // "text": "#score_str_val",
+                      "$health_cell_index|default": -1,
+                      "size": [
+                        8, 8
+                      ],
+                      "offset": [
+                        0,
+                        0
+                      ],
+                      "layer": 11,
+                      "visible": false,
+                      "bindings": [
+                        {
+                          "binding_name": "#player_score_sidebar",
+                          "binding_type": "collection",
+                          "binding_collection_name": "scoreboard_scores"
+                        },
+                        // <character type>
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((§z + ('%.2s' * (#player_score_sidebar))) - (§z + ('%.1s' * #player_score_sidebar))))",
+                          "target_property_name": "#score_char_1"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "(#score_char_1)",
+                          "target_property_name": "#score_int_character_type"
+                        },
+                        // </character type>
+                        // <health>
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((§z + ('%.4s' * (#player_score_sidebar))) - (§z + ('%.3s' * #player_score_sidebar))))",
+                          "target_property_name": "#score_char_3"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((§z + ('%.3s' * (#player_score_sidebar))) - (§z + ('%.2s' * #player_score_sidebar))))",
+                          "target_property_name": "#score_char_2"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((#score_char_2 * 10) + #score_char_3)",
+                          "target_property_name": "#score_int_val"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((§z + #score_int_val))",
+                          "target_property_name": "#score_str_val"
+                        },
+                        // </health>
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "('textures/ui/stats/health_' + #score_int_character_type + '_half')",
+                          "target_property_name": "#texture"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((#score_int_val = 1 and $health_cell_index = 0) or (#score_int_val = 3 and $health_cell_index = 1) or (#score_int_val = 5 and $health_cell_index = 2) or (#score_int_val = 7 and $health_cell_index = 3) or (#score_int_val = 9 and $health_cell_index = 4) or (#score_int_val = 11 and $health_cell_index = 5) or (#score_int_val = 13 and $health_cell_index = 6) or (#score_int_val = 15 and $health_cell_index = 7))",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#player_score_sidebar",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_scores"
+            },
+            // <health>
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.4s' * (#player_score_sidebar))) - (§z + ('%.3s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_3"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.3s' * (#player_score_sidebar))) - (§z + ('%.2s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#score_char_2 * 10) + #score_char_3)",
+              "target_property_name": "#score_int_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + #score_int_val))",
+              "target_property_name": "#score_str_val"
+            },
+            // </health>
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (#score_int_val = 99))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+// {
+  //   "player_health": {
+  //     "type": "label",
+  //     "text": "#score_str_val",
+  //     "size": [
+  //       "default",
+  //       "default"
+  //     ],
+  //     "offset": [
+  //       0,
+  //       0
+  //     ],
+  //     "visible": true,
+  //     "color": [1, 1, 0, 1], // yellow
+  //     "bindings": [
+  //       {
+  //         "binding_name": "#player_score_sidebar",
+  //         "binding_type": "collection",
+  //         "binding_collection_name": "scoreboard_scores"
+  //       },
+  //       {
+  //         "binding_type": "view",
+  //         "source_property_name": "((§z + ('%.4s' * (#player_score_sidebar))) - (§z + ('%.3s' * #player_score_sidebar))))",
+  //         "target_property_name": "#score_char_3"
+  //       },
+  //       {
+  //         "binding_type": "view",
+  //         "source_property_name": "((§z + ('%.3s' * (#player_score_sidebar))) - (§z + ('%.2s' * #player_score_sidebar))))",
+  //         "target_property_name": "#score_char_2"
+  //       },
+  //       {
+  //         "binding_type": "view",
+  //         "source_property_name": "((#score_char_2 * 10) + #score_char_3)",
+  //         "target_property_name": "#score_int_val"
+  //       },
+  //       {
+  //         "binding_type": "view",
+  //         "source_property_name": "((§z + #score_int_val))",
+  //         "target_property_name": "#score_str_val"
+  //       },
+  //       {
+  //         "binding_type": "view",
+  //         "source_property_name": "(#score_int_val > -1)",
+  //         "target_property_name": "#visible"
+  //       }
+  //     ]
+  //   }
+  // }
+
+  "life_icon": {
+    "type": "panel",
+    "size": [9, 8],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "controls": [
+      {
+        "life_icon_sprite": {
+          "type": "image",
+          "texture": "textures/ui/stats/life",
+          "size": [8, 8],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "bindings": [
+            {
+              "binding_name": "#player_score_sidebar",
+              "binding_type": "collection",
+              "binding_collection_name": "scoreboard_scores"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + ('%.7s' * (#player_score_sidebar))) - (§z + ('%.6s' * #player_score_sidebar))))",
+              "target_property_name": "#score_char_6"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#score_char_6 * 1)",
+              "target_property_name": "#score_int_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((§z + #score_int_val))",
+              "target_property_name": "#score_str_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(($life_icon_index = 0 and #score_int_val > 0) or ($life_icon_index = 1 and #score_int_val > 1) or ($life_icon_index = 2 and #score_int_val > 2) or ($life_icon_index = 3 and #score_int_val > 3) or ($life_icon_index = 4 and #score_int_val > 4))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+      // {
+      //   "life_debug": {
+      //     "type": "label",
+      //     "text": "#score_str_val",
+      //     "size": [10, 10],
+      //     "font_scale_factor": 0.2,
+      //     "bindings": [
+      //       {
+      //         "binding_name": "#player_score_sidebar",
+      //         "binding_type": "collection",
+      //         "binding_collection_name": "scoreboard_scores"
+      //       },
+      //       {
+      //         "binding_type": "view",
+      //         "source_property_name": "((§z + ('%.7s' * (#player_score_sidebar))) - (§z + ('%.6s' * #player_score_sidebar))))",
+      //         "target_property_name": "#score_char_6"
+      //       },
+      //       {
+      //         "binding_type": "view",
+      //         "source_property_name": "(#score_char_6 * 1)",
+      //         "target_property_name": "#score_int_val"
+      //       },
+      //       {
+      //         "binding_type": "view",
+      //         "source_property_name": "((§z + #score_int_val))",
+      //         "target_property_name": "#score_str_val"
+      //       }
+      //       // {
+      //       //   "binding_type": "view",
+      //       //   "source_property_name": "('textures/ui/stats/container_' + #score_int_val)",
+      //       //   "target_property_name": "#texture"
+      //       // },
+      //       // {
+      //       //   "binding_type": "view",
+      //       //   "source_property_name": "(#score_int_val > -1)",
+      //       //   "target_property_name": "#visible"
+      //       // }
+      //     ]
+      //   }
+      // }
+    ]
+  },
+
+  "stat_box": {
+    "type": "panel",
+    "size": ["100%", "100%"]
+  },
+
+  // #region: animations
+  "ooze_full_animation": {
+    "anim_type": "flip_book",
+    "initial_uv": [ 0, 0 ],
+    "frame_count": 8,
+    "frame_step": 23,
+    "fps": 5
+  },
+  "char_ko_1": {
+    "anim_type": "flip_book",
+    "initial_uv": [ 0, 0 ],
+    "frame_count": 4,
+    "frame_step": 21,
+    "fps": 5
+  },
+  "char_ko_2": {
+    "anim_type": "flip_book",
+    "initial_uv": [ 0, 0 ],
+    "frame_count": 4,
+    "frame_step": 21,
+    "fps": 5
+  },
+  "char_ko_3": {
+    "anim_type": "flip_book",
+    "initial_uv": [ 0, 0 ],
+    "frame_count": 4,
+    "frame_step": 21,
+    "fps": 5
+  },
+  "char_ko_4": {
+    "anim_type": "flip_book",
+    "initial_uv": [ 0, 0 ],
+    "frame_count": 4,
+    "frame_step": 21,
+    "fps": 5
+  },
+  "char_ko_0": {
+    "anim_type": "flip_book",
+    "initial_uv": [ 0, 0 ],
+    "frame_count": 1,
+    "frame_step": 0,
+    "fps": 1
+  },
+  "ooze_full_jiggle": {
+    "anim_type": "offset",
+    "easing": "in_cubic",
+    "from": [0, 0],
+    "to": [0.5, -1],
+    "duration": 0.5,
+    "resettable": false,
+    "next": "@fs_scoreboards.ooze_full_jiggle_out"
+  },
+  "ooze_full_jiggle_out": {
+    "anim_type": "offset",
+    "easing": "in_cubic",
+    "from": [0, -1],
+    "to": [0, 0],
+    "duration": 0.5,
+    "resettable": false,
+    "next": "@fs_scoreboards.ooze_full_jiggle"
+  },
+  "anim_low_health_1": {
+    "anim_type": "alpha",
+    "easing": "in_cubic",
+    "from": 0,
+    "to": 0.4,
+    "duration": 0.7,
+    "resettable": true,
+    "next": "@fs_scoreboards.anim_low_health_2"
+  },
+  "anim_low_health_2": {
+    "anim_type": "wait",
+    "duration": 0.7,
+    "resettable": true,
+    "next": "@fs_scoreboards.anim_low_health_3"
+  },
+  "anim_low_health_3": {
+    "anim_type": "alpha",
+    "easing": "in_cubic",
+    "from": 0.4,
+    "to": 0,
+    "duration": 0.7,
+    "resettable": true,
+    "next": "@fs_scoreboards.anim_low_health_4"
+  },
+  "anim_low_health_4": {
+    "anim_type": "wait",
+    "duration": 0.7,
+    "resettable": true,
+    "next": "@fs_scoreboards.anim_low_health_1"
+  }
+  // #endregion
+}

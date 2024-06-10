@@ -1,0 +1,1 @@
+execute as @a[r=4] at @s run function player/attacked/by_boss

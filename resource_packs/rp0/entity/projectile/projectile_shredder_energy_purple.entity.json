@@ -1,0 +1,28 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:projectile_shredder_energy_purple",
+            "render_controllers": [
+                "controller.render.entity.common"
+            ],
+            "geometry": {
+                "variant_0": "geometry.projectile_shredder_energy_purple"
+            },
+            "textures": {
+                "variant_0": "textures/entity/projectile_shredder_purple/projectile_shredder_purple_v0"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "animations": {
+                "move": "animation.projectile.move"
+            },
+            "scripts": {
+                "animate": [
+                    "move"
+                ]
+            }
+        }
+    }
+}

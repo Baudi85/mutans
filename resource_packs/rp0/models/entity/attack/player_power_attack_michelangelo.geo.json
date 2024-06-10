@@ -1,0 +1,130 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.player_power_attack.michelangelo",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "right_leg",
+					"parent": "root",
+					"pivot": [-2, 12, 0],
+					"cubes": [
+						{"origin": [-4, 0, -2], "size": [4, 12, 4], "uv": [16, 51]},
+						{"origin": [-4, 5, -2], "size": [4, 2, 4], "inflate": 0.25, "uv": [44, 51]},
+						{"origin": [-4, 0, -4], "size": [4, 2, 2], "uv": [32, 0]}
+					]
+				},
+				{
+					"name": "left_leg",
+					"parent": "root",
+					"pivot": [2, 12, 0],
+					"cubes": [
+						{"origin": [0, 0, -2], "size": [4, 12, 4], "uv": [40, 0]},
+						{"origin": [0, 5, -2], "size": [4, 2, 4], "inflate": 0.25, "uv": [52, 12]},
+						{"origin": [0, 0, -4], "size": [4, 2, 2], "uv": [32, 16]}
+					]
+				},
+				{
+					"name": "right_arm",
+					"parent": "root",
+					"pivot": [-4, 22, 0],
+					"cubes": [
+						{"origin": [-8, 12, -2], "size": [4, 12, 4], "uv": [0, 51]},
+						{"origin": [-8, 18, -2], "size": [4, 1, 4], "inflate": 0.25, "uv": [56, 23]},
+						{"origin": [-8, 14, -2], "size": [4, 1, 4], "inflate": 0.25, "uv": [56, 18]},
+						{"origin": [-7, 7, -2], "size": [2, 10, 2], "pivot": [-5, 9, -4], "rotation": [180, 0, 0], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "nunchuk2",
+					"parent": "right_arm",
+					"pivot": [-24, 14, -24],
+					"rotation": [-90, 0, 0],
+					"cubes": [
+						{"origin": [-7, 32, -25], "size": [2, 10, 2], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "bone3",
+					"parent": "nunchuk2",
+					"pivot": [6, 25, 4],
+					"rotation": [90, 0, 0],
+					"cubes": [
+						{"origin": [-7, 50, 10], "size": [2, 4, 0], "pivot": [-6, 55, 10], "rotation": [0, -90, 0], "uv": [0, 12]},
+						{"origin": [-7, 50, 10], "size": [2, 4, 0], "uv": [0, 12]}
+					]
+				},
+				{
+					"name": "left_arm",
+					"parent": "root",
+					"pivot": [4, 22, 0],
+					"cubes": [
+						{"origin": [4, 12, -2], "size": [4, 12, 4], "uv": [40, 16]},
+						{"origin": [4, 18, -2], "size": [4, 1, 4], "inflate": 0.25, "uv": [56, 5]},
+						{"origin": [4, 14, -2], "size": [4, 1, 4], "inflate": 0.25, "uv": [56, 0]}
+					]
+				},
+				{
+					"name": "nunchuk",
+					"parent": "left_arm",
+					"pivot": [-12, 14, 4],
+					"rotation": [90, 0, 0],
+					"cubes": [
+						{"origin": [5, 35, -4], "size": [2, 10, 2], "pivot": [6, 32, 4], "rotation": [90, 0, 0], "uv": [0, 0]},
+						{"origin": [5, 14, 3], "size": [2, 10, 2], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "bone2",
+					"parent": "nunchuk",
+					"pivot": [6, 25, 4],
+					"rotation": [90, 0, 0],
+					"cubes": [
+						{"origin": [5, 24, 4], "size": [2, 4, 0], "pivot": [6, 29, 4], "rotation": [0, -90, 0], "uv": [0, 12]},
+						{"origin": [5, 24, 4], "size": [2, 4, 0], "uv": [0, 12]}
+					]
+				},
+				{
+					"name": "bone",
+					"parent": "nunchuk",
+					"pivot": [6, 26, 4]
+				},
+				{
+					"name": "torso",
+					"parent": "root",
+					"pivot": [0, 18, 7],
+					"cubes": [
+						{"origin": [-4, 12, -2], "size": [8, 12, 4], "uv": [32, 35]},
+						{"origin": [-4, 14.5, -2], "size": [8, 1, 8], "inflate": 0.25, "uv": [8, 26]},
+						{"origin": [-1, 14, -3], "size": [2, 2, 1], "uv": [8, 0]},
+						{"origin": [-1.4, 10, -2.5], "size": [1, 5, 0], "pivot": [-0.5, 14, -2.5], "rotation": [0, 0, 25], "uv": [10, 3]},
+						{"origin": [0.4, 10, -2.5], "size": [1, 5, 0], "pivot": [0.5, 14, -2.5], "rotation": [0, 0, -25], "uv": [8, 3]},
+						{"origin": [-4, 12, 2], "size": [8, 12, 4], "uv": [8, 35]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "root",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [-4, 24, -4], "size": [8, 8, 8], "uv": [8, 0]},
+						{"origin": [-3, 24, -6], "size": [6, 4, 2], "uv": [52, 32]},
+						{"origin": [-4, 28, -4], "size": [8, 2, 8], "inflate": 0.25, "uv": [8, 16]},
+						{"origin": [0, 26, 4], "size": [0, 6, 6], "uv": [32, 45]}
+					]
+				}
+			]
+		}
+	]
+}

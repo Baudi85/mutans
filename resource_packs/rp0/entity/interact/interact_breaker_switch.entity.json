@@ -1,0 +1,31 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:interact_breaker_switch",
+            "render_controllers": [
+                "controller.render.interact_breaker_switch"
+            ],
+            "geometry": {
+                "variant_0": "geometry.interact_breaker_switch"
+            },
+            "textures": {
+                "variant_off": "textures/entity/interact_breaker_switch/interact_breaker_switch_v0",
+                "variant_on": "textures/entity/interact_breaker_switch/interact_breaker_switch_v1"
+            },
+            "materials": {
+                "default": "entity"
+            },
+            "animations": {
+                "toggle_on": "animation.interact_breaker_switch.toggle_on"
+            },
+            "scripts": {
+                "animate": [
+                   {
+                     "toggle_on": "query.variant == 1"
+                   }
+                ]
+            }
+        }
+    }
+}

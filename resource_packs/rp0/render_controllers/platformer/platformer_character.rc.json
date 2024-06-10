@@ -1,0 +1,173 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.entity.platformer_character.leo": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.leo_idle",
+                        "Texture.leo_walk_0",
+                        "Texture.leo_walk_1",
+                        "Texture.leo_jump",
+                        "Texture.leo_block",
+                        "Texture.leo_death",
+                        "Texture.fire_hit_0",
+                        "Texture.fire_hit_1",
+                        "Texture.fire_death_0",
+                        "Texture.fire_death_1",
+                        "Texture.fire_death_2",
+                        "Texture.fire_death_3"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_0"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ],
+            "part_visibility": [
+                {
+                    "right": "query.mark_variant == 0"
+                },
+                {
+                    "left": "query.mark_variant == 1"
+                }
+            ]
+        },
+        "controller.render.entity.platformer_character.raph": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.raph_idle",
+                        "Texture.raph_walk_0",
+                        "Texture.raph_walk_1",
+                        "Texture.raph_jump",
+                        "Texture.raph_block",
+                        "Texture.raph_death",
+                        "Texture.fire_hit_0",
+                        "Texture.fire_hit_1",
+                        "Texture.fire_death_0",
+                        "Texture.fire_death_1",
+                        "Texture.fire_death_2",
+                        "Texture.fire_death_3"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_0"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ],
+            "part_visibility": [
+                {
+                    "right": "query.mark_variant == 0"
+                },
+                {
+                    "left": "query.mark_variant == 1"
+                }
+            ]
+        },
+        "controller.render.entity.platformer_character.don": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.don_idle",
+                        "Texture.don_walk_0",
+                        "Texture.don_walk_1",
+                        "Texture.don_jump",
+                        "Texture.don_block",
+                        "Texture.don_death",
+                        "Texture.fire_hit_0",
+                        "Texture.fire_hit_1",
+                        "Texture.fire_death_0",
+                        "Texture.fire_death_1",
+                        "Texture.fire_death_2",
+                        "Texture.fire_death_3"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_0"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ],
+            "part_visibility": [
+                {
+                    "right": "query.mark_variant == 0"
+                },
+                {
+                    "left": "query.mark_variant == 1"
+                }
+            ]
+        },
+        "controller.render.entity.platformer_character.mikey": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.mikey_idle",
+                        "Texture.mikey_walk_0",
+                        "Texture.mikey_walk_1",
+                        "Texture.mikey_jump",
+                        "Texture.mikey_block",
+                        "Texture.mikey_death",
+                        "Texture.fire_hit_0",
+                        "Texture.fire_hit_1",
+                        "Texture.fire_death_0",
+                        "Texture.fire_death_1",
+                        "Texture.fire_death_2",
+                        "Texture.fire_death_3"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_0"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ],
+            "part_visibility": [
+                {
+                    "right": "query.mark_variant == 0"
+                },
+                {
+                    "left": "query.mark_variant == 1"
+                }
+            ]
+        }
+    }
+}

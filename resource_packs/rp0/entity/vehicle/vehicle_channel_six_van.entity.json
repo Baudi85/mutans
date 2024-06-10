@@ -1,0 +1,24 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "fs:vehicle_channel_six_van",
+      "spawn_egg": {
+        "base_color": "#000000",
+        "overlay_color": "#000000"
+      },
+      "render_controllers": [
+        "controller.render.vehicle.common"
+      ],
+      "geometry": {
+        "variant_0": "geometry.vehicle_channel_six_van"
+      },
+      "textures": {
+        "variant_0": "textures/entity/vehicle_channel_six_van/vehicle_channel_six_van_v0"
+      },
+      "materials": {
+        "default": "entity"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.player.item_use_instant": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "item_use_did_start_instant": "(variable.attack_time > 0) && !(query.is_using_item)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/stopsound @a random.burp"
+                    ],
+                    "on_exit": [
+                        "/stopsound @a random.burp"
+                    ]
+                },
+                "item_use_did_start_instant": {
+                    "on_entry": [
+                        "/function events/player/melee_attack_did_start"
+                    ],
+                    "on_exit": [
+                        "/function events/player/melee_attack_did_end"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "(variable.attack_time <= 0)"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.item_use": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "item_use_did_start": "(query.is_using_item)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/stopsound @a random.burp"
+                    ],
+                    "on_exit": [
+                        "/stopsound @a random.burp"
+                    ]
+                },
+                "item_use_did_start": {
+                    "on_entry": [
+                        "/scoreboard players add @s is_downed 0",
+                        "/scoreboard players add @s in_cutscene 0",
+                        "/execute as @s[scores={in_cutscene=0,is_downed=0}] at @s run function events/player/item/item_use_did_start"
+                    ],
+                    "on_exit": [
+                        "/scoreboard players add @s is_downed 0",
+                        "/scoreboard players add @s in_cutscene 0",
+                        "/execute as @s[scores={in_cutscene=0,is_downed=0}] at @s run function events/player/item/item_use_did_end"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "!query.is_using_item"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

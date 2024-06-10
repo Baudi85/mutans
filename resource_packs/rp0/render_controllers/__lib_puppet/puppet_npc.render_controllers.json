@@ -1,0 +1,30 @@
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.puppet_npc": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.variant_0",
+                        "Texture.variant_1"
+                    ]
+                },
+                "geometries": {
+                    "Array.geometries": [
+                        "Geometry.variant_0",
+                        "Geometry.variant_1"
+                    ]
+                }
+            },
+            "geometry": "Array.geometries[query.variant]",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Array.textures[query.variant]"
+            ]
+        }
+    }
+}

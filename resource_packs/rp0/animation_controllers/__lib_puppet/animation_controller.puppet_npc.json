@@ -1,0 +1,37 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.puppet_npc.pose": {
+            "states": {
+                "default": {
+                    "animations": [                        
+                        {
+                            "npc_0_pose_0": "query.variant == 0 && query.mark_variant == 0"
+                        },                        
+                        {
+                            "npc_0_pose_1": "query.variant == 0 && query.mark_variant == 1"
+                        },                            
+                        {
+                            "npc_0_pose_2": "query.variant == 0 && query.mark_variant == 2"
+                        },                            
+                        {
+                            "npc_0_pose_3": "query.variant == 0 && query.mark_variant == 3"
+                        },                       
+                        {
+                            "npc_1_pose_0": "query.variant == 1 && query.mark_variant == 0"
+                        },                        
+                        {
+                            "npc_1_pose_1": "query.variant == 1 && query.mark_variant == 1"
+                        },                        
+                        {
+                            "npc_1_pose_2": "query.variant == 1 && query.mark_variant == 2"
+                        },                        
+                        {
+                            "npc_1_pose_3": "query.variant == 1 && query.mark_variant == 3"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+// @(com.57digital.shulker.generated)
+// @generated File (generated via ShulkerScript: <BP> dialogue/config/tcom/turtlecom_april_ending.js)
+{
+	"format_version": "1.17",
+	"minecraft:npc_dialogue": {
+		"scenes": [
+			{
+				"scene_tag": "tcom_0091",
+				"npc_name": {
+					"rawtext": [
+						{
+							"text": "tcom_0091"
+						}
+					]
+				},
+				"text": {
+					"rawtext": [
+						{
+							"text": "tcom_0091"
+						},
+						{
+							"text": "§f§c§0§3§f"
+						}
+					]
+				},
+				"buttons": [
+					{
+						"name": ">",
+						"commands": [
+							"/execute as @initiator run function events/player/did_ok_end_tcom"
+						]
+					}
+				],
+				"on_open_commands": [
+					"/tag @initiator remove did_req_dlg",
+					"/execute as @a run function utils/remove_dlg_tags",
+					"/execute as @initiator[tag=!dlg.did_segue] run playsound fs.dlg.tcom_open @s[scores={s_sfx_enabled=1}]",
+					"/tag @initiator add player.in_ui",
+					"/tag @initiator remove dlg.did_segue",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§etcom_0091§7].§2DidOpen§7\"}]}",
+					"/scoreboard players add @a __is_host 0",
+					"/execute as @a[scores={__is_host=0}] run function dlg/tcom_0091_m"
+				],
+				"on_close_commands": [
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§eDid run on_close_commands\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] at @s run function sounds/stop/_dialogue",
+					"/tag @s remove particle_emitter",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§etcom_0091§7].§4CloseFn§7: Aborted due to segue.\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§etcom_0091§7].§eDidNotSegue...\"}]}",
+					"/tag @initiator remove player.in_ui",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§etcom_0091§7].§4DidClose§7\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§etcom_0091§7].§4CloseFn§7: §e/function music_utils/play_level_normal_loop\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] run /function music_utils/play_level_normal_loop",
+					"/execute as @initiator[tag=!dlg.did_segue] run function ui/m/close_ui"
+				]
+			}
+		]
+	}
+}

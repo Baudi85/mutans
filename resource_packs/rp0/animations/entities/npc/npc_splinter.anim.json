@@ -1,0 +1,103 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.npc_splinter.idle": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"head": {
+					"rotation": {
+						"0.0": {
+							"post": [4.06, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.125": {
+							"post": [5, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"1.125": {
+							"post": [-2.5, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"2.0": {
+							"post": [4.06, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"torso": {
+					"rotation": {
+						"0.0": {
+							"post": [15, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [7.5, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"2.0": {
+							"post": [15, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"left_arm": {
+					"rotation": {
+						"0.0": {
+							"post": [-71.01, -0.74, -4.93],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [-71.01, -0.74, -4.93],
+							"lerp_mode": "catmullrom"
+						},
+						"2.0": {
+							"post": [-71.01, -0.74, -4.93],
+							"lerp_mode": "catmullrom"
+						}
+					},
+					"position": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [0, -0.5, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"2.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"right_arm": {
+					"rotation": {
+						"0.0": {
+							"post": [-9.24, 0.8, 4.93],
+							"lerp_mode": "catmullrom"
+						},
+						"0.0417": {
+							"post": [-9.96271, 0.86717, 4.92442],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0417": {
+							"post": [7.47178, -0.65182, 4.95744],
+							"lerp_mode": "catmullrom"
+						},
+						"2.0": {
+							"post": [-9.24, 0.8, 4.93],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"left_leg": {
+					"rotation": [0, 0, -2.5]
+				},
+				"right_leg": {
+					"rotation": [0, 0, 2.5]
+				}
+			}
+		}
+	}
+}

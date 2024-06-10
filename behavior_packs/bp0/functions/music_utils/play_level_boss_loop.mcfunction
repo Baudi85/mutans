@@ -1,0 +1,12 @@
+execute as @s[scores={level=50}] run function music/play/music_level_50_normal_loop
+execute as @s[scores={level=100..199}] run function music/play/music_boss_bebop_loop
+execute as @s[scores={level=200..299}] run function music/play/music_boss_rocksteady_loop
+execute as @s[scores={level=300..399}] run function music/play/music_boss_shredder_loop
+execute as @s[scores={level=400..499}] run function music/play/music_boss_tempestra_loop
+execute as @s[scores={level=500..599}] run function music/play/music_boss_baxter_stockman_loop
+execute as @s[scores={level=600..699}] run function music/play/music_boss_leatherhead_loop
+execute as @s[scores={level=701}] run function music/play/music_boss_bebop_loop
+execute as @s[scores={level=702}] run function music/play/music_boss_rocksteady_loop
+execute as @s[scores={level=800..899}] run function music/play/music_boss_krang_loop
+execute as @s[scores={level=900}] run function music/play/music_boss_super_krang_loop
+execute as @s[scores={level=901}] run function music/play/music_boss_super_shredder_loop

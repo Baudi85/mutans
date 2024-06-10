@@ -1,0 +1,279 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.puppet_npc.npc_0_pose_0": {
+			"loop": true,
+			"animation_length": 0.25,
+			"bones": {
+				"torso": {
+					"rotation": [5, 0, 0]
+				},
+				"head": {
+					"rotation": [2.5, 0, 0]
+				},
+				"left_arm": {
+					"rotation": [-4.15, -0.36, -4.98]
+				},
+				"right_arm": {
+					"rotation": [-3.32, 0.29, 4.98]
+				},
+				"left_leg": {
+					"rotation": [0, 0, -2.5],
+					"position": [0, 0, 0]
+				},
+				"right_leg": {
+					"rotation": [0, 0, 2.5],
+					"position": [0, 0, 0]
+				},
+				"body": {
+					"position": [0, 0.5, 0]
+				},
+				"crossbow": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.puppet_npc.npc_0_pose_1": {
+			"loop": true,
+			"animation_length": 0.25,
+			"bones": {
+				"body": {
+					"rotation": [0, 0, 0],
+					"position": [0, 0.5, 0]
+				},
+				"torso": {
+					"rotation": [5, 0, 0]
+				},
+				"head": {
+					"rotation": [2.5, 0, 0]
+				},
+				"left_arm": {
+					"rotation": [-21.65, -0.36, -4.98]
+				},
+				"right_arm": {
+					"rotation": [-38.32, 0.29, 4.98]
+				},
+				"left_leg": {
+					"rotation": [0, 0, -2.5],
+					"position": [0, 0, 0]
+				},
+				"right_leg": {
+					"rotation": [0, 0, 2.5],
+					"position": [0, 0, 0]
+				},
+				"crossbow": {
+					"scale": 1
+				},
+				"crossbow_back": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.puppet_npc.npc_0_pose_2": {
+			"loop": true,
+			"animation_length": 0.25,
+			"bones": {
+				"torso": {
+					"rotation": {
+						"0.0": {
+							"post": [31.79464, -17.70052, -12.19684],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": {
+							"post": [-16.91, 17.08, 1.6],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"left_arm": {
+					"rotation": {
+						"0.0": {
+							"post": [39.69157, 3.81024, -9.25249],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"right_arm": {
+					"rotation": {
+						"0.0": {
+							"post": [-54.56869, 6.40865, 7.69263],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"left_leg": {
+					"rotation": [-45, 0, 0],
+					"position": [0, 0, 0]
+				},
+				"right_leg": {
+					"rotation": [62.5, 0, 0],
+					"position": [0, 0, 0]
+				},
+				"body": {
+					"position": [0, -2, 0]
+				},
+				"crossbow": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.puppet_npc.npc_0_pose_3": {
+			"loop": true,
+			"animation_length": 0.25,
+			"bones": {
+				"body": {
+					"rotation": [0, 0, 0],
+					"position": [0, -1, 0]
+				},
+				"torso": {
+					"rotation": [4.11028, -5.08965, 2.50751]
+				},
+				"head": {
+					"rotation": [2.04678, 0.01331, -0.74483]
+				},
+				"left_arm": {
+					"rotation": [-98.79533, -13.85199, 2.16245]
+				},
+				"right_arm": {
+					"rotation": [-59.25586, -7.60845, 7.63294]
+				},
+				"left_leg": {
+					"rotation": [50.13, -31.26, -9.36],
+					"position": [-0.5, 0.75, 0.5]
+				},
+				"right_leg": {
+					"rotation": [-27.5, 0, 0],
+					"position": [0, 0.5, 0.5]
+				},
+				"crossbow": {
+					"scale": 1
+				},
+				"crossbow_back": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.puppet_npc.npc_1_pose_0": {
+			"loop": true,
+			"animation_length": 0.25,
+			"bones": {
+				"Body": {
+					"position": [0, -1, 0]
+				},
+				"left_leg": {
+					"rotation": [-18.88172, -6.71771, -18.88172]
+				},
+				"right_leg": {
+					"rotation": [19.14743, -7.43547, 13.06431],
+					"position": [0, 1, 0]
+				},
+				"torso": {
+					"rotation": [5, 0, 0],
+					"position": [0, 0, 0]
+				},
+				"head": {
+					"rotation": [4.06, 0, 0]
+				},
+				"left_arm": {
+					"rotation": [-8.51, -0.74, -4.93]
+				},
+				"right_arm": {
+					"rotation": [-9.24, 0.8, 4.93]
+				}
+			}
+		},
+		"animation.puppet_npc.npc_1_pose_1": {
+			"loop": true,
+			"animation_length": 0.25,
+			"bones": {
+				"Body": {
+					"position": [0, -1, 0]
+				},
+				"left_leg": {
+					"rotation": [-18.88172, -6.71771, -18.88172]
+				},
+				"right_leg": {
+					"rotation": [19.14743, -7.43547, 13.06431],
+					"position": [0, 1, 0]
+				},
+				"torso": {
+					"rotation": [15, 0, 0],
+					"position": [0, 0, 0]
+				},
+				"head": {
+					"rotation": [4.06, 0, 0]
+				},
+				"left_arm": {
+					"rotation": [-71.01, -0.74, -4.93],
+					"position": [0, 0, 0]
+				},
+				"right_arm": {
+					"rotation": [-9.24, 0.8, 4.93]
+				}
+			}
+		},
+		"animation.puppet_npc.npc_1_pose_2": {
+			"loop": true,
+			"animation_length": 0.25,
+			"bones": {
+				"Body": {
+					"rotation": [0, 0, 0],
+					"position": [0, -0.33, 0]
+				},
+				"left_leg": {
+					"rotation": [48.26, 5.2, -3.7],
+					"position": [0, 0, 0]
+				},
+				"right_leg": {
+					"rotation": [-35.86, 2.78, 3.07],
+					"position": [0, 1.67, 0]
+				},
+				"torso": {
+					"rotation": [11.67, 0, 0]
+				},
+				"head": {
+					"rotation": [7.5, 0, 0]
+				},
+				"left_arm": {
+					"rotation": [-51.09, -5.72, -3.01]
+				},
+				"right_arm": {
+					"rotation": [31.04, -4.35, 4.79]
+				}
+			}
+		},
+		"animation.puppet_npc.npc_1_pose_3": {
+			"loop": true,
+			"animation_length": 0.25,
+			"bones": {
+				"Body": {
+					"position": [0, -1, 0]
+				},
+				"left_leg": {
+					"rotation": [-18.88172, -6.71771, -18.88172]
+				},
+				"right_leg": {
+					"rotation": [19.14743, -7.43547, 13.06431],
+					"position": [0, 1, 0]
+				},
+				"torso": {
+					"rotation": [-7.5, 0, 0],
+					"position": [0, 0, 0]
+				},
+				"head": {
+					"rotation": [9.17, 0, 0]
+				},
+				"left_arm": {
+					"rotation": [-72.55, -39.51, -16.69]
+				},
+				"right_arm": {
+					"rotation": [-78.3, 24.81, 8.86]
+				}
+			}
+		}
+	}
+}

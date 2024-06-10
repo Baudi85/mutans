@@ -1,0 +1,300 @@
+{
+    "namespace": "fs_compass",
+    "root_panel": {
+        "type": "panel",
+        "size": [200, 1],
+        "offset": [0, 65],
+        "anchor_from": "top_middle",
+        "anchor_to": "top_middle",
+        "layer": 1500,
+        "visible": false,
+        "bindings": [
+            {
+                "binding_name": "#level_number",
+                "binding_type": "global"
+            },
+            {
+                "binding_type": "view",
+                "source_property_name": "(#level_number * 1)",
+                "target_property_name": "#level"
+            },
+            {
+                "binding_type": "view",
+                "source_property_name": "(#level > 0 and #level < 99)",
+                "target_property_name": "#visible"
+            }
+        ],
+        "controls": [
+            // {
+            //     "debug": {
+            //         "type": "label",
+            //         "text": "#level_number",
+            //         "size": [50, 20],
+            //         "anchor_from": "top_middle",
+            //         "anchor_to": "top_middle",
+            //         "text_alignment": "center",
+            //         "offset": [0, 5],
+            //         "bindings": [
+            //             {
+            //                 "binding_name": "#level_number",
+            //                 "binding_type": "global"
+            //             }
+            //         ]
+            //     }
+            // },
+            {
+                "bg": {
+                    "type": "image",
+                    "texture": "textures/ui/compass/bg",
+                    "size": [200, 2]
+                }
+            },
+            {
+                "bg_targeted": {
+                    "type": "image",
+                    "texture": "textures/ui/compass/bg_targeted",
+                    "visible": false,
+                    "layer": 1510,
+                    "size": [200, 2],
+                    "anims": ["@fs_compass.anim_bg_targeted_fade"],
+                    "bindings": [
+                        {
+                            "binding_name": "#level_number",
+                            "binding_type": "global"
+                        },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#level_number = '50')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_5@compass_arrow": {
+                    "$target_level": "5",
+                    "$target_offset": [
+                        "5% -5px",
+                        -3.5
+                    ],
+                    "$texture|default": "textures/ui/compass/arrow_left"
+                }
+            },
+            {
+                "_compass_arrow_10@compass_arrow": {
+                    "$target_level": "10",
+                    "$target_offset": [
+                        "10% -5px",
+                        -3.5
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_15@compass_arrow": {
+                    "$target_level": "15",
+                    "$target_offset": [
+                        "15% -5px",
+                        -3.5
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_20@compass_arrow": {
+                    "$target_level": "20",
+                    "$target_offset": [
+                        "20% -5px",
+                        -3.5
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_25@compass_arrow": {
+                    "$target_level": "25",
+                    "$target_offset": [
+                        "25% -5px",
+                        -3.5
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_30@compass_arrow": {
+                    "$target_level": "30",
+                    "$target_offset": [
+                        "30% -5px",
+                        -3.5
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_35@compass_arrow": {
+                    "$target_level": "35",
+                    "$target_offset": [
+                        "35% -5px",
+                        -3.5
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_40@compass_arrow": {
+                    "$target_level": "40",
+                    "$target_offset": [
+                        "40% -5px",
+                        -3.5
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_45@compass_arrow": {
+                    "$target_level": "45",
+                    "$target_offset": [
+                        "45% -5px",
+                        -3.5
+                    ],
+                    "$texture|default": "textures/ui/compass/arrow_warm_right"
+                }
+            },
+            {
+                "_compass_arrow_50@compass_arrow": {
+                    "$target_level": "50",
+                    "$target_offset": [
+                        "50% -5px",
+                        -3.5
+                    ],
+                    "$texture|default": "textures/ui/compass/arrow_targeted"
+                }
+            },
+            {
+                "_compass_arrow_55@compass_arrow": {
+                    "$target_level": "55",
+                    "$target_offset": [
+                        "55% -5px",
+                        -3.5
+                    ],
+                    "$texture|default": "textures/ui/compass/arrow_warm_left"
+                }
+            },
+            {
+                "_compass_arrow_60@compass_arrow": {
+                    "$target_level": "60",
+                    "$target_offset": [
+                        "60% -5px",
+                        -3.5
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_65@compass_arrow": {
+                    "$target_level": "65",
+                    "$target_offset": [
+                        "65% -5px",
+                        -3.5
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_70@compass_arrow": {
+                    "$target_level": "70",
+                    "$target_offset": [
+                        "70% -5px",
+                        -3.5
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_75@compass_arrow": {
+                    "$target_level": "75",
+                    "$target_offset": [
+                        "75% -5px",
+                        -3.5
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_80@compass_arrow": {
+                    "$target_level": "80",
+                    "$target_offset": [
+                        "80% -5px",
+                        -3.5
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_85@compass_arrow": {
+                    "$target_level": "85",
+                    "$target_offset": [
+                        "85% -5px",
+                        -3.5
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_90@compass_arrow": {
+                    "$target_level": "90",
+                    "$target_offset": [
+                        "90% -5px",
+                        -3.5
+                    ]
+                }
+            },
+            {
+                "_compass_arrow_95@compass_arrow": {
+                    "$target_level": "95",
+                    "$target_offset": [
+                        "95% -5px",
+                        -3.5
+                    ],
+                    "$texture|default": "textures/ui/compass/arrow_right"
+                }
+            },
+            {
+                "_center_point@center_point": {}
+            }
+        ]
+    },
+    "compass_arrow": {
+        "type": "image",
+        "$texture|default": "textures/ui/compass/arrow",
+        "texture": "$texture",
+        "size": [10, 10],
+        "anchor_from": "top_left",
+        "anchor_to": "top_left",
+        "offset": "($target_offset)",
+        "visible": false,
+        "layer": 1550,
+        "bindings": [
+            {
+                "binding_name": "#level_number",
+                "binding_type": "global"
+            },
+            {
+                "binding_type": "view",
+                "source_property_name": "(#level_number = $target_level)",
+                "target_property_name": "#visible"
+            }
+        ]
+    },
+    "center_point": {
+        "type": "image",
+        "texture": "textures/ui/White",
+        "size": [1, 4],
+        "offset": [0, 0],
+        "anchor_from": "center",
+        "anchor_to": "center",
+        "layer": 1525
+    },
+    // anims
+    "anim_bg_targeted_fade": {
+        "anim_type": "alpha",
+        "from": 0,
+        "to": 1,
+        "duration": 0.5,
+        "next": "@fs_compass.anim_bg_targeted_fade_out"
+    },
+    "anim_bg_targeted_fade_out": {
+        "anim_type": "alpha",
+        "from": 1,
+        "to": 0,
+        "duration": 0.5,
+        "next": "@fs_compass.anim_bg_targeted_fade"
+    }
+}

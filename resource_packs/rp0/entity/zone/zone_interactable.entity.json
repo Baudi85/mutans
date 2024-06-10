@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "fs:zone_interactable",
+      "render_controllers": [
+        "controller.render.entity.common"
+      ],
+      "geometry": {
+        "variant_0": "geometry.zone_interactable"
+      },
+      "textures": {
+        "variant_0": "textures/entity/zone_interactable/zone_interactable_v0"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "animations": {
+        "idle": "animation.zone_interactable.idle",
+        "animation_controller": "controller.animation.zone_interactable.animate"
+      },
+      "scripts": {
+        "animate": [
+          "animation_controller"
+        ]
+      }
+    }
+  }
+}

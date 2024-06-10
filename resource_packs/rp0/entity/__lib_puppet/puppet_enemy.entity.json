@@ -1,0 +1,114 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:puppet_enemy",
+            "spawn_egg": {
+                "base_color": "#ba2f70",
+                "overlay_color": "#ff95aa"
+            },
+            "geometry": {
+                "variant_0": "geometry.puppet_marker",
+                "variant_1": "geometry.puppet_marker",
+                "variant_2": "geometry.puppet_marker",
+                "variant_3": "geometry.puppet_marker",
+                "variant_4": "geometry.puppet_marker",
+                "variant_5": "geometry.puppet_marker",
+                "variant_6": "geometry.puppet_marker",
+                "variant_7": "geometry.puppet_marker",
+                "variant_8": "geometry.puppet_marker",
+                "variant_9": "geometry.puppet_marker",
+                "variant_10": "geometry.puppet_marker",
+                "variant_11": "geometry.puppet_marker",
+                "variant_12": "geometry.puppet_marker",
+                "variant_13": "geometry.puppet_marker",
+                "variant_14": "geometry.puppet_marker",
+                "variant_15": "geometry.puppet_marker",
+                "variant_16": "geometry.puppet_marker",
+                "variant_17": "geometry.puppet_marker",
+                "variant_18": "geometry.puppet_marker",
+                "variant_19": "geometry.puppet_marker",
+                "variant_20": "geometry.puppet_marker"
+            },
+            "textures": {
+                "variant_0": "textures/entity/enemy_foot_soldier/enemy_foot_soldier_purple",
+                "variant_1": "textures/entity/enemy_foot_soldier/enemy_foot_soldier_black",
+                "variant_2": "textures/entity/enemy_foot_soldier/enemy_foot_soldier_blue",
+                "variant_3": "textures/entity/enemy_foot_soldier/enemy_foot_soldier_green",
+                "variant_4": "textures/entity/enemy_foot_soldier/enemy_foot_soldier_indigo",
+                "variant_5": "textures/entity/enemy_foot_soldier/enemy_foot_soldier_lime",
+                "variant_6": "textures/entity/enemy_foot_soldier/enemy_foot_soldier_orange",
+                "variant_7": "textures/entity/enemy_foot_soldier/enemy_foot_soldier_pink",
+                "variant_8": "textures/entity/enemy_foot_soldier/enemy_foot_soldier_white",
+                "variant_9": "textures/entity/enemy_foot_soldier/enemy_foot_soldier_yellow",
+                "variant_10": "textures/entity/enemy_mouser/enemy_mouser_v0",
+                "variant_11": "textures/entity/enemy_pole_laser/enemy_pole_laser_v0",
+                "variant_12": "textures/entity/enemy_rat/enemy_rat_v0",
+                "variant_13": "textures/entity/enemy_roadkill_rodney/enemy_roadkill_rodney_v0",
+                "variant_14": "textures/entity/enemy_robot_walker/enemy_robot_walker_v0",
+                "variant_15": "textures/entity/enemy_rock_soldier/enemy_rock_soldier_gray",
+                "variant_16": "textures/entity/enemy_rock_soldier/enemy_rock_soldier_orange",
+                "variant_17": "textures/entity/enemy_surfing_mine/enemy_surfing_mine_v0",
+                "variant_18": "textures/entity/enemy_triceraton/enemy_triceraton_green",
+                "variant_19": "textures/entity/enemy_triceraton/enemy_triceraton_orange",
+                "variant_20": "textures/entity/enemy_wall_laser/enemy_wall_laser_v0"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "render_controllers": [
+                "controller.render.puppet_enemy"
+            ],
+            "animations": {
+                "pose": "controller.animation.puppet_enemy.pose",
+                "enemy_0_pose_0": "animation.puppet_enemy.enemy_0_pose_0",
+                "enemy_0_pose_1": "animation.puppet_enemy.enemy_0_pose_1",
+                "enemy_1_pose_0": "animation.puppet_enemy.enemy_1_pose_0",
+                "enemy_1_pose_1": "animation.puppet_enemy.enemy_1_pose_1",
+                "enemy_2_pose_0": "animation.puppet_enemy.enemy_2_pose_0",
+                "enemy_2_pose_1": "animation.puppet_enemy.enemy_2_pose_1",
+                "enemy_3_pose_0": "animation.puppet_enemy.enemy_3_pose_0",
+                "enemy_3_pose_1": "animation.puppet_enemy.enemy_3_pose_1",
+                "enemy_4_pose_0": "animation.puppet_enemy.enemy_4_pose_0",
+                "enemy_4_pose_1": "animation.puppet_enemy.enemy_4_pose_1",
+                "enemy_5_pose_0": "animation.puppet_enemy.enemy_5_pose_0",
+                "enemy_5_pose_1": "animation.puppet_enemy.enemy_5_pose_1",
+                "enemy_6_pose_0": "animation.puppet_enemy.enemy_6_pose_0",
+                "enemy_6_pose_1": "animation.puppet_enemy.enemy_6_pose_1",
+                "enemy_7_pose_0": "animation.puppet_enemy.enemy_7_pose_0",
+                "enemy_7_pose_1": "animation.puppet_enemy.enemy_7_pose_1",
+                "enemy_8_pose_0": "animation.puppet_enemy.enemy_8_pose_0",
+                "enemy_8_pose_1": "animation.puppet_enemy.enemy_8_pose_1",
+                "enemy_9_pose_0": "animation.puppet_enemy.enemy_9_pose_0",
+                "enemy_9_pose_1": "animation.puppet_enemy.enemy_9_pose_1",
+                "enemy_10_pose_0": "animation.puppet_enemy.enemy_10_pose_0",
+                "enemy_10_pose_1": "animation.puppet_enemy.enemy_10_pose_1",
+                "enemy_11_pose_0": "animation.puppet_enemy.enemy_11_pose_0",
+                "enemy_11_pose_1": "animation.puppet_enemy.enemy_11_pose_1",
+                "enemy_12_pose_0": "animation.puppet_enemy.enemy_12_pose_0",
+                "enemy_12_pose_1": "animation.puppet_enemy.enemy_12_pose_1",
+                "enemy_13_pose_0": "animation.puppet_enemy.enemy_13_pose_0",
+                "enemy_13_pose_1": "animation.puppet_enemy.enemy_13_pose_1",
+                "enemy_14_pose_0": "animation.puppet_enemy.enemy_14_pose_0",
+                "enemy_14_pose_1": "animation.puppet_enemy.enemy_14_pose_1",
+                "enemy_15_pose_0": "animation.puppet_enemy.enemy_15_pose_0",
+                "enemy_15_pose_1": "animation.puppet_enemy.enemy_15_pose_1",
+                "enemy_16_pose_0": "animation.puppet_enemy.enemy_16_pose_0",
+                "enemy_16_pose_1": "animation.puppet_enemy.enemy_16_pose_1",
+                "enemy_17_pose_0": "animation.puppet_enemy.enemy_17_pose_0",
+                "enemy_17_pose_1": "animation.puppet_enemy.enemy_17_pose_1",
+                "enemy_18_pose_0": "animation.puppet_enemy.enemy_18_pose_0",
+                "enemy_18_pose_1": "animation.puppet_enemy.enemy_18_pose_1",
+                "enemy_19_pose_0": "animation.puppet_enemy.enemy_19_pose_0",
+                "enemy_19_pose_1": "animation.puppet_enemy.enemy_19_pose_1",
+                "enemy_20_pose_0": "animation.puppet_enemy.enemy_20_pose_0",
+                "enemy_20_pose_1": "animation.puppet_enemy.enemy_20_pose_1"
+            },
+            "scripts": {
+                "animate": [
+                    "pose"
+                ]
+            }
+        }
+    }
+}

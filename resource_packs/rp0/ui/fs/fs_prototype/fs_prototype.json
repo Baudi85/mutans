@@ -1,0 +1,35 @@
+// toggle with: /title @a title fsdata://?1&keyart=1
+{
+    "namespace": "fs_prototype",
+    "root_panel": {
+        "type": "panel",
+        "$is_visible|default": false,
+        "visible": "$is_visible",
+        "variables": [
+            {
+              "requires": "((not ($title_text - '&keyart=1' = $title_text)))",
+              "$is_visible": true
+            }
+        ],
+        "controls": [
+            // {
+            //     "image": {
+            //         "type": "image",
+            //         "texture": "textures/ui/prototype/Black",
+            //         "size": [1, 1],
+            //         "visible": false
+            //         // "size": ["100%", "100%"]
+            //     }
+            // }
+        ]
+    },
+    "factory": {
+        "type": "panel",
+        "factory": {
+          "name": "hud_title_text_factory",
+          "control_ids": {
+            "hud_title_text": "fs_prototype@fs_prototype.root_panel"
+          }
+        }
+      }
+}

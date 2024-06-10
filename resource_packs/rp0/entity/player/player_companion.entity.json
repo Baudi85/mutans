@@ -1,0 +1,65 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:player_companion",
+            "render_controllers": [
+                "controller.render.player_companion"
+            ],
+            "geometry": {
+                "third_person_leonardo": "geometry.player_third_person_leonardo",
+                "third_person_raphael": "geometry.player_third_person_raphael",
+                "third_person_donatello": "geometry.player_third_person_donatello",
+                "third_person_michelangelo": "geometry.player_third_person_michelangelo"
+            },
+            "textures": {
+                "third_person_leonardo": "textures/entity/player/leonardo",
+                "third_person_raphael": "textures/entity/player/raphael",
+                "third_person_donatello": "textures/entity/player/donatello",
+                "third_person_michelangelo": "textures/entity/player/michelangelo"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "animations": {
+                "idle": "animation.player.bob",
+                "move.arms": "animation.player.move.arms",
+                "move.legs": "animation.player.move.legs",
+                "attack.positions": "animation.player.attack.positions",
+                "attack.rotations": "animation.player.attack.rotations",
+                "animation_controller": "controller.animation.player_companion.animate",
+                "riding.arms": "animation.player.riding.arms",
+                "riding.legs": "animation.player.riding.legs",
+                "riding.root": "animation.player_companion.riding.root"
+            },
+            "scripts": {
+                "pre_animation": [
+                    "variable.helmet_layer_visible = 1.0;",
+                    "variable.leg_layer_visible = 1.0;",
+                    "variable.boot_layer_visible = 1.0;",
+                    "variable.chest_layer_visible = 1.0;",
+                    "variable.attack_body_rot_y = Math.sin(360*Math.sqrt(variable.attack_time)) * 5.0;",
+                    "variable.tcos0 = (math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 57.3;",
+                    "variable.first_person_rotation_factor = math.sin((1 - variable.attack_time) * 180.0);",
+                    "variable.hand_bob = query.life_time < 0.01 ? 0.0 : variable.hand_bob + ((query.is_on_ground && query.is_alive ? math.clamp(math.sqrt(math.pow(query.position_delta(0), 2.0) + math.pow(query.position_delta(2), 2.0)), 0.0, 0.1) : 0.0) - variable.hand_bob) * 0.02;"
+                ],
+                "animate": [
+                    "animation_controller",
+                    "move.arms",
+                    "move.legs",
+                    "attack.positions",
+                    "attack.rotations",
+                    {
+                        "riding.arms": "query.is_riding"
+                    },
+                    {
+                        "riding.legs": "query.is_riding"
+                    },
+                    {
+                        "riding.root": "query.is_riding"
+                    }
+                ]
+            }
+        }
+    }
+}

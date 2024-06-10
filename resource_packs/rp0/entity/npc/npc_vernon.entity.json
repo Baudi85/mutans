@@ -1,0 +1,29 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:npc_vernon",
+            "render_controllers": [
+                "controller.render.npc.common"
+            ],
+            "geometry": {
+                "variant_0": "geometry.npc_vernon"
+            },
+            "textures": {
+                "variant_0": "textures/entity/npc_vernon/npc_vernon_v0"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "animations": {
+                "idle": "animation.npc_vernon.idle"
+            },
+            "scripts": {
+                "animate": [
+                    "idle"
+                ],
+                "should_update_bones_and_effects_offscreen": true
+            }
+        }
+    }
+}

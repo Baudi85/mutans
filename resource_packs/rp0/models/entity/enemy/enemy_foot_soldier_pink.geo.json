@@ -1,0 +1,116 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.enemy_foot_soldier_pink",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 6,
+				"visible_bounds_height": 7.5,
+				"visible_bounds_offset": [0, 3.25, 0]
+			},
+			"bones": [
+				{
+					"name": "body",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "torso",
+					"parent": "body",
+					"pivot": [0, 14, 0],
+					"cubes": [
+						{"origin": [-4, 14, -2], "size": [8, 14, 4], "uv": [0, 16]}
+					]
+				},
+				{
+					"name": "right_arm",
+					"parent": "torso",
+					"pivot": [-4, 26, 0],
+					"cubes": [
+						{"origin": [-8, 14, -2], "size": [4, 14, 4], "uv": [24, 16]}
+					]
+				},
+				{
+					"name": "right_arm_armor",
+					"parent": "right_arm",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-8, 14, -2], "size": [4, 14, 4], "inflate": 0.25, "uv": [36, 0]}
+					]
+				},
+				{
+					"name": "weapon",
+					"parent": "right_arm",
+					"pivot": [-5.5, 15.41667, 0.33333],
+					"cubes": [
+						{"origin": [-6, 5, -6], "size": [1, 24, 1], "pivot": [-5.5, 15.5, -5.5], "rotation": [-90, 0, -90], "uv": [60, 0]},
+						{"origin": [-7, -1, -7], "size": [3, 6, 3], "pivot": [-5.5, 15.5, -5.5], "rotation": [-90, 0, -90], "uv": [0, 55]},
+						{"origin": [-4, 0, -6], "size": [3, 4, 1], "pivot": [-5.5, 15.5, -5.5], "rotation": [-90, 0, -90], "uv": [16, 59]},
+						{"origin": [-8, 0, -6], "size": [1, 4, 1], "pivot": [-5.5, 15.5, -5.5], "rotation": [-90, 0, -90], "uv": [24, 59]},
+						{"origin": [-12, -4, -6], "size": [4, 12, 1], "pivot": [-5.5, 15.5, -5.5], "rotation": [-90, 0, -90], "uv": [54, 51]},
+						{"origin": [-6, -3, -6], "size": [1, 2, 1], "pivot": [-5.5, 15.5, -5.5], "rotation": [-90, 0, -90], "uv": [12, 61]}
+					]
+				},
+				{
+					"name": "left_arm",
+					"parent": "torso",
+					"pivot": [4, 26, 0],
+					"cubes": [
+						{"origin": [4, 14, -2], "size": [4, 14, 4], "uv": [0, 34]}
+					]
+				},
+				{
+					"name": "left_arm_armor",
+					"parent": "left_arm",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [4, 14, -2], "size": [4, 14, 4], "inflate": 0.25, "uv": [32, 34]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "torso",
+					"pivot": [0, 28, 0],
+					"cubes": [
+						{"origin": [-4, 28, -4], "size": [8, 8, 8], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "right_leg",
+					"parent": "body",
+					"pivot": [-2, 14, 0],
+					"cubes": [
+						{"origin": [-4, 0, -2], "size": [4, 14, 4], "uv": [44, 18]},
+						{"origin": [-4, 0, -4], "size": [4, 2, 2], "uv": [24, 0]}
+					]
+				},
+				{
+					"name": "right_leg_armor",
+					"parent": "right_leg",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-4, 5, -2], "size": [4, 2, 4], "inflate": 0.25, "uv": [48, 36]}
+					]
+				},
+				{
+					"name": "left_leg",
+					"parent": "body",
+					"pivot": [2, 14, 0],
+					"cubes": [
+						{"origin": [0, 0, -2], "size": [4, 14, 4], "uv": [16, 34]},
+						{"origin": [0, 0, -4], "size": [4, 2, 2], "uv": [24, 4]}
+					]
+				},
+				{
+					"name": "left_leg_armor",
+					"parent": "left_leg",
+					"pivot": [2, 14, 0],
+					"cubes": [
+						{"origin": [0, 5, -2], "size": [4, 2, 4], "inflate": 0.25, "uv": [48, 42]}
+					]
+				}
+			]
+		}
+	]
+}

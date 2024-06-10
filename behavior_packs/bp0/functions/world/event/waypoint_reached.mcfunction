@@ -1,0 +1,1 @@
+playsound fs.sfx.compass_checkpoint @a[scores={s_sfx_enabled=1}]

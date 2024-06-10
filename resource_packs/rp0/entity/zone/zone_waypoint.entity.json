@@ -1,0 +1,20 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:zone_waypoint",
+            "render_controllers": [
+                "controller.render.prop.common"
+            ],
+            "geometry": {
+                "variant_0": "geometry.zone_waypoint"
+            },
+            "textures": {
+                "variant_0": "textures/entity/zone_waypoint/zone_waypoint_v0"
+            },
+            "materials": {
+                "default": "entity"
+            }
+        }
+    }
+}

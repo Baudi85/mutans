@@ -1,0 +1,903 @@
+{
+  "namespace": "fs_turtlecom",
+  "root_panel": {
+    "type": "panel",
+    "layer": 1,
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_name": "#dialogtext"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#dialogtext - '§f§c§0§3§f' = #dialogtext))", // signal: §f§c§0§3§f for turtlecom
+        "target_property_name": "#visible"
+      }
+    ],
+    "variables": [
+      {
+        "requires": "$touch",
+        "$dynamic_size": [
+          "40%",
+          "95%"
+        ]
+      },
+      {
+        "requires": "(not $touch)",
+        "$dynamic_size": [
+          "40%",
+          "80%"
+        ]
+      }
+    ],
+    "controls": [
+      {
+        "_chome@dialog_chrome": {}
+      },
+      {
+        "_tcom_root@tcom_root": {}
+      },
+      {
+        "_full_screen_content@full_screen_content": {}
+      }
+    ]
+  },
+  "dialog_chrome": {
+    "type": "image",
+    "texture": "textures/ui/colors/black",
+    "size": [
+      "150%",
+      "150%"
+    ],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "alpha": 0.8,
+    "anims": [
+      "@fs_turtlecom.chrome_dlg_animate_in",
+      "@fs_turtlecom.chrome_dlg_animate_out"
+    ]
+  },
+  "full_screen_content": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      // {
+      //   "_close_button_container@close_button_container": {}
+      // }
+    ]
+  },
+  "tcom_root": {
+    "type": "panel",
+    "size": [
+      100,
+      100
+    ],
+    "controls": [
+      {
+        "_tcom_middle@tcom_middle": {}
+      }
+      // {
+      //   "debug": {
+      //     "type": "label",
+      //     "text": "#text",
+      //     "layer": 9999999,
+      //     "bindings": [
+      //       {
+      //         "binding_name": "#dialogtext"
+      //       },
+      //       {
+      //         "binding_type": "view",
+      //         "source_property_name": "(((§z + ('%.11s' * (#dialogtext))) - (§z + ('%.10s' * #dialogtext)))))",
+      //         "target_property_name": "#text"
+      //       }
+      //     ]
+      //   }
+      // }
+    ]
+  },
+  "tcom_middle": {
+    "type": "panel",
+    // "texture": "textures/ui/turtlecom/remote",
+    "size": [124, 112], // "size": [124, 112],
+    "offset": [0, -30],
+    "anims": [
+      "@fs_turtlecom.dlg_animate_in_remote_root"
+    ],
+    "controls": [
+      {
+        "_tcom_speech@tcom_speech": {}
+      },
+      {
+        "_button_stack_container@button_stack_container": {}
+      },
+      {
+        "_tcom_remote@tcom_remote": {
+          "alpha": 0
+        }
+      },
+      {
+        "_tcom_remote_clipped@tcom_remote_clipped": {}
+      },
+      {
+        "_tcom_bottom@tcom_bottom": {}
+      },
+      {
+        "_tcom_top@tcom_top": {}
+      }
+    ]
+  },
+  "tcom_remote": {
+    "type": "image",
+    "texture": "textures/ui/turtlecom/remote",
+    "size": [124, 112],
+    "anims": [
+      "@fs_turtlecom.dlg_animate_in_remote"
+    ],
+    "propagate_alpha": true,
+    "controls": [
+      {
+        "_spinter_overlay": {
+          "type": "image",
+          "texture": "textures/ui/turtlecom/remote_splinter",
+          "size": [124, 112],
+          "visible": false,
+          "bindings": [
+            {
+              "binding_name": "#dialogtext"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(((§z + ('%.11s' * (#dialogtext))) - (§z + ('%.10s' * #dialogtext))) = 's')",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "tcom_remote_no_anims": {
+    "type": "image",
+    "texture": "textures/ui/turtlecom/remote",
+    "size": [124, 112],
+    // "propagate_alpha": true,
+    "controls": [
+      {
+        "_spinter_overlay": {
+          "type": "image",
+          "texture": "textures/ui/turtlecom/remote_splinter",
+          "size": [124, 112],
+          "alpha": 1,
+          "visible": false,
+          // "propagate_alpha": true,
+          "bindings": [
+            {
+              "binding_name": "#dialogtext"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(((§z + ('%.11s' * (#dialogtext))) - (§z + ('%.10s' * #dialogtext))) = 's')",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "tcom_remote_clipped": {
+    "type": "panel",
+    "size": [124, 30],
+    "clips_children": true,
+    "controls": [
+      {
+        "_tcom_remote_clipped_content@tcom_remote_no_anims": {}
+      }
+    ]
+  },
+  "tcom_top": {
+    "type": "panel",
+    "size": [160, 112],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "layer": 100,
+    // "offset": [0, -75],
+    "offset": [2, 0],
+    "controls": [
+      {
+        "top": {
+          "type": "image",
+          "texture": "textures/ui/turtlecom/shell_top",
+          "size": [160, 112],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "layer": 100
+        }
+      },
+      {
+        "_antenna_left": {
+          "type": "image",
+          "texture": "textures/ui/turtlecom/antenna_left",
+          "size": [32, 104],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [0, 0],
+          "layer": 90
+        }
+      },
+      {
+        "_antenna_right": {
+          "type": "image",
+          "texture": "textures/ui/turtlecom/antenna_right",
+          "size": [32, 88],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": [0, 10],
+          "layer": 90
+        }
+      }
+    ],
+    "anims": [
+      "@fs_turtlecom.dlg_animate_in_top",
+      "@fs_turtlecom.dlg_animate_in_top_reset"
+    ]
+  },
+  "tcom_bottom": {
+    "type": "image",
+    "texture": "textures/ui/turtlecom/shell_bottom",
+    "size": [164, 114],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    // "offset": [0, 108],
+    "offset": [0, 80],
+    "layer": 5000,
+    "anims": [
+      "@fs_turtlecom.dlg_animate_in_bottom"
+    ]
+  },
+  "tcom_speech": {
+    "type": "image",
+    "texture": "textures/ui/turtlecom/speech_bubble",
+    // "size": [139, 102],
+    "size": [0, 0],
+    "offset": [95, 40],
+    "layer": 9999,
+    "clips_children": true,
+    "controls": [
+      {
+        "content_title@content_title": {}
+      },
+      {
+        "content_space": {
+          "type": "panel",
+          "size": [
+            "80%",
+            30
+          ],
+          "offset": [
+            6,
+            15
+          ],
+          "controls": [
+            {
+              "_content_text_smaller@content_text_smaller": {}
+            }
+          ]
+        }
+      }
+    ],
+    "anims": [
+      "@fs_turtlecom.dlg_animate_in_speech",
+      "@fs_turtlecom.dlg_animate_in_speech_hide"
+    ]
+  },
+  "content_title": {
+    "type": "label",
+    "text": "#text", // read from: tcom_<ID>.title. E.g. tcom_0001.title
+    "localize": true,
+    "color": [0,0.1137254901960784,0],
+    "size": [
+      "100%",
+      20
+    ],
+    "offset": [
+      5,
+      39
+    ],
+    "text_alignment": "center",
+    "propagate_alpha": true,
+    "font_type": "MinecraftTen",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "layer": 10000,
+    "font_scale_factor": 0.8,
+    "bindings": [
+      {
+        "binding_name": "#dialogtext"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(((§z + ('%.9s' * (#dialogtext))) - (§z + ('%.0s' * #dialogtext)))) + '.title')",
+        "target_property_name": "#text"
+      }
+    ]
+  },
+  "content_text": {
+    "type": "label",
+    "text": "#text",
+    "localize": true,
+    "color": [0,0.1137254901960784,0],
+    "size": [
+      "90%",
+      30
+    ],
+    "offset": [
+      4,
+      55
+    ],
+    "text_alignment": "center",
+    "propagate_alpha": true,
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "layer": 10000,
+    "bindings": [
+      {
+        "binding_name": "#dialogtext"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(((§z + ('%.9s' * (#dialogtext))) - (§z + ('%.0s' * #dialogtext)))) + '.msg')",
+        "target_property_name": "#text"
+      }
+    ]
+  },
+  "content_text_smaller": {
+    "type": "label",
+    "text": "#text",
+    "localize": true,
+    "color": [0,0.1137254901960784,0],
+    "size": [
+      "100%",
+      "default"
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "text_alignment": "center",
+    "propagate_alpha": true,
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "layer": 10000,
+    "font_scale_factor": 0.75,
+    "visible": true,
+    "bindings": [
+      {
+        "binding_name": "#dialogtext"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(((§z + ('%.9s' * (#dialogtext))) - (§z + ('%.0s' * #dialogtext)))) + '.msg')",
+        "target_property_name": "#text"
+      }
+    ]
+  },
+  "button_stack_container": {
+    "type": "panel",
+    // "texture": "textures/ui/Black",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [105, 132],
+    // "offset": ["500%", 132], // animation will move offset to 105
+    "size": [102, 20],
+    "layer": 999999,
+    "alpha": 0.0,
+    "propagate_alpha": true,
+    "anims": [
+      // "@fs_turtlecom.dlg_animate_in_buttons",
+      "@fs_turtlecom.dlg_animate_in_buttons_fade"
+    ],
+    "controls": [
+      {"_button_stack@button_stack": {}}
+    ]
+  },
+  "button_stack": {
+    "type": "stack_panel",
+    "size": ["100%", "100%"],
+    "orientation": "horizontal",
+    "collection_name": "student_buttons_collection",
+    "propagate_alpha": true,
+    "controls": [
+      { "0@button_template": { "$collection_idx": 0, "$nav_direction": "prev", "$inner_card_offset": [0, 0] }},
+      { "1@button_template": { "$collection_idx": 1, "$nav_direction": "next", "$inner_card_offset": [50, 0]  }}
+    ]
+  },
+
+  "button_template": {
+    "type": "button",
+    "size": [50, 30],
+    "collection_index": "$collection_idx",
+    "$card_offset|default": [0, 0],
+    "$inner_card_offset|default": [0, 0],
+    "sound_name": "fs.dlg.ep_select",
+    "propagate_alpha": true,
+    "$texture_name_prefix|default": "",
+    "variables": [
+      {
+        "requires": "($collection_idx = 0)",
+        // "$card_offset": [0, 50],
+        "$inner_card_offset|default": "$inner_card_offset",
+        "$card_offset": "$card_offset"
+      },
+      {
+        "requires": "($collection_idx = 1)",
+        "$inner_card_offset|default": "$inner_card_offset",
+        "$card_offset": "$card_offset"
+      }
+    ],
+    "controls": [
+      {
+        "label": {
+          "type": "label",
+          "text": "#student_button_text",
+          "color": [1, 1, 1],
+          "layer": 10000
+        }
+      },
+      {
+        "default@board_button": {
+          "$collection_idx": "$collection_idx",
+          "$state": "default",
+          "$inner_card_offset": "$inner_card_offset",
+          "offset": "$card_offset"
+        }
+      },
+      {
+        "hover@board_button": {
+          "$collection_idx": "$collection_idx",
+          "$state": "hover",
+          "$inner_card_offset": "$inner_card_offset",
+          "offset": [0, -2],
+          "anims": [
+           
+          ]
+          // "offset": [0, -2]
+        }
+      },
+      {
+        "pressed@board_button": {
+          "$collection_idx": "$collection_idx",
+          "$state": "pressed",
+          "$inner_card_offset": "$inner_card_offset",
+          "offset": "$card_offset"
+          // "offset": [0, 2]
+        }
+      }
+    ],
+    "default_control": "default",
+    "hover_control": "hover",
+    "pressed_control": "pressed",
+    "bindings": [
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "student_buttons_collection",
+        "binding_collection_prefix": "student_buttons"
+      },
+      {
+        "binding_name": "#student_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "student_buttons_collection"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not #student_button_text = '')",
+        "target_property_name": "#visible"
+      }
+    ],
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.student_button",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.student_button",
+        "mapping_type": "focused"
+      }
+    ]
+  },
+  "board_button": {
+    "type": "panel",
+    // "texture": "textures/ui/colors/red",
+    // "collection_index": "$collection_idx",
+    "$inner_card_offset|default": [0, 0],
+    "$offset|default": [0, 0],
+    "size": [50, 20],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": "$offset",
+    "propagate_alpha": true,
+    "$texture_name_prefix|default": "",
+    // "variables": [
+    //   {"requires": "($collection_idx = 0)"}
+    // ],
+    "controls": [
+      {
+        "prev_button": {
+          "type": "image",
+          // "$texture": "('textures/ui/turtlecom/btn_prev_' + $state)",
+          "texture": "textures/ui/turtlecom/btn_prev_default",
+          "offset": "$inner_card_offset",
+          "size": ["100%", "100%"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "alpha": 1,
+          // "propagate_alpha": true,
+          "$texture_name_prefix": "btn_prev_",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "student_buttons_collection",
+              "binding_collection_prefix": "student_buttons"
+            },
+            {
+              "binding_name": "#student_button_text", 
+              "binding_type": "collection",
+              "binding_collection_name": "student_buttons_collection"
+            },
+            // {
+            //   "binding_type": "view",
+            //   "source_property_name": "('textures/ui/turtlecom/btn_prev_' + $state)",
+            //   "target_property_name": "#texture"
+            // },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#student_button_text = '<')",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "next_button": {
+          "type": "image",
+          // "$texture": "('textures/ui/turtlecom/btn_next_' + $state)",
+          "texture": "textures/ui/turtlecom/btn_next_default",
+          "offset": "$inner_card_offset",
+          "alpha": 1,
+          // "propagate_alpha": true,
+          "$texture_name_prefix": "btn_next_",
+          "visible": true,
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "student_buttons_collection",
+              "binding_collection_prefix": "student_buttons"
+            },
+            {
+              "binding_name": "#student_button_text", 
+              "binding_type": "collection",
+              "binding_collection_name": "student_buttons_collection"
+            },
+            // {
+            //   "binding_type": "view",
+            //   "source_property_name": "('textures/ui/turtlecom/btn_next_' + $state)",
+            //   "target_property_name": "#texture"
+            // },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#student_button_text = '>')",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "_multiplayer_waiting@multiplayer_waiting": {
+          "size": ["100%", 30],
+          "offset": [0, -10],
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "student_buttons_collection",
+              "binding_collection_prefix": "student_buttons"
+            },
+            {
+              "binding_name": "#student_button_text", 
+              "binding_type": "collection",
+              "binding_collection_name": "student_buttons_collection"
+            },
+            // {
+            //   "binding_type": "view",
+            //   "source_property_name": "('textures/ui/turtlecom/btn_next_' + $state)",
+            //   "target_property_name": "#texture"
+            // },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#student_button_text = '[Continue]')",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "multiplayer_waiting": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "offset": [0, 0],
+    "controls": [
+      {
+        "_waiting_text": {
+          "type": "label",
+          "alpha": 0.7,
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "font_scale_factor": 0.7,
+          "color": [0, 0, 0, 1],
+          "offset": [25, 0],
+          "text": "ui.waiting_for_host",
+          "localize": true
+        }
+      },
+      {
+        "_waiting_spinner": {
+          "type": "image",
+          "texture": "textures/ui/fader/loading_spin",
+          "size": [10, 10],
+          "uv_size": [7, 7],
+          "layer": 103000,
+          "offset": [20, 25],
+          "uv": "@fs_fader.spinner_animation",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "alpha": 0.7,
+          "propagate_alpha": true
+        }
+      }
+    ]
+  },
+
+  // === Close Button ===
+  "close_button_container": {
+    "type": "panel",
+    "size": [
+      20, 20
+    ],
+    "offset": [
+      -20,
+      20
+    ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "layer": 9999,
+    "controls": [
+      {
+        "_close_btn@close_btn": {}
+      }
+    ]
+  },
+  "close_btn": {
+    "type": "button",
+    "size": [
+      26, 25
+    ],
+    "layer": 9999,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "sound_name": "random.click",
+    "default_control": "default_close",
+    "hover_control": "hover_close",
+    "pressed_control": "pressed_close",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.exit_student",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.exit_student",
+        "mapping_type": "focused"
+      },
+      {
+        // Catch ESC here too
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.exit_student",
+        "mapping_type": "global"
+      }
+    ],
+    "controls": [
+      {
+        "default_close@close_btn_template": {
+          "$state": "default"
+        }
+      },
+      {
+        "hover_close@close_btn_template": {
+          "$state": "hover"
+        }
+      },
+      {
+        "pressed_close@close_btn_template": {
+          "$state": "pressed"
+        }
+      }
+    ]
+  },
+  "close_btn_template": {
+    "type": "image",
+    "texture": "('textures/ui/epsel/btn_x_' + $state)",
+    "size": [
+      25, 26
+    ],
+    "offset": [0, 0.5],
+    "layer": 9999,
+    "anchor_from": "center",
+    "anchor_to": "center"
+  },
+  // === /Close Button ===
+  // == Chrome (BG) ==
+  "chrome_dlg_animate_in": {
+    "anim_type": "alpha",
+    "to": 0.75,
+    "from": 0,
+    "easing": "out_quad",
+    "duration": "($transition_time_push)",
+    "resettable": true,
+    "play_event": "screen.entrance_push",
+    "end_event": "screen.entrance_end"
+  },
+  "chrome_dlg_animate_out": {
+    "anim_type": "alpha",
+    "to": 0,
+    "from": 0.75,
+    "easing": "in_quad",
+    "duration": "($transition_time_pop)",
+    "resettable": true,
+    "play_event": "screen.exit_pop",
+    "reset_event": "screen.exit_end"
+  },
+  // ===================================
+  // === Default ==
+  "dlg_animate_in_remote_root": {
+    "anim_type": "wait",
+    // "duration": "($transition_time_push)",
+    "duration": 1.5,
+    "next": "@fs_turtlecom.dlg_animate_in_remote_root_2"
+  },
+  "dlg_animate_in_remote_root_2": {
+    "anim_type": "offset",
+    "to": [0, 0],
+    "from": [0, -30],
+    "easing": "out_quad",
+    "duration": 0.33,
+    "resettable": true
+  },
+  "dlg_animate_in_top_reset": {
+    "anim_type": "wait",
+    // "duration": "($transition_time_push)",
+    "duration": 1.5,
+    "next": "@fs_turtlecom.dlg_animate_in_top_2"
+  },
+  "dlg_animate_in_top": {
+    "anim_type": "wait",
+    "duration": 1.5,
+    // "duration": "($transition_time_push)",
+    "resettable": true,
+    "next": "@fs_turtlecom.dlg_animate_in_top_2"
+  },
+  "dlg_animate_in_top_2": {
+    "anim_type": "offset",
+    "to": [2, -75],
+    "from": [2, 0],
+    "easing": "out_quad",
+    "duration": 0.33,
+    "resettable": true
+  },
+  "dlg_animate_in_bottom": {
+    "anim_type": "wait",
+    "duration": 1.5,
+    // "duration": "($transition_time_push)",
+    "resettable": true,
+    "next": "@fs_turtlecom.dlg_animate_in_bottom_2"
+  },
+  "dlg_animate_in_bottom_2": {
+    "anim_type": "offset",
+    "to": [0, 108],
+    "from": [0, 80],
+    "easing": "out_quad",
+    "duration": 0.33,
+    "resettable": true
+  },
+  "dlg_animate_in_remote": {
+    "anim_type": "wait",
+    "duration": 1.5,
+    "next": "@fs_turtlecom.dlg_animate_in_remote_2"
+  },
+  "dlg_animate_in_remote_2": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 1,
+    "duration": 0.01
+  },
+  "dlg_animate_in_speech": {
+    "anim_type": "wait",
+    "duration": 1.6,
+    // "duration": 1,
+    "next": "@fs_turtlecom.dlg_animate_in_speech_2"
+  },
+  "dlg_animate_in_speech_hide": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 0,
+    "duration": 0.01,
+    "next": "@fs_turtlecom.dlg_animate_in_speech_show"
+  },
+  "dlg_animate_in_speech_show": {
+    "anim_type": "wait",
+    "duration": 1.5,
+    "next": "@fs_turtlecom.dlg_animate_in_speech_show_2"
+  },
+  "dlg_animate_in_speech_show_2": {
+    "anim_type": "alpha",
+    "from": 0,
+    "to": 1,
+    "duration": 0.22
+  },
+  "dlg_animate_in_speech_2": {
+    "anim_type": "offset",
+    "to": [95, 40],
+    "from": [70, 30],
+    "easing": "out_quad",
+    "duration": 0.22,
+    "next": "@fs_turtlecom.dlg_animate_in_speech_3"
+  },
+  "dlg_animate_in_speech_3": {
+    "anim_type": "wait",
+    "duration": 0.2,
+    "next": "@fs_turtlecom.dlg_animate_in_speech_4"
+  },
+  "dlg_animate_in_speech_4": {
+    "anim_type": "size",
+    "to": [139, 102],
+    "from": [0, 0],
+    "easing": "out_quad",
+    "duration": 0.22
+  },
+  // [button_stack_container]
+  "dlg_animate_in_buttons": {
+    "anim_type": "wait",
+    "duration": 2.5,
+    "next": "@fs_turtlecom.dlg_animate_in_buttons_2"
+  },
+  "dlg_animate_in_buttons_2": {
+    "anim_type": "offset",
+    "to": [105, 132],
+    "from": ["500%", 132],
+    "easing": "linear",
+    "duration": 0
+    // "next": "@fs_turtlecom.dlg_animate_in_buttons_2"
+  },
+  "dlg_animate_in_buttons_fade": {
+    "anim_type": "wait",
+    "duration": 2.5,
+    "next": "@fs_turtlecom.dlg_animate_in_buttons_fade_2"
+  },
+  "dlg_animate_in_buttons_fade_2": {
+    "anim_type": "alpha",
+    "to": 1.0,
+    "from": 0.0,
+    "easing": "linear",
+    "duration": 0.2
+    // "next": "@fs_turtlecom.dlg_animate_in_buttons_2"
+  }
+}

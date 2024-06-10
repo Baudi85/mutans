@@ -1,0 +1,49 @@
+{
+    "format_version": "1.16.0",
+    "animations": {
+        "animation.movement_appear.enemy_surfing_mine": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.attack_melee.enemy_surfing_mine": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.attack_jump.enemy_surfing_mine": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.attack_ranged.enemy_surfing_mine": {
+            "loop": false,
+            "animation_length": 0.75
+        },
+        "animation.attack_dash.enemy_surfing_mine": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.attack_block.enemy_surfing_mine": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.damage_hit.enemy_surfing_mine": {
+            "loop": false,
+            "animation_length": 0.1
+        },
+        "animation.damage_hurt.enemy_surfing_mine": {
+            "loop": false,
+            "animation_length": 0.42
+        },
+        "animation.damage_knockdown.enemy_surfing_mine": {
+            "loop": false,
+            "animation_length": 0.42
+        },
+        "animation.damage_get_up.enemy_surfing_mine": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.damage_killed.enemy_surfing_mine": {
+            "loop": false,
+            "animation_length": 0.7
+        }
+    }
+}

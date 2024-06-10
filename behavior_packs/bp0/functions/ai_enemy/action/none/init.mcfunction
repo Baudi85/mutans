@@ -1,0 +1,1 @@
+event entity @s fs:set_attack_state_none

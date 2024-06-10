@@ -1,0 +1,46 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:effect_portal",
+            "render_controllers": [
+                "controller.render.entity.effect_portal"
+            ],
+            "geometry": {
+                "variant_0": "geometry.effect_portal"
+            },
+            "textures": {
+                "variant_0": "textures/entity/effect_portal/effect_portal_v0"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "animations": {
+                "spin": "animation.effect_portal.spin",
+                "spin_vertical": "animation.effect_portal.spin_vertical",
+                "spin_inverted": "animation.effect_portal.spin_inverted",
+                "appear": "animation.effect_portal.appear",
+                "vanish": "animation.effect_portal.vanish"
+            },
+            "scripts": {
+                "animate": [
+                    {
+                        "spin": "query.variant == 0"
+                    },
+                    {
+                        "spin_vertical": "query.variant == 1"
+                    },
+                    {
+                        "spin_inverted": "query.variant == 2"
+                    },
+                    {
+                        "appear": "!query.is_baby"
+                    },
+                    {
+                        "vanish": "query.is_baby"
+                    }
+                ]
+            }
+        }
+    }
+}

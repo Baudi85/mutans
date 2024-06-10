@@ -1,0 +1,54 @@
+{
+    "format_version": "1.16.0",
+    "animations": {
+        "animation.movement_appear.enemy_rock_soldier": {
+            "loop": false,
+            "animation_length": 0.5
+        },
+        "animation.attack_melee.enemy_rock_soldier": {
+            "loop": false,
+            "animation_length": 0.5,
+            "timeline": {
+                "0.33": [
+                    "/function ai_enemy/action/melee/detect_player"
+                ]
+            }
+        },
+        "animation.attack_jump.enemy_rock_soldier": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_ranged.enemy_rock_soldier": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.attack_block.enemy_rock_soldier": {
+            "loop": false,
+            "animation_length": 0
+        },
+        "animation.attack_dash.enemy_rock_soldier": {
+            "loop": false,
+            "animation_length": 1.25
+        },
+        "animation.damage_hit.enemy_rock_soldier": {
+            "loop": false,
+            "animation_length": 0.1
+        },
+        "animation.damage_hurt.enemy_rock_soldier": {
+            "loop": false,
+            "animation_length": 0.28
+        },
+        "animation.damage_knockdown.enemy_rock_soldier": {
+            "loop": false,
+            "animation_length": 2
+        },
+        "animation.damage_get_up.enemy_rock_soldier": {
+            "loop": false,
+            "animation_length": 1
+        },
+        "animation.damage_killed.enemy_rock_soldier": {
+            "loop": false,
+            "animation_length": 2
+        }
+    }
+}

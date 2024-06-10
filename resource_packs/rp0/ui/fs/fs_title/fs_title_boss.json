@@ -1,0 +1,17 @@
+{
+  "namespace": "fs_title_boss",
+  "root_panel": {
+    "type": "image",
+    "texture": "textures/ui/Black",
+    "alpha": 0,
+    "color": [
+      1,
+      0,
+      0
+    ],
+    "size": [
+      100,
+      100
+    ]
+  }
+}

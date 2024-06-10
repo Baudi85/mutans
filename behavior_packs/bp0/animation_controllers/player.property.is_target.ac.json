@@ -1,0 +1,29 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.player.property.is_target": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "is_target": "query.property('property:is_target')"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/is_target_did_end"
+                    ]
+                },
+                "is_target": {
+                    "transitions": [
+                        {
+                            "default": "!query.property('property:is_target')"
+                        }
+                    ],
+                    "on_entry": [
+                        "/function events/player/is_target_did_start"
+                    ]
+                }
+            }
+        }
+    }
+}

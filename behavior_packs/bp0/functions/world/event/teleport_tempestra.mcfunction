@@ -1,0 +1,1 @@
+tp @e[type=fs:boss_tempestra] ~ ~ ~ facing @p

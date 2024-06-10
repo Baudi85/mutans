@@ -1,0 +1,146 @@
+// @(com.57digital.shulker.inherited)
+// Inheritance Chain: [fs:entity] ~> [fs:vehicle] ~> fs:vehicle_van
+{
+  "format_version": "1.19.60",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "fs:vehicle_van",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "property:perf_mode": {
+          "type": "bool",
+          "default": true,
+          "client_sync": true
+        }
+      },
+      "scripts": {
+        "animate": [
+          "controller_entity_has_rider"
+        ]
+      },
+      "animations": {
+        "controller_entity_has_rider": "controller.animation.enemy_target.has_rider"
+      }
+    },
+    "component_groups": {
+      "fs:instant_despawn": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "vehicle"
+        ]
+      },
+      "minecraft:physics": {
+        "has_collision": true,
+        "has_gravity": true
+      },
+      "minecraft:scale": {
+        "value": 1
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": false
+          }
+        ]
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:collision_box": {
+        "height": 4,
+        "width": 3.5
+      },
+      "minecraft:input_ground_controlled": {},
+      "minecraft:movement": {
+        "value": [
+          0.25,
+          0.25
+        ]
+      },
+      "minecraft:movement.generic": {},
+      "minecraft:navigation.generic": {},
+      "minecraft:variable_max_auto_step": {
+        "base_value": 1.1,
+        "controlled_value": 1.1,
+        "jump_prevented_value": 1.1
+      },
+      "minecraft:rideable": {
+        "controlling_seat": 0,
+        "crouching_skip_interact": true,
+        "family_types": [
+          "player",
+          "player_companion",
+          "puppet_character"
+        ],
+        "interact_text": "action.interact.entity.ride",
+        "pull_in_entities": false,
+        "rider_can_interact": false,
+        "seat_count": 4,
+        "seats": [
+          {
+            "position": [
+              0.75,
+              1.2,
+              0.8
+            ]
+          },
+          {
+            "position": [
+              -0.75,
+              1.2,
+              0.8
+            ],
+            "lock_rider_rotation": 90
+          },
+          {
+            "position": [
+              0.9,
+              1.2,
+              -0.7
+            ],
+            "rotate_rider_by": 90,
+            "lock_rider_rotation": 90
+          },
+          {
+            "position": [
+              -0.9,
+              1.2,
+              -1.7
+            ],
+            "rotate_rider_by": -90,
+            "lock_rider_rotation": 90
+          }
+        ]
+      }
+    },
+    "events": {
+      "fs:instant_despawn": {
+        "add": {
+          "component_groups": [
+            "fs:instant_despawn"
+          ]
+        }
+      },
+      "fs:enable_perf_mode": {
+        "set_property": {
+          "property:perf_mode": true
+        }
+      },
+      "fs:disable_perf_mode": {
+        "set_property": {
+          "property:perf_mode": false
+        }
+      }
+    }
+  }
+}

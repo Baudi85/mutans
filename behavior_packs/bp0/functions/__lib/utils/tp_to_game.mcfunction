@@ -1,0 +1,1 @@
+tp @s[tag=__admin__57digital__] @e[type=fs:game,c=1]

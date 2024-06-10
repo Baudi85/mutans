@@ -1,0 +1,582 @@
+/*
+    Raw show:   /title @a title fsdata://?_=1&toast=1&_=1
+    Configure in: toasts.js
+*/
+{
+    "namespace": "fs_title_toast",
+    "root_panel": {
+        "type": "panel",
+        "$is_visible|default": false,
+        "visible": "$is_visible",
+        "variables": [
+            {
+              "requires": "((not ($title_text - '&toast=1&' = $title_text)))",
+              "$is_visible": true
+            }
+        ],
+        "controls": [
+            {
+                "_frame@frame": {}
+            }
+        ]
+    },
+    "frame": {
+        "type": "image",
+        "texture": "textures/ui/toasts/bg_0",
+        "size": [250, 61], // slightly smaller than true texture, previously 192,61 before enlargement
+        "alpha": 1,
+        "layer": 999999,
+        "anchor_from": "top_right",
+        "anchor_to": "top_right",
+        "offset": [140, 65], // 110 offset
+        "propagate_alpha": true,
+        "$is_sticky|default": false,
+        "$toast_idom|default": "toast",
+        "$anims|default": ["@fs_title_toast.anim_toast_show_0", "@fs_title_toast.anim_toast_show_fade"],
+        "variables": [
+            {
+                "requires": "(((§z + ('%.57s' * ($title_text))) - (§z + ('%.47s' * $title_text)))) = 'tstyle9003')",
+                "$is_sticky": false,
+                "$toast_idom": "objective",
+                "$anims": [
+                    "@fs_title_toast.anim_objective_show_0",
+                    "@fs_title_toast.anim_objective_show_fade"
+                ]
+            },
+            {
+                "requires": "(((§z + ('%.57s' * ($title_text))) - (§z + ('%.47s' * $title_text)))) = 'tstyle1004')",
+                "$is_sticky": false,
+                "$toast_idom": "objective",
+                "$anims": [
+                    "@fs_title_toast.anim_objective_check_show_0",
+                    "@fs_title_toast.anim_objective_check_show_fade"
+                ]
+            }
+        ],
+        "anims": "$anims",
+        "controls": [
+           {
+                "_content": {
+                    "type": "panel",
+                    "size": [96, 61],
+                    "offset": [4, 0],
+                    "anchor_from": "top_left",
+                    "anchor_to": "top_left",
+                    "propagate_alpha": true,
+                    "controls": [
+                        // {
+                        //     "debug": {
+                        //         "type": "label",
+                        //         "text": "((§z + ('%.57s' * ($title_text))) - (§z + ('%.47s' * $title_text))))",
+                        //         "layer": 99999,
+                        //         "color": [0, 0, 0, 255],
+                        //         "offset": [0, -5]
+                        //     }
+                        // },
+                        {
+                            "_icon_urgent": {
+                                "type": "image",
+                                "texture": "textures/ui/toasts/icon_urgent",
+                                "anchor_from": "top_left",
+                                "anchor_to": "top_left",
+                                "layer": 9999,
+                                "size": [23, 29],
+                                "offset": [-5, 22],
+                                "alpha": 1,
+                                "visible": "(((§z + ('%.57s' * ($title_text))) - (§z + ('%.47s' * $title_text)))) = 'tstyle0002')" // 0k series is static
+                            }
+                        },
+                        {
+                            "_objective_check_container": {
+                                "type": "panel",
+                                "size": [20, 20],
+                                "offset": [-1, 28],
+                                "anchor_from": "top_left",
+                                "anchor_to": "top_left",
+                                "controls": [
+                                    {
+                                        "_icon_obj_check_highlight": {
+                                            "type": "image",
+                                            "texture": "textures/ui/toasts/highlight",
+                                            "layer": 9998,
+                                            "visible": "(((§z + ('%.57s' * ($title_text))) - (§z + ('%.47s' * $title_text)))) = 'tstyle1004')", // 9003 = objective uncheck
+                                            "$anims|default": [],
+                                            "variables": [
+                                                {
+                                                    "requires": "(((§z + ('%.57s' * ($title_text))) - (§z + ('%.47s' * $title_text)))) = 'tstyle1004')",
+                                                    "$anims": [
+                                                        "@fs_title_toast.anim_objective_highlight_icon",
+                                                        "@fs_title_toast.anim_objective_highlight_icon_fade_out"
+                                                    ]
+                                                }
+                                            ],
+                                            "anims": "$anims"
+                                        }
+                                    },
+                                    {
+                                        "_icon_obj_check_highlight_2": {
+                                            "type": "image",
+                                            "texture": "textures/ui/toasts/highlight",
+                                            "layer": 9998,
+                                            "visible": "(((§z + ('%.57s' * ($title_text))) - (§z + ('%.47s' * $title_text)))) = 'tstyle1004')", // 9003 = objective uncheck
+                                            "$anims|default": [],
+                                            "alpha": 0,
+                                            "variables": [
+                                                {
+                                                    "requires": "(((§z + ('%.57s' * ($title_text))) - (§z + ('%.47s' * $title_text)))) = 'tstyle1004')",
+                                                    "$anims": [
+                                                        "@fs_title_toast.anim_objective_highlight_icon_v2",
+                                                        "@fs_title_toast.anim_objective_highlight_icon_fade_out_v2"
+                                                    ]
+                                                }
+                                            ],
+                                            "anims": "$anims"
+                                        }
+                                    },
+                                    {
+                                        "_icon_obj_check_highlight_3": {
+                                            "type": "image",
+                                            "texture": "textures/ui/toasts/highlight",
+                                            "layer": 9998,
+                                            "visible": "(((§z + ('%.57s' * ($title_text))) - (§z + ('%.47s' * $title_text)))) = 'tstyle1004')", // 9003 = objective uncheck
+                                            "$anims|default": [],
+                                            "alpha": 0,
+                                            "variables": [
+                                                {
+                                                    "requires": "(((§z + ('%.57s' * ($title_text))) - (§z + ('%.47s' * $title_text)))) = 'tstyle1004')",
+                                                    "$anims": [
+                                                        "@fs_title_toast.anim_objective_highlight_icon_v3",
+                                                        "@fs_title_toast.anim_objective_highlight_icon_fade_out_v3"
+                                                    ]
+                                                }
+                                            ],
+                                            "anims": "$anims"
+                                        }
+                                    },
+                                    {
+                                        "_icon_obj_uncheck": {
+                                            "type": "image",
+                                            "texture": "textures/ui/toasts/icon_check_0",
+                                            "anchor_from": "top_left",
+                                            "anchor_to": "top_left",
+                                            "layer": 9999,
+                                            "alpha": 1,
+                                            "visible": "(((§z + ('%.57s' * ($title_text))) - (§z + ('%.47s' * $title_text)))) = 'tstyle9003')" // 9003 = objective uncheck
+                                        }
+                                    },
+                                    {
+                                        "_icon_obj_check": {
+                                            "type": "image",
+                                            "texture": "textures/ui/toasts/icon_check_1",
+                                            "anchor_from": "top_left",
+                                            "anchor_to": "top_left",
+                                            "layer": 9999,
+                                            "alpha": 1,
+                                            "visible": "(((§z + ('%.57s' * ($title_text))) - (§z + ('%.47s' * $title_text)))) = 'tstyle1004')" // 9003 = objective uncheck
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "_icon_static": {
+                                "type": "image",
+                                "texture": "$icon_name",
+                                "size": "$size",
+                                "anchor_from": "top_left",
+                                "anchor_to": "top_left",
+                                "offset": "$offset",
+                                "$icon_name|default": "textures/ui/chars/icon_april",
+                                "$offset|default": [6, 2],
+                                "$size|default": [16, 18],
+                                /*
+                                    const TOAST_ICON_APRIL =        '0001'
+                                    const TOAST_ICON_SPLINTER =     '0002'
+                                    const TOAST_ICON_LEO =          '0003'
+                                    const TOAST_ICON_RAPH =         '0004'
+                                    const TOAST_ICON_DON =          '0005'
+                                    const TOAST_ICON_MICH =         '0006'
+                                */
+                                "visible": "(((§z + ('%.41s' * ($title_text))) - (§z + ('%.36s' * $title_text)))) = 'icon0')", // 0k series is static
+                                "variables": [
+                                    {
+                                        "requires": "(((§z + ('%.44s' * ($title_text))) - (§z + ('%.36s' * $title_text)))) = 'icon0001')",
+                                        "$icon_name": "textures/ui/chars/icon_april",
+                                        "$offset": [6, 2],
+                                        "$size": [16, 18]
+                                    },
+                                    {
+                                        "requires": "(((§z + ('%.44s' * ($title_text))) - (§z + ('%.36s' * $title_text)))) = 'icon0002')",
+                                        "$icon_name": "textures/ui/chars/icon_splinter",
+                                        "$offset": [6, 2],
+                                        "$size": [14, 15]
+                                    },
+                                    {
+                                        "requires": "(((§z + ('%.44s' * ($title_text))) - (§z + ('%.36s' * $title_text)))) = 'icon0003')",
+                                        "$icon_name": "textures/ui/chars/portrait_1",
+                                        "$offset": [3, 7],
+                                        "$size": [21, 11]
+                                    },
+                                    {
+                                        "requires": "(((§z + ('%.44s' * ($title_text))) - (§z + ('%.36s' * $title_text)))) = 'icon0004')",
+                                        "$icon_name": "textures/ui/chars/portrait_2",
+                                        "$offset": [3, 7],
+                                        "$size": [21, 11]
+                                    },
+                                    {
+                                        "requires": "(((§z + ('%.44s' * ($title_text))) - (§z + ('%.36s' * $title_text)))) = 'icon0005')",
+                                        "$icon_name": "textures/ui/chars/portrait_3",
+                                        "$offset": [3, 7],
+                                        "$size": [21, 11]
+                                    },
+                                    {
+                                        "requires": "(((§z + ('%.44s' * ($title_text))) - (§z + ('%.36s' * $title_text)))) = 'icon0006')",
+                                        "$icon_name": "textures/ui/chars/portrait_4",
+                                        "$offset": [3, 7],
+                                        "$size": [21, 11]
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "_icon_flipbook": {
+                                "type": "image",
+                                "texture": "$icon_name",
+                                "anchor_from": "top_left",
+                                "anchor_to": "top_left",
+                                "size": "$size",
+                                "uv_size": "$size",
+                                "offset": "$offset",
+                                "layer": 110,
+                                "uv": "$uv_name",
+                                // "offset": "$offset",
+                                "$icon_name|default": "textures/ui/chars/ko_portrait_1",
+                                "$uv_name|default": "@fs_scoreboards.char_ko_1",
+                                "$offset|default": [3, 2],
+                                "$size|default": [21, 16],
+                                // "$size|default": [16, 18],
+                                /*
+                                    const TOAST_ICON_LEO_DIZZY =    '1013'
+                                    const TOAST_ICON_RAPH_DIZZY =   '1014'
+                                    const TOAST_ICON_DON_DIZZY =    '1015'
+                                    const TOAST_ICON_MICH_DIZZY =   '1016'
+                                */
+                                "visible": "(((§z + ('%.41s' * ($title_text))) - (§z + ('%.36s' * $title_text)))) = 'icon1')", // 1k series is static
+                                "variables": [
+                                    {
+                                        "requires": "(((§z + ('%.44s' * ($title_text))) - (§z + ('%.36s' * $title_text)))) = 'icon1013')",
+                                        "$icon_name": "textures/ui/chars/ko_portrait_1",
+                                        "$uv_name": "@fs_scoreboards.char_ko_1",
+                                        "$offset": [3, 2],
+                                        "$size": [21, 16]
+                                    },
+                                    {
+                                        "requires": "(((§z + ('%.44s' * ($title_text))) - (§z + ('%.36s' * $title_text)))) = 'icon1014')",
+                                        "$icon_name": "textures/ui/chars/ko_portrait_2",
+                                        "$uv_name": "@fs_scoreboards.char_ko_2",
+                                        "$offset": [3, 2],
+                                        "$size": [21, 16]
+                                    },
+                                    {
+                                        "requires": "(((§z + ('%.44s' * ($title_text))) - (§z + ('%.36s' * $title_text)))) = 'icon1015')",
+                                        "$icon_name": "textures/ui/chars/ko_portrait_3",
+                                        "$uv_name": "@fs_scoreboards.char_ko_3",
+                                        "$offset": [3, 2],
+                                        "$size": [21, 16]
+                                    },
+                                    {
+                                        "requires": "(((§z + ('%.44s' * ($title_text))) - (§z + ('%.36s' * $title_text)))) = 'icon1016')",
+                                        "$icon_name": "textures/ui/chars/ko_portrait_4",
+                                        "$uv_name": "@fs_scoreboards.char_ko_4",
+                                        "$offset": [3, 2],
+                                        "$size": [21, 16]
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "_title_text_container": {
+                                "type": "panel",
+                                "clips_children": false,
+                                "size": [105, 18],
+                                "offset": [26, 0],
+                                "anchor_from": "top_left",
+                                "anchor_to": "top_left",
+                                "propagate_alpha": true,
+                                "controls": [
+                                    {
+                                        "_title_text": {
+                                            "type": "label",
+                                            "text": "$loc_string", // t0001.title
+                                            "$loc_string": "(((§z + ('%.25s' * ($title_text))) - (§z + ('%.20s' * $title_text)))) + '.title')",
+                                            "localize": true,
+                                            "font_type": "MinecraftTen",
+                                            "anchor_from": "top_left",
+                                            "anchor_to": "top_left",
+                                            "text_alignment": "left",
+                                            "size": ["100%", "100%"],
+                                            "propagate_alpha": true,
+                                            "shadow": true,
+                                            "offset": [0, 0],
+                                            "font_scale_factor": 1,
+                                            "notify_on_ellipses": ["_title_text_smaller"],
+                                            "bindings": [
+                                                {
+                                                    "binding_type": "view",
+                                                    "source_property_name": "(not #using_ellipses)",
+                                                    "target_property_name": "#visible"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "_title_text_smaller": {
+                                            "type": "label",
+                                            "text": "$loc_string", // t0001.title
+                                            "$loc_string": "(((§z + ('%.25s' * ($title_text))) - (§z + ('%.20s' * $title_text)))) + '.title')",
+                                            "localize": true,
+                                            "font_type": "MinecraftTen",
+                                            "anchor_from": "top_left",
+                                            "anchor_to": "top_left",
+                                            "text_alignment": "left",
+                                            "size": ["100%", "100%"],
+                                            "propagate_alpha": true,
+                                            "shadow": true,
+                                            "offset": [0, -1],
+                                            "font_scale_factor": 0.6,
+                                            "line_padding": 0.5,
+                                            "visible": false,
+                                            "bindings": [
+                                                {
+                                                    "binding_type": "view",
+                                                    "source_property_name": "(#using_ellipses)",
+                                                    "target_property_name": "#visible"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "_content_text_container": {
+                                "type": "panel",
+                                // "type": "image",
+                                // "texture": "textures/ui/White",
+                                "clips_children": true,
+                                "size": [140, 30],
+                                "offset": [21, 22],
+                                "anchor_from": "top_left",
+                                "anchor_to": "top_left",
+                                "propagate_alpha": true,
+                                "controls": [
+                                    {
+                                        "_content_text": {
+                                            "type": "label",
+                                            "text": "$loc_string", // t0001.msg
+                                            "$loc_string": "(((§z + ('%.25s' * ($title_text))) - (§z + ('%.20s' * $title_text)))) + '.msg')",
+                                            "localize": true,
+                                            "font_type": "default",
+                                            "anchor_from": "center",
+                                            "anchor_to": "center",
+                                            // "text_alignment": "right",
+                                            "text_alignment": "center",
+                                            "size": ["100% - 2px", "default"],
+                                            "color": [0, 0, 0, 1],
+                                            "propagate_alpha": true,
+                                            "shadow": false,
+                                            "offset": [0, -1],
+                                            "font_scale_factor": 0.8,
+                                            "line_padding": 1,
+                                            "notify_on_ellipses": ["_content_text_too_large_container"]
+                                        }
+                                    },
+                                    {
+                                        "_content_text_too_large_container": {
+                                            "type": "image",
+                                            "size": ["100% - 2px", 22],
+                                            "offset": [0, 1],
+                                            "anchor_from": "top_left",
+                                            "anchor_to": "top_left",
+                                            "texture": "textures/ui/toasts/bg_color",
+                                            "visible": false,
+                                            "layer": 200,
+                                            "bindings": [
+                                                {
+                                                    "binding_type": "view",
+                                                    "source_property_name": "#using_ellipses",
+                                                    "target_property_name": "#visible"
+                                                }
+                                            ],
+                                            "controls": [
+                                                {
+                                                    "_content_text_too_large": {
+                                                        "type": "label",
+                                                        "text": "$loc_string", // t0001.msg
+                                                        "$loc_string": "(((§z + ('%.25s' * ($title_text))) - (§z + ('%.20s' * $title_text)))) + '.msg')",
+                                                        "localize": true,
+                                                        "font_type": "default",
+                                                        "anchor_from": "center",
+                                                        "anchor_to": "center",
+                                                        // "text_alignment": "right",
+                                                        "text_alignment": "center",
+                                                        "size": ["100% -2px", "100% -2px"],
+                                                        "color": [0, 0, 0, 1],
+                                                        "propagate_alpha": true,
+                                                        "shadow": false,
+                                                        "offset": [0, 4],
+                                                        "font_scale_factor": 0.5,
+                                                        "line_padding": 1,
+                                                        "layer": 201
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+           }
+        ]
+    },
+    "toast_factory": {
+        "type": "panel",
+        "factory": {
+            "name": "hud_title_text_factory",
+            "control_ids": {
+                "hud_title_text": "_fs_title_toast@fs_title_toast.root_panel"
+            }
+        }
+    },
+    // anims:
+    "anim_toast_show_0": {
+        "anim_type": "offset",
+        "from": [182, 65],
+        "to": [82, 65],
+        "duration": 0.3,
+        "easing": "spring",
+        "next": "@fs_title_toast.anim_toast_show_1"
+    },
+    "anim_toast_show_1": {
+        "anim_type": "wait",
+        "duration": 8,      // <-----------------------------
+        "next": "@fs_title_toast.anim_toast_hide_0"
+    },
+    "anim_toast_show_fade": {
+        "anim_type": "alpha",
+        "from": 0,
+        "to": 1,
+        "duration": 0.2,
+        "next": "@fs_title_toast.anim_toast_fade_wait"
+    },
+    "anim_toast_fade_wait": {
+        "anim_type": "wait",
+        "duration": 8.2,     // <-----------------------------
+        "next": "@fs_title_toast.anim_toast_fade_out"
+    },
+    "anim_toast_hide_0": {
+        "anim_type": "offset",
+        "from":  [82, 65],
+        "to": [200, 65],
+        "duration": 0.3,
+        "easing": "linear"
+    },
+    "anim_toast_fade_out": {
+        "anim_type": "alpha",
+        "from": 1,
+        "to": 0,
+        "duration": 0.3
+    },
+
+    // objective anims
+    "anim_objective_show_0": {
+        "anim_type": "offset",
+        "from": [182, 65],
+        "to": [82, 65],
+        "duration": 0.3,
+        "easing": "spring",
+        "next": "@fs_title_toast.anim_objective_show_wait"
+    },
+    "anim_objective_show_fade": {
+        "anim_type": "alpha",
+        "from": 0,
+        "to": 1,
+        "duration": 0.2
+    },
+    "anim_objective_show_wait": {
+        "anim_type": "wait",
+        "duration": 8,
+        "next": "@fs_title_toast.anim_objective_hide_0"
+    },
+    "anim_objective_hide_0": {
+        "anim_type": "offset",
+        "from":  [82, 65],
+        "to": [400, 65],
+        "duration": 0.3,
+        "easing": "linear"
+    },
+    // objective anims
+    "anim_objective_check_show_0": {
+        "anim_type": "offset",
+        "from": [82, 65],
+        "to": [82, 65],
+        "duration": 0.3,
+        "easing": "spring",
+        "next": "@fs_title_toast.anim_objective_check_show_wait"
+    },
+    "anim_objective_check_show_fade": {
+        "anim_type": "alpha",
+        "from": 1,
+        "to": 1,
+        "duration": 0.1
+        // "next": "@fs_title_toast.anim_toast_show_1"
+    },
+    "anim_objective_check_show_wait": {
+        "anim_type": "wait",
+        "duration": 4,
+        "next": "@fs_title_toast.anim_objective_check_hide_0"
+    },
+    "anim_objective_check_hide_0": {
+        "anim_type": "offset",
+        "from": [82, 65],
+        "to": [300, 65],
+        "duration": 0.3,
+        "easing": "linear"
+    },
+    // highlights
+    "anim_objective_highlight_icon": {
+        "anim_type": "size",
+        "from": [0, 0],
+        "to": [50, 50],
+        "easing": "spring",
+        "duration": 1
+    },
+    "anim_objective_highlight_icon_fade_out": {
+        "anim_type": "alpha",
+        "from": 1,
+        "to": 0,
+        "duration": 0.6
+    },
+    "anim_objective_highlight_icon_v2": {
+        "anim_type": "wait",
+        "duration": 0.2,
+        "next": "@fs_title_toast.anim_objective_highlight_icon"
+    },
+    "anim_objective_highlight_icon_fade_out_v2": {
+        "anim_type": "wait",
+        "duration": 0.2,
+        "next": "@fs_title_toast.anim_objective_highlight_icon_fade_out"
+    },
+    "anim_objective_highlight_icon_v3": {
+        "anim_type": "wait",
+        "duration": 0.4,
+        "next": "@fs_title_toast.anim_objective_highlight_icon"
+    },
+    "anim_objective_highlight_icon_fade_out_v3": {
+        "anim_type": "wait",
+        "duration": 0.4,
+        "next": "@fs_title_toast.anim_objective_highlight_icon_fade_out"
+    }
+}

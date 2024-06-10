@@ -1,0 +1,33 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.player_skateboarding_raphael.idle": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [0, 90, 0],
+					"position": [-0.5, 4, -1]
+				},
+				"head": {
+					"rotation": [0, 0, 0]
+				},
+				"leftArm": {
+					"rotation": [36.19714, -10.54794, -35.95603],
+					"position": [0, -1, 0.5]
+				},
+				"rightArm": {
+					"rotation": [-27.5, 0, 50]
+				},
+				"leftLeg": {
+					"rotation": [0, 0, -22.5]
+				},
+				"rightLeg": {
+					"rotation": [0, 0, 22.5]
+				},
+				"skateboard": {
+					"rotation": [0, 90, 0]
+				}
+			}
+		}
+	}
+}

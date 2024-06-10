@@ -1,0 +1,282 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.boss.movement": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "movement_appear": "query.property('property:movement_state') == 'appear'"
+                        },
+                        {
+                            "movement_idle": "query.property('property:movement_state') == 'idle'"
+                        },
+                        {
+                            "movement_move": "query.property('property:movement_state') == 'move'"
+                        }
+                    ]
+                },
+                "movement_appear": {
+                    "animations": [
+                        {
+                            "movement_appear": "query.property('property:animation_enabled') == true && query.property('property:attack_state') == 'none' && query.property('property:damage_state') == 'none'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.property('property:movement_state') != 'appear'"
+                        }
+                    ],
+                    "blend_transition": 0,
+                    "blend_via_shortest_path": true
+                },
+                "movement_idle": {
+                    "animations": [
+                        {
+                            "movement_idle": "query.property('property:animation_enabled') == true && query.property('property:attack_state') == 'none' && query.property('property:damage_state') == 'none'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.property('property:movement_state') != 'idle'"
+                        }
+                    ],
+                    "blend_transition": 0,
+                    "blend_via_shortest_path": true
+                },
+                "movement_move": {
+                    "animations": [
+                        {
+                            "movement_idle": "query.modified_move_speed <= 0 && query.property('property:damage_state') == 'none'"  
+                        },
+                        {
+                            "movement_default": "query.modified_move_speed > 0 && query.property('property:movement_speed') == 'default' && query.property('property:damage_state') == 'none'"
+                        },
+                        {
+                            "movement_slow": "query.modified_move_speed > 0 && query.property('property:movement_speed') == 'slow' && query.property('property:damage_state') == 'none'"
+                        },
+                        {
+                            "movement_fast": "query.modified_move_speed > 0 && query.property('property:movement_speed') == 'fast' && query.property('property:damage_state') == 'none'"
+                        },
+                        {
+                            "movement_shocked": "query.modified_move_speed > 0 && query.property('property:movement_speed') == 'shocked' && query.property('property:damage_state') == 'none'"
+                        },
+                        {
+                            "movement_jump": "query.is_jumping ? 1 : 0 && query.property('property:damage_state') == 'none'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.property('property:movement_state') != 'move'"
+                        }
+                    ],
+                    "blend_transition": 0.1,
+                    "blend_via_shortest_path": true
+                }
+            }
+        },
+        "controller.animation.boss.action": {
+            "states": {
+                "default": {
+                },
+                "event_driven": {
+                    "animations": [
+                        "action_taunt",        
+                        "action_shocked",      
+                        "action_vanish",
+                        "action_custom_0",
+                        "movement_alt"
+                    ]
+                }
+            }
+        },
+        "controller.animation.boss.attack": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "attack_melee": "(variable.attack_time > 0) && query.property('property:attack_state') == 'melee'"
+                        },
+                        {
+                            "attack_dash": "query.property('property:attack_state') == 'dash'"
+                        },
+                        {
+                            "attack_ranged": "(query.has_target && query.facing_target_to_range_attack) && query.property('property:attack_state') == 'ranged'"
+                        },
+                        {
+                            "attack_ranged_alt": "(query.has_target && query.facing_target_to_range_attack) && query.property('property:attack_state') == 'ranged_alt'"
+                        },
+                        {
+                            "attack_jump": "query.property('property:attack_state') == 'jump'"
+                        },
+                        {
+                            "attack_block": "query.property('property:attack_state') == 'block'"
+                        }
+                    ],
+                    "blend_transition": 0.1,
+                    "blend_via_shortest_path": true
+                },
+                "attack_melee": {
+                    "animations": [
+                        {
+                            "attack_melee": "query.property('property:animation_enabled') == true && query.property('property:damage_state') == 'none'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.all_animations_finished"
+                        }
+                    ],
+                    "blend_transition": 0,
+                    "blend_via_shortest_path": true
+                },
+                "attack_block": {
+                    "animations": [
+                        {
+                            "attack_block": "query.property('property:animation_enabled') == true && query.property('property:damage_state') == 'none'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.property('property:attack_state') != 'block'"
+                        }
+                    ],
+                    "blend_transition": 0,
+                    "blend_via_shortest_path": true
+                },
+                "attack_dash": {
+                    "animations": [
+                        {
+                            "attack_dash": "query.property('property:animation_enabled') == true && query.property('property:damage_state') == 'none'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.property('property:attack_state') != 'dash'"
+                        }
+                    ],
+                    "blend_transition": 0,
+                    "blend_via_shortest_path": true
+                },
+                "attack_ranged": {
+                    "animations": [
+                        {
+                            "attack_ranged": "query.property('property:animation_enabled') == true && query.property('property:damage_state') == 'none'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "!(query.has_target && query.facing_target_to_range_attack)"
+                        }
+                    ],
+                    "blend_transition": 0.1,
+                    "blend_via_shortest_path": true
+                },
+                "attack_ranged_alt": {
+                    "animations": [
+                        {
+                            "attack_ranged_alt": "query.property('property:animation_enabled') == true && query.property('property:damage_state') == 'none'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "!(query.has_target && query.facing_target_to_range_attack)"
+                        }
+                    ],
+                    "blend_transition": 0.1,
+                    "blend_via_shortest_path": true
+                },
+                "attack_jump": {
+                    "animations": [
+                        {
+                            "attack_jump": "query.property('property:animation_enabled') == true && query.property('property:damage_state') == 'none'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.property('property:attack_state') != 'jump'"
+                        }
+                    ],
+                    "blend_transition": 0,
+                    "blend_via_shortest_path": true
+                }
+            }
+        },
+        "controller.animation.boss.damage": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "damage_hurt": "query.property('property:damage_state') == 'hurt'"
+                        },
+                        {
+                            "damage_knockdown": "query.property('property:damage_state') == 'knockdown'"
+                        },
+                        {
+                            "damage_get_up": "query.property('property:damage_state') == 'get_up'"
+                        },
+                        {
+                            "damage_killed": "query.property('property:damage_state') == 'killed'"
+                        }
+                    ]
+                },
+                "damage_hurt": {
+                    "animations": [
+                        {
+                            "damage_hurt": "query.property('property:animation_enabled') == true"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.property('property:damage_state') != 'hurt'"
+                        }
+                    ],
+                    "blend_transition": 0,
+                    "blend_via_shortest_path": true
+                },
+                "damage_knockdown": {
+                    "animations": [
+                        {
+                            "damage_knockdown": "query.property('property:animation_enabled') == true"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.property('property:damage_state') != 'knockdown'"
+                        }
+                    ],
+                    "blend_transition": 0,
+                    "blend_via_shortest_path": true
+                },
+                "damage_get_up": {
+                    "animations": [
+                        {
+                            "damage_get_up": "query.property('property:animation_enabled') == true"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.property('property:damage_state') != 'get_up'"
+                        }
+                    ],
+                    "blend_transition": 0,
+                    "blend_via_shortest_path": true
+                },
+                "damage_killed": {
+                    "animations": [
+                        {
+                            "damage_killed": "query.property('property:animation_enabled') == true"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.property('property:damage_state') != 'killed'"
+                        }
+                    ],
+                    "blend_transition": 0,
+                    "blend_via_shortest_path": true
+                }
+            }
+        }
+    }
+}

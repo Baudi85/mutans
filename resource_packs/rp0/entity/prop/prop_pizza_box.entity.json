@@ -1,0 +1,22 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "fs:prop_pizza_box",
+      "render_controllers": [
+        "controller.render.entity.common_variants_c2"
+      ],
+      "geometry": {
+        "variant_0": "geometry.prop_pizza_box",
+        "variant_1": "geometry.prop_pizza_box_open"
+      },
+      "textures": {
+        "variant_0": "textures/entity/prop_pizza_box/prop_pizza_box_v0",
+        "variant_1": "textures/entity/prop_pizza_box/prop_pizza_box_v1"
+      },
+      "materials": {
+        "default": "entity_alphatest"
+      }
+    }
+  }
+}

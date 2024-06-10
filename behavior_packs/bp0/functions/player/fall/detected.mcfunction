@@ -1,0 +1,1 @@
+scoreboard players set @s[scores={fall_tick=..0}] fall_tick 10

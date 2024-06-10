@@ -1,0 +1,1 @@
+execute as @s at @s unless entity @e[r=1,family=enemy] run scoreboard players set @s wave_spawner_a 1

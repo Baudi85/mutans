@@ -1,0 +1,661 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.player.crossbow": {
+            "initial_state": "default",
+            "states": {
+                "charge": {
+                    "animations": [
+                        "third_person_crossbow_equipped"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.get_equipped_item_name != 'crossbow' || (query.item_remaining_use_duration <= 0.0 && !query.item_is_charged)"
+                        },
+                        {
+                            "hold": "query.item_is_charged"
+                        }
+                    ]
+                },
+                "default": {
+                    "transitions": [
+                        {
+                            "hold": "query.item_is_charged"
+                        },
+                        {
+                            "charge": "query.item_remaining_use_duration > 0.0"
+                        }
+                    ]
+                },
+                "hold": {
+                    "animations": [
+                        "crossbow_hold"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.get_equipped_item_name != 'crossbow' || (query.item_remaining_use_duration <= 0.0 && !query.item_is_charged)"
+                        },
+                        {
+                            "charge": "query.item_remaining_use_duration > 0.0"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.first_person_attack": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "melee_0": "variable.attack_time > 0.0f && variable.attack_type == 'melee_0'"
+                        },
+                        {
+                            "melee_1": "variable.attack_time > 0.0f && variable.attack_type == 'melee_1'"
+                        },
+                        {
+                            "melee_2": "variable.attack_time > 0.0f && variable.attack_type == 'melee_2'"
+                        },
+                        {
+                            "combo_0": "variable.attack_time > 0.0f && variable.attack_type == 'combo_0'"
+                        },
+                        {
+                            "combo_1": "variable.attack_time > 0.0f && variable.attack_type == 'combo_1'"
+                        },
+                        {
+                            "combo_2": "variable.attack_time > 0.0f && variable.attack_type == 'combo_2'"
+                        },
+                        {
+                            "combo_3": "variable.attack_time > 0.0f && variable.attack_type == 'combo_3'"
+                        }
+                    ],
+                    "blend_transition": {
+                        "duration": 0.1
+                    },
+                    "blend_via_shortest_path": true
+                },
+                "melee_0": {
+                    "animations": [
+                        {
+                            "player_first_person_leonardo_attack_0": "variable.turtle == 'leonardo'"
+                        },
+                        {
+                            "player_first_person_donatello_attack_0": "variable.turtle == 'donatello'"
+                        },
+                        {
+                            "player_first_person_raphael_attack_0": "variable.turtle == 'raphael'"
+                        },
+                        {
+                            "player_first_person_michelangelo_attack_0": "variable.turtle == 'michelangelo'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "variable.attack_type != 'melee_0'"
+                        }
+                    ],
+                    "blend_transition": {
+                        "duration": 0.1
+                    },
+                    "blend_via_shortest_path": true
+                },
+                "melee_1": {
+                    "animations": [
+                        {
+                            "player_first_person_leonardo_attack_1": "variable.turtle == 'leonardo'"
+                        },
+                        {
+                            "player_first_person_donatello_attack_1": "variable.turtle == 'donatello'"
+                        },
+                        {
+                            "player_first_person_raphael_attack_1": "variable.turtle == 'raphael'"
+                        },
+                        {
+                            "player_first_person_michelangelo_attack_1": "variable.turtle == 'michelangelo'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "variable.attack_type != 'melee_1'"
+                        }
+                    ],
+                    "blend_transition": {
+                        "duration": 0.1
+                    },
+                    "blend_via_shortest_path": true
+                },
+                "melee_2": {
+                    "animations": [
+                        {
+                            "player_first_person_leonardo_attack_2": "variable.turtle == 'leonardo'"
+                        },
+                        {
+                            "player_first_person_donatello_attack_2": "variable.turtle == 'donatello'"
+                        },
+                        {
+                            "player_first_person_raphael_attack_2": "variable.turtle == 'raphael'"
+                        },
+                        {
+                            "player_first_person_michelangelo_attack_2": "variable.turtle == 'michelangelo'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "variable.attack_type != 'melee_2'"
+                        }
+                    ],
+                    "blend_transition": {
+                        "duration": 0.1
+                    },
+                    "blend_via_shortest_path": true
+                },
+                "combo_0": {
+                    "animations": [
+                        {
+                            "player_first_person_leonardo_attack_2": "variable.turtle == 'leonardo'"
+                        },
+                        {
+                            "player_first_person_donatello_attack_2": "variable.turtle == 'donatello'"
+                        },
+                        {
+                            "player_first_person_raphael_attack_2": "variable.turtle == 'raphael'"
+                        },
+                        {
+                            "player_first_person_michelangelo_attack_2": "variable.turtle == 'michelangelo'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.any_animation_finished || variable.attack_type != 'combo_0'"
+                        }
+                    ],
+                    "blend_transition": {
+                        "duration": 0.1
+                    },
+                    "blend_via_shortest_path": true
+                },
+                "combo_1": {
+                    "animations": [
+                        {
+                            "player_first_person_leonardo_attack_2": "variable.turtle == 'leonardo'"
+                        },
+                        {
+                            "player_first_person_donatello_attack_2": "variable.turtle == 'donatello'"
+                        },
+                        {
+                            "player_first_person_raphael_attack_2": "variable.turtle == 'raphael'"
+                        },
+                        {
+                            "player_first_person_michelangelo_attack_2": "variable.turtle == 'michelangelo'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.any_animation_finished || variable.attack_type != 'combo_1'"
+                        }
+                    ],
+                    "blend_transition": {
+                        "duration": 0.1
+                    },
+                    "blend_via_shortest_path": true
+                },
+                "combo_2": {
+                    "animations": [
+                        {
+                            "player_first_person_leonardo_attack_2": "variable.turtle == 'leonardo'"
+                        },
+                        {
+                            "player_first_person_donatello_attack_2": "variable.turtle == 'donatello'"
+                        },
+                        {
+                            "player_first_person_raphael_attack_2": "variable.turtle == 'raphael'"
+                        },
+                        {
+                            "player_first_person_michelangelo_attack_2": "variable.turtle == 'michelangelo'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.any_animation_finished || variable.attack_type != 'combo_2'"
+                        }
+                    ],
+                    "blend_transition": {
+                        "duration": 0.1
+                    },
+                    "blend_via_shortest_path": true
+                },
+                "combo_3": {
+                    "animations": [
+                        {
+                            "player_first_person_leonardo_attack_2": "variable.turtle == 'leonardo'"
+                        },
+                        {
+                            "player_first_person_donatello_attack_2": "variable.turtle == 'donatello'"
+                        },
+                        {
+                            "player_first_person_raphael_attack_2": "variable.turtle == 'raphael'"
+                        },
+                        {
+                            "player_first_person_michelangelo_attack_2": "variable.turtle == 'michelangelo'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.any_animation_finished || variable.attack_type != 'combo_3'"
+                        }
+                    ],
+                    "blend_transition": {
+                        "duration": 0.1
+                    },
+                    "blend_via_shortest_path": true
+                }
+            }
+        },
+        "controller.animation.player.third_person_attack": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "animations": [
+                        {
+                            "player_third_person_leonardo_idle": "variable.turtle == 'leonardo' && query.modified_move_speed <= 0.1 && !variable.is_skateboarding_or_surfing"
+                        },
+                        {
+                            "player_third_person_donatello_idle": "variable.turtle == 'donatello' && query.modified_move_speed <= 0.1 && !variable.is_skateboarding_or_surfing"
+                        },
+                        {
+                            "player_third_person_raphael_idle": "variable.turtle == 'raphael' && query.modified_move_speed <= 0.1 && !variable.is_skateboarding_or_surfing"
+                        },
+                        {
+                            "player_third_person_michelangelo_idle": "variable.turtle == 'michelangelo' && query.modified_move_speed <= 0.1 && !variable.is_skateboarding_or_surfing"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "melee_0": "variable.attack_time > 0.0f && variable.attack_type == 'melee_0'"
+                        },
+                        {
+                            "melee_1": "variable.attack_time > 0.0f && variable.attack_type == 'melee_1'"
+                        },
+                        {
+                            "melee_2": "variable.attack_time > 0.0f && variable.attack_type == 'melee_2'"
+                        },
+                        {
+                            "combo_0": "variable.attack_time > 0.0f && variable.attack_type == 'combo_0'"
+                        },
+                        {
+                            "combo_1": "variable.attack_time > 0.0f && variable.attack_type == 'combo_1'"
+                        },
+                        {
+                            "combo_2": "variable.attack_time > 0.0f && variable.attack_type == 'combo_2'"
+                        },
+                        {
+                            "combo_3": "variable.attack_time > 0.0f && variable.attack_type == 'combo_3'"
+                        }
+                    ]
+                },
+                "melee_0": {
+                    "animations": [
+                        {
+                            "player_third_person_leonardo_attack_0": "variable.turtle == 'leonardo'"
+                        },
+                        {
+                            "player_third_person_donatello_attack_0": "variable.turtle == 'donatello'"
+                        },
+                        {
+                            "player_third_person_raphael_attack_0": "variable.turtle == 'raphael'"
+                        },
+                        {
+                            "player_third_person_michelangelo_attack_0": "variable.turtle == 'michelangelo'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "variable.attack_type != 'melee_0'"
+                        }
+                    ]
+                },
+                "melee_1": {
+                    "animations": [
+                        {
+                            "player_third_person_leonardo_attack_1": "variable.turtle == 'leonardo'"
+                        },
+                        {
+                            "player_third_person_donatello_attack_1": "variable.turtle == 'donatello'"
+                        },
+                        {
+                            "player_third_person_raphael_attack_1": "variable.turtle == 'raphael'"
+                        },
+                        {
+                            "player_third_person_michelangelo_attack_1": "variable.turtle == 'michelangelo'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "variable.attack_type != 'melee_1'"
+                        }
+                    ]
+                },
+                "melee_2": {
+                    "animations": [
+                        {
+                            "player_third_person_leonardo_attack_2": "variable.turtle == 'leonardo'"
+                        },
+                        {
+                            "player_third_person_donatello_attack_2": "variable.turtle == 'donatello'"
+                        },
+                        {
+                            "player_third_person_raphael_attack_2": "variable.turtle == 'raphael'"
+                        },
+                        {
+                            "player_third_person_michelangelo_attack_2": "variable.turtle == 'michelangelo'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "variable.attack_type != 'melee_2'"
+                        }
+                    ]
+                },
+                "combo_0": {
+                    "animations": [
+                        {
+                            "player_third_person_leonardo_attack_2": "variable.turtle == 'leonardo'"
+                        },
+                        {
+                            "player_third_person_donatello_attack_2": "variable.turtle == 'donatello'"
+                        },
+                        {
+                            "player_third_person_raphael_attack_2": "variable.turtle == 'raphael'"
+                        },
+                        {
+                            "player_third_person_michelangelo_attack_2": "variable.turtle == 'michelangelo'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "variable.attack_type != 'combo_0'"
+                        }
+                    ]
+                },
+                "combo_1": {
+                    "animations": [
+                        {
+                            "player_third_person_leonardo_attack_2": "variable.turtle == 'leonardo'"
+                        },
+                        {
+                            "player_third_person_donatello_attack_2": "variable.turtle == 'donatello'"
+                        },
+                        {
+                            "player_third_person_raphael_attack_2": "variable.turtle == 'raphael'"
+                        },
+                        {
+                            "player_third_person_michelangelo_attack_2": "variable.turtle == 'michelangelo'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "variable.attack_type != 'combo_1'"
+                        }
+                    ]
+                },
+                "combo_2": {
+                    "animations": [
+                        {
+                            "player_third_person_leonardo_attack_2": "variable.turtle == 'leonardo'"
+                        },
+                        {
+                            "player_third_person_donatello_attack_2": "variable.turtle == 'donatello'"
+                        },
+                        {
+                            "player_third_person_raphael_attack_2": "variable.turtle == 'raphael'"
+                        },
+                        {
+                            "player_third_person_michelangelo_attack_2": "variable.turtle == 'michelangelo'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "variable.attack_type != 'combo_2'"
+                        }
+                    ]
+                },
+                "combo_3": {
+                    "animations": [
+                        {
+                            "player_third_person_leonardo_attack_2": "variable.turtle == 'leonardo'"
+                        },
+                        {
+                            "player_third_person_donatello_attack_2": "variable.turtle == 'donatello'"
+                        },
+                        {
+                            "player_third_person_raphael_attack_2": "variable.turtle == 'raphael'"
+                        },
+                        {
+                            "player_third_person_michelangelo_attack_2": "variable.turtle == 'michelangelo'"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "variable.attack_type != 'combo_3'"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.first_person_map": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "one_hand": "query.get_equipped_item_name('off_hand') == 'filled_map' || query.get_equipped_item_name('off_hand') == 'shield'"
+                        },
+                        {
+                            "two_hand": "query.get_equipped_item_name('off_hand') != 'filled_map' && query.get_equipped_item_name('off_hand') != 'shield'"
+                        }
+                    ]
+                },
+                "one_hand": {
+                    "animations": [
+                        {
+                            "first_person_map_hold_main_hand": "query.get_equipped_item_name(0, 1) == 'filled_map'"
+                        },
+                        {
+                            "first_person_map_hold_off_hand": "query.get_equipped_item_name('off_hand') == 'filled_map' && (query.get_equipped_item_name == 'bow' ? !(variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0) : 1.0)"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.get_equipped_item_name(0, 1) != 'filled_map' && query.get_equipped_item_name('off_hand') != 'filled_map'"
+                        },
+                        {
+                            "two_hand": "query.get_equipped_item_name('off_hand') != 'filled_map' && query.get_equipped_item_name('off_hand') != 'shield'"
+                        }
+                    ]
+                },
+                "two_hand": {
+                    "animations": [
+                        "first_person_map_hold",
+                        "first_person_map_hold_attack"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "query.get_equipped_item_name(0, 1) != 'filled_map' && query.get_equipped_item_name('off_hand') != 'filled_map'"
+                        },
+                        {
+                            "one_hand": "query.get_equipped_item_name('off_hand') == 'filled_map' || query.get_equipped_item_name('off_hand') == 'shield'"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.player.root": {
+            "initial_state": "first_person",
+            "states": {
+                "first_person": {
+                    "animations": [
+                        {
+                            "first_person_shield_block": "variable.turtle == 'none' && query.blocking"
+                        },
+                        {
+                            "first_person_attack_controller": "query.get_equipped_item_name != 'filled_map'"
+                        },
+                        "first_person_base_pose",
+                        {
+                            "first_person_empty_hand": "variable.turtle == 'none' && query.get_equipped_item_name(0, 1) != 'filled_map'"
+                        },
+                        {
+                            "first_person_walk": "variable.bob_animation"
+                        },
+                        {
+                            "first_person_map_controller": "(query.get_equipped_item_name(0, 1) == 'filled_map' || query.get_equipped_item_name('off_hand') == 'filled_map')"
+                        },
+                        {
+                            "first_person_crossbow_equipped": "query.get_equipped_item_name == 'crossbow' && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)"
+                        },
+                        {
+                            "first_person_breathing_bob": "variable.attack_time <= 0.0"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "paperdoll": "variable.is_paperdoll"
+                        },
+                        {
+                            "map_player": "variable.map_face_icon"
+                        },
+                        {
+                            "third_person": "!variable.is_first_person"
+                        }
+                    ]
+                },
+                "map_player": {
+                    "transitions": [
+                        {
+                            "paperdoll": "variable.is_paperdoll"
+                        },
+                        {
+                            "first_person": "variable.is_first_person"
+                        },
+                        {
+                            "third_person": "!variable.map_face_icon && !variable.is_first_person"
+                        }
+                    ]
+                },
+                "paperdoll": {
+                    "animations": [
+                        "humanoid_base_pose",
+                        "look_at_target_ui",
+                        "move.arms",
+                        "move.legs",
+                        "cape"
+                    ],
+                    "transitions": [
+                        {
+                            "first_person": "!variable.is_paperdoll && variable.is_first_person"
+                        },
+                        {
+                            "map_player": "variable.map_face_icon"
+                        },
+                        {
+                            "third_person": "!variable.is_paperdoll && !variable.is_first_person"
+                        }
+                    ]
+                },
+                "third_person": {
+                    "animations": [
+                        "humanoid_base_pose",
+                        {
+                            "player_third_person_common_downed": "variable.damage_type == 'is_downed'"
+                        },
+                        {
+                            "look_at_target": "!query.is_sleeping && !query.is_emoting"
+                        },
+                        {
+                            "move.arms": "!variable.is_skateboarding_or_surfing && variable.attack_type == 'none'"
+                        },
+                        {
+                            "move.legs": "!variable.is_skateboarding_or_surfing"
+                        },
+                        "cape",
+                        {
+                            "skateboarding_moving": "query.is_riding && variable.is_skateboarding_or_surfing"
+                        },
+                        {
+                            "riding.arms": "query.is_riding && !variable.is_skateboarding_or_surfing"
+                        },
+                        {
+                            "riding.legs": "query.is_riding && !variable.is_skateboarding_or_surfing"
+                        },
+                        "holding",
+                        {
+                            "brandish_spear": "variable.is_brandishing_spear"
+                        },
+                        {
+                            "holding_spyglass": "variable.is_holding_spyglass"
+                        },
+                        {
+                            "charging": "query.is_charging"
+                        },
+                        {
+                            "sneaking": "query.is_sneaking && !query.is_sleeping && !variable.is_skateboarding_or_surfing"
+                        },
+                        {
+                            "bob": "!variable.is_skateboarding_or_surfing"
+                        },
+                        {
+                            "damage_nearby_mobs": "variable.damage_nearby_mobs"
+                        },
+                        {
+                            "swimming": "variable.swim_amount > 0.0"
+                        },
+                        {
+                            "swimming.legs": "variable.swim_amount > 0.0"
+                        },
+                        {
+                            "use_item_progress": "( variable.use_item_interval_progress > 0.0 ) || ( variable.use_item_startup_progress > 0.0 ) && !variable.is_brandishing_spear && !variable.is_holding_spyglass && !variable.is_tooting_goat_horn && !query.is_item_name_any('slot.weapon.mainhand', 'minecraft:bow')"
+                        },
+                        {
+                            "sleeping": "query.is_sleeping && query.is_alive"
+                        },
+                        {
+                            "attack.positions": "variable.attack_time >= 0.0 && variable.turtle == 'none'"
+                        },
+                        {
+                            "attack.rotations": "variable.attack_time >= 0.0 && variable.turtle == 'none'"
+                        },
+                        {
+                            "third_person_attack_controller": "variable.turtle != 'none'"
+                        },
+                        {
+                            "shield_block_main_hand": "query.blocking && query.get_equipped_item_name('off_hand') != 'shield' && query.get_equipped_item_name == 'shield'"
+                        },
+                        {
+                            "shield_block_off_hand": "query.blocking && query.get_equipped_item_name('off_hand') == 'shield'"
+                        },
+                        {
+                            "crossbow_controller": "query.get_equipped_item_name == 'crossbow'"
+                        },
+                        {
+                            "third_person_bow_equipped": "query.get_equipped_item_name == 'bow' && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)"
+                        },
+                        {
+                            "tooting_goat_horn": "variable.is_tooting_goat_horn"
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "paperdoll": "variable.is_paperdoll"
+                        },
+                        {
+                            "first_person": "variable.is_first_person"
+                        },
+                        {
+                            "map_player": "variable.map_face_icon"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

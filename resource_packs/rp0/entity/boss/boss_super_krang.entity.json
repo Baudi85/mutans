@@ -1,0 +1,59 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:boss_super_krang",
+            "render_controllers": [
+                "controller.render.boss.common"
+            ],
+            "geometry": {
+                "variant_0": "geometry.boss_super_krang"
+            },
+            "textures": {
+                "variant_default": "textures/entity/boss_super_krang/boss_super_krang_v0",
+                "variant_hit": "textures/entity/boss_super_krang/boss_super_krang_v0_hit",
+                "variant_knockdown": "textures/entity/boss_super_krang/boss_super_krang_v0_knockdown"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "animations": {
+                "movement_appear": "animation.boss_super_krang.movement_appear",
+                "movement_idle": "animation.boss_super_krang.movement_idle",
+                "movement_default": "animation.boss_super_krang.movement_default",
+                "movement_slow": "animation.boss_super_krang.movement_default",
+                "movement_fast": "animation.boss_super_krang.movement_default",
+                "movement_jump": "animation.boss_empty.movement_jump",
+                "movement_shocked": "animation.boss_empty.movement_shocked",
+                "action_taunt": "animation.boss_super_krang.action_taunt",
+                "action_shocked": "animation.boss_empty.action_shocked",
+                "action_vanish": "animation.boss_empty.action_vanish",
+                "attack_melee": "animation.boss_super_krang.attack_melee",
+                "attack_ranged": "animation.boss_super_krang.attack_ranged",
+                "attack_dash": "animation.boss_empty.attack_dash",
+                "attack_jump": "animation.boss_empty.movement_jump",
+                "attack_block": "animation.boss_empty.attack_block",
+                "damage_hurt": "animation.boss_super_krang.damage_hurt",
+                "damage_knockdown": "animation.boss_super_krang.damage_hurt",
+                "damage_get_up": "animation.boss_empty.damage_get_up",
+                "damage_killed": "animation.boss_super_krang.damage_killed",
+                "movement_alt": "animation.boss_super_krang.movement_portal_dive",
+                "action_custom_0": "animation.boss_empty.action_custom_0",
+                "attack_ranged_alt": "animation.boss_empty.attack_ranged_alt",
+                "controller_movement": "controller.animation.boss.movement",
+                "controller_attack": "controller.animation.boss.attack",
+                "controller_damage": "controller.animation.boss.damage",
+                "controller_action": "controller.animation.boss.action"
+            },
+            "scripts": {
+                "animate": [
+                    "controller_movement",
+                    "controller_attack",
+                    "controller_damage",
+                    "controller_action"
+                ],
+                "should_update_bones_and_effects_offscreen": true
+            }
+        }
+    }
+}

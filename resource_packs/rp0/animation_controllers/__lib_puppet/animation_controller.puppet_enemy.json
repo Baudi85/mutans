@@ -1,0 +1,139 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.puppet_enemy.pose": {
+            "states": {
+                "default": {
+                    "animations": [                        
+                        {
+                            "enemy_0_pose_0": "query.variant == 0 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_0_pose_1": "query.variant == 0 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_1_pose_0": "query.variant == 1 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_1_pose_1": "query.variant == 1 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_2_pose_0": "query.variant == 2 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_2_pose_1": "query.variant == 2 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_3_pose_0": "query.variant == 3 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_3_pose_1": "query.variant == 3 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_4_pose_0": "query.variant == 4 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_4_pose_1": "query.variant == 4 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_5_pose_0": "query.variant == 5 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_5_pose_1": "query.variant == 5 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_6_pose_0": "query.variant == 6 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_6_pose_1": "query.variant == 6 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_7_pose_0": "query.variant == 7 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_7_pose_1": "query.variant == 7 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_8_pose_0": "query.variant == 8 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_8_pose_1": "query.variant == 8 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_9_pose_0": "query.variant == 9 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_9_pose_1": "query.variant == 9 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_10_pose_0": "query.variant == 10 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_10_pose_1": "query.variant == 10 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_11_pose_0": "query.variant == 11 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_11_pose_1": "query.variant == 11 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_12_pose_0": "query.variant == 12 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_12_pose_1": "query.variant == 12 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_13_pose_0": "query.variant == 13 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_13_pose_1": "query.variant == 13 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_14_pose_0": "query.variant == 14 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_14_pose_1": "query.variant == 14 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_15_pose_0": "query.variant == 15 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_15_pose_1": "query.variant == 15 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_16_pose_0": "query.variant == 16 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_16_pose_1": "query.variant == 16 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_17_pose_0": "query.variant == 17 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_17_pose_1": "query.variant == 17 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_18_pose_0": "query.variant == 18 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_18_pose_1": "query.variant == 18 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_19_pose_0": "query.variant == 19 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_19_pose_1": "query.variant == 19 && query.mark_variant == 1"
+                        },                
+                        {
+                            "enemy_20_pose_0": "query.variant == 20 && query.mark_variant == 0"
+                        },                    
+                        {
+                            "enemy_20_pose_1": "query.variant == 20 && query.mark_variant == 1"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

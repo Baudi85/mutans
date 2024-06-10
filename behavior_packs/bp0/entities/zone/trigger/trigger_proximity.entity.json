@@ -1,0 +1,190 @@
+{
+    "format_version": "1.19.60",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:trigger_proximity",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            },
+            "fs:trigger_proximity_teleport_zone": {
+                "minecraft:type_family": {
+                    "family": [
+                        "trigger",
+                        "trigger_proximity",
+                        "teleport",
+                        "teleport_zone"
+                    ]
+                }
+            },
+            "fs:trigger_proximity_teleport_level": {
+                "minecraft:type_family": {
+                    "family": [
+                        "trigger",
+                        "trigger_proximity",
+                        "teleport",
+                        "teleport_level"
+                    ]
+                }
+            },
+            "fs:entity_nearby": {
+                "minecraft:type_family": {
+                    "family": [
+                        "trigger",
+                        "trigger_proximity",
+                        "entity_nearby"
+                    ]
+                }
+            },
+            "fs:entity_nearby_teleport_zone": {
+                "minecraft:type_family": {
+                    "family": [
+                        "trigger",
+                        "trigger_proximity",
+                        "teleport",
+                        "entity_nearby_teleport_zone"
+                    ]
+                }
+            },
+            "fs:entity_nearby_teleport_level": {
+                "minecraft:type_family": {
+                    "family": [
+                        "trigger",
+                        "trigger_proximity",
+                        "teleport",
+                        "entity_nearby_teleport_level"
+                    ]
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "trigger",
+                    "trigger_proximity"
+                ]
+            },
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            },
+            "minecraft:scale": {
+                "value": 0.0
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:collision_box": {
+                "height": 0,
+                "width": 0
+            },
+            "minecraft:entity_sensor": {
+                "maximum_count": -1,
+                "minimum_count": 1,
+                "relative_range": true,
+                "require_all": false,
+                "sensor_range": 3,
+                "event": "fs:entity_nearby",
+                "event_filters": [
+                    {
+                        "all_of": [
+                            {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "player"
+                            },
+                            {
+                                "test": "has_tag",
+                                "subject": "other",
+                                "operator": "not",
+                                "value": "is_camera"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "events": {
+            "fs:instant_despawn": {
+                "add": {
+                    "component_groups": [
+                        "fs:instant_despawn"
+                    ]
+                }
+            },
+            "fs:trigger_proximity_teleport_zone": {
+                "add": {
+                    "component_groups": [
+                        "fs:trigger_proximity_teleport_zone"
+                    ]
+                }
+            },
+            "fs:trigger_proximity_teleport_level": {
+                "add": {
+                    "component_groups": [
+                        "fs:trigger_proximity_teleport_level"
+                    ]
+                }
+            },
+            "fs:entity_nearby": {
+                "sequence": [
+                    {
+                        "filters": [
+                            {
+                                "test": "is_family",
+                                "value": "teleport_zone"
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:entity_nearby_teleport_zone"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_family",
+                                "value": "teleport_level"
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:entity_nearby_teleport_level"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": [
+                            {
+                                "test": "is_family",
+                                "operator": "not",
+                                "value": "teleport"
+                            }
+                        ],
+                        "add": {
+                            "component_groups": [
+                                "fs:entity_nearby"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

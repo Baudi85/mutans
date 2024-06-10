@@ -1,0 +1,34 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "fs:vehicle_van",
+      "spawn_egg": {
+        "base_color": "#000000",
+        "overlay_color": "#000000"
+      },
+      "render_controllers": [
+        "controller.render.vehicle.common"
+      ],
+      "geometry": {
+        "variant_0": "geometry.vehicle_van"
+      },
+      "textures": {
+        "variant_0": "textures/entity/vehicle_van/vehicle_van_v0"
+      },
+      "materials": {
+        "default": "entity"
+      },
+      "animations": {
+        "animation_idle": "animation.vehicle.van.idle",
+        "animation_movement": "animation.vehicle.van.movement",
+        "animation_controller": "controller.animation.vehicle.van.animate"
+      },
+      "scripts": {
+        "animate": [
+          "animation_controller"
+        ]
+      }
+    }
+  }
+}

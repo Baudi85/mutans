@@ -1,0 +1,58 @@
+// @(com.57digital.shulker.generated)
+// @generated File (generated via ShulkerScript: <BP> dialogue/config/pre_fight/pre_fight_baxter_stockman.js)
+{
+	"format_version": "1.17",
+	"minecraft:npc_dialogue": {
+		"scenes": [
+			{
+				"scene_tag": "pre_fight_baxter_stockman_1",
+				"npc_name": {
+					"rawtext": [
+						{
+							/* "Baxter Stockman" (@noloc)*/
+							"translate": "pre_fight_baxter_stockman_1name"
+						}
+					]
+				},
+				"text": {
+					"rawtext": [
+						{
+							/* "I guess I'll have to deal you before getting back to my work! Prepare to get swatted!" (Baxter Stockman warns the Turtles they'll have to fight)*/
+							"translate": "pre_fight_baxter_stockman_1msg"
+						},
+						{
+							"text": "§f§1§3§3§7§f§0§1§f"
+						}
+					]
+				},
+				"buttons": [
+					{
+						"name": "45daf1t05z50",
+						"commands": [
+							"/function zone_utils/trigger_next_zone_as_game"
+						]
+					}
+				],
+				"on_open_commands": [
+					"/tag @initiator remove did_req_dlg",
+					"/execute as @a run function utils/remove_dlg_tags",
+					"/execute as @initiator[tag=!dlg.did_segue] run playsound fs.dlg.open @s[scores={s_sfx_enabled=1}]",
+					"/tag @initiator add player.in_ui",
+					"/tag @initiator remove dlg.did_segue",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§epre_fight_baxter_stockman_1§7].§2DidOpen§7\"}]}",
+					"/scoreboard players add @a __is_host 0",
+					"/execute as @a[scores={__is_host=0}] run function dlg/pre_fight_baxter_stockman_1_m"
+				],
+				"on_close_commands": [
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§eDid run on_close_commands\"}]}",
+					"/tag @s remove particle_emitter",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§epre_fight_baxter_stockman_1§7].§4CloseFn§7: Aborted due to segue.\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§epre_fight_baxter_stockman_1§7].§eDidNotSegue...\"}]}",
+					"/tag @initiator remove player.in_ui",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§epre_fight_baxter_stockman_1§7].§4DidClose§7\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] run function ui/m/close_ui"
+				]
+			}
+		]
+	}
+}

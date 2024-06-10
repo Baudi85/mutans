@@ -1,0 +1,1 @@
+say Run: events/player/did_ok_pre_tempestra

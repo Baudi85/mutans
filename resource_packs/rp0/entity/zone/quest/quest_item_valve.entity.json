@@ -1,0 +1,30 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "fs:quest_item_valve",
+            "render_controllers": [
+                "controller.render.prop.common"
+            ],
+            "geometry": {
+                "variant_0": "geometry.quest_item_valve"
+            },
+            "textures": {
+                "variant_0": "textures/entity/quest_item_valve/quest_item_valve_v0"
+            },
+            "materials": {
+                "default": "entity"
+            },
+            "animations": {
+                "toggle_on": "animation.quest_item_valve.toggle_on"
+            },
+            "scripts": {
+                "animate": [
+                    {
+                        "toggle_on": "query.variant == 1"
+                    }
+                ]
+            }
+        }
+    }
+}

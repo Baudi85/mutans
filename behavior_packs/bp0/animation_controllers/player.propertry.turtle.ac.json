@@ -1,0 +1,84 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.player.property.turtle": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "none": "query.property('property:turtle') == 'none'"
+                        },
+                        {
+                            "leonardo": "query.property('property:turtle') == 'leonardo'"
+                        },
+                        {
+                            "raphael": "query.property('property:turtle') == 'raphael'"
+                        },
+                        {
+                            "donatello": "query.property('property:turtle') == 'donatello'"
+                        },
+                        {
+                            "michelangelo": "query.property('property:turtle') == 'michelangelo'"
+                        }
+                    ]
+                },
+                "none": {
+                    "transitions": [
+                        {
+                            "default": "query.property('property:turtle') != 'none'"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s turtle_type 0",
+                        "/function events/player/did_change_turtle_type"
+                    ]
+                },
+                "leonardo": {
+                    "transitions": [
+                        {
+                            "default": "query.property('property:turtle') != 'leonardo'"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s turtle_type 1",
+                        "/function events/player/did_change_turtle_type"
+                    ]
+                },
+                "raphael": {
+                    "transitions": [
+                        {
+                            "default": "query.property('property:turtle') != 'raphael'"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s turtle_type 2",
+                        "/function events/player/did_change_turtle_type"
+                    ]
+                },
+                "donatello": {
+                    "transitions": [
+                        {
+                            "default": "query.property('property:turtle') != 'donatello'"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s turtle_type 3",
+                        "/function events/player/did_change_turtle_type"
+                    ]
+                },
+                "michelangelo": {
+                    "transitions": [
+                        {
+                            "default": "query.property('property:turtle') != 'michelangelo'"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players set @s turtle_type 4",
+                        "/function events/player/did_change_turtle_type"
+                    ]
+                }
+            }
+        }
+    }
+}

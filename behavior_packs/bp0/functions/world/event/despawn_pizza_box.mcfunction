@@ -1,0 +1,1 @@
+event entity @e[type=fs:prop_pizza_box] fs:instant_despawn

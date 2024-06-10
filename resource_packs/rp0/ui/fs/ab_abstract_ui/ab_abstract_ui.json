@@ -1,0 +1,638 @@
+{
+  "namespace": "ab_abstract_ui",
+  "frame_overlay": {
+    "type": "image",
+    "texture": "textures/ui/dlg/frame",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "alpha": 1,
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "layer": 100
+  },
+  "template_bg_chrome ": {
+    "type": "image",
+    "texture": "textures/ui/Black",
+    "size": ["150%", "150%"],
+    "alpha": 0.75,
+    "anims": [
+      "@ab_abstract_ui.chrome_dlg_animate_in",
+      "@ab_abstract_ui.chrome_dlg_animate_out"
+    ]
+  },
+  "frame_wide_overlay": {
+    "type": "image",
+    "texture": "textures/ui/dlg/frame",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "alpha": 1.0,
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "layer": 100
+  },
+  "template_responsive_panel": {
+    "type": "panel", 
+    "$size|default": ["80%", "80%"],
+    "$dlg_pane_offset|default": [0, 0],
+    "max_size": ["500px", "100%x"],
+    "propagate_alpha": true,
+    "size": "($size)",
+    "offset": "($dlg_pane_offset)",
+    // "animation_reset_name": "screen_animation_reset",
+    "anims": [
+      "@ab_abstract_ui.dlg_animate_in_$dlg_style",
+      "@ab_abstract_ui.dlg_animate_fade_in_$dlg_style",
+      "@ab_abstract_ui.dlg_animate_out_$dlg_style"
+      // "@ab_abstract_ui.dlg_animate_fade_out"
+    ],
+    "$actor_panel_id|default": "ab_common_dlg.null_actor_panel",
+    "visible": false,
+    "$ignore_close_button|default": false,
+    "layer": 1000,
+    "controls": [
+      {
+        "_render@$actor_panel_id": {
+        }
+      },
+      {
+        "_panel_blanker@panel_blanker": {}
+      },
+      {
+        "_responsive_panel_frame@responsive_panel_frame": {
+          "controls": [
+            {
+              "_panel_backing@panel_backing": {
+                "clips_children": true,
+                "allow_clipping": true,
+                "layer": 9999,
+                "controls": [
+                  {
+                    "panel@$content_panel_id": {
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "_panel_footer_cover@panel_footer_cover": {}
+      },
+      {
+        "_panel_title_container@panel_title_container": {}
+      },
+      {
+        "_panel_title_right_item_container@panel_title_right_item_container": {}
+      },
+      {
+        "_panel_title_left_item_container@panel_title_left_item_container": {}
+      }
+      // {
+      //   "fallback_bg": {
+      //     "type": "custom",
+      //     "renderer": "gradient_renderer",
+      //     "color1": [
+      //       0.0627450980392157,
+      //       0.1607843137254902,
+      //       0.5176470588235294,
+      //       1
+      //     ],
+      //     "color2": [
+      //       0.0431372549019608,
+      //       0.1098039215686275,
+      //       0.396078431372549,
+      //       1
+      //     ],
+      //     "size": ["99%", "99%"],
+      //     "layer": -100
+      //   }
+      // }
+    ]
+  },
+  
+
+  // =========== Animations =================
+
+  // === Default ==
+  "dlg_animate_in_default": {
+    "anim_type": "offset",
+    "to": [0, 0],
+    "from": [0, "50%"],
+    "easing": "out_quad",
+    "duration": "($transition_time_push / 2)",
+    "resettable": true,
+    "play_event": "screen.entrance_push",
+    "end_event": "screen.entrance_end"
+  },
+  "dlg_animate_out_default": {
+    "anim_type": "offset",
+    "to": [0, "-100%"],
+    "from": [0, 0],
+    "easing": "in_quad",
+    "duration": "($transition_time_pop / 2)",
+    "resettable": true,
+    "play_event": "screen.exit_pop",
+    "reset_event": "screen.exit_end"
+  },
+  "dlg_animate_fade_in_default": {
+    "anim_type": "alpha",
+    "to": 1,
+    "from": 0.33,
+    "easing": "out_quad",
+    "duration": "($transition_time_push)",
+    "resettable": false,
+    "play_event": "screen.entrance_push",
+    "end_event": "screen.entrance_end"
+  },
+  "dlg_animate_fade_out_default": {
+    "anim_type": "alpha",
+    "to": 0.33,
+    "from": 1,
+    "easing": "in_quad",
+    "duration": "($transition_time_push / 2)",
+    "resettable": true,
+    "play_event": "screen.exit_pop",
+    "reset_event": "screen.exit_end"
+  },
+
+
+
+   // === reader ==
+   "dlg_animate_in_reader": {
+    "anim_type": "offset",
+    "to": [0, 0],
+    "from": [0, "50%"],
+    "easing": "out_quad",
+    "duration": "($transition_time_push / 2)",
+    "resettable": true,
+    "play_event": "screen.entrance_push",
+    "end_event": "screen.entrance_end"
+  },
+  "dlg_animate_out_reader": {
+    "anim_type": "offset",
+    "to": [0, "-100%"],
+    "from": [0, 0],
+    "easing": "in_quad",
+    "duration": "($transition_time_pop / 2)",
+    "resettable": true,
+    "play_event": "screen.exit_pop",
+    "reset_event": "screen.exit_end"
+  },
+  "dlg_animate_fade_in_reader": {
+    "anim_type": "alpha",
+    "to": 1,
+    "from": 0.33,
+    "easing": "out_quad",
+    "duration": "($transition_time_push)",
+    "resettable": false,
+    "play_event": "screen.entrance_push",
+    "end_event": "screen.entrance_end"
+  },
+  "dlg_animate_fade_out_reader": {
+    "anim_type": "alpha",
+    "to": 0.33,
+    "from": 1,
+    "easing": "in_quad",
+    "duration": "($transition_time_push / 2)",
+    "resettable": true,
+    "play_event": "screen.exit_pop",
+    "reset_event": "screen.exit_end"
+  },
+
+  // === buttons ==
+  "dlg_animate_in_buttons": {
+    "anim_type": "offset",
+    "to": [0, 0],
+    "from": [0, "50%"],
+    "easing": "out_quad",
+    "duration": "($transition_time_push / 2)",
+    "resettable": true,
+    "play_event": "screen.entrance_push",
+    "end_event": "screen.entrance_end"
+  },
+  "dlg_animate_out_buttons": {
+    "anim_type": "offset",
+    "to": [0, "-100%"],
+    "from": [0, 0],
+    "easing": "in_quad",
+    "duration": "($transition_time_pop / 2)",
+    "resettable": true,
+    "play_event": "screen.exit_pop",
+    "reset_event": "screen.exit_end"
+  },
+  "dlg_animate_fade_in_buttons": {
+    "anim_type": "alpha",
+    "to": 1,
+    "from": 0.33,
+    "easing": "out_quad",
+    "duration": "($transition_time_push)",
+    "resettable": false,
+    "play_event": "screen.entrance_push",
+    "end_event": "screen.entrance_end"
+  },
+  "dlg_animate_fade_out_buttons": {
+    "anim_type": "alpha",
+    "to": 0.33,
+    "from": 1,
+    "easing": "in_quad",
+    "duration": "($transition_time_push / 2)",
+    "resettable": true,
+    "play_event": "screen.exit_pop",
+    "reset_event": "screen.exit_end"
+  },
+
+  // === Actor Left ==
+  "dlg_animate_in_actor_left": {
+    "anim_type": "offset",
+    "to": ["15%", 0],
+    "from": ["15%", "50%"],
+    "easing": "out_quad",
+    "duration": "($transition_time_push / 2)",
+    "resettable": true,
+    "play_event": "screen.entrance_push",
+    "end_event": "screen.entrance_end"
+  },
+  "dlg_animate_out_actor_left": {
+    "anim_type": "offset",
+    "to": ["15%", "-100%"],
+    "from": ["15%", 0],
+    "easing": "in_quad",
+    "duration": "($transition_time_pop / 2)",
+    "resettable": true,
+    "play_event": "screen.exit_pop",
+    "reset_event": "screen.exit_end"
+  },
+  "dlg_animate_fade_in_actor_left": {
+    "anim_type": "alpha",
+    "to": 1,
+    "from": 0.33,
+    "easing": "out_quad",
+    "duration": "($transition_time_push)",
+    "resettable": false,
+    "play_event": "screen.entrance_push",
+    "end_event": "screen.entrance_end"
+  },
+  "dlg_animate_fade_out_actor_left": {
+    "anim_type": "alpha",
+    "to": 0.33,
+    "from": 1,
+    "easing": "in_quad",
+    "duration": "($transition_time_push / 2)",
+    "resettable": true,
+    "play_event": "screen.exit_pop",
+    "reset_event": "screen.exit_end"
+  },
+
+  // === Actor Right ==
+  "dlg_animate_in_actor_right": {
+    "anim_type": "offset",
+    "to": ["-15%", 0],
+    "from": ["-15%", "50%"],
+    "easing": "out_quad",
+    "duration": "($transition_time_push / 2)",
+    "resettable": true,
+    "play_event": "screen.entrance_push",
+    "end_event": "screen.entrance_end"
+  },
+  "dlg_animate_out_actor_right": {
+    "anim_type": "offset",
+    "to": ["-15%", "-100%"],
+    "from": ["-15%", 0],
+    "easing": "in_quad",
+    "duration": "($transition_time_pop / 2)",
+    "resettable": true,
+    "play_event": "screen.exit_pop",
+    "reset_event": "screen.exit_end"
+  },
+  "dlg_animate_fade_in_actor_right": {
+    "anim_type": "alpha",
+    "to": 1,
+    "from": 0.33,
+    "easing": "out_quad",
+    "duration": "($transition_time_push)",
+    "resettable": false,
+    "play_event": "screen.entrance_push",
+    "end_event": "screen.entrance_end"
+  },
+  "dlg_animate_fade_out_actor_right": {
+    "anim_type": "alpha",
+    "to": 0.33,
+    "from": 1,
+    "easing": "in_quad",
+    "duration": "($transition_time_push / 2)",
+    "resettable": true,
+    "play_event": "screen.exit_pop",
+    "reset_event": "screen.exit_end"
+  },
+
+  // == Chrome (BG) ==
+  "chrome_dlg_animate_in": {
+    "anim_type": "alpha",
+    "to": 0.75,
+    "from": 0,
+    "easing": "out_quad",
+    "duration": "($transition_time_push)",
+    "resettable": true,
+    "play_event": "screen.entrance_push",
+    "end_event": "screen.entrance_end"
+  },
+  "chrome_dlg_animate_out": {
+    "anim_type": "alpha",
+    "to": 0,
+    "from": 0.75,
+    "easing": "in_quad",
+    "duration": "($transition_time_pop)",
+    "resettable": true,
+    "play_event": "screen.exit_pop",
+    "reset_event": "screen.exit_end"
+  },
+  // ===================================
+
+  "panel_footer_cover": {
+    "type": "image",
+    "texture": "textures/ui/Black",
+    "alpha": 1,
+    "size": ["100%", "5px"],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "layer": 999999,
+    "clips_children": true,
+    "controls": [
+      {
+        "_footer_cover": {
+          "type": "image",
+          "texture": "textures/ui/dlg/frame_fg",
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "alpha": 1,
+          "size": ["100%", "10px"]
+        }
+      }
+    ]
+  },
+
+  "responsive_panel_frame": {
+    "type": "image",
+    "texture": "textures/ui/dlg/frame_fg2",
+    "alpha": 1,
+    "size": ["100%", "100%"],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "layer": 10000,
+    "controls": [
+    ]
+  },
+
+  "panel_backing": {
+    "type": "panel",
+    "size": ["97%", "100% - 28px"],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "offset": ["0%", "10.8px"],
+    "clips_children": true,
+    "allow_clipping": true
+  },
+  "panel_blanker": {
+    "type": "image",
+    "texture": "textures/ui/dlg/frame_bg",
+    "alpha": 1,
+    "size": ["100%", "100%"],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "layer": 1,
+    "controls": [
+      {
+        "_stripes": {
+          "type": "image",
+          "texture": "textures/ui/dlg/dlg_bg",
+          "size": ["100% - 4px", "100% - 4px"],
+          "tiled": true,
+          "layer": -5
+        }
+      },
+      {
+        "_stripes_overlay": {
+          "type": "image",
+          "texture": "textures/ui/Black",
+          "size": ["100% - 4px", "100% - 4px"],
+          "alpha": 0.6,
+          "layer": -4
+        }
+      }
+    ]
+  },
+
+  "panel_title_container": {
+    "type": "panel",
+    "size": ["100%", "25px"],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": ["0%", "0%"],
+    "layer": 1001,
+    "clips_children": true,
+    "controls": [
+      {
+        "title_backing": {
+          "type": "image",
+          "texture": "textures/ui/dlg/frame_head",
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "layer": 1001,
+          "alpha": 1
+        }
+      },
+      {
+        "head_bezel": {
+          "type": "image",
+          "texture": "textures/ui/dlg/frame_bezel",
+          "size": ["100%", "100%"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 1005
+        }
+      },
+      {
+        "_geometric_overlay@geometric_overlay": {}
+      },
+
+      {
+        "_panel_title@panel_title": {}
+      }
+    ]
+  },
+  "geometric_overlay": {
+    "type": "panel",
+    "size": ["100% - 2px", "100% - 2px"],
+    "offset": [1, 2],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "clips_children": true,
+    "allow_clipping": true,
+    "controls": [
+      {
+        "shell": {
+          "type": "image",
+          "texture": "textures/ui/dlg/frame_shell",
+          "size": ["150%", "100%"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "layer": 1002,
+          "tiled": true
+        }
+      },
+      {
+        "blur": {
+          "type": "image",
+          "texture": "textures/ui/dlg/frame_title_blur",
+          "size": ["100%", "100%"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "layer": 1004,
+          "tiled": true
+        }
+      }
+    ]
+  },
+  "panel_title": {
+    "type": "label",
+    "text": "#title_text",
+    "localize": true,
+    "font_type": "MinecraftTen",
+    "color": [1.0, 1.0, 1.0],
+    "font_scale_factor": 1.4,
+    "line_padding": 1,
+    "layer": 1009,
+    "offset": [0, -1],
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      }
+      // {
+      //   "binding_type": "view",
+      //   "source_property_name": "(#title_text - 'testing'",
+      //   "target_property_name": "#title_text"
+      // }
+      // "source_property_name": "('§r' + #student_button_text - 't00' - 't01' - 't02'))",
+    ]
+    // "bindings": [
+    //   {
+    //     "binding_name": "#title_text"
+    //   }
+    // ]
+  },
+
+  "panel_title_right_item_container": {
+    "type": "panel",
+    "size": [15, 25],
+    "offset": [-5, 0],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "layer": 1002,
+    "controls": [
+      // JCJ 👇 Uncomment to restore close button
+      // {
+      //   "_close_btn@close_btn": {}
+      // }
+    ]
+  },
+
+  "panel_title_left_item_container": {
+    "type": "panel",
+    "size": [15, 15],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 1502,
+    "controls": [
+      {
+        "_back_button": {
+          "type": "image",
+          "size": [45, 20],
+          "offset": [4, 4],
+          "layer": 1001,
+          "anchor_to": "top_left",
+          "anchor_from": "top_left",
+          "visible": "($dlg_style = 'reader')",
+          "controls": [
+            {
+              "_back_button@ab_common_dlg.actor_select_button": {
+                "size": [45, 20],
+                "$button_content_offset": [0, 5]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "close_btn": {
+    "type": "button",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "ignored": "($ignore_close_button)",
+    "layer": 9999,
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "default_control": "default_close",
+    "hover_control": "hover_close",
+    "pressed_control": "pressed_close",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.exit_student",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.exit_student",
+        "mapping_type": "focused"
+      },
+      {
+        // Catch ESC here too
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.exit_student",
+        "mapping_type": "global"
+      }
+    ],
+    "controls": [
+      {
+        "default_close@close_btn_default": {
+          "$color": [255, 255, 255]
+        }
+      },
+      {
+        "hover_close@close_btn_default": {
+          "$color": [0, 0, 0]
+        }
+      },
+      {
+        "pressed_close@close_btn_default": {}
+      }
+    ]
+  },
+  "close_btn_default": {
+    "type": "image",
+    "texture": "textures/ui/close_button_default_light",
+    "$color|default": [0, 0, 0],
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "color": "($color)",
+    "layer": 9999,
+    "anchor_from": "center",
+    "anchor_to": "center"
+  }
+
+}

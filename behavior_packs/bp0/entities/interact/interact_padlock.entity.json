@@ -1,0 +1,100 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:interact_padlock",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "fs:variant_locked": {
+                "minecraft:variant": {
+                    "value": 0
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "interact",
+                        "interact_padlock",
+                        "zone_entity",
+                        "locked"
+                    ]
+                }
+            },
+            "fs:variant_unlocked": {
+                "minecraft:variant": {
+                    "value": 1
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "interact",
+                        "interact_padlock",
+                        "zone_entity",
+                        "unlocked"
+                    ]
+                }
+            },
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "interact",
+                    "interact_padlock",
+                    "zone_entity",
+                    "locked"
+                ]
+            },
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            },
+            "minecraft:scale": {
+                "value": 1
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:collision_box": {
+                "height": 0,
+                "width": 0
+            }
+        },
+        "events": {
+            "fs:variant_locked": {
+                "add": {
+                    "component_groups": [
+                        "fs:variant_locked"
+                    ]
+                }
+            },
+            "fs:variant_unlocked": {
+                "add": {
+                    "component_groups": [
+                        "fs:variant_unlocked"
+                    ]
+                }
+            },
+            "fs:instant_despawn": {
+                "add": {
+                    "component_groups": [
+                        "fs:instant_despawn"
+                    ]
+                }
+            }
+        }
+    }
+}

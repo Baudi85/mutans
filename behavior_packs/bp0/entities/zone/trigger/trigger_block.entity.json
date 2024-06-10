@@ -1,0 +1,175 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:trigger_block",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            },
+            "fs:interact_sewer_handle": {
+                "minecraft:interact": {
+                    "interactions": [
+                        {
+                            "interact_text": "action.hint.entity.fstrigger_block.interact",
+                            "on_interact": {
+                                "event": "fs:interact_sewer_handle_detected",
+                                "target": "self",
+                                "filters": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "player"
+                                    },
+                                    {
+                                        "test": "has_equipment",
+                                        "domain": "hand",
+                                        "subject": "other",
+                                        "value": "fs:item_sewer_handle"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            "fs:interact_sewer_valve": {
+                "minecraft:interact": {
+                    "interactions": [
+                        {
+                            "interact_text": "action.hint.entity.fstrigger_block.interact",
+                            "on_interact": {
+                                "event": "fs:interact_sewer_valve_detected",
+                                "target": "self",
+                                "filters": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "player"
+                                    },
+                                    {
+                                        "test": "has_equipment",
+                                        "domain": "hand",
+                                        "subject": "other",
+                                        "value": "fs:item_sewer_valve"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            "fs:interact_sewer_handle_detected": {
+                "minecraft:type_family": {
+                    "family": [
+                        "entity",
+                        "zone_entity",
+                        "trigger_block",
+                        "interact_sewer_handle_detected"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 1.0
+                }
+            },
+            "fs:interact_sewer_valve_detected": {
+                "minecraft:type_family": {
+                    "family": [
+                        "entity",
+                        "zone_entity",
+                        "trigger_block",
+                        "interact_sewer_valve_detected"
+                    ]
+                },
+                "minecraft:scale": {
+                    "value": 1.0
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "entity",
+                    "zone_entity",
+                    "trigger_block"
+                ]
+            },
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            },
+            "minecraft:scale": {
+                "value": 1
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:collision_box": {
+                "height": 1,
+                "width": 1
+            }
+        },
+        "events": {
+            "fs:instant_despawn": {
+                "add": {
+                    "component_groups": [
+                        "fs:instant_despawn"
+                    ]
+                }
+            },
+            "fs:interact_sewer_handle": {
+                "add": {
+                    "component_groups": [
+                        "fs:interact_sewer_handle"
+                    ]
+                }
+            },
+            "fs:interact_sewer_valve": {
+                "add": {
+                    "component_groups": [
+                        "fs:interact_sewer_valve"
+                    ]
+                }
+            },
+            "fs:interact_sewer_handle_detected": {
+                "remove": {
+                    "component_groups": [
+                        "fs:interact_sewer_handle"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "fs:interact_sewer_handle_detected"
+                    ]
+                }
+            },
+            "fs:interact_sewer_valve_detected": {
+                "remove": {
+                    "component_groups": [
+                        "fs:interact_sewer_valve"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "fs:interact_sewer_valve_detected"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.entity.quest_item": {
+      "arrays": {
+        "textures": {
+          "Array.textures": [
+            "Texture.variant_0",
+            "Texture.variant_1",
+            "Texture.variant_2"
+          ]
+        },
+        "geometries": {
+          "Array.geometries": [
+            "Geometry.variant_0",
+            "Geometry.variant_1",
+            "Geometry.variant_2"
+          ]
+        }
+      },
+      "geometry": "Array.geometries[query.variant]",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.textures[query.variant]"
+      ]
+    }
+  }
+}

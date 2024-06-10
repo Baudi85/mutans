@@ -1,0 +1,1 @@
+execute as @e[family=can_pathfind,tag=!pathfinding] at @s run function zone_manager/pathfinding/start_pathfinding

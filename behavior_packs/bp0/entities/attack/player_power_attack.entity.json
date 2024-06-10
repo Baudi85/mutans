@@ -1,0 +1,368 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:player_power_attack",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false,
+            "properties": {
+                "property:turtle": {
+                    "type": "enum",
+                    "values": [
+                        "leonardo",
+                        "raphael",
+                        "donatello",
+                        "michelangelo"
+                    ],
+                    "default": "leonardo",
+                    "client_sync": true
+                }
+            }
+        },
+        "component_groups": {
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            },
+            "fs:power_attack_leonardo": {
+                "minecraft:type_family": {
+                    "family": [
+                        "power_attack",
+                        "power_attack_leonardo"
+                    ]
+                }
+            },
+            "fs:power_attack_donatello": {
+                "minecraft:type_family": {
+                    "family": [
+                        "power_attack",
+                        "power_attack_donatello"
+                    ]
+                }
+            },
+            "fs:power_attack_michelangelo": {
+                "minecraft:type_family": {
+                    "family": [
+                        "power_attack",
+                        "power_attack_michelangelo"
+                    ]
+                }
+            },
+            "fs:power_attack_raphael": {
+                "minecraft:type_family": {
+                    "family": [
+                        "power_attack",
+                        "power_attack_raphael"
+                    ]
+                }
+            },
+            "fs:owned_by_player_0": {
+                "minecraft:type_family": {
+                    "family": [
+                        "power_attack",
+                        "owned_by_player_0"
+                    ]
+                }
+            },
+            "fs:owned_by_player_1": {
+                "minecraft:type_family": {
+                    "family": [
+                        "power_attack",
+                        "owned_by_player_1"
+                    ]
+                }
+            },
+            "fs:owned_by_player_2": {
+                "minecraft:type_family": {
+                    "family": [
+                        "power_attack",
+                        "owned_by_player_2"
+                    ]
+                }
+            },
+            "fs:owned_by_player_3": {
+                "minecraft:type_family": {
+                    "family": [
+                        "power_attack",
+                        "owned_by_player_3"
+                    ]
+                }
+            },
+            "fs:owned_by_player_companion_0": {
+                "minecraft:type_family": {
+                    "family": [
+                        "power_attack",
+                        "owned_by_player_companion_0"
+                    ]
+                }
+            },
+            "fs:owned_by_player_companion_1": {
+                "minecraft:type_family": {
+                    "family": [
+                        "power_attack",
+                        "owned_by_player_companion_1"
+                    ]
+                }
+            },
+            "fs:owned_by_player_companion_2": {
+                "minecraft:type_family": {
+                    "family": [
+                        "power_attack",
+                        "owned_by_player_companion_2"
+                    ]
+                }
+            },
+            "fs:owned_by_player_companion_3": {
+                "minecraft:type_family": {
+                    "family": [
+                        "power_attack",
+                        "owned_by_player_companion_3"
+                    ]
+                }
+            },
+            "fs:add_knockback_roar": {
+                "minecraft:behavior.knockback_roar": {
+                    "priority": 0,
+                    "cooldown_time": 0,
+                    "duration": 0.5,
+                    "knockback_damage": 3,
+                    "attack_time": 0.1,
+                    "knockback_range": 2,
+                    "knockback_vertical_strength": 1,
+                    "knockback_horizontal_strength": 2,
+                    "knockback_height_cap": 0.75,
+                    "track_target": true,
+                    "on_roar_end": {
+                        "event": "fs:knockback_roar_did_end",
+                        "target": "self"
+                    },
+                    "knockback_filters": {
+                        "any_of": [
+                            {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "enemy"
+                            },
+                            {
+                                "all_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "boss"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "attackable"
+                                    }
+                                ]
+                            },
+                            {
+                                "all_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "prop"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "attackable"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "minecraft:collision_box": {
+                    "height": 1.8,
+                    "width": 1.5
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "power_attack"
+                ]
+            },
+            "minecraft:scale": {
+                "value": 1
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:rideable": {
+                "controlling_seat": 0,
+                "crouching_skip_interact": true,
+                "family_types": [
+                    "player",
+                    "player_companion"
+                ],
+                "interact_text": "action.interact.entity.ride",
+                "pull_in_entities": true,
+                "rider_can_interact": false,
+                "seat_count": 1,
+                "seats": [
+                    {
+                        "position": [
+                            0,
+                            0.75,
+                            -0.75
+                        ]
+                    }
+                ]
+            },
+            "minecraft:input_ground_controlled": {},
+            "minecraft:movement": {
+                "value": [
+                    0.15,
+                    0.15
+                ]
+            },
+            "minecraft:physics": {
+                "has_collision": true,
+                "has_gravity": true
+            },
+            "minecraft:collision_box": {
+                "height": 1.8,
+                "width": 0.95
+            },
+            "minecraft:can_power_jump": {},
+            "minecraft:horse.jump_strength": {
+                "value": 0.01
+            },
+            "minecraft:push_through": {
+                "value": 0
+            },
+            "minecraft:variable_max_auto_step": {
+                "base_value": 1.1,
+                "controlled_value": 1.1,
+                "jump_prevented_value": 1.1
+            }
+        },
+        "events": {
+            "fs:instant_despawn": {
+                "add": {
+                    "component_groups": [
+                        "fs:instant_despawn"
+                    ]
+                }
+            },
+            "fs:knockback_roar_did_end": {
+                "add": {
+                    "component_groups": [
+                        "fs:add_knockback_roar"
+                    ]
+                }
+            },
+            "fs:set_turtle_leonardo": {
+                "set_property": {
+                    "property:turtle": "leonardo"
+                },
+                "add": {
+                    "component_groups": [
+                        "fs:add_knockback_roar"
+                    ]
+                }
+            },
+            "fs:set_turtle_raphael": {
+                "set_property": {
+                    "property:turtle": "raphael"
+                },
+                "add": {
+                    "component_groups": [
+                        "fs:add_knockback_roar"
+                    ]
+                }
+            },
+            "fs:set_turtle_donatello": {
+                "set_property": {
+                    "property:turtle": "donatello"
+                },
+                "add": {
+                    "component_groups": [
+                        "fs:add_knockback_roar"
+                    ]
+                }
+            },
+            "fs:set_turtle_michelangelo": {
+                "set_property": {
+                    "property:turtle": "michelangelo"
+                },
+                "add": {
+                    "component_groups": [
+                        "fs:add_knockback_roar"
+                    ]
+                }
+            },
+            "fs:owned_by_player_0": {
+                "add": {
+                    "component_groups": [
+                        "fs:owned_by_player_0"
+                    ]
+                }
+            },
+            "fs:owned_by_player_1": {
+                "add": {
+                    "component_groups": [
+                        "fs:owned_by_player_1"
+                    ]
+                }
+            },
+            "fs:owned_by_player_2": {
+                "add": {
+                    "component_groups": [
+                        "fs:owned_by_player_2"
+                    ]
+                }
+            },
+            "fs:owned_by_player_3": {
+                "add": {
+                    "component_groups": [
+                        "fs:owned_by_player_3"
+                    ]
+                }
+            },
+            "fs:owned_by_player_companion_0": {
+                "add": {
+                    "component_groups": [
+                        "fs:owned_by_player_companion_0"
+                    ]
+                }
+            },
+            "fs:owned_by_player_companion_1": {
+                "add": {
+                    "component_groups": [
+                        "fs:owned_by_player_companion_1"
+                    ]
+                }
+            },
+            "fs:owned_by_player_companion_2": {
+                "add": {
+                    "component_groups": [
+                        "fs:owned_by_player_companion_2"
+                    ]
+                }
+            },
+            "fs:owned_by_player_companion_3": {
+                "add": {
+                    "component_groups": [
+                        "fs:owned_by_player_companion_3"
+                    ]
+                }
+            }
+        }
+    }
+}

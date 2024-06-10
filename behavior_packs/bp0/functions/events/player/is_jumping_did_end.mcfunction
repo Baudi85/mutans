@@ -1,0 +1,1 @@
+scoreboard players set @s is_jumping 0

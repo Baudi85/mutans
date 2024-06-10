@@ -1,0 +1,578 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:puppet_enemy",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false,
+            "animations": {
+                "controller_is_riding": "controller.animation.puppet.is_riding"
+            },
+            "scripts": {
+                "animate": [
+                    "controller_is_riding"
+                ]
+            }
+        },
+        "component_groups": {
+            "fs:instant_despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": true
+                }
+            },
+            "fs:variant_0": {
+                "minecraft:variant": {
+                    "value": 0
+                }
+            },
+            "fs:variant_1": {
+                "minecraft:variant": {
+                    "value": 1
+                }
+            },
+            "fs:variant_2": {
+                "minecraft:variant": {
+                    "value": 2
+                }
+            },
+            "fs:variant_3": {
+                "minecraft:variant": {
+                    "value": 3
+                }
+            },
+            "fs:variant_4": {
+                "minecraft:variant": {
+                    "value": 4
+                }
+            },
+            "fs:variant_5": {
+                "minecraft:variant": {
+                    "value": 5
+                }
+            },
+            "fs:variant_6": {
+                "minecraft:variant": {
+                    "value": 6
+                }
+            },
+            "fs:variant_7": {
+                "minecraft:variant": {
+                    "value": 7
+                }
+            },
+            "fs:variant_8": {
+                "minecraft:variant": {
+                    "value": 8
+                }
+            },
+            "fs:variant_9": {
+                "minecraft:variant": {
+                    "value": 9
+                }
+            },
+            "fs:variant_10": {
+                "minecraft:variant": {
+                    "value": 10
+                }
+            },
+            "fs:variant_11": {
+                "minecraft:variant": {
+                    "value": 11
+                }
+            },
+            "fs:variant_12": {
+                "minecraft:variant": {
+                    "value": 12
+                }
+            },
+            "fs:variant_13": {
+                "minecraft:variant": {
+                    "value": 13
+                }
+            },
+            "fs:variant_14": {
+                "minecraft:variant": {
+                    "value": 14
+                }
+            },
+            "fs:variant_15": {
+                "minecraft:variant": {
+                    "value": 15
+                }
+            },
+            "fs:variant_16": {
+                "minecraft:variant": {
+                    "value": 16
+                }
+            },
+            "fs:variant_17": {
+                "minecraft:variant": {
+                    "value": 17
+                }
+            },
+            "fs:variant_18": {
+                "minecraft:variant": {
+                    "value": 18
+                }
+            },
+            "fs:variant_19": {
+                "minecraft:variant": {
+                    "value": 19
+                }
+            },
+            "fs:variant_20": {
+                "minecraft:variant": {
+                    "value": 20
+                }
+            },
+            "fs:mark_variant_0": {
+                "minecraft:mark_variant": {
+                    "value": 0
+                }
+            },
+            "fs:mark_variant_1": {
+                "minecraft:mark_variant": {
+                    "value": 1
+                }
+            }
+        },
+        "components": {
+            "minecraft:collision_box": {
+                "height": 1,
+                "width": 1
+            },
+            "minecraft:type_family": {
+                "family": [
+                    "puppet"
+                ]
+            },
+            "minecraft:physics": {
+                "has_collision": true,
+                "has_gravity": false
+            },
+            "minecraft:scale": {
+                "value": 1
+            },
+            "minecraft:interact": {
+                "interactions": [
+                    {
+                        "on_interact": {
+                            "event": "fs:instant_despawn",
+                            "target": "self",
+                            "filters": [
+                                {
+                                    "test": "has_equipment",
+                                    "domain": "hand",
+                                    "subject": "other",
+                                    "value": "barrier",
+                                    "operator": "=="
+                                }
+                            ]
+                        },
+                        "use_item": false,
+                        "swing": true,
+                        "interact_text": "action.interact.entity.common"
+                    },
+                    {
+                        "on_interact": {
+                            "event": "fs:next_variant",
+                            "target": "self"
+                        },
+                        "use_item": false,
+                        "swing": true,
+                        "interact_text": "action.interact.entity.common"
+                    }
+                ]
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "player",
+                                        "value": "player"
+                                    }
+                                ]
+                            },
+                            "event": "fs:next_pose"
+                        },
+                        "deals_damage": false
+                    },
+                    {
+                        "deals_damage": false
+                    }
+                ]
+            }
+        },
+        "events": {
+            "fs:instant_despawn": {
+                "sequence": [
+                    {
+                        "add": {
+                            "component_groups": [
+                                "fs:instant_despawn"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "fs:next_variant": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_1"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 1
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_2"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 2
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_3"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 3
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_4"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 4
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_5"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 5
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_6"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 6
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_7"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 7
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_8"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 8
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_9"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 9
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_10"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 10
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_11"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 11
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_12"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 12
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_13"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 13
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_14"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 14
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_15"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 15
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_16"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 16
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_17"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 17
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_18"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 18
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_19"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 19
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_20"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_variant",
+                                    "value": 20
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:variant_0"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "fs:next_pose": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_mark_variant",
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:mark_variant_1"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_mark_variant",
+                                    "value": 1
+                                }
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "fs:mark_variant_0"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

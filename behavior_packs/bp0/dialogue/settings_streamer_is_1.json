@@ -1,0 +1,74 @@
+// @(com.57digital.shulker.generated)
+// @generated File (generated via ShulkerScript: <BP> dialogue/config/settings.js)
+{
+	"format_version": "1.17",
+	"minecraft:npc_dialogue": {
+		"scenes": [
+			{
+				"scene_tag": "settings_streamer_is_1",
+				"npc_name": {
+					"rawtext": [
+						{
+							"text": "fs.setting.streamer_mode"
+						}
+					]
+				},
+				"text": {
+					"rawtext": [
+						{
+							"translate": "fs.setting.music.text"
+						},
+						{
+							"text": "\n\n§a§l"
+						},
+						{
+							"translate": "fs.setting.music.streamer_mode_on"
+						},
+						{
+							"text": "§r§r§r§9§a§b§c§a§r§r§r"
+						},
+						{
+							"text": "§f§1§3§3§7§f§0§0§f"
+						}
+					]
+				},
+				"buttons": [
+					{
+						"name": "a9cf92t05z00",
+						"commands": [
+							"/execute as @initiator run tag @s add dlg.did_segue",
+							"/execute as @initiator run function settings/streamer/disable",
+							"/execute as @initiator run function dlg/settings_streamer_is_0"
+						]
+					},
+					{
+						"name": "18e507t07z02",
+						"commands": [
+							"/execute as @initiator run execute if entity @s[tag=settings_ingame] run tag @s add dlg.did_segue",
+							"/execute as @initiator run execute if entity @s[tag=settings_ingame] run function dlg/settings_ingame",
+							"/execute as @initiator run execute unless entity @s[tag=settings_ingame] run tag @s add dlg.did_segue",
+							"/execute as @initiator run execute unless entity @s[tag=settings_ingame] run function dlg/settings"
+						]
+					}
+				],
+				"on_open_commands": [
+					"/tag @initiator remove did_req_dlg",
+					"/execute as @a run function utils/remove_dlg_tags",
+					"/execute as @initiator[tag=!dlg.did_segue] run playsound fs.dlg.open @s[scores={s_sfx_enabled=1}]",
+					"/tag @initiator add player.in_ui",
+					"/tag @initiator remove dlg.did_segue",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings_streamer_is_1§7].§2DidOpen§7\"}]}"
+				],
+				"on_close_commands": [
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§eDid run on_close_commands\"}]}",
+					"/execute as @initiator[tag=!dlg.did_segue] at @s run function sounds/stop/_dialogue",
+					"/tag @s remove particle_emitter",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings_streamer_is_1§7].§4CloseFn§7: Aborted due to segue.\"}]}",
+					"/tellraw @initiator[tag=debug_dlg_verbose,tag=!dlg.did_segue] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings_streamer_is_1§7].§eDidNotSegue...\"}]}",
+					"/tag @initiator remove player.in_ui",
+					"/tellraw @initiator[tag=debug_dlg_verbose] {\"rawtext\":[{\"text\": \"§7Dialogue[§esettings_streamer_is_1§7].§4DidClose§7\"}]}"
+				]
+			}
+		]
+	}
+}

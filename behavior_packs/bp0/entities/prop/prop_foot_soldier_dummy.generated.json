@@ -1,0 +1,226 @@
+// @(com.57digital.shulker.inherited)
+// Inheritance Chain: [fs:entity] ~> [fs:attackable_prop_hit] ~> [fs:prop] ~> fs:prop_foot_soldier_dummy
+{
+  "format_version": "1.19.60",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "fs:prop_foot_soldier_dummy",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "property:perf_mode": {
+          "type": "bool",
+          "default": true,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "fs:instant_despawn": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": false
+        }
+      },
+      "fs:damaged_by_player": {
+        "minecraft:type_family": {
+          "family": [
+            "prop",
+            "prop_hit"
+          ]
+        }
+      },
+      "fs:damaged_by_projectile": {
+        "minecraft:type_family": {
+          "family": [
+            "prop",
+            "prop_hit_by_projectile"
+          ]
+        }
+      },
+      "fs:damaged_by_power_attack": {
+        "minecraft:type_family": {
+          "family": [
+            "prop",
+            "prop_hit_by_power_attack"
+          ]
+        }
+      },
+      "fs:damaged_by_player_handled": {
+        "minecraft:type_family": {
+          "family": [
+            "prop",
+            "attackable",
+            "collision_normal"
+          ]
+        }
+      },
+      "fs:damaged_by_projectile_handled": {
+        "minecraft:type_family": {
+          "family": [
+            "prop",
+            "attackable",
+            "collision_normal"
+          ]
+        }
+      },
+      "fs:damaged_by_power_attack_handled": {
+        "minecraft:type_family": {
+          "family": [
+            "prop",
+            "attackable",
+            "collision_normal"
+          ]
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "prop",
+          "attackable",
+          "collision_normal"
+        ]
+      },
+      "minecraft:physics": {
+        "has_collision": true,
+        "has_gravity": true
+      },
+      "minecraft:scale": {
+        "value": 1
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": false,
+            "on_damage": {
+              "filters": [
+                {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "operator": "==",
+                      "value": "projectile",
+                      "subject": "damager"
+                    }
+                  ]
+                }
+              ],
+              "target": "self",
+              "event": "fs:damaged_by_projectile"
+            }
+          },
+          {
+            "cause": "all",
+            "deals_damage": false,
+            "on_damage": {
+              "filters": [
+                {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "operator": "==",
+                      "value": "power_attack",
+                      "subject": "damager"
+                    }
+                  ]
+                }
+              ],
+              "target": "self",
+              "event": "fs:damaged_by_power_attack"
+            }
+          },
+          {
+            "cause": "all",
+            "deals_damage": false,
+            "on_damage": {
+              "filters": [
+                {
+                  "all_of": [
+                    {
+                      "test": "is_family",
+                      "operator": "==",
+                      "value": "player",
+                      "subject": "other"
+                    }
+                  ]
+                }
+              ],
+              "target": "self"
+            }
+          }
+        ]
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:collision_box": {
+        "height": 2,
+        "width": 1
+      }
+    },
+    "events": {
+      "fs:instant_despawn": {
+        "add": {
+          "component_groups": [
+            "fs:instant_despawn"
+          ]
+        }
+      },
+      "fs:enable_perf_mode": {
+        "set_property": {
+          "property:perf_mode": true
+        }
+      },
+      "fs:disable_perf_mode": {
+        "set_property": {
+          "property:perf_mode": false
+        }
+      },
+      "fs:damaged_by_player": {
+        "add": {
+          "component_groups": [
+            "fs:damaged_by_player"
+          ]
+        }
+      },
+      "fs:damaged_by_projectile": {
+        "add": {
+          "component_groups": [
+            "fs:damaged_by_projectile"
+          ]
+        }
+      },
+      "fs:damaged_by_power_attack": {
+        "add": {
+          "component_groups": [
+            "fs:damaged_by_power_attack"
+          ]
+        }
+      },
+      "fs:damaged_by_player_handled": {
+        "add": {
+          "component_groups": [
+            "fs:damaged_by_player_handled"
+          ]
+        }
+      },
+      "fs:damaged_by_projectile_handled": {
+        "add": {
+          "component_groups": [
+            "fs:damaged_by_projectile_handled"
+          ]
+        }
+      },
+      "fs:damaged_by_power_attack_handled": {
+        "add": {
+          "component_groups": [
+            "fs:damaged_by_power_attack_handled"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "fs:prop_foot_soldier_dummy",
+      "spawn_egg": {
+        "base_color": "#000000",
+        "overlay_color": "#000000"
+      },
+      "render_controllers": [
+        "controller.render.prop_foot_soldier_dummy"
+      ],
+      "geometry": {
+        "variant_0": "geometry.prop_foot_soldier_dummy"
+      },
+      "textures": {
+        "variant_0": "textures/entity/prop_foot_soldier_dummy/prop_foot_soldier_dummy_v0"
+      },
+      "materials": {
+        "default": "entity"
+      },
+      "animations": {
+        "hit": "animation.prop_foot_soldier_dummy.hit"
+      }
+    }
+  }
+}

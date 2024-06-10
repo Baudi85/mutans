@@ -1,0 +1,55 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.player.property.damage_type": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "damage_type_projectile": "query.property('property:damage_type') == 'projectile'"
+                        },
+                        {
+                            "damage_type_explosion": "query.property('property:damage_type') == 'explosion'"
+                        },
+                        {
+                            "damage_type_knockback": "query.property('property:damage_type') == 'knockback'"
+                        }
+                    ]
+                },
+                "damage_type_projectile": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "@s fs:set_damaged_by_none",
+                        "/function player/attacked/by_projectile"
+                    ]
+                },
+                "damage_type_explosion": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "@s fs:set_damaged_by_none",
+                        "/function player/attacked/by_explosion"
+                    ]
+                },
+                "damage_type_knockback": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "@s fs:set_damaged_by_none",
+                        "/function player/attacked/by_knockback"
+                    ]
+                }
+            }
+        }
+    }
+}
